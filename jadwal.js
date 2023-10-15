@@ -1,3 +1,6 @@
+// import fs from "fs";
+// const fs = require("fs");
+
 /**
  * Mewakili seorang guru.
  * @class
@@ -230,7 +233,8 @@ for (let j = 2; j <= 3; j++) {
 
 // Isti'dad dan Mutakhorijin
 listKelas.push(new Kelas("Isti'dad"));
-listKelas.push(new Kelas("Mutakhorijin"));
+listKelas.push(new Kelas("Mutakhorijin Pagi"));
+listKelas.push(new Kelas("Mutakhorijin Sore"));
 
 const [
     T1A,
@@ -273,7 +277,8 @@ const [
     A3B,
     A3C,
     IST,
-    MTH,
+    MTP,
+    MTS,
 ] = listKelas;
 
 /* Penempatan Guru ke dalam Kelas sesuai Jadwal */
@@ -357,8 +362,73 @@ T1D.tempatkan("sabtu", 1, FT, nahwu);
 T1D.tempatkan("sabtu", 2, MIS, fiqih);
 T1D.tempatkan("sabtu", 3, FRQ, arab);
 
+/* Tsanawy 1-E */
+T1E.tempatkan("senin", 1, MST, fiqih);
+T1E.tempatkan("senin", 2, FRZ, arab);
+T1E.tempatkan("senin", 3, LSN, tauhid);
+T1E.tempatkan("selasa", 1, FT, nahwu);
+T1E.tempatkan("selasa", 2, FRZ, arab);
+T1E.tempatkan("selasa", 3, MST, fiqih);
+T1E.tempatkan("rabu", 1, ASR, tajwid);
+T1E.tempatkan("rabu", 2, FT, nahwu);
+T1E.tempatkan("rabu", 3, HFD, shorof);
+T1E.tempatkan("kamis", 1, MSH, imla);
+T1E.tempatkan("kamis", 2, HFD, shorof);
+T1E.tempatkan("kamis", 3, FT, nahwu);
+T1E.tempatkan("jumat", 1, MST, fiqih);
+T1E.tempatkan("jumat", 2, FRZ, arab);
+T1E.tempatkan("jumat", 3, FT, nahwu);
+T1E.tempatkan("sabtu", 1, YDN, akhlaq);
+T1E.tempatkan("sabtu", 2, FRZ, arab);
+T1E.tempatkan("sabtu", 3, LSN, tauhid);
+
+/* Tsanawy 1-F */
+T1F.tempatkan("senin", 1, MIS, fiqih);
+T1F.tempatkan("senin", 2, HFD, shorof);
+T1F.tempatkan("senin", 3, MSH, imla);
+T1F.tempatkan("selasa", 1, FRQ, arab);
+T1F.tempatkan("selasa", 2, FT, nahwu);
+T1F.tempatkan("selasa", 3, BCH, tauhid);
+T1F.tempatkan("rabu", 1, FRQ, arab);
+T1F.tempatkan("rabu", 2, HFD, shorof);
+T1F.tempatkan("rabu", 3, FT, nahwu);
+T1F.tempatkan("kamis", 1, FT, nahwu);
+T1F.tempatkan("kamis", 2, FRQ, arab);
+T1F.tempatkan("kamis", 3, BCH, tauhid);
+T1F.tempatkan("jumat", 1, ASR, tajwid);
+T1F.tempatkan("jumat", 2, FT, nahwu);
+T1F.tempatkan("jumat", 3, MIS, fiqih);
+T1F.tempatkan("sabtu", 1, MIS, fiqih);
+T1F.tempatkan("sabtu", 2, FRQ, arab);
+T1F.tempatkan("sabtu", 3, YDN, akhlaq);
+
+/* Tsanawy 1-G */
+T1G.tempatkan("senin", 1, HR, nahwu);
+T1G.tempatkan("senin", 2, BCH, tauhid);
+T1G.tempatkan("senin", 3, FRH, arab);
+T1G.tempatkan("selasa", 1, HR, nahwu);
+T1G.tempatkan("selasa", 2, MIS, fiqih);
+T1G.tempatkan("selasa", 3, FRH, arab);
+T1G.tempatkan("rabu", 1, HR, nahwu);
+T1G.tempatkan("rabu", 2, MIS, fiqih);
+T1G.tempatkan("rabu", 3, FRH, arab);
+T1G.tempatkan("kamis", 1, HR, nahwu);
+T1G.tempatkan("kamis", 2, YDN, akhlaq);
+T1G.tempatkan("kamis", 3, MSH, imla);
+T1G.tempatkan("jumat", 1, HFD, shorof);
+T1G.tempatkan("jumat", 2, MIS, fiqih);
+T1G.tempatkan("jumat", 3, FRH, arab);
+T1G.tempatkan("sabtu", 1, ASR, tajwid);
+T1G.tempatkan("sabtu", 2, BCH, tauhid);
+T1G.tempatkan("sabtu", 3, HFD, shorof);
+
 /* Testing */
 // console.log(T1A); // sukses!
 // NZR.jadwal(); // sukses!
 // T1A.jadwal(); // sukses!
 // Hari.jadwal("Senin"); // sukses!
+// console.log(listKelas);
+
+// fs.writeFile("./listKelas.txt", FT.fan, (err) => {
+//     if (err) console.error(err);
+// });
