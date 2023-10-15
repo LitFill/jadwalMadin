@@ -163,7 +163,13 @@ class Fan {
     static Tajwid = new Fan("Tajwid");
     static Tauhid = new Fan("Tauhid");
     static Akhlaq = new Fan("Akhlaq");
-    static Imla = new Fan("Imla");
+    static Imla = new Fan("Imla'");
+    static Miftah = new Fan("Al-Miftah");
+    static Ilal = new Fan("I'lal dan I'rob");
+    static Mustholah = new Fan("Mustholah");
+    static Balaghoh = new Fan("Balaghoh");
+    static Ushul = new Fan("Ushul Fiqih");
+    static Tasme = new Fan("Tasme'");
 
     constructor(nama) {
         this.nama = nama;
