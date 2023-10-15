@@ -29,19 +29,10 @@ class Guru {
         }
     }
 
-    jadwal() {
+    jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
         listKelas.forEach((kelas) => {
             for (let hari in kelas) {
-                if (
-                    [
-                        "senin",
-                        "selasa",
-                        "rabu",
-                        "kamis",
-                        "jumat",
-                        "sabtu",
-                    ].includes(hari)
-                ) {
+                if (namaHari.includes(hari)) {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.nama) {
                             console.log(
@@ -64,18 +55,18 @@ class Guru {
  * @class
  */
 class Kelas {
+    senin = new Hari("Senin");
+    selasa = new Hari("Selasa");
+    rabu = new Hari("Rabu");
+    kamis = new Hari("Kamis");
+    jumat = new Hari("Jumat");
+    sabtu = new Hari("Sabtu");
     /**
      * Membuat instans Kelas baru.
      * @param {String} nama - Nama kelas.
      */
     constructor(nama) {
         this.nama = nama;
-        this.senin = new Hari("Senin");
-        this.selasa = new Hari("Selasa");
-        this.rabu = new Hari("Rabu");
-        this.kamis = new Hari("Kamis");
-        this.jumat = new Hari("Jumat");
-        this.sabtu = new Hari("Sabtu");
     }
 
     /**
@@ -96,13 +87,9 @@ class Kelas {
         }
     }
 
-    jadwal() {
+    jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
         for (let hari in this) {
-            if (
-                ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"].includes(
-                    hari
-                )
-            ) {
+            if (namaHari.includes(hari)) {
                 for (let i = 0; i < 3; i++) {
                     console.log(
                         `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${
@@ -156,20 +143,20 @@ class Hari {
 }
 
 class Fan {
-    static Nahwu = new Fan("Nahwu");
-    static Arab = new Fan("Bahasa Arab");
-    static Fiqih = new Fan("Fiqih");
-    static Shorof = new Fan("Shorof");
-    static Tajwid = new Fan("Tajwid");
-    static Tauhid = new Fan("Tauhid");
-    static Akhlaq = new Fan("Akhlaq");
-    static Imla = new Fan("Imla'");
-    static Miftah = new Fan("Al-Miftah");
     static Ilal = new Fan("I'lal dan I'rob");
     static Mustholah = new Fan("Mustholah");
     static Balaghoh = new Fan("Balaghoh");
     static Ushul = new Fan("Ushul Fiqih");
+    static Arab = new Fan("Bahasa Arab");
+    static Miftah = new Fan("Al-Miftah");
+    static Shorof = new Fan("Shorof");
+    static Tajwid = new Fan("Tajwid");
+    static Tauhid = new Fan("Tauhid");
+    static Akhlaq = new Fan("Akhlaq");
     static Tasme = new Fan("Tasme'");
+    static Nahwu = new Fan("Nahwu");
+    static Fiqih = new Fan("Fiqih");
+    static Imla = new Fan("Imla'");
 
     constructor(nama) {
         this.nama = nama;
@@ -177,34 +164,58 @@ class Fan {
 }
 
 /* Deklarasi Fan */
-const nahwu = Fan.Nahwu;
-const arab = Fan.Arab;
-const fiqih = Fan.Fiqih;
+const mustholah = Fan.Mustholah;
+const balaghoh = Fan.Balaghoh;
 const shorof = Fan.Shorof;
 const tajwid = Fan.Tajwid;
 const tauhid = Fan.Tauhid;
 const akhlaq = Fan.Akhlaq;
+const miftah = Fan.Miftah;
+const nahwu = Fan.Nahwu;
+const fiqih = Fan.Fiqih;
+const ushul = Fan.Ushul;
+const tasme = Fan.Tasme;
+const arab = Fan.Arab;
 const imla = Fan.Imla;
+const ilal = Fan.Ilal;
 
 /*  Deklarasi Guru */
-const NZR = new Guru("Nizar", nahwu);
-const FT = new Guru("Fathur", nahwu);
-const HR = new Guru("Heri", nahwu);
-const FRZ = new Guru("Fakhrurozi", arab);
-const FRQ = new Guru("Faruq", arab);
-const FRH = new Guru("Farhan", arab);
-const MST = new Guru("Musthofa Besuk", fiqih);
+const MNR = new Guru("Munir Subkhi", [shorof, nahwu]);
+const BCH = new Guru("Bukhori", [tauhid, akhlaq]);
+const FDL = new Guru("Fadlulloh Ulil Azmi", imla);
 const GFR = new Guru("Musthofa Ghufron", fiqih);
-const MIS = new Guru("Maisur", fiqih);
-const HFD = new Guru("Hafidz", shorof);
-const MNS = new Guru("Munshorif", shorof);
-const MNR = new Guru("Munir Subkhi", shorof);
-const ASR = new Guru("Asrofi", tajwid);
+const ASP = new Guru("Saifurrohman Aly", nahwu);
+const MIS = new Guru("Maisur", [fiqih, nahwu]);
+const MRJ = new Guru("Mu'rijul Ma'arif", arab);
+const MST = new Guru("Musthofa Besuk", fiqih);
+const USY = new Guru("Syafi'il Anam", tauhid);
+const IDS = new Guru("Idris Besuk", nahwu);
+const ADN = new Guru("Adnan Fauzi", fiqih);
+const YHY = new Guru("Yahya Mansur", arab);
 const LSN = new Guru("Mukhlasin", tauhid);
-const BCH = new Guru("Bukhori", tauhid);
+const MNS = new Guru("Munshorif", shorof);
+const FRZ = new Guru("Fakhrurozi", arab);
+const HMD = new Guru("Hamid M.", tauhid);
+const SDQ = new Guru("Sodiqin", tauhid);
+const HFD = new Guru("Hafidz", shorof);
+const ASR = new Guru("Asrofi", tajwid);
+const UMR = new Guru("Ma'ruf", akhlaq);
 const YDN = new Guru("Yadin", akhlaq);
 const MSH = new Guru("Mashudi", imla);
-const FDL = new Guru("Fadlulloh Ulil Azmi", imla);
+const SLH = new Guru("Sholah", nahwu);
+const FQH = new Guru("Faqih", shorof);
+const LBB = new Guru("Lubab", tajwid);
+const MNJ = new Guru("Munji", akhlaq);
+const MRW = new Guru("Mirwan", fiqih);
+const ANM = new Guru("Anam", tauhid);
+const BGS = new Guru("Bagus", fiqih);
+const NZR = new Guru("Nizar", nahwu);
+const FRH = new Guru("Farhan", arab);
+const RIF = new Guru("Rifqi", arab);
+const FRQ = new Guru("Faruq", arab);
+const FT = new Guru("Fathur", nahwu);
+const WF = new Guru("Wafa", shorof);
+const HR = new Guru("Heri", nahwu);
 
 /* Deklarasi Kelas */
 const listKelas = [];
@@ -242,49 +253,16 @@ listKelas.push(new Kelas("Isti'dad"));
 listKelas.push(new Kelas("Mutakhorijin Pagi"));
 listKelas.push(new Kelas("Mutakhorijin Sore"));
 
+// prettier-ignore
 const [
-    T1A,
-    T1B,
-    T1C,
-    T1D,
-    T1E,
-    T1F,
-    T1G,
-    T2A,
-    T2B,
-    T2C,
-    T2D,
-    T2E,
-    T2F,
-    T2G,
-    T2H,
-    T2I,
-    T2J,
-    T3A,
-    T3B,
-    T3C,
-    T3D,
-    T3E,
-    T3F,
-    T3G,
-    T3H,
-    T3I,
-    T3J,
-    A1A,
-    A1B,
-    A1C,
-    A1D,
-    A1E,
-    A1F,
-    A2A,
-    A2B,
-    A2C,
-    A3A,
-    A3B,
-    A3C,
+    T1A, T1B, T1C, T1D, T1E, T1F, T1G,
+    T2A, T2B, T2C, T2D, T2E, T2F, T2G, T2H, T2I, T2J,
+    T3A, T3B, T3C, T3D, T3E, T3F, T3G, T3H, T3I, T3J,
+    A1A, A1B, A1C, A1D, A1E, A1F,
+    A2A, A2B, A2C,
+    A3A, A3B, A3C,
     IST,
-    MTP,
-    MTS,
+    MTP, MTS,
 ] = listKelas;
 
 /* Penempatan Guru ke dalam Kelas sesuai Jadwal */
@@ -428,6 +406,106 @@ T1G.tempatkan("sabtu", 1, ASR, tajwid);
 T1G.tempatkan("sabtu", 2, BCH, tauhid);
 T1G.tempatkan("sabtu", 3, HFD, shorof);
 
+/* Tsanawy 2-A */
+T2A.tempatkan("senin", 1, SLH, nahwu);
+T2A.tempatkan("senin", 2, YHY, arab);
+T2A.tempatkan("senin", 3, WF, shorof);
+T2A.tempatkan("selasa", 1, LBB, tajwid);
+T2A.tempatkan("selasa", 2, HMD, tauhid);
+T2A.tempatkan("selasa", 3, MRW, fiqih);
+T2A.tempatkan("rabu", 1, MRW, fiqih);
+T2A.tempatkan("rabu", 2, SLH, nahwu);
+T2A.tempatkan("rabu", 3, MNJ, akhlaq);
+T2A.tempatkan("kamis", 1, MNJ, akhlaq);
+T2A.tempatkan("kamis", 2, YHY, arab);
+T2A.tempatkan("kamis", 3, YHY, arab);
+T2A.tempatkan("jumat", 1, YHY, arab);
+T2A.tempatkan("jumat", 2, SLH, nahwu);
+T2A.tempatkan("jumat", 3, HMD, tauhid);
+T2A.tempatkan("sabtu", 1, SLH, nahwu);
+T2A.tempatkan("sabtu", 2, MRW, fiqih);
+T2A.tempatkan("sabtu", 3, WF, shorof);
+
+/* Tsanawy 2-B */
+T2B.tempatkan("senin", 1, LBB, tajwid);
+T2B.tempatkan("senin", 2, SLH, nahwu);
+T2B.tempatkan("senin", 3, YHY, arab);
+T2B.tempatkan("selasa", 1, USY, tauhid);
+T2B.tempatkan("selasa", 2, MRW, fiqih);
+T2B.tempatkan("selasa", 3, WF, shorof);
+T2B.tempatkan("rabu", 1, SLH, nahwu);
+T2B.tempatkan("rabu", 2, MRW, fiqih);
+T2B.tempatkan("rabu", 3, WF, shorof);
+T2B.tempatkan("kamis", 1, YHY, arab);
+T2B.tempatkan("kamis", 2, MNJ, akhlaq);
+T2B.tempatkan("kamis", 3, SLH, nahwu);
+T2B.tempatkan("jumat", 1, MRW, fiqih);
+T2B.tempatkan("jumat", 2, YHY, arab);
+T2B.tempatkan("jumat", 3, SLH, nahwu);
+T2B.tempatkan("sabtu", 1, MNJ, akhlaq);
+T2B.tempatkan("sabtu", 2, YHY, arab);
+T2B.tempatkan("sabtu", 3, USY, tauhid);
+
+/* Tsanawy 2-C */
+T2C.tempatkan("senin", 1, YHY, arab);
+T2C.tempatkan("senin", 2, LBB, tajwid);
+T2C.tempatkan("senin", 3, MNJ, akhlaq);
+T2C.tempatkan("selasa", 1, YHY, arab);
+T2C.tempatkan("selasa", 2, WF, shorof);
+T2C.tempatkan("selasa", 3, MST, fiqih);
+T2C.tempatkan("rabu", 1, HMD, tauhid);
+T2C.tempatkan("rabu", 2, MNJ, akhlaq);
+T2C.tempatkan("rabu", 3, SLH, nahwu);
+T2C.tempatkan("kamis", 1, SLH, nahwu);
+T2C.tempatkan("kamis", 2, MST, fiqih);
+T2C.tempatkan("kamis", 3, MST, fiqih);
+T2C.tempatkan("jumat", 1, SLH, nahwu);
+T2C.tempatkan("jumat", 2, HMD, tauhid);
+T2C.tempatkan("jumat", 3, YHY, arab);
+T2C.tempatkan("sabtu", 1, YHY, arab);
+T2C.tempatkan("sabtu", 2, WF, shorof);
+T2C.tempatkan("sabtu", 3, SLH, nahwu);
+
+/* Tsanawy 2-D */
+T2D.tempatkan("senin", 1, RIF, arab);
+T2D.tempatkan("senin", 2, MNJ, akhlaq);
+T2D.tempatkan("senin", 3, BGS, fiqih);
+T2D.tempatkan("selasa", 1, RIF, arab);
+T2D.tempatkan("selasa", 2, ASP, nahwu);
+T2D.tempatkan("selasa", 3, LBB, tajwid);
+T2D.tempatkan("rabu", 1, MNJ, akhlaq);
+T2D.tempatkan("rabu", 2, SDQ, tauhid);
+T2D.tempatkan("rabu", 3, ASP, nahwu);
+T2D.tempatkan("kamis", 1, BGS, fiqih);
+T2D.tempatkan("kamis", 2, ASP, nahwu);
+T2D.tempatkan("kamis", 3, WF, shorof);
+T2D.tempatkan("jumat", 1, SDQ, tauhid);
+T2D.tempatkan("jumat", 2, BGS, fiqih);
+T2D.tempatkan("jumat", 3, RIF, arab);
+T2D.tempatkan("sabtu", 1, WF, shorof);
+T2D.tempatkan("sabtu", 2, RIF, arab);
+T2D.tempatkan("sabtu", 3, ASP, nahwu);
+
+/* Tsanawy 2-E */
+T2E.tempatkan("senin", 1, MNR, nahwu);
+T2E.tempatkan("senin", 2, WF, shorof);
+T2E.tempatkan("senin", 3, RIF, arab);
+T2E.tempatkan("selasa", 1, MNR, nahwu);
+T2E.tempatkan("selasa", 2, RIF, arab);
+T2E.tempatkan("selasa", 3, BGS, fiqih);
+T2E.tempatkan("rabu", 1, SDQ, tauhid);
+T2E.tempatkan("rabu", 2, LBB, tajwid);
+T2E.tempatkan("rabu", 3, MNR, nahwu);
+T2E.tempatkan("kamis", 1, MNR, nahwu);
+T2E.tempatkan("kamis", 2, WF, shorof);
+T2E.tempatkan("kamis", 3, MNJ, akhlaq);
+T2E.tempatkan("jumat", 1, RIF, arab);
+T2E.tempatkan("jumat", 2, SDQ, tauhid);
+T2E.tempatkan("jumat", 3, BGS, fiqih);
+T2E.tempatkan("sabtu", 1, RIF, arab);
+T2E.tempatkan("sabtu", 2, BGS, fiqih);
+T2E.tempatkan("sabtu", 3, MNJ, akhlaq);
+
 /* Testing */
 // console.log(T1A); // sukses!
 // NZR.jadwal(); // sukses!
@@ -438,3 +516,65 @@ T1G.tempatkan("sabtu", 3, HFD, shorof);
 // fs.writeFile("./listKelas.txt", FT.fan, (err) => {
 //     if (err) console.error(err);
 // });
+
+// let date = new Date(2023, 9, 16);
+// let pesan = `
+// 📅Jadwal Madin Putra Senin Pagi
+// _Tanggal ${date.toLocaleString("id-ID", {
+//     day: "numeric",
+//     month: "long",
+//     year: "numeric",
+// })}_
+
+// *(Guru Fan wajib mengisi jurnal madin dan mengabsen kelas)*
+// *Perizinan harus sesuai dengan prosedur yang telah ada.*
+
+//  <Jam Pertama>
+//  *Waktu: 08.15 - 09.10*
+
+// 1 Tsanawiyyah
+// 	A. Ust ${T1A.senin[0].guru}; Fan: ${T1A.senin[0].fan}
+// 	B. Ust Fakhrurrozi
+// 	C. Ust Fadil
+// 	D. Ust Mashudi
+// 	E. Ust Musthofa Besuk
+// 	F. Ust Maisur
+// 	G. Ust Heri
+
+// Mutakhorijin Pagi
+// 	Ust Jabir
+
+//  <Jam Kedua>
+//  *Waktu: 09.10 - 10.05*
+
+// 1 Tsanawiyyah
+// 	A. Ust Munshorif
+// 	B. Ust Nizar
+// 	C. Ust Faruq
+// 	D. Ust Mukhlasin
+// 	E. Ust Fakhrurrozi
+// 	F. Ust Hafidz
+// 	G. Ust Bukhori
+
+// Mutakhorijin Pagi
+// 	Ust Shofi
+
+//  <Jam Ketiga>
+//  *Waktu: 10.20 - 11.15*
+
+// 1 Tsanawiyyah
+// 	A. Ust Fadil
+// 	B. Ust Munshorif
+// 	C. Ust Musthofa
+// 	D. Ust Faruq
+// 	E. Ust Mukhlasin
+// 	F. Ust Mashudi
+// 	G. Ust Farhan
+
+// Mutakhorijin Pagi
+// 	Ust Mukti
+// `;
+
+// console.log(pesan);
+
+// console.log(FT.jadwal(["selasa", "rabu"])); // sukses!
