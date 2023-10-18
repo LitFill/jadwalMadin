@@ -64,9 +64,11 @@ class Kelas {
     /**
      * Membuat instans Kelas baru.
      * @param {String} nama - Nama kelas.
+     * @param {String} waktu - Waktu KBM, 'sore' atau 'pagi'
      */
-    constructor(nama) {
+    constructor(nama, waktu) {
         this.nama = nama;
+        this.waktu = waktu;
     }
 
     /**
@@ -123,10 +125,10 @@ class Hari {
         console.log("halo!");
     }
 
-    static jadwal(nama) {
+    static jadwal(namaHari) {
         listKelas.forEach((kelas) => {
             for (let hari in kelas) {
-                if (kelas[hari].nama === nama) {
+                if (kelas[hari].nama === namaHari) {
                     for (let i = 0; i < 3; i++) {
                         console.log(
                             `Di hari ${kelas[hari].nama} jam ke-${
@@ -161,6 +163,41 @@ class Fan {
     constructor(nama) {
         this.nama = nama;
     }
+}
+
+// TODO
+function cekTabrakan() {
+    const listPagi = [];
+    const listSore = [];
+    listKelas.forEach((kelas) => {
+        for (let hari in kelas) {
+            for (let i = 0; i < 3; i++) {
+                if (kelas.waktu === "pagi") listPagi.push(kelas[hari][i].guru);
+                if (kelas.waktu === "sore") listSore.push(kelas[hari][i].guru);
+            }
+        }
+    });
+
+    return "Aman! Tidak ada jam tabrakan.";
+}
+
+/**
+ * @description
+ * @author LitFill
+ * @date 18/10/2023
+ * @param {String[]} array
+ */
+function cekDupeArray(array) {
+    const listYangAda = {};
+    const yangReturn = {};
+    array.forEach((guru, index) => {
+        if (!listYangAda[guru]) listYangAda[guru] = [];
+        listYangAda[guru].push(index);
+    });
+    for (let guru in listYangAda) {
+        if (listYangAda[guru].length > 1) yangReturn[guru] = listYangAda[guru];
+    }
+    return yangReturn;
 }
 
 /* Deklarasi Fan */
@@ -222,36 +259,42 @@ const listKelas = [];
 
 // Tsanawiyah 1-A sampai 1-G
 for (let i = "A".charCodeAt(0); i <= "G".charCodeAt(0); i++) {
-    const kelas = new Kelas(`Tsanawiyah 1-${String.fromCharCode(i)}`);
+    const kelas = new Kelas(`Tsanawiyah 1-${String.fromCharCode(i)}`, "pagi");
     listKelas.push(kelas);
 }
 
 // Tsanawiyah 2-A sampai 2-J dan Tsanawiyah 3-A sampai 3-J
 for (let j = 2; j <= 3; j++) {
     for (let i = "A".charCodeAt(0); i <= "J".charCodeAt(0); i++) {
-        const kelas = new Kelas(`Tsanawiyah ${j}-${String.fromCharCode(i)}`);
+        const kelas = new Kelas(
+            `Tsanawiyah ${j}-${String.fromCharCode(i)}`,
+            "sore"
+        );
         listKelas.push(kelas);
     }
 }
 
 // Aliyah 1-A sampai 1-F
 for (let i = "A".charCodeAt(0); i <= "F".charCodeAt(0); i++) {
-    const kelas = new Kelas(`Aliyah 1-${String.fromCharCode(i)}`);
+    const kelas = new Kelas(`Aliyah 1-${String.fromCharCode(i)}`, "sore");
     listKelas.push(kelas);
 }
 
 // Aliyah 2-A sampai 2-C dan Aliyah 3-A sampai 3-C
 for (let j = 2; j <= 3; j++) {
     for (let i = "A".charCodeAt(0); i <= "C".charCodeAt(0); i++) {
-        const kelas = new Kelas(`Aliyah ${j}-${String.fromCharCode(i)}`);
+        const kelas = new Kelas(
+            `Aliyah ${j}-${String.fromCharCode(i)}`,
+            "sore"
+        );
         listKelas.push(kelas);
     }
 }
 
 // Isti'dad dan Mutakhorijin
-listKelas.push(new Kelas("Isti'dad"));
-listKelas.push(new Kelas("Mutakhorijin Pagi"));
-listKelas.push(new Kelas("Mutakhorijin Sore"));
+listKelas.push(new Kelas("Isti'dad", "sore"));
+listKelas.push(new Kelas("Mutakhorijin Pagi", "pagi"));
+listKelas.push(new Kelas("Mutakhorijin Sore", "sore"));
 
 // prettier-ignore
 const [
@@ -506,11 +549,51 @@ T2E.tempatkan("sabtu", 1, RIF, arab);
 T2E.tempatkan("sabtu", 2, BGS, fiqih);
 T2E.tempatkan("sabtu", 3, MNJ, akhlaq);
 
+/* Tsanawy 2-F */
+T2F.tempatkan("senin", 1, WF, shorof);
+T2F.tempatkan("senin", 2, RIF, arab);
+T2F.tempatkan("senin", 3, LBB, tajwid);
+T2F.tempatkan("selasa", 1, ANM, tauhid);
+T2F.tempatkan("selasa", 2, BGS, fiqih);
+T2F.tempatkan("selasa", 3, RIF, arab);
+T2F.tempatkan("rabu", 1, BGS, fiqih);
+T2F.tempatkan("rabu", 2, IDS, nahwu);
+T2F.tempatkan("rabu", 3, ANM, tauhid);
+T2F.tempatkan("kamis", 1, WF, shorof);
+T2F.tempatkan("kamis", 2, BCH, akhlaq);
+T2F.tempatkan("kamis", 3, IDS, nahwu);
+T2F.tempatkan("jumat", 1, IDS, nahwu);
+T2F.tempatkan("jumat", 2, RIF, arab);
+T2F.tempatkan("jumat", 3, BCH, akhlaq);
+T2F.tempatkan("sabtu", 1, BGS, fiqih);
+T2F.tempatkan("sabtu", 2, IDS, nahwu);
+T2F.tempatkan("sabtu", 3, RIF, arab);
+
+/* Tsanawy 2-G */
+// T2G.tempatkan("senin", 1, IDS, nahwu);
+// T2G.tempatkan("senin", 2, MRJ, arab);
+// T2G.tempatkan("senin", 3, ANM, tauhid);
+// T2G.tempatkan("selasa", 1, IDS, nahwu);
+// T2G.tempatkan("selasa", 2);
+// T2G.tempatkan("selasa", 3);
+// T2G.tempatkan("rabu", 1);
+// T2G.tempatkan("rabu", 2);
+// T2G.tempatkan("rabu", 3);
+// T2G.tempatkan("kamis", 1);
+// T2G.tempatkan("kamis", 2);
+// T2G.tempatkan("kamis", 3);
+// T2G.tempatkan("jumat", 1);
+// T2G.tempatkan("jumat", 2);
+// T2G.tempatkan("jumat", 3);
+// T2G.tempatkan("sabtu", 1);
+// T2G.tempatkan("sabtu", 2);
+// T2G.tempatkan("sabtu", 3);
+
 /* Testing */
 // console.log(T1A); // sukses!
 // NZR.jadwal(); // sukses!
 // T1A.jadwal(); // sukses!
-// Hari.jadwal("Senin"); // sukses!
+Hari.jadwal("Senin"); // sukses!
 // console.log(listKelas);
 
 // fs.writeFile("./listKelas.txt", FT.fan, (err) => {
