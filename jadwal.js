@@ -19,6 +19,7 @@ class Guru {
     /**
      * @static
      * @param {Fan|Fan[]} fan
+     * @returns {string|string[]}
      * @memberof Guru
      */
     static daftarkanFan(fan) {
@@ -29,6 +30,10 @@ class Guru {
         }
     }
 
+    /**
+     * Menampilkan jadwal mengajar guru.
+     * @param {string[]} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
+     */
     jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
         listKelas.forEach((kelas) => {
             for (let hari in kelas) {
@@ -160,6 +165,9 @@ class Fan {
     static Fiqih = new Fan("Fiqih");
     static Imla = new Fan("Imla'");
 
+    /**
+     * @param {string} nama
+     */
     constructor(nama) {
         this.nama = nama;
     }
@@ -570,30 +578,30 @@ T2F.tempatkan("sabtu", 2, IDS, nahwu);
 T2F.tempatkan("sabtu", 3, RIF, arab);
 
 /* Tsanawy 2-G */
-// T2G.tempatkan("senin", 1, IDS, nahwu);
-// T2G.tempatkan("senin", 2, MRJ, arab);
-// T2G.tempatkan("senin", 3, ANM, tauhid);
-// T2G.tempatkan("selasa", 1, IDS, nahwu);
-// T2G.tempatkan("selasa", 2);
-// T2G.tempatkan("selasa", 3);
-// T2G.tempatkan("rabu", 1);
-// T2G.tempatkan("rabu", 2);
-// T2G.tempatkan("rabu", 3);
-// T2G.tempatkan("kamis", 1);
-// T2G.tempatkan("kamis", 2);
-// T2G.tempatkan("kamis", 3);
-// T2G.tempatkan("jumat", 1);
-// T2G.tempatkan("jumat", 2);
-// T2G.tempatkan("jumat", 3);
-// T2G.tempatkan("sabtu", 1);
-// T2G.tempatkan("sabtu", 2);
-// T2G.tempatkan("sabtu", 3);
+T2G.tempatkan("senin", 1, IDS, nahwu);
+T2G.tempatkan("senin", 2, MRJ, arab);
+T2G.tempatkan("senin", 3, ANM, tauhid);
+T2G.tempatkan("selasa", 1, IDS, nahwu);
+T2G.tempatkan("selasa", 2, ANM, tauhid);
+T2G.tempatkan("selasa", 3, BCH, akhlaq);
+T2G.tempatkan("rabu", 1, IDS, nahwu);
+T2G.tempatkan("rabu", 2, BGS, fiqih);
+T2G.tempatkan("rabu", 3, BCH, akhlaq);
+T2G.tempatkan("kamis", 1, MRJ, arab);
+T2G.tempatkan("kamis", 2, LBB, tajwid);
+T2G.tempatkan("kamis", 3, BGS, fiqih);
+T2G.tempatkan("jumat", 1, MRJ, arab);
+T2G.tempatkan("jumat", 2, FQH, shorof);
+T2G.tempatkan("jumat", 3, IDS, nahwu);
+T2G.tempatkan("sabtu", 1, MRJ, arab);
+T2G.tempatkan("sabtu", 2, FQH, shorof);
+T2G.tempatkan("sabtu", 3, BGS, fiqih);
 
 /* Testing */
 // console.log(T1A); // sukses!
 // NZR.jadwal(); // sukses!
 // T1A.jadwal(); // sukses!
-Hari.jadwal("Senin"); // sukses!
+// Hari.jadwal("Senin"); // sukses!
 // console.log(listKelas);
 
 // fs.writeFile("./listKelas.txt", FT.fan, (err) => {
