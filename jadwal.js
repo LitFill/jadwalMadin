@@ -110,6 +110,21 @@ class Kelas {
             }
         }
     }
+    /**
+     * @description mengubah kelas menjadi kelas kosong.
+     * @author LitFill
+     * @date 17/11/2023
+     * @static
+     * @param {Kelas} kelas - kelas yang akan dijadikan kelas kosong.
+     * @memberof Kelas
+     */
+    static kelasKosong(kelas) {
+        // console.log(`kelas ${kelas.nama} kosong.`);
+        kelas.jadwal = () => {
+            // return `kelas ${kelas.nama} kosong.`;
+            console.log(`kelas ${kelas.nama} kosong.`);
+        };
+    }
 }
 
 /**
@@ -332,6 +347,9 @@ const [
     IST,
     MTP, MTS,
 ] = listKelas;
+
+// kelas kosong
+Kelas.kelasKosong(T3D);
 
 /* Penempatan Guru ke dalam Kelas sesuai Jadwal */
 /* Tsanawy 1-A */
@@ -733,6 +751,26 @@ T3C.tempatkan("jumat", 3, BDL, arab);
 T3C.tempatkan("sabtu", 1, SDQ, tauhid);
 T3C.tempatkan("sabtu", 2, BDL, arab);
 T3C.tempatkan("sabtu", 3, DMN, fiqih);
+
+/* Tsanawy 3-D */ // kelas kosong
+// T3D.tempatkan("senin", 1, USM, nahwu);
+// T3D.tempatkan("senin", 2, DMN, fiqih);
+// T3D.tempatkan("senin", 3, BDL, arab);
+// T3D.tempatkan("selasa", 1, HMD, shorof);
+// T3D.tempatkan("selasa", 2, USM, nahwu);
+// T3D.tempatkan("selasa", 3, KHL, akhlaq);
+// T3D.tempatkan("rabu", 1, USM, nahwu);
+// T3D.tempatkan("rabu", 2, HMD, shorof);
+// T3D.tempatkan("rabu", 3, WHB, tajwid);
+// T3D.tempatkan("kamis", 1, KHL, akhlaq);
+// T3D.tempatkan("kamis", 2, USM, nahwu);
+// T3D.tempatkan("kamis", 3, BDL, arab);
+// T3D.tempatkan("jumat", 1, DMN, fiqih);
+// T3D.tempatkan("jumat", 2, MZN, ilal);
+// T3D.tempatkan("jumat", 3, BDL, arab);
+// T3D.tempatkan("sabtu", 1, SDQ, tauhid);
+// T3D.tempatkan("sabtu", 2, BDL, arab);
+// T3D.tempatkan("sabtu", 3, DMN, fiqih);
 
 /* Testing */
 // console.log(T1A); // sukses!
