@@ -918,6 +918,7 @@ IST.tempatkan("sabtu", 3, MIS, nahwu);
 // T1A.jadwal(); // sukses!
 // Hari.jadwal("Senin"); // sukses!
 // console.log(listKelas);
+// KHL.jadwal("rabu"); //sukses!
 
 // fs.writeFile("./listKelas.txt", FT.fan, (err) => {
 //     if (err) console.error(err);
