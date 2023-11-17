@@ -618,24 +618,24 @@ T2H.tempatkan("sabtu", 2, ADN, fiqih);
 T2H.tempatkan("sabtu", 3, MRJ, arab);
 
 /* Tsanawy 2-I */
-T2I.tempatkan("senin", 1);
-T2I.tempatkan("senin", 2);
-T2I.tempatkan("senin", 3);
-T2I.tempatkan("selasa", 1);
-T2I.tempatkan("selasa", 2);
-T2I.tempatkan("selasa", 3);
-T2I.tempatkan("rabu", 1);
-T2I.tempatkan("rabu", 2);
-T2I.tempatkan("rabu", 3);
-T2I.tempatkan("kamis", 1);
-T2I.tempatkan("kamis", 2);
-T2I.tempatkan("kamis", 3);
-T2I.tempatkan("jumat", 1);
-T2I.tempatkan("jumat", 2);
-T2I.tempatkan("jumat", 3);
-T2I.tempatkan("sabtu", 1);
-T2I.tempatkan("sabtu", 2);
-T2I.tempatkan("sabtu", 3);
+T2I.tempatkan("senin", 1, MRJ, arab);
+T2I.tempatkan("senin", 2, MNR, nahwu);
+T2I.tempatkan("senin", 3, ADN, fiqih);
+T2I.tempatkan("selasa", 1, MRJ, arab);
+T2I.tempatkan("selasa", 2, FQH, shorof);
+T2I.tempatkan("selasa", 3, ANM, tauhid);
+T2I.tempatkan("rabu", 1, BCH, akhlaq);
+T2I.tempatkan("rabu", 2, MNR, nahwu);
+T2I.tempatkan("rabu", 3, ADN, fiqih);
+T2I.tempatkan("kamis", 1, LBB, tajwid);
+T2I.tempatkan("kamis", 2, ANM, tauhid);
+T2I.tempatkan("kamis", 3, MRJ, arab);
+T2I.tempatkan("jumat", 1, MNR, nahwu);
+T2I.tempatkan("jumat", 2, MRJ, arab);
+T2I.tempatkan("jumat", 3, FQH, shorof);
+T2I.tempatkan("sabtu", 1, BCH, akhlaq);
+T2I.tempatkan("sabtu", 2, MNR, nahwu);
+T2I.tempatkan("sabtu", 3, ADN, fiqih);
 
 /* Testing */
 // console.log(T1A); // sukses!
