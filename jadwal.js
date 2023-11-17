@@ -1,3 +1,4 @@
+"use strict";
 // import fs from "fs";
 // const fs = require("fs");
 
@@ -712,6 +713,26 @@ T3B.tempatkan("jumat", 3, SRR, nahwu);
 T3B.tempatkan("sabtu", 1, DMN, fiqih);
 T3B.tempatkan("sabtu", 2, SRR, nahwu);
 T3B.tempatkan("sabtu", 3, BDL, arab);
+
+/* Tsanawy 3-C */
+T3C.tempatkan("senin", 1, USM, nahwu);
+T3C.tempatkan("senin", 2, DMN, fiqih);
+T3C.tempatkan("senin", 3, BDL, arab);
+T3C.tempatkan("selasa", 1, HMD, shorof);
+T3C.tempatkan("selasa", 2, USM, nahwu);
+T3C.tempatkan("selasa", 3, KHL, akhlaq);
+T3C.tempatkan("rabu", 1);
+T3C.tempatkan("rabu", 2);
+T3C.tempatkan("rabu", 3);
+T3C.tempatkan("kamis", 1);
+T3C.tempatkan("kamis", 2);
+T3C.tempatkan("kamis", 3);
+T3C.tempatkan("jumat", 1);
+T3C.tempatkan("jumat", 2);
+T3C.tempatkan("jumat", 3);
+T3C.tempatkan("sabtu", 1);
+T3C.tempatkan("sabtu", 2);
+T3C.tempatkan("sabtu", 3);
 
 /* Testing */
 // console.log(T1A); // sukses!
