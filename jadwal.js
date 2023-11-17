@@ -89,7 +89,7 @@ class Kelas {
             this[hari][jam - 1].fan = fan.nama;
         } else {
             console.error(
-                `ERROR: Ust. ${guru.nama} tidak mengajar fan ${fan.nama}.`
+                `ERROR: Ust. ${guru.nama} tidak mengajar fan ${fan.nama}.\nLOK: kelas ${this.nama} / ${hari}:${jam}.`
             );
         }
     }
@@ -238,11 +238,11 @@ const IDS = new Guru("Idris Besuk", nahwu);
 const ADN = new Guru("Adnan Fauzi", fiqih);
 const YHY = new Guru("Yahya Mansur", arab);
 const LSN = new Guru("Mukhlasin", tauhid);
-const MNS = new Guru("Munshorif", shorof);
+const MNS = new Guru("Munshorif", [shorof, fiqih]);
 const FRZ = new Guru("Fakhrurozi", arab);
-const HMD = new Guru("Hamid M.", tauhid);
+const HMD = new Guru("Hamid M.", [tauhid, shorof]);
 const SDQ = new Guru("Sodiqin", tauhid);
-const HFD = new Guru("Hafidz", shorof);
+const HFD = new Guru("Hafidz", [shorof, miftah]);
 const ASR = new Guru("Asrofi", tajwid);
 const UMR = new Guru("Ma'ruf", akhlaq);
 const YDN = new Guru("Yadin", akhlaq);
@@ -261,6 +261,22 @@ const FRQ = new Guru("Faruq", arab);
 const FT = new Guru("Fathur", nahwu);
 const WF = new Guru("Wafa", shorof);
 const HR = new Guru("Heri", nahwu);
+const SRR = new Guru("Surur", nahwu);
+const BDL = new Guru("Hb. Abdillah", arab);
+const URB = new Guru("Robingu", shorof);
+const DMN = new Guru("Damanhuri", fiqih);
+const MZN = new Guru("Muzaini", ilal);
+const WHB = new Guru("Wahib", tajwid);
+const USM = new Guru("Usman", nahwu);
+const KHL = new Guru("Kholil", akhlaq);
+const UHS = new Guru("Husni Sarang", fiqih);
+const ASY = new Guru("Asyrof", arab);
+const IDT = new Guru("Idris Thobari", nahwu);
+const AFF = new Guru("Afifudin", tauhid);
+const MSR = new Guru("Masriyanto", arab);
+const DRW = new Guru("Darwis", nahwu);
+const IDM = new Guru("Agus Idhohul", akhlaq);
+const IBR = new Guru("Ibrohim", [shorof, arab]);
 
 /* Deklarasi Kelas */
 const listKelas = [];
@@ -656,6 +672,26 @@ T2J.tempatkan("jumat", 3, MNR, nahwu);
 T2J.tempatkan("sabtu", 1, ADN, fiqih);
 T2J.tempatkan("sabtu", 2, FRH, arab);
 T2J.tempatkan("sabtu", 3, MNR, nahwu);
+
+/* Tsanawy 3-A */
+T3A.tempatkan("senin", 1);
+T3A.tempatkan("senin", 2);
+T3A.tempatkan("senin", 3);
+T3A.tempatkan("selasa", 1);
+T3A.tempatkan("selasa", 2);
+T3A.tempatkan("selasa", 3);
+T3A.tempatkan("rabu", 1);
+T3A.tempatkan("rabu", 2);
+T3A.tempatkan("rabu", 3);
+T3A.tempatkan("kamis", 1);
+T3A.tempatkan("kamis", 2);
+T3A.tempatkan("kamis", 3);
+T3A.tempatkan("jumat", 1);
+T3A.tempatkan("jumat", 2);
+T3A.tempatkan("jumat", 3);
+T3A.tempatkan("sabtu", 1);
+T3A.tempatkan("sabtu", 2);
+T3A.tempatkan("sabtu", 3);
 
 /* Testing */
 // console.log(T1A); // sukses!
