@@ -693,6 +693,26 @@ T3A.tempatkan("sabtu", 1, BDL, arab);
 T3A.tempatkan("sabtu", 2, SDQ, tauhid);
 T3A.tempatkan("sabtu", 3, SRR, nahwu);
 
+/* Tsanawy 3-B */
+T3B.tempatkan("senin", 1, BDL, arab);
+T3B.tempatkan("senin", 2, URB, shorof);
+T3B.tempatkan("senin", 3, KHL, akhlaq);
+T3B.tempatkan("selasa", 1, DMN, fiqih);
+T3B.tempatkan("selasa", 2, KHL, akhlaq);
+T3B.tempatkan("selasa", 3, SRR, nahwu);
+T3B.tempatkan("rabu", 1, DMN, fiqih);
+T3B.tempatkan("rabu", 2, MZN, imla);
+T3B.tempatkan("rabu", 3, SDQ, tauhid);
+T3B.tempatkan("kamis", 1, SRR, nahwu);
+T3B.tempatkan("kamis", 2, BDL, arab);
+T3B.tempatkan("kamis", 3, WHB, tajwid);
+T3B.tempatkan("jumat", 1, URB, shorof);
+T3B.tempatkan("jumat", 2, BDL, arab);
+T3B.tempatkan("jumat", 3, SRR, nahwu);
+T3B.tempatkan("sabtu", 1, DMN, fiqih);
+T3B.tempatkan("sabtu", 2, SRR, nahwu);
+T3B.tempatkan("sabtu", 3, BDL, arab);
+
 /* Testing */
 // console.log(T1A); // sukses!
 // NZR.jadwal(); // sukses!
