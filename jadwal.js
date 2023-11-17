@@ -90,7 +90,7 @@ class Kelas {
             this[hari][jam - 1].fan = fan.nama;
         } else {
             console.error(
-                `ERROR: Ust. ${guru.nama} tidak mengajar fan ${fan.nama}.\nLOK: kelas ${this.nama} / ${hari}:${jam}.`
+                `ERROR: Ust. ${guru.nama} tidak mengajar fan ${fan.nama}.\nLOK  : kelas ${this.nama} / ${hari}:${jam}.`
             );
         }
     }
@@ -702,7 +702,7 @@ T3B.tempatkan("selasa", 1, DMN, fiqih);
 T3B.tempatkan("selasa", 2, KHL, akhlaq);
 T3B.tempatkan("selasa", 3, SRR, nahwu);
 T3B.tempatkan("rabu", 1, DMN, fiqih);
-T3B.tempatkan("rabu", 2, MZN, imla);
+T3B.tempatkan("rabu", 2, MZN, ilal);
 T3B.tempatkan("rabu", 3, SDQ, tauhid);
 T3B.tempatkan("kamis", 1, SRR, nahwu);
 T3B.tempatkan("kamis", 2, BDL, arab);
@@ -721,18 +721,18 @@ T3C.tempatkan("senin", 3, BDL, arab);
 T3C.tempatkan("selasa", 1, HMD, shorof);
 T3C.tempatkan("selasa", 2, USM, nahwu);
 T3C.tempatkan("selasa", 3, KHL, akhlaq);
-T3C.tempatkan("rabu", 1);
-T3C.tempatkan("rabu", 2);
-T3C.tempatkan("rabu", 3);
-T3C.tempatkan("kamis", 1);
-T3C.tempatkan("kamis", 2);
-T3C.tempatkan("kamis", 3);
-T3C.tempatkan("jumat", 1);
-T3C.tempatkan("jumat", 2);
-T3C.tempatkan("jumat", 3);
-T3C.tempatkan("sabtu", 1);
-T3C.tempatkan("sabtu", 2);
-T3C.tempatkan("sabtu", 3);
+T3C.tempatkan("rabu", 1, USM, nahwu);
+T3C.tempatkan("rabu", 2, HMD, shorof);
+T3C.tempatkan("rabu", 3, WHB, tajwid);
+T3C.tempatkan("kamis", 1, KHL, akhlaq);
+T3C.tempatkan("kamis", 2, USM, nahwu);
+T3C.tempatkan("kamis", 3, BDL, arab);
+T3C.tempatkan("jumat", 1, DMN, fiqih);
+T3C.tempatkan("jumat", 2, MZN, ilal);
+T3C.tempatkan("jumat", 3, BDL, arab);
+T3C.tempatkan("sabtu", 1, SDQ, tauhid);
+T3C.tempatkan("sabtu", 2, BDL, arab);
+T3C.tempatkan("sabtu", 3, DMN, fiqih);
 
 /* Testing */
 // console.log(T1A); // sukses!
