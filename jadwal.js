@@ -1136,6 +1136,66 @@ A2C.tempatkan("sabtu", 1, RF, nahwu);
 A2C.tempatkan("sabtu", 2, RF, nahwu);
 A2C.tempatkan("sabtu", 3, FHM, arab);
 
+/* Aliyah 3-A */
+A3A.tempatkan("senin", 1, HR, fiqih);
+A3A.tempatkan("senin", 2, HR, fiqih);
+A3A.tempatkan("senin", 3, ABD, ushul);
+A3A.tempatkan("selasa", 1, HR, fiqih);
+A3A.tempatkan("selasa", 2, HR, fiqih);
+A3A.tempatkan("selasa", 3, ASP, tauhid);
+A3A.tempatkan("rabu", 1, HLD, nahwu);
+A3A.tempatkan("rabu", 2, HLD, nahwu);
+A3A.tempatkan("rabu", 3, ABAH.madin, mustholah);
+A3A.tempatkan("kamis", 1, ABAH.madin, balaghoh);
+A3A.tempatkan("kamis", 2, ABAH.madin, balaghoh);
+A3A.tempatkan("kamis", 3, ST, arab);
+A3A.tempatkan("jumat", 1, HR, fiqih);
+A3A.tempatkan("jumat", 2, ST, arab);
+A3A.tempatkan("jumat", 3, ST, arab);
+A3A.tempatkan("sabtu", 1, ABD, ushul);
+A3A.tempatkan("sabtu", 2, HLD, nahwu);
+A3A.tempatkan("sabtu", 3, HLD, nahwu);
+
+/* Aliyah 3-B */
+A3B.tempatkan("senin", 1, HS, fiqih);
+A3B.tempatkan("senin", 2, ABD, ushul);
+A3B.tempatkan("senin", 3, SLD, nahwu);
+A3B.tempatkan("selasa", 1, ASP, tauhid);
+A3B.tempatkan("selasa", 2, SLD, nahwu);
+A3B.tempatkan("selasa", 3, HS, fiqih);
+A3B.tempatkan("rabu", 1, SLD, nahwu);
+A3B.tempatkan("rabu", 2, HS, fiqih);
+A3B.tempatkan("rabu", 3, ABAH.madin, mustholah);
+A3B.tempatkan("kamis", 1, ABAH.madin, balaghoh);
+A3B.tempatkan("kamis", 2, ABAH.madin, balaghoh);
+A3B.tempatkan("kamis", 3, ST, arab);
+A3B.tempatkan("jumat", 1, HS, fiqih);
+A3B.tempatkan("jumat", 2, ST, arab);
+A3B.tempatkan("jumat", 3, ST, arab);
+A3B.tempatkan("sabtu", 1, HS, fiqih);
+A3B.tempatkan("sabtu", 2, SLD, nahwu);
+A3B.tempatkan("sabtu", 3, ABD, ushul);
+
+/* Aliyah 3-C */
+A3C.tempatkan("senin", 1, ABD, ushul);
+A3C.tempatkan("senin", 2, SLD, nahwu);
+A3C.tempatkan("senin", 3, HS, fiqih);
+A3C.tempatkan("selasa", 1, HS, fiqih);
+A3C.tempatkan("selasa", 2, HS, fiqih);
+A3C.tempatkan("selasa", 3, SLD, nahwu);
+A3C.tempatkan("rabu", 1, HS, fiqih);
+A3C.tempatkan("rabu", 2, SLD, nahwu);
+A3C.tempatkan("rabu", 3, ABAH.madin, mustholah);
+A3C.tempatkan("kamis", 1, ABAH.madin, balaghoh);
+A3C.tempatkan("kamis", 2, ABAH.madin, balaghoh);
+A3C.tempatkan("kamis", 3, ST, arab);
+A3C.tempatkan("jumat", 1, ASP, tauhid);
+A3C.tempatkan("jumat", 2, ST, arab);
+A3C.tempatkan("jumat", 3, ST, arab);
+A3C.tempatkan("sabtu", 1, SLD, nahwu);
+A3C.tempatkan("sabtu", 2, ABD, ushul);
+A3C.tempatkan("sabtu", 3, HS, fiqih);
+
 /* Testing */
 // console.log(T1A); // sukses!
 // NZR.jadwal(); // sukses!
