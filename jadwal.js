@@ -1,3 +1,4 @@
+// @ts-check
 "use strict";
 // import fs from "fs";
 // const fs = require("fs");
@@ -107,12 +108,19 @@ class Kelas {
             );
         }
     }
-
+    /**
+     * @description log jadwal sebuah kelas dalam suatu hari
+     * @author LitFill
+     * @date 21/11/2023
+     * @param {string[]} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]]
+     * @memberof Kelas
+     */
     jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
         for (let hari in this) {
             if (namaHari.includes(hari)) {
                 for (let i = 0; i < 3; i++) {
                     console.log(
+                        // @ts-ignore
                         `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${
                             i + 1
                         } diajar oleh Ust. ${this[hari][i].guru} fan ${
@@ -1087,6 +1095,26 @@ A2A.tempatkan("jumat", 3, ALW, fiqih);
 A2A.tempatkan("sabtu", 1, FHM, arab);
 A2A.tempatkan("sabtu", 2, FHM, arab);
 A2A.tempatkan("sabtu", 3, UTJ, nahwu);
+
+/* Aliyah 2-B */
+A2B.tempatkan("senin", 1, RHL, arab);
+A2B.tempatkan("senin", 2, UTJ, nahwu);
+A2B.tempatkan("senin", 3, UTJ, nahwu);
+A2B.tempatkan("selasa", 1, ALW, fiqih);
+A2B.tempatkan("selasa", 2, HLY, balaghoh);
+A2B.tempatkan("selasa", 3, RHL, arab);
+A2B.tempatkan("rabu", 1, ALW, fiqih);
+A2B.tempatkan("rabu", 2, RHL, arab);
+A2B.tempatkan("rabu", 3, HLY, balaghoh);
+A2B.tempatkan("kamis", 1, RF, ushul);
+A2B.tempatkan("kamis", 2, ALW, fiqih);
+A2B.tempatkan("kamis", 3, ABAH.madin, mustholah);
+A2B.tempatkan("jumat", 1, UTJ, nahwu);
+A2B.tempatkan("jumat", 2, UTJ, nahwu);
+A2B.tempatkan("jumat", 3, UL, tauhid);
+A2B.tempatkan("sabtu", 1, ALW, fiqih);
+A2B.tempatkan("sabtu", 2, RHL, arab);
+A2B.tempatkan("sabtu", 3, RF, ushul);
 
 /* Testing */
 // console.log(T1A); // sukses!
