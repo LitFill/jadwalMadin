@@ -34,7 +34,7 @@ class Guru {
 
     /**
      * Menampilkan jadwal mengajar guru.
-     * @param {string[]} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
+     * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
      */
     jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
         listKelas.forEach((kelas) => {
@@ -89,6 +89,7 @@ class Kelas {
     constructor(nama, waktu) {
         this.nama = nama;
         this.waktu = waktu;
+        this.kosong = false;
     }
 
     /**
@@ -112,7 +113,7 @@ class Kelas {
      * @description log jadwal sebuah kelas dalam suatu hari
      * @author LitFill
      * @date 21/11/2023
-     * @param {string[]} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]]
+     * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]]
      * @memberof Kelas
      */
     jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
@@ -141,6 +142,7 @@ class Kelas {
      */
     static kelasKosong(kelas) {
         // console.log(`kelas ${kelas.nama} kosong.`);
+        kelas.kosong = true;
         kelas.jadwal = () => {
             // return `kelas ${kelas.nama} kosong.`;
             console.log(`kelas ${kelas.nama} kosong.`);
@@ -166,19 +168,28 @@ class Hari {
     static hello() {
         console.log("halo!");
     }
-
+    /**
+     * @description melog jadwal pada hari yang dimasukkan
+     * @author LitFill
+     * @date 21/11/2023
+     * @static
+     * @param {string|string[]} namaHari
+     * @memberof Hari
+     */
     static jadwal(namaHari) {
         listKelas.forEach((kelas) => {
-            for (let hari in kelas) {
-                if (kelas[hari].nama === namaHari) {
-                    for (let i = 0; i < 3; i++) {
-                        console.log(
-                            `Di hari ${kelas[hari].nama} jam ke-${
-                                i + 1
-                            } kelas ${kelas.nama} diajar oleh Ust. ${
-                                kelas[hari][i].guru
-                            } fan ${kelas[hari][i].fan}.`
-                        );
+            if (!kelas.kosong) {
+                for (let hari in kelas) {
+                    if (kelas[hari].nama === namaHari) {
+                        for (let i = 0; i < 3; i++) {
+                            console.log(
+                                `Di hari ${kelas[hari].nama} jam ke-${
+                                    i + 1
+                                } kelas ${kelas.nama} diajar oleh Ust. ${
+                                    kelas[hari][i].guru
+                                } fan ${kelas[hari][i].fan}.`
+                            );
+                        }
                     }
                 }
             }
