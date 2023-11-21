@@ -56,6 +56,19 @@ class Guru {
     }
 }
 
+class Abah {
+    constructor() {
+        this.asma = "KH. Zuhrul Anam Hisyam";
+        this.madin = new Guru("ABAH", [mustholah, balaghoh]);
+    }
+}
+
+// class Syaikh {
+//     constructor(kode, nama, fan) {
+//         this[kode] = new Guru(nama, fan);
+//     }
+// }
+
 /**
  * Mewakili sebuah kelas.
  * @class
@@ -241,19 +254,20 @@ const imla = Fan.Imla;
 const ilal = Fan.Ilal;
 
 /*  Deklarasi Guru */
+const ABAH = new Abah();
 const MNR = new Guru("Munir Subkhi", [shorof, nahwu]);
 const MNS = new Guru("Munshorif", [shorof, fiqih]);
 const HMD = new Guru("Hamid M.", [tauhid, shorof]);
 const BCH = new Guru("Bukhori", [tauhid, akhlaq]);
-const FDL = new Guru("Fadlulloh Ulil Azmi", imla);
+const FDL = new Guru("Fadlulloh Ulil Azmi", [imla, fiqih]);
 const HFD = new Guru("Hafidz", [shorof, miftah]);
 const GFR = new Guru("Musthofa Ghufron", fiqih);
-const ASP = new Guru("Saifurrohman Aly", nahwu);
+const ASP = new Guru("Saifurrohman Aly", [nahwu, tauhid]);
 const IBR = new Guru("Ibrohim", [shorof, arab]);
 const MIS = new Guru("Maisur", [fiqih, nahwu]);
 const MRJ = new Guru("Mu'rijul Ma'arif", arab);
 const MST = new Guru("Musthofa Besuk", fiqih);
-const USY = new Guru("Syafi'il Anam", tauhid);
+const USY = new Guru("Syafi'il Anam", [tauhid, arab]);
 const IDT = new Guru("Idris Thobari", nahwu);
 const IDM = new Guru("Agus Idhohul", akhlaq);
 const UHS = new Guru("Husni Sarang", fiqih);
@@ -272,7 +286,7 @@ const ASR = new Guru("Asrofi", tajwid);
 const UMR = new Guru("Ma'ruf", akhlaq);
 const KHL = new Guru("Kholil", akhlaq);
 const YDN = new Guru("Yadin", akhlaq);
-const MSH = new Guru("Mashudi", imla);
+const MSH = new Guru("Mashudi", [imla, fiqih]);
 const SLH = new Guru("Sholah", nahwu);
 const FQH = new Guru("Faqih", shorof);
 const LBB = new Guru("Lubab", tajwid);
@@ -292,7 +306,29 @@ const ASY = new Guru("Asyrof", arab);
 const RIF = new Guru("Rifqi", arab);
 const FRQ = new Guru("Faruq", arab);
 const WF = new Guru("Wafa", shorof);
-const HR = new Guru("Heri", nahwu);
+const HR = new Guru("Heri", [nahwu, fiqih]);
+const HLY = new Guru("Agus Hilmy", balaghoh);
+const RHL = new Guru("Rohli", [balaghoh, arab]);
+const FTN = new Guru("Fathoni", nahwu);
+const AZZ = new Guru("Aziz", nahwu);
+const UTJ = new Guru("Tajudin", [nahwu, tasme]);
+const JBR = new Guru("Jabir", nahwu);
+const SLD = new Guru("Sholahuddin", nahwu);
+const SHF = new Guru("Shofi", [nahwu, fiqih]);
+const HLD = new Guru("Kholidin", nahwu);
+const RF = new Guru("Rouf", [nahwu, ushul, tasme]);
+const ST = new Guru("Syaikh Toha", arab);
+const FHM = new Guru("Agus Fahmi", arab);
+const UHN = new Guru("Husni Cianjur", arab);
+const LTF = new Guru("Lutfi", arab);
+const ABD = new Guru("Mu'thi", ushul);
+const SDL = new Guru("Sa'dulloh", tauhid);
+const UMM = new Guru("Agus Umam", tauhid);
+const UL = new Guru("Ulil", tauhid);
+const ALW = new Guru("Alawy", fiqih);
+const HS = new Guru("Hasan", fiqih);
+const SBH = new Guru("Subhan", shorof);
+const IRF = new Guru("Irfangi", akhlaq);
 
 /* Deklarasi Kelas */
 const listKelas = [];
