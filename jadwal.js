@@ -1196,6 +1196,46 @@ A3C.tempatkan("sabtu", 1, SLD, nahwu);
 A3C.tempatkan("sabtu", 2, ABD, ushul);
 A3C.tempatkan("sabtu", 3, HS, fiqih);
 
+/* Mutakhorijin Pagi */
+MTP.tempatkan("senin", 1, JBR, nahwu);
+MTP.tempatkan("senin", 2, SHF, fiqih);
+MTP.tempatkan("senin", 3, ABD, ushul);
+MTP.tempatkan("selasa", 1, JBR, nahwu);
+MTP.tempatkan("selasa", 2, USY, arab);
+MTP.tempatkan("selasa", 3, USY, arab);
+MTP.tempatkan("rabu", 1, HLY, balaghoh);
+MTP.tempatkan("rabu", 2, HLY, balaghoh);
+MTP.tempatkan("rabu", 3, ABAH.madin, mustholah);
+MTP.tempatkan("kamis", 1, JBR, nahwu);
+MTP.tempatkan("kamis", 2, SHF, fiqih);
+MTP.tempatkan("kamis", 3, RF, tasme);
+MTP.tempatkan("jumat", 1, SHF, fiqih);
+MTP.tempatkan("jumat", 2, SHF, fiqih);
+MTP.tempatkan("jumat", 3, RF, tasme);
+MTP.tempatkan("sabtu", 1, JBR, nahwu);
+MTP.tempatkan("sabtu", 2, HLY, balaghoh);
+MTP.tempatkan("sabtu", 3, USY, arab);
+
+/* Mutakhorijin Sore */
+// MTS.tempatkan("senin", 1,);
+MTS.tempatkan("senin", 2, SHF, fiqih);
+MTS.tempatkan("senin", 3, SHF, fiqih);
+MTS.tempatkan("selasa", 1, HLY, balaghoh);
+// MTS.tempatkan("selasa", 2,);
+// MTS.tempatkan("selasa", 3,);
+MTS.tempatkan("rabu", 1, UTJ, tasme);
+MTS.tempatkan("rabu", 2, UL, tauhid);
+MTS.tempatkan("rabu", 3, UL, tauhid);
+MTS.tempatkan("kamis", 1, HR, nahwu);
+MTS.tempatkan("kamis", 2, HR, nahwu);
+// MTS.tempatkan("kamis", 3,);
+MTS.tempatkan("jumat", 1, SHF, fiqih);
+MTS.tempatkan("jumat", 2, SHF, fiqih);
+// MTS.tempatkan("jumat", 3,);
+MTS.tempatkan("sabtu", 1, HR, nahwu);
+MTS.tempatkan("sabtu", 2, HR, nahwu);
+// MTS.tempatkan("sabtu", 3,);
+
 /* Testing */
 // console.log(T1A); // sukses!
 // NZR.jadwal(); // sukses!
