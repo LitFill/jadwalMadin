@@ -948,6 +948,26 @@ IST.tempatkan("sabtu", 1, MRW, fiqih);
 IST.tempatkan("sabtu", 2, IBR, arab);
 IST.tempatkan("sabtu", 3, MIS, nahwu);
 
+/* Aliyah 1-A */
+A1A.tempatkan("senin", 1, FTN, nahwu);
+A1A.tempatkan("senin", 2, SDL, tauhid);
+A1A.tempatkan("senin", 3, MSH, fiqih);
+A1A.tempatkan("selasa", 1, SDL, tauhid);
+A1A.tempatkan("selasa", 2, IBR, arab);
+A1A.tempatkan("selasa", 3, MSH, fiqih);
+A1A.tempatkan("rabu", 1, FTN, nahwu);
+A1A.tempatkan("rabu", 2, MSH, fiqih);
+A1A.tempatkan("rabu", 3, IBR, arab);
+A1A.tempatkan("kamis", 1, IRF, akhlaq);
+A1A.tempatkan("kamis", 2, SBH, shorof);
+A1A.tempatkan("kamis", 3, MSH, fiqih);
+A1A.tempatkan("jumat", 1, FTN, nahwu);
+A1A.tempatkan("jumat", 2, IRF, akhlaq);
+A1A.tempatkan("jumat", 3, IBR, arab);
+A1A.tempatkan("sabtu", 1, IBR, arab);
+A1A.tempatkan("sabtu", 2, FTN, nahwu);
+A1A.tempatkan("sabtu", 3, SBH, shorof);
+
 /* Testing */
 // console.log(T1A); // sukses!
 // NZR.jadwal(); // sukses!
