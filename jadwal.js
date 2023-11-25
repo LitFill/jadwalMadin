@@ -1422,9 +1422,6 @@ args.forEach((value, index) => {
                 }\n\tC. Ust ${
                     T3C[namaHari][0].guru} # ${
                     T3C[namaHari][0].fan
-                }\n\tD. Ust ${
-                    T3D[namaHari][0].guru} # ${
-                    T3D[namaHari][0].fan
                 }\n\tE. Ust ${
                     T3E[namaHari][0].guru} # ${
                     T3E[namaHari][0].fan
@@ -1524,9 +1521,6 @@ args.forEach((value, index) => {
                 }\n\tC. Ust ${
                     T3C[namaHari][1].guru} # ${
                     T3C[namaHari][1].fan
-                }\n\tD. Ust ${
-                    T3D[namaHari][1].guru} # ${
-                    T3D[namaHari][1].fan
                 }\n\tE. Ust ${
                     T3E[namaHari][1].guru} # ${
                     T3E[namaHari][1].fan
@@ -1626,9 +1620,6 @@ args.forEach((value, index) => {
                 }\n\tC. Ust ${
                     T3C[namaHari][2].guru} # ${
                     T3C[namaHari][2].fan
-                }\n\tD. Ust ${
-                    T3D[namaHari][2].guru} # ${
-                    T3D[namaHari][2].fan
                 }\n\tE. Ust ${
                     T3E[namaHari][2].guru} # ${
                     T3E[namaHari][2].fan
