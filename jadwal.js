@@ -274,7 +274,7 @@ const ilal = Fan.Ilal;
 
 /*  Deklarasi Guru */
 const ABAH = new Abah();
-const FDL = new Guru("Fadlulloh Ulil Azmi", [imla, fiqih]);
+const FDL = new Guru("Fadil", [imla, fiqih]);
 const ASP = new Guru("Saifurrohman Aly", [nahwu, tauhid]);
 const MNR = new Guru("Munir Subkhi", [shorof, nahwu]);
 const USY = new Guru("Syafi'il Anam", [tauhid, arab]);
@@ -1255,68 +1255,465 @@ MTS.tempatkan("sabtu", 2, HR, nahwu);
 // console.log(listKelas);
 // KHL.jadwal("rabu"); //sukses!
 
+/**
+ * @type {string[]}
+ */
+// @ts-ignore
+const args = process.argv.slice(2);
+
+args.forEach((value, index) => {
+    if (value.startsWith("--")) {
+        const flag = value.substring(2);
+        const nextArg = args[index + 1];
+
+        if (nextArg && !nextArg.startsWith("--")) {
+            if (flag === "jadwalGuruFull") {
+                eval(`${nextArg}.jadwal()`);
+            }
+            if (flag === "pesanWA") {
+                const tanggal = Number(nextArg.slice(0, 2));
+                const bulan = Number(nextArg.slice(2, 4));
+                // console.log(`tanggal ${tanggal}, bulan ${bulan}.`);
+                const tanggalPesan = new Date(2023, bulan - 1, tanggal);
+                const hariSeminggu = [
+                    "ahad",
+                    "senin",
+                    "selasa",
+                    "rabu",
+                    "kamis",
+                    "jumat",
+                    "sabtu",
+                ];
+                const hari = tanggalPesan.getDay();
+                const namaHari = hariSeminggu[hari];
+                const bulanSetahun = [
+                    "januari",
+                    "februari",
+                    "maret",
+                    "april",
+                    "mei",
+                    "juni",
+                    "juli",
+                    "agustus",
+                    "september",
+                    "oktober",
+                    "november",
+                    "desember",
+                ];
+                const namaBulan = bulanSetahun[bulan - 1];
+                // console.log(kap(namaHari));
+                // prettier-ignore
+                const pesan = `Jadwal Madin Putra ${kap(
+                    namaHari
+                )} Pagi\n_Tanggal ${tanggal} ${kap(
+                    namaBulan
+                )} 2023_\n\n*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n<Jam Pertama>\n*Waktu: 08.15 - 09.10*\n\n1 Tsanawiyyah\n\tA. Ust ${
+                    T1A[namaHari][0].guru} # ${
+                    T1A[namaHari][0].fan
+                }\n\tB. Ust ${
+                    T1B[namaHari][0].guru} # ${
+                    T1B[namaHari][0].fan
+                }\n\tC. Ust ${
+                    T1C[namaHari][0].guru} # ${
+                    T1C[namaHari][0].fan
+                }\n\tD. Ust ${
+                    T1D[namaHari][0].guru} # ${
+                    T1D[namaHari][0].fan
+                }\n\tE. Ust ${
+                    T1E[namaHari][0].guru} # ${
+                    T1E[namaHari][0].fan
+                }\n\tF. Ust ${
+                    T1F[namaHari][0].guru} # ${
+                    T1F[namaHari][0].fan
+                }\n\tG. Ust ${
+                    T1G[namaHari][0].guru} # ${
+                    T1G[namaHari][0].fan
+                }\n\nMutakhorijin Pagi\n\tUst ${
+                    MTP[namaHari][0].guru} # ${
+                    MTP[namaHari][0].fan
+                }\n\n<Jam Kedua>\n*Waktu: 09.10 - 10.05*\n\n1 Tsanawiyyah\n\tA. Ust ${
+                    T1A[namaHari][1].guru} # ${
+                    T1A[namaHari][1].fan
+                }\n\tB. Ust ${
+                    T1B[namaHari][1].guru} # ${
+                    T1B[namaHari][1].fan
+                }\n\tC. Ust ${
+                    T1C[namaHari][1].guru} # ${
+                    T1C[namaHari][1].fan
+                }\n\tD. Ust ${
+                    T1D[namaHari][1].guru} # ${
+                    T1D[namaHari][1].fan
+                }\n\tE. Ust ${
+                    T1E[namaHari][1].guru} # ${
+                    T1E[namaHari][1].fan
+                }\n\tF. Ust ${
+                    T1F[namaHari][1].guru} # ${
+                    T1F[namaHari][1].fan
+                }\n\tG. Ust ${
+                    T1G[namaHari][1].guru} # ${
+                    T1G[namaHari][1].fan
+                }\n\nMutakhorijin Pagi\n\tUst ${
+                    MTP[namaHari][1].guru} # ${
+                    MTP[namaHari][1].fan
+                }\n\n<Jam Ketiga>\n*Waktu: 10.20 - 11.15\n\n1 Tsanawiyyah\n\tA. Ust ${
+                    T1A[namaHari][2].guru} # ${
+                    T1A[namaHari][2].fan
+                }\n\tB. Ust ${
+                    T1B[namaHari][2].guru} # ${
+                    T1B[namaHari][2].fan
+                }\n\tC. Ust ${
+                    T1C[namaHari][2].guru} # ${
+                    T1C[namaHari][2].fan
+                }\n\tD. Ust ${
+                    T1D[namaHari][2].guru} # ${
+                    T1D[namaHari][2].fan
+                }\n\tE. Ust ${
+                    T1E[namaHari][2].guru} # ${
+                    T1E[namaHari][2].fan
+                }\n\tF. Ust ${
+                    T1F[namaHari][2].guru} # ${
+                    T1F[namaHari][2].fan
+                }\n\tG. Ust ${
+                    T1G[namaHari][2].guru} # ${
+                    T1G[namaHari][2].fan
+                }\n\nMutakhorijin Pagi\n\tUst ${
+                    MTP[namaHari][2].guru} # ${
+                    MTP[namaHari][2].fan
+                }\n\n---Pesan Kedua---\n\nJadwal Madin Putra ${kap(
+                    namaHari
+                )} Sore\n_Tanggal ${tanggal} ${kap(
+                    namaBulan
+                )} 2023_\n\n*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n<Jam Pertama>\n*Waktu: 14.10 - 14.45*\n\n2 Tsanawiyyah\n\tA. Ust ${
+                    T2A[namaHari][0].guru} # ${
+                    T2A[namaHari][0].fan
+                }\n\tB. Ust ${
+                    T2B[namaHari][0].guru} # ${
+                    T2B[namaHari][0].fan
+                }\n\tC. Ust ${
+                    T2C[namaHari][0].guru} # ${
+                    T2C[namaHari][0].fan
+                }\n\tD. Ust ${
+                    T2D[namaHari][0].guru} # ${
+                    T2D[namaHari][0].fan
+                }\n\tE. Ust ${
+                    T2E[namaHari][0].guru} # ${
+                    T2E[namaHari][0].fan
+                }\n\tF. Ust ${
+                    T2F[namaHari][0].guru} # ${
+                    T2F[namaHari][0].fan
+                }\n\tG. Ust ${
+                    T2G[namaHari][0].guru} # ${
+                    T2G[namaHari][0].fan
+                }\n\tH. Ust ${
+                    T2H[namaHari][0].guru} # ${
+                    T2H[namaHari][0].fan
+                }\n\tI. Ust ${
+                    T2I[namaHari][0].guru} # ${
+                    T2I[namaHari][0].fan
+                }\n\tJ. Ust ${
+                    T2J[namaHari][0].guru} # ${
+                    T2J[namaHari][0].fan
+                }\n\n3 Tsanawiyyah\n\tA. Ust ${
+                    T3A[namaHari][0].guru} # ${
+                    T3A[namaHari][0].fan
+                }\n\tB. Ust ${
+                    T3B[namaHari][0].guru} # ${
+                    T3B[namaHari][0].fan
+                }\n\tC. Ust ${
+                    T3C[namaHari][0].guru} # ${
+                    T3C[namaHari][0].fan
+                }\n\tD. Ust ${
+                    T3D[namaHari][0].guru} # ${
+                    T3D[namaHari][0].fan
+                }\n\tE. Ust ${
+                    T3E[namaHari][0].guru} # ${
+                    T3E[namaHari][0].fan
+                }\n\tF. Ust ${
+                    T3F[namaHari][0].guru} # ${
+                    T3F[namaHari][0].fan
+                }\n\tG. Ust ${
+                    T3G[namaHari][0].guru} # ${
+                    T3G[namaHari][0].fan
+                }\n\tH. Ust ${
+                    T3H[namaHari][0].guru} # ${
+                    T3H[namaHari][0].fan
+                }\n\tI. Ust ${
+                    T3I[namaHari][0].guru} # ${
+                    T3I[namaHari][0].fan
+                }\n\tJ. Ust ${
+                    T3J[namaHari][0].guru} # ${
+                    T3J[namaHari][0].fan
+                }\n\nIsti'dad\n\tA. Ust ${
+                    IST[namaHari][0].guru} # ${
+                    IST[namaHari][0].fan
+                }\n\n1 Aliyah\n\tA. Ust ${
+                    A1A[namaHari][0].guru} # ${
+                    A1A[namaHari][0].fan
+                }\n\tB. Ust ${
+                    A1B[namaHari][0].guru} # ${
+                    A1B[namaHari][0].fan
+                }\n\tC. Ust ${
+                    A1C[namaHari][0].guru} # ${
+                    A1C[namaHari][0].fan
+                }\n\tD. Ust ${
+                    A1D[namaHari][0].guru} # ${
+                    A1D[namaHari][0].fan
+                }\n\tE. Ust ${
+                    A1E[namaHari][0].guru} # ${
+                    A1E[namaHari][0].fan
+                }\n\tF. Ust ${
+                    A1F[namaHari][0].guru} # ${
+                    A1F[namaHari][0].fan
+                }\n\n2 Aliyah\n\tA. Ust ${
+                    A2A[namaHari][0].guru} # ${
+                    A2A[namaHari][0].fan
+                }\n\tB. Ust ${
+                    A2B[namaHari][0].guru} # ${
+                    A2B[namaHari][0].fan
+                }\n\tC. Ust ${
+                    A2C[namaHari][0].guru} # ${
+                    A2C[namaHari][0].fan
+                }\n\n3 Aliyah\n\tA. Ust ${
+                    A3A[namaHari][0].guru} # ${
+                    A3A[namaHari][0].fan
+                }\n\tB. Ust ${
+                    A3B[namaHari][0].guru} # ${
+                    A3B[namaHari][0].fan
+                }\n\tC. Ust ${
+                    A3C[namaHari][0].guru} # ${
+                    A3C[namaHari][0].fan
+                }\n\nMutakhorijin Sore\n\tUst ${
+                    MTS[namaHari][0].guru} # ${
+                    MTS[namaHari][0].fan
+                }\n\n<Jam Kedua>\n*Waktu: 14.45 - 15.30*\n\n2 Tsanawiyyah\n\tA. Ust ${
+                    T2A[namaHari][1].guru} # ${
+                    T2A[namaHari][1].fan
+                }\n\tB. Ust ${
+                    T2B[namaHari][1].guru} # ${
+                    T2B[namaHari][1].fan
+                }\n\tC. Ust ${
+                    T2C[namaHari][1].guru} # ${
+                    T2C[namaHari][1].fan
+                }\n\tD. Ust ${
+                    T2D[namaHari][1].guru} # ${
+                    T2D[namaHari][1].fan
+                }\n\tE. Ust ${
+                    T2E[namaHari][1].guru} # ${
+                    T2E[namaHari][1].fan
+                }\n\tF. Ust ${
+                    T2F[namaHari][1].guru} # ${
+                    T2F[namaHari][1].fan
+                }\n\tG. Ust ${
+                    T2G[namaHari][1].guru} # ${
+                    T2G[namaHari][1].fan
+                }\n\tH. Ust ${
+                    T2H[namaHari][1].guru} # ${
+                    T2H[namaHari][1].fan
+                }\n\tI. Ust ${
+                    T2I[namaHari][1].guru} # ${
+                    T2I[namaHari][1].fan
+                }\n\tJ. Ust ${
+                    T2J[namaHari][1].guru} # ${
+                    T2J[namaHari][1].fan
+                }\n\n3 Tsanawiyyah\n\tA. Ust ${
+                    T3A[namaHari][1].guru} # ${
+                    T3A[namaHari][1].fan
+                }\n\tB. Ust ${
+                    T3B[namaHari][1].guru} # ${
+                    T3B[namaHari][1].fan
+                }\n\tC. Ust ${
+                    T3C[namaHari][1].guru} # ${
+                    T3C[namaHari][1].fan
+                }\n\tD. Ust ${
+                    T3D[namaHari][1].guru} # ${
+                    T3D[namaHari][1].fan
+                }\n\tE. Ust ${
+                    T3E[namaHari][1].guru} # ${
+                    T3E[namaHari][1].fan
+                }\n\tF. Ust ${
+                    T3F[namaHari][1].guru} # ${
+                    T3F[namaHari][1].fan
+                }\n\tG. Ust ${
+                    T3G[namaHari][1].guru} # ${
+                    T3G[namaHari][1].fan
+                }\n\tH. Ust ${
+                    T3H[namaHari][1].guru} # ${
+                    T3H[namaHari][1].fan
+                }\n\tI. Ust ${
+                    T3I[namaHari][1].guru} # ${
+                    T3I[namaHari][1].fan
+                }\n\tJ. Ust ${
+                    T3J[namaHari][1].guru} # ${
+                    T3J[namaHari][1].fan
+                }\n\nIsti'dad\n\tA. Ust ${
+                    IST[namaHari][1].guru} # ${
+                    IST[namaHari][1].fan
+                }\n\n1 Aliyah\n\tA. Ust ${
+                    A1A[namaHari][1].guru} # ${
+                    A1A[namaHari][1].fan
+                }\n\tB. Ust ${
+                    A1B[namaHari][1].guru} # ${
+                    A1B[namaHari][1].fan
+                }\n\tC. Ust ${
+                    A1C[namaHari][1].guru} # ${
+                    A1C[namaHari][1].fan
+                }\n\tD. Ust ${
+                    A1D[namaHari][1].guru} # ${
+                    A1D[namaHari][1].fan
+                }\n\tE. Ust ${
+                    A1E[namaHari][1].guru} # ${
+                    A1E[namaHari][1].fan
+                }\n\tF. Ust ${
+                    A1F[namaHari][1].guru} # ${
+                    A1F[namaHari][1].fan
+                }\n\n2 Aliyah\n\tA. Ust ${
+                    A2A[namaHari][1].guru} # ${
+                    A2A[namaHari][1].fan
+                }\n\tB. Ust ${
+                    A2B[namaHari][1].guru} # ${
+                    A2B[namaHari][1].fan
+                }\n\tC. Ust ${
+                    A2C[namaHari][1].guru} # ${
+                    A2C[namaHari][1].fan
+                }\n\n3 Aliyah\n\tA. Ust ${
+                    A3A[namaHari][1].guru} # ${
+                    A3A[namaHari][1].fan
+                }\n\tB. Ust ${
+                    A3B[namaHari][1].guru} # ${
+                    A3B[namaHari][1].fan
+                }\n\tC. Ust ${
+                    A3C[namaHari][1].guru} # ${
+                    A3C[namaHari][1].fan
+                }\n\nMutakhorijin Sore\n\tUst ${
+                    MTS[namaHari][1].guru} # ${
+                    MTS[namaHari][1].fan
+                }\n\n<Jam Ketiga>\n*Waktu: 15.30 - 16.15*\n\n2 Tsanawiyyah\n\tA. Ust ${
+                    T2A[namaHari][2].guru} # ${
+                    T2A[namaHari][2].fan
+                }\n\tB. Ust ${
+                    T2B[namaHari][2].guru} # ${
+                    T2B[namaHari][2].fan
+                }\n\tC. Ust ${
+                    T2C[namaHari][2].guru} # ${
+                    T2C[namaHari][2].fan
+                }\n\tD. Ust ${
+                    T2D[namaHari][2].guru} # ${
+                    T2D[namaHari][2].fan
+                }\n\tE. Ust ${
+                    T2E[namaHari][2].guru} # ${
+                    T2E[namaHari][2].fan
+                }\n\tF. Ust ${
+                    T2F[namaHari][2].guru} # ${
+                    T2F[namaHari][2].fan
+                }\n\tG. Ust ${
+                    T2G[namaHari][2].guru} # ${
+                    T2G[namaHari][2].fan
+                }\n\tH. Ust ${
+                    T2H[namaHari][2].guru} # ${
+                    T2H[namaHari][2].fan
+                }\n\tI. Ust ${
+                    T2I[namaHari][2].guru} # ${
+                    T2I[namaHari][2].fan
+                }\n\tJ. Ust ${
+                    T2J[namaHari][2].guru} # ${
+                    T2J[namaHari][2].fan
+                }\n\n3 Tsanawiyyah\n\tA. Ust ${
+                    T3A[namaHari][2].guru} # ${
+                    T3A[namaHari][2].fan
+                }\n\tB. Ust ${
+                    T3B[namaHari][2].guru} # ${
+                    T3B[namaHari][2].fan
+                }\n\tC. Ust ${
+                    T3C[namaHari][2].guru} # ${
+                    T3C[namaHari][2].fan
+                }\n\tD. Ust ${
+                    T3D[namaHari][2].guru} # ${
+                    T3D[namaHari][2].fan
+                }\n\tE. Ust ${
+                    T3E[namaHari][2].guru} # ${
+                    T3E[namaHari][2].fan
+                }\n\tF. Ust ${
+                    T3F[namaHari][2].guru} # ${
+                    T3F[namaHari][2].fan
+                }\n\tG. Ust ${
+                    T3G[namaHari][2].guru} # ${
+                    T3G[namaHari][2].fan
+                }\n\tH. Ust ${
+                    T3H[namaHari][2].guru} # ${
+                    T3H[namaHari][2].fan
+                }\n\tI. Ust ${
+                    T3I[namaHari][2].guru} # ${
+                    T3I[namaHari][2].fan
+                }\n\tJ. Ust ${
+                    T3J[namaHari][2].guru} # ${
+                    T3J[namaHari][2].fan
+                }\n\nIsti'dad\n\tA. Ust ${
+                    IST[namaHari][2].guru} # ${
+                    IST[namaHari][2].fan
+                }\n\n1 Aliyah\n\tA. Ust ${
+                    A1A[namaHari][2].guru} # ${
+                    A1A[namaHari][2].fan
+                }\n\tB. Ust ${
+                    A1B[namaHari][2].guru} # ${
+                    A1B[namaHari][2].fan
+                }\n\tC. Ust ${
+                    A1C[namaHari][2].guru} # ${
+                    A1C[namaHari][2].fan
+                }\n\tD. Ust ${
+                    A1D[namaHari][2].guru} # ${
+                    A1D[namaHari][2].fan
+                }\n\tE. Ust ${
+                    A1E[namaHari][2].guru} # ${
+                    A1E[namaHari][2].fan
+                }\n\tF. Ust ${
+                    A1F[namaHari][2].guru} # ${
+                    A1F[namaHari][2].fan
+                }\n\n2 Aliyah\n\tA. Ust ${
+                    A2A[namaHari][2].guru} # ${
+                    A2A[namaHari][2].fan
+                }\n\tB. Ust ${
+                    A2B[namaHari][2].guru} # ${
+                    A2B[namaHari][2].fan
+                }\n\tC. Ust ${
+                    A2C[namaHari][2].guru} # ${
+                    A2C[namaHari][2].fan
+                }\n\n3 Aliyah\n\tA. Ust ${
+                    A3A[namaHari][2].guru} # ${
+                    A3A[namaHari][2].fan
+                }\n\tB. Ust ${
+                    A3B[namaHari][2].guru} # ${
+                    A3B[namaHari][2].fan
+                }\n\tC. Ust ${
+                    A3C[namaHari][2].guru} # ${
+                    A3C[namaHari][2].fan
+                }\n\nMutakhorijin Sore\n\tUst ${
+                    MTS[namaHari][2].guru} # ${
+                    MTS[namaHari][2].fan
+                }\n\n
+                `;
+                console.log(pesan);
+            }
+        } else {
+            console.log(
+                `Flag ${flag} tidak memiliki nilai.\nHarap cek perintah anda.`
+            );
+        }
+    }
+});
+
 // fs.writeFile("./listKelas.txt", FT.fan, (err) => {
 //     if (err) console.error(err);
 // });
 
-// let date = new Date(2023, 9, 16);
-// let pesan = `
-// 📅Jadwal Madin Putra Senin Pagi
-// _Tanggal ${date.toLocaleString("id-ID", {
-//     day: "numeric",
-//     month: "long",
-//     year: "numeric",
-// })}_
-
-// *(Guru Fan wajib mengisi jurnal madin dan mengabsen kelas)*
-// *Perizinan harus sesuai dengan prosedur yang telah ada.*
-
-//  <Jam Pertama>
-//  *Waktu: 08.15 - 09.10*
-
-// 1 Tsanawiyyah
-// 	A. Ust ${T1A.senin[0].guru}; Fan: ${T1A.senin[0].fan}
-// 	B. Ust Fakhrurrozi
-// 	C. Ust Fadil
-// 	D. Ust Mashudi
-// 	E. Ust Musthofa Besuk
-// 	F. Ust Maisur
-// 	G. Ust Heri
-
-// Mutakhorijin Pagi
-// 	Ust Jabir
-
-//  <Jam Kedua>
-//  *Waktu: 09.10 - 10.05*
-
-// 1 Tsanawiyyah
-// 	A. Ust Munshorif
-// 	B. Ust Nizar
-// 	C. Ust Faruq
-// 	D. Ust Mukhlasin
-// 	E. Ust Fakhrurrozi
-// 	F. Ust Hafidz
-// 	G. Ust Bukhori
-
-// Mutakhorijin Pagi
-// 	Ust Shofi
-
-//  <Jam Ketiga>
-//  *Waktu: 10.20 - 11.15*
-
-// 1 Tsanawiyyah
-// 	A. Ust Fadil
-// 	B. Ust Munshorif
-// 	C. Ust Musthofa
-// 	D. Ust Faruq
-// 	E. Ust Mukhlasin
-// 	F. Ust Mashudi
-// 	G. Ust Farhan
-
-// Mutakhorijin Pagi
-// 	Ust Mukti
-// `;
-
-// console.log(pesan);
-
 // console.log(FT.jadwal(["selasa", "rabu"])); // sukses!
+
+/**
+ * @description Kapital huruf pertama setiap kata
+ * @author LitFill
+ * @date 25/11/2023
+ * @param {String} str
+ * @return {String}
+ */
+function kap(str) {
+    return str.replace(/\b\w/g, (c) => c.toUpperCase());
+}
