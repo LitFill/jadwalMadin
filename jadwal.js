@@ -153,9 +153,18 @@ class Kelas {
 /**
  * Mewakili satu hari dalam jadwal kelas.
  * @class
+ * @constructor
  */
 class Hari {
+    /**
+     * Creates an instance of Hari.
+     * @author LitFill
+     * @date 28/11/2023
+     * @param {String} nama - nama dari Hari
+     * @memberof Hari
+     */
     constructor(nama) {
+        /** @type {string} */
         this.nama = nama;
         this[0] = { guru: "", fan: "" };
         this[1] = { guru: "", fan: "" };
@@ -350,6 +359,9 @@ const UL = new Guru("Ulil", tauhid);
 const HS = new Guru("Hasan", fiqih);
 
 /* Deklarasi Kelas */
+/**
+ * @type {Kelas[]}
+ */
 const listKelas = [];
 
 // Tsanawiyah 1-A sampai 1-G
@@ -1260,50 +1272,82 @@ MTS.tempatkan("sabtu", 2, HR, nahwu);
  */
 // @ts-ignore
 const args = process.argv.slice(2);
+/** @type {{ [key: string]: Array.<(string|boolean)> }} */
+const command = {};
 
 args.forEach((value, index) => {
     if (value.startsWith("--")) {
         const flag = value.substring(2);
-        const nextArg = args[index + 1];
+        const nextArg = flag === "jadwal" ? true : args[index + 1];
 
-        if (nextArg && !nextArg.startsWith("--")) {
-            if (flag === "jadwalGuruFull") {
-                eval(`${nextArg}.jadwal()`);
-            }
-            if (flag === "pesanWA") {
-                const tanggal = Number(nextArg.slice(0, 2));
-                const bulan = Number(nextArg.slice(2, 4));
-                // console.log(`tanggal ${tanggal}, bulan ${bulan}.`);
-                const tanggalPesan = new Date(2023, bulan - 1, tanggal);
-                const hariSeminggu = [
-                    "ahad",
-                    "senin",
-                    "selasa",
-                    "rabu",
-                    "kamis",
-                    "jumat",
-                    "sabtu",
-                ];
-                const hari = tanggalPesan.getDay();
-                const namaHari = hariSeminggu[hari];
-                const bulanSetahun = [
-                    "januari",
-                    "februari",
-                    "maret",
-                    "april",
-                    "mei",
-                    "juni",
-                    "juli",
-                    "agustus",
-                    "september",
-                    "oktober",
-                    "november",
-                    "desember",
-                ];
-                const namaBulan = bulanSetahun[bulan - 1];
-                // console.log(kap(namaHari));
-                // prettier-ignore
-                const pesan = `Jadwal Madin Putra ${kap(
+        if (!command[flag]) {
+            command[flag] = [nextArg];
+        } else {
+            command[flag].push(nextArg);
+        }
+    }
+});
+
+if (command.jadwal) {
+    if (command.guru) {
+        if (command.hari) {
+            command.guru.forEach((kodeGuru) => {
+                eval(`${kodeGuru}.jadwal('${command.hari}')`);
+            });
+        } else {
+            command.guru.forEach((kodeGuru) => {
+                eval(`${kodeGuru}.jadwal()`);
+            });
+        }
+    } else if (command.kelas) {
+        if (command.hari) {
+            command.kelas.forEach((kodeKelas) => {
+                eval(`${kodeKelas}.jadwal('${command.hari}')`);
+            });
+        } else {
+            command.kelas.forEach((kodeKelas) => {
+                eval(`${kodeKelas}.jadwal()`);
+            });
+        }
+    }
+}
+
+if (command.pesanWA) {
+    command.pesanWA.forEach((value) => {
+        if (typeof value === "string") {
+            const tanggal = Number(value.slice(0, 2));
+            const bulan = Number(value.slice(2, 4));
+            // console.log(`tanggal ${tanggal}, bulan ${bulan}.`);
+            const tanggalPesan = new Date(2023, bulan - 1, tanggal);
+            const hariSeminggu = [
+                "ahad",
+                "senin",
+                "selasa",
+                "rabu",
+                "kamis",
+                "jumat",
+                "sabtu",
+            ];
+            const hari = tanggalPesan.getDay();
+            const namaHari = hariSeminggu[hari];
+            const bulanSetahun = [
+                "januari",
+                "februari",
+                "maret",
+                "april",
+                "mei",
+                "juni",
+                "juli",
+                "agustus",
+                "september",
+                "oktober",
+                "november",
+                "desember",
+            ];
+            const namaBulan = bulanSetahun[bulan - 1];
+            // console.log(kap(namaHari));
+            // prettier-ignore
+            const pesan = `Jadwal Madin Putra ${kap(
                     namaHari
                 )} Pagi\n_Tanggal ${tanggal} ${kap(
                     namaBulan
@@ -1682,15 +1726,13 @@ args.forEach((value, index) => {
                     MTS[namaHari][2].fan
                 }\n\n
                 `;
-                console.log(pesan);
-            }
-        } else {
-            console.log(
-                `Flag ${flag} tidak memiliki nilai.\nHarap cek perintah anda.`
-            );
+            console.log(pesan);
         }
-    }
-});
+    });
+}
+// } else {
+//     console.log(`Flag ${flag} tidak memiliki nilai.\nHarap cek perintah anda.`);
+// }
 
 // fs.writeFile("./listKelas.txt", FT.fan, (err) => {
 //     if (err) console.error(err);
