@@ -336,20 +336,28 @@ class kirimPesan {
             pesan += `<Jam Pertama>\n`;
             pesan += `*Waktu: 08.15 - 09.10*\n`;
             pesan += "\n";
-            pesan1TSN(1);
-            peasnMTP(1);
+            pesanKelasPagi(1);
             pesan += `<Jam Kedua>\n`;
             pesan += `*Waktu: 09.10 - 10.05*\n`;
             pesan += "\n";
-            pesan1TSN(2);
-            peasnMTP(2);
+            pesanKelasPagi(2);
             pesan += `<Jam Ketiga>\n`;
             pesan += `*Waktu: 10.20 - 11.15\n`;
             pesan += "\n";
-            pesan1TSN(3);
-            peasnMTP(3);
+            pesanKelasPagi(3);
             console.log(pesan);
             return;
+
+            /**
+             * @description
+             * @author LitFill
+             * @date 29/11/2023
+             * @param {1|2|3} jam
+             */
+            function pesanKelasPagi(jam) {
+                pesan1TSN(jam);
+                peasnMTP(jam);
+            }
         }
         function pesanSore() {
             pesan += `Jadwal Madin Putra ${kap(namaHari)} Sore\n`;
@@ -361,35 +369,33 @@ class kirimPesan {
             pesan += `<Jam Pertama>\n`;
             pesan += `*Waktu: 14.10 - 14.45*\n`;
             pesan += "\n";
-            pesan2TSN(1);
-            pesan3TSN(1);
-            pesanIST(1);
-            pesan1ALY(1);
-            pesan2ALY(1);
-            pesan3ALY(1);
-            pesanMTS(1);
+            pesanKelasSore(1);
             pesan += `<Jam Kedua>\n`;
             pesan += `*Waktu: 14.45 - 15.30*\n`;
             pesan += "\n";
-            pesan2TSN(2);
-            pesan3TSN(2);
-            pesanIST(2);
-            pesan1ALY(2);
-            pesan2ALY(2);
-            pesan3ALY(2);
-            pesanMTS(2);
+            pesanKelasSore(2);
             pesan += `<Jam Ketiga>\n`;
             pesan += `*Waktu: 15.30 - 16.15*\n`;
             pesan += "\n";
-            pesan2TSN(3);
-            pesan3TSN(3);
-            pesanIST(3);
-            pesan1ALY(3);
-            pesan2ALY(3);
-            pesan3ALY(3);
-            pesanMTS(3);
+            pesanKelasSore(3);
             console.log(pesan);
             return;
+
+            /**
+             * @description
+             * @author LitFill
+             * @date 29/11/2023
+             * @param {1|2|3} jam
+             */
+            function pesanKelasSore(jam) {
+                pesan2TSN(jam);
+                pesan3TSN(jam);
+                pesanIST(jam);
+                pesan1ALY(jam);
+                pesan2ALY(jam);
+                pesan3ALY(jam);
+                pesanMTS(jam);
+            }
         }
 
         /**
