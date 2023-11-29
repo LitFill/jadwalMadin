@@ -62,6 +62,28 @@ class Abah {
         this.asma = "KH. Zuhrul Anam Hisyam";
         this.madin = new Guru("ABAH", [mustholah, balaghoh]);
     }
+
+    /**
+     * Menampilkan jadwal mengajar guru.
+     * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
+     */
+    jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
+        listKelas.forEach((kelas) => {
+            for (let hari in kelas) {
+                if (namaHari.includes(hari)) {
+                    for (let i = 0; i < 3; i++) {
+                        if (kelas[hari][i].guru === this.madin.nama) {
+                            console.log(
+                                `Abah mucal kelas ${kelas.nama} fan ${
+                                    kelas[hari][i].fan
+                                } di hari ${kelas[hari].nama} jam ke-${i + 1}.`
+                            );
+                        }
+                    }
+                }
+            }
+        });
+    }
 }
 
 // class Syaikh {
@@ -263,6 +285,300 @@ function cekDupeArray(array) {
         if (listYangAda[guru].length > 1) yangReturn[guru] = listYangAda[guru];
     }
     return yangReturn;
+}
+
+class kirimPesan {
+    /**
+     * @description the improved version of v1
+     * @author LitFill
+     * @date 29/11/2023
+     * @param {string} strTanggal
+     */
+    constructor(strTanggal) {
+        const tanggal = Number(strTanggal.slice(0, 2));
+        const bulan = Number(strTanggal.slice(2, 4));
+        const tahun = Number(strTanggal.slice(4, 6)) + 2000;
+        // console.log(`tanggal ${tanggal}, bulan ${bulan}.`);
+        const tanggalPesan = new Date(tahun, bulan - 1, tanggal);
+        const hariSeminggu = [
+            "ahad",
+            "senin",
+            "selasa",
+            "rabu",
+            "kamis",
+            "jumat",
+            "sabtu",
+        ];
+        const hari = tanggalPesan.getDay();
+        const namaHari = hariSeminggu[hari];
+        const bulanSetahun = [
+            "januari",
+            "februari",
+            "maret",
+            "april",
+            "mei",
+            "juni",
+            "juli",
+            "agustus",
+            "september",
+            "oktober",
+            "november",
+            "desember",
+        ];
+        const namaBulan = bulanSetahun[bulan - 1];
+        // console.log(kap(namaHari));
+        let pesan = "";
+        function pesanPagi() {
+            pesan += `Jadwal Madin Putra ${kap(namaHari)} Pagi\n`;
+            pesan += `_Tanggal ${tanggal} ${kap(namaBulan)} ${tahun}_\n\n`;
+            pesan += `*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n`;
+            pesan += `*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n`;
+            pesan += `<Jam Pertama>\n`;
+            pesan += `*Waktu: 08.15 - 09.10*\n`;
+            pesan += "\n";
+            pesan1TSN(1);
+            peasnMTP(1);
+            pesan += `<Jam Kedua>\n`;
+            pesan += `*Waktu: 09.10 - 10.05*\n`;
+            pesan += "\n";
+            pesan1TSN(2);
+            peasnMTP(2);
+            pesan += `<Jam Ketiga>\n`;
+            pesan += `*Waktu: 10.20 - 11.15\n`;
+            pesan += "\n";
+            pesan1TSN(3);
+            peasnMTP(3);
+            console.log(pesan);
+            return;
+        }
+        function pesanSore() {
+            pesan += `Jadwal Madin Putra ${kap(namaHari)} Sore\n`;
+            pesan += `_Tanggal ${tanggal} ${kap(namaBulan)} ${tahun}_\n`;
+            pesan += "\n";
+            pesan += `*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n`;
+            pesan += `*Perizinan harus sesuai dengan prosedur yang telah ada.*\n`;
+            pesan += "\n";
+            pesan += `<Jam Pertama>\n`;
+            pesan += `*Waktu: 14.10 - 14.45*\n`;
+            pesan += "\n";
+            pesan2TSN(1);
+            pesan3TSN(1);
+            pesanIST(1);
+            pesan1ALY(1);
+            pesan2ALY(1);
+            pesan3ALY(1);
+            pesanMTS(1);
+            pesan += `<Jam Kedua>\n`;
+            pesan += `*Waktu: 14.45 - 15.30*\n`;
+            pesan += "\n";
+            pesan2TSN(2);
+            pesan3TSN(2);
+            pesanIST(2);
+            pesan1ALY(2);
+            pesan2ALY(2);
+            pesan3ALY(2);
+            pesanMTS(2);
+            pesan += `<Jam Ketiga>\n`;
+            pesan += `*Waktu: 15.30 - 16.15*\n`;
+            pesan += "\n";
+            pesan2TSN(3);
+            pesan3TSN(3);
+            pesanIST(3);
+            pesan1ALY(3);
+            pesan2ALY(3);
+            pesan3ALY(3);
+            pesanMTS(3);
+            console.log(pesan);
+            return;
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function peasnMTP(jam) {
+            const guru = MTP[namaHari][0].guru;
+            const fan = MTP[namaHari][0].fan;
+            pesan += `Mutakhorijin Pagi\n`;
+            pesan += `\tUst ${guru} # ${fan}\n`;
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function pesanMTS(jam) {
+            const guru = MTS[namaHari][jam - 1].guru;
+            const fan = MTS[namaHari][jam - 1].fan;
+            pesan += `Mutakhorijin Sore\n`;
+            pesan += `\tUst ${guru} # ${fan}\n`;
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function pesan3ALY(jam) {
+            const kelasData = {
+                A: A3A,
+                B: A3B,
+                C: A3C,
+            };
+
+            pesan += `3 Aliyah\n`;
+            addPesan(kelasData, jam);
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function pesan2ALY(jam) {
+            const kelasData = {
+                A: A2A,
+                B: A2B,
+                C: A2C,
+            };
+
+            pesan += `2 Aliyah\n`;
+            addPesan(kelasData, jam);
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function pesan1ALY(jam) {
+            const kelasData = {
+                A: A1A,
+                B: A1B,
+                C: A1C,
+                D: A1D,
+                E: A1E,
+                F: A1F,
+            };
+
+            pesan += `1 Aliyah\n`;
+            addPesan(kelasData, jam);
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function pesanIST(jam) {
+            const guru = IST[namaHari][jam - 1].guru;
+            const fan = IST[namaHari][jam - 1].fan;
+            pesan += `Isti'dad\n`;
+            pesan += `\tA. Ust ${guru} # ${fan}\n`;
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function pesan3TSN(jam) {
+            const kelasData = {
+                A: T3A,
+                B: T3B,
+                C: T3C,
+                E: T3E,
+                F: T3F,
+                G: T3G,
+                H: T3H,
+                I: T3I,
+                J: T3J,
+            };
+
+            pesan += `3 Tsanawiyyah\n`;
+            addPesan(kelasData, jam);
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function pesan2TSN(jam) {
+            const kelasData = {
+                A: T2A,
+                B: T2B,
+                C: T2C,
+                D: T2D,
+                E: T2E,
+                F: T2F,
+                G: T2G,
+                H: T2H,
+                I: T2I,
+                J: T2J,
+            };
+
+            pesan += `2 Tsanawiyyah\n`;
+            addPesan(kelasData, jam);
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {1|2|3} jam
+         */
+        function pesan1TSN(jam) {
+            const kelasData = {
+                A: T1A,
+                B: T1B,
+                C: T1C,
+                D: T1D,
+                E: T1E,
+                F: T1F,
+                G: T1G,
+            };
+
+            pesan += `1 Tsanawiyyah\n`;
+            addPesan(kelasData, jam);
+            pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {{ [hurufKelas: string]: Kelas }} kelasData
+         * @param {1|2|3} jam
+         */
+        function addPesan(kelasData, jam) {
+            for (const kelas in kelasData) {
+                const guru = kelasData[kelas][namaHari][jam - 1].guru;
+                const fan = kelasData[kelas][namaHari][jam - 1].fan;
+                pesan += `\t${kelas}. Ust ${guru} # ${fan}\n`;
+            }
+        }
+        this.pagi = pesanPagi;
+        this.sore = pesanSore;
+    }
 }
 
 /* Deklarasi Fan */
@@ -1266,6 +1582,7 @@ MTS.tempatkan("sabtu", 2, HR, nahwu);
 // Hari.jadwal("Senin"); // sukses!
 // console.log(listKelas);
 // KHL.jadwal("rabu"); //sukses!
+// console.log(FT.jadwal(["selasa", "rabu"])); // sukses!
 
 /**
  * @type {string[]}
@@ -1278,7 +1595,20 @@ const command = {};
 args.forEach((value, index) => {
     if (value.startsWith("--")) {
         const flag = value.substring(2);
-        const nextArg = flag === "jadwal" ? true : args[index + 1];
+        /** @type {string|true} */
+        let nextArg = "";
+
+        if (flag === "jadwal") {
+            nextArg = true;
+        } else {
+            if (args[index + 1] && !args[index + 1].startsWith("--")) {
+                nextArg = args[index + 1];
+            } else {
+                console.error(`Flag --${flag} membutuhkan vlaue.`);
+                // @ts-ignore
+                process.exit(1);
+            }
+        }
 
         if (!command[flag]) {
             command[flag] = [nextArg];
@@ -1312,75 +1642,26 @@ if (command.jadwal) {
     }
 }
 
-if (command.pesanWA) {
-    command.pesanWA.forEach((value) => {
+// if (command.pesanWA !== undefined) {
+if (command.pesanWA1) {
+    command.pesanWA1.forEach((value) => {
         if (typeof value === "string") {
-            kirimPesan(value);
+            new kirimPesan(value).pagi();
         }
     });
 }
-
-/**
- * @description
- * @author LitFill
- * @date 28/11/2023
- * @param {string} value
- */
-function kirimPesan(value) {
-    const tanggal = Number(value.slice(0, 2));
-    const bulan = Number(value.slice(2, 4));
-    // console.log(`tanggal ${tanggal}, bulan ${bulan}.`);
-    const tanggalPesan = new Date(2023, bulan - 1, tanggal);
-    const hariSeminggu = [
-        "ahad",
-        "senin",
-        "selasa",
-        "rabu",
-        "kamis",
-        "jumat",
-        "sabtu",
-    ];
-    const hari = tanggalPesan.getDay();
-    const namaHari = hariSeminggu[hari];
-    const bulanSetahun = [
-        "januari",
-        "februari",
-        "maret",
-        "april",
-        "mei",
-        "juni",
-        "juli",
-        "agustus",
-        "september",
-        "oktober",
-        "november",
-        "desember",
-    ];
-    const namaBulan = bulanSetahun[bulan - 1];
-    // console.log(kap(namaHari));
-    // prettier-ignore
-    const pesan = `Jadwal Madin Putra ${kap(
-        namaHari
-    )} Pagi\n_Tanggal ${tanggal} ${kap(
-        namaBulan
-    )} 2023_\n\n*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n<Jam Pertama>\n*Waktu: 08.15 - 09.10*\n\n1 Tsanawiyyah\n\tA. Ust ${T1A[namaHari][0].guru} # ${T1A[namaHari][0].fan}\n\tB. Ust ${T1B[namaHari][0].guru} # ${T1B[namaHari][0].fan}\n\tC. Ust ${T1C[namaHari][0].guru} # ${T1C[namaHari][0].fan}\n\tD. Ust ${T1D[namaHari][0].guru} # ${T1D[namaHari][0].fan}\n\tE. Ust ${T1E[namaHari][0].guru} # ${T1E[namaHari][0].fan}\n\tF. Ust ${T1F[namaHari][0].guru} # ${T1F[namaHari][0].fan}\n\tG. Ust ${T1G[namaHari][0].guru} # ${T1G[namaHari][0].fan}\n\nMutakhorijin Pagi\n\tUst ${MTP[namaHari][0].guru} # ${MTP[namaHari][0].fan}\n\n<Jam Kedua>\n*Waktu: 09.10 - 10.05*\n\n1 Tsanawiyyah\n\tA. Ust ${T1A[namaHari][1].guru} # ${T1A[namaHari][1].fan}\n\tB. Ust ${T1B[namaHari][1].guru} # ${T1B[namaHari][1].fan}\n\tC. Ust ${T1C[namaHari][1].guru} # ${T1C[namaHari][1].fan}\n\tD. Ust ${T1D[namaHari][1].guru} # ${T1D[namaHari][1].fan}\n\tE. Ust ${T1E[namaHari][1].guru} # ${T1E[namaHari][1].fan}\n\tF. Ust ${T1F[namaHari][1].guru} # ${T1F[namaHari][1].fan}\n\tG. Ust ${T1G[namaHari][1].guru} # ${T1G[namaHari][1].fan}\n\nMutakhorijin Pagi\n\tUst ${MTP[namaHari][1].guru} # ${MTP[namaHari][1].fan}\n\n<Jam Ketiga>\n*Waktu: 10.20 - 11.15\n\n1 Tsanawiyyah\n\tA. Ust ${T1A[namaHari][2].guru} # ${T1A[namaHari][2].fan}\n\tB. Ust ${T1B[namaHari][2].guru} # ${T1B[namaHari][2].fan}\n\tC. Ust ${T1C[namaHari][2].guru} # ${T1C[namaHari][2].fan}\n\tD. Ust ${T1D[namaHari][2].guru} # ${T1D[namaHari][2].fan}\n\tE. Ust ${T1E[namaHari][2].guru} # ${T1E[namaHari][2].fan}\n\tF. Ust ${T1F[namaHari][2].guru} # ${T1F[namaHari][2].fan}\n\tG. Ust ${T1G[namaHari][2].guru} # ${T1G[namaHari][2].fan}\n\nMutakhorijin Pagi\n\tUst ${MTP[namaHari][2].guru} # ${MTP[namaHari][2].fan}\n\n---Pesan Kedua---\n\nJadwal Madin Putra ${kap(
-        namaHari
-    )} Sore\n_Tanggal ${tanggal} ${kap(
-        namaBulan
-    )} 2023_\n\n*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n<Jam Pertama>\n*Waktu: 14.10 - 14.45*\n\n2 Tsanawiyyah\n\tA. Ust ${T2A[namaHari][0].guru} # ${T2A[namaHari][0].fan}\n\tB. Ust ${T2B[namaHari][0].guru} # ${T2B[namaHari][0].fan}\n\tC. Ust ${T2C[namaHari][0].guru} # ${T2C[namaHari][0].fan}\n\tD. Ust ${T2D[namaHari][0].guru} # ${T2D[namaHari][0].fan}\n\tE. Ust ${T2E[namaHari][0].guru} # ${T2E[namaHari][0].fan}\n\tF. Ust ${T2F[namaHari][0].guru} # ${T2F[namaHari][0].fan}\n\tG. Ust ${T2G[namaHari][0].guru} # ${T2G[namaHari][0].fan}\n\tH. Ust ${T2H[namaHari][0].guru} # ${T2H[namaHari][0].fan}\n\tI. Ust ${T2I[namaHari][0].guru} # ${T2I[namaHari][0].fan}\n\tJ. Ust ${T2J[namaHari][0].guru} # ${T2J[namaHari][0].fan}\n\n3 Tsanawiyyah\n\tA. Ust ${T3A[namaHari][0].guru} # ${T3A[namaHari][0].fan}\n\tB. Ust ${T3B[namaHari][0].guru} # ${T3B[namaHari][0].fan}\n\tC. Ust ${T3C[namaHari][0].guru} # ${T3C[namaHari][0].fan}\n\tE. Ust ${T3E[namaHari][0].guru} # ${T3E[namaHari][0].fan}\n\tF. Ust ${T3F[namaHari][0].guru} # ${T3F[namaHari][0].fan}\n\tG. Ust ${T3G[namaHari][0].guru} # ${T3G[namaHari][0].fan}\n\tH. Ust ${T3H[namaHari][0].guru} # ${T3H[namaHari][0].fan}\n\tI. Ust ${T3I[namaHari][0].guru} # ${T3I[namaHari][0].fan}\n\tJ. Ust ${T3J[namaHari][0].guru} # ${T3J[namaHari][0].fan}\n\nIsti'dad\n\tA. Ust ${IST[namaHari][0].guru} # ${IST[namaHari][0].fan}\n\n1 Aliyah\n\tA. Ust ${A1A[namaHari][0].guru} # ${A1A[namaHari][0].fan}\n\tB. Ust ${A1B[namaHari][0].guru} # ${A1B[namaHari][0].fan}\n\tC. Ust ${A1C[namaHari][0].guru} # ${A1C[namaHari][0].fan}\n\tD. Ust ${A1D[namaHari][0].guru} # ${A1D[namaHari][0].fan}\n\tE. Ust ${A1E[namaHari][0].guru} # ${A1E[namaHari][0].fan}\n\tF. Ust ${A1F[namaHari][0].guru} # ${A1F[namaHari][0].fan}\n\n2 Aliyah\n\tA. Ust ${A2A[namaHari][0].guru} # ${A2A[namaHari][0].fan}\n\tB. Ust ${A2B[namaHari][0].guru} # ${A2B[namaHari][0].fan}\n\tC. Ust ${A2C[namaHari][0].guru} # ${A2C[namaHari][0].fan}\n\n3 Aliyah\n\tA. Ust ${A3A[namaHari][0].guru} # ${A3A[namaHari][0].fan}\n\tB. Ust ${A3B[namaHari][0].guru} # ${A3B[namaHari][0].fan}\n\tC. Ust ${A3C[namaHari][0].guru} # ${A3C[namaHari][0].fan}\n\nMutakhorijin Sore\n\tUst ${MTS[namaHari][0].guru} # ${MTS[namaHari][0].fan}\n\n<Jam Kedua>\n*Waktu: 14.45 - 15.30*\n\n2 Tsanawiyyah\n\tA. Ust ${T2A[namaHari][1].guru} # ${T2A[namaHari][1].fan}\n\tB. Ust ${T2B[namaHari][1].guru} # ${T2B[namaHari][1].fan}\n\tC. Ust ${T2C[namaHari][1].guru} # ${T2C[namaHari][1].fan}\n\tD. Ust ${T2D[namaHari][1].guru} # ${T2D[namaHari][1].fan}\n\tE. Ust ${T2E[namaHari][1].guru} # ${T2E[namaHari][1].fan}\n\tF. Ust ${T2F[namaHari][1].guru} # ${T2F[namaHari][1].fan}\n\tG. Ust ${T2G[namaHari][1].guru} # ${T2G[namaHari][1].fan}\n\tH. Ust ${T2H[namaHari][1].guru} # ${T2H[namaHari][1].fan}\n\tI. Ust ${T2I[namaHari][1].guru} # ${T2I[namaHari][1].fan}\n\tJ. Ust ${T2J[namaHari][1].guru} # ${T2J[namaHari][1].fan}\n\n3 Tsanawiyyah\n\tA. Ust ${T3A[namaHari][1].guru} # ${T3A[namaHari][1].fan}\n\tB. Ust ${T3B[namaHari][1].guru} # ${T3B[namaHari][1].fan}\n\tC. Ust ${T3C[namaHari][1].guru} # ${T3C[namaHari][1].fan}\n\tE. Ust ${T3E[namaHari][1].guru} # ${T3E[namaHari][1].fan}\n\tF. Ust ${T3F[namaHari][1].guru} # ${T3F[namaHari][1].fan}\n\tG. Ust ${T3G[namaHari][1].guru} # ${T3G[namaHari][1].fan}\n\tH. Ust ${T3H[namaHari][1].guru} # ${T3H[namaHari][1].fan}\n\tI. Ust ${T3I[namaHari][1].guru} # ${T3I[namaHari][1].fan}\n\tJ. Ust ${T3J[namaHari][1].guru} # ${T3J[namaHari][1].fan}\n\nIsti'dad\n\tA. Ust ${IST[namaHari][1].guru} # ${IST[namaHari][1].fan}\n\n1 Aliyah\n\tA. Ust ${A1A[namaHari][1].guru} # ${A1A[namaHari][1].fan}\n\tB. Ust ${A1B[namaHari][1].guru} # ${A1B[namaHari][1].fan}\n\tC. Ust ${A1C[namaHari][1].guru} # ${A1C[namaHari][1].fan}\n\tD. Ust ${A1D[namaHari][1].guru} # ${A1D[namaHari][1].fan}\n\tE. Ust ${A1E[namaHari][1].guru} # ${A1E[namaHari][1].fan}\n\tF. Ust ${A1F[namaHari][1].guru} # ${A1F[namaHari][1].fan}\n\n2 Aliyah\n\tA. Ust ${A2A[namaHari][1].guru} # ${A2A[namaHari][1].fan}\n\tB. Ust ${A2B[namaHari][1].guru} # ${A2B[namaHari][1].fan}\n\tC. Ust ${A2C[namaHari][1].guru} # ${A2C[namaHari][1].fan}\n\n3 Aliyah\n\tA. Ust ${A3A[namaHari][1].guru} # ${A3A[namaHari][1].fan}\n\tB. Ust ${A3B[namaHari][1].guru} # ${A3B[namaHari][1].fan}\n\tC. Ust ${A3C[namaHari][1].guru} # ${A3C[namaHari][1].fan}\n\nMutakhorijin Sore\n\tUst ${MTS[namaHari][1].guru} # ${MTS[namaHari][1].fan}\n\n<Jam Ketiga>\n*Waktu: 15.30 - 16.15*\n\n2 Tsanawiyyah\n\tA. Ust ${T2A[namaHari][2].guru} # ${T2A[namaHari][2].fan}\n\tB. Ust ${T2B[namaHari][2].guru} # ${T2B[namaHari][2].fan}\n\tC. Ust ${T2C[namaHari][2].guru} # ${T2C[namaHari][2].fan}\n\tD. Ust ${T2D[namaHari][2].guru} # ${T2D[namaHari][2].fan}\n\tE. Ust ${T2E[namaHari][2].guru} # ${T2E[namaHari][2].fan}\n\tF. Ust ${T2F[namaHari][2].guru} # ${T2F[namaHari][2].fan}\n\tG. Ust ${T2G[namaHari][2].guru} # ${T2G[namaHari][2].fan}\n\tH. Ust ${T2H[namaHari][2].guru} # ${T2H[namaHari][2].fan}\n\tI. Ust ${T2I[namaHari][2].guru} # ${T2I[namaHari][2].fan}\n\tJ. Ust ${T2J[namaHari][2].guru} # ${T2J[namaHari][2].fan}\n\n3 Tsanawiyyah\n\tA. Ust ${T3A[namaHari][2].guru} # ${T3A[namaHari][2].fan}\n\tB. Ust ${T3B[namaHari][2].guru} # ${T3B[namaHari][2].fan}\n\tC. Ust ${T3C[namaHari][2].guru} # ${T3C[namaHari][2].fan}\n\tE. Ust ${T3E[namaHari][2].guru} # ${T3E[namaHari][2].fan}\n\tF. Ust ${T3F[namaHari][2].guru} # ${T3F[namaHari][2].fan}\n\tG. Ust ${T3G[namaHari][2].guru} # ${T3G[namaHari][2].fan}\n\tH. Ust ${T3H[namaHari][2].guru} # ${T3H[namaHari][2].fan}\n\tI. Ust ${T3I[namaHari][2].guru} # ${T3I[namaHari][2].fan}\n\tJ. Ust ${T3J[namaHari][2].guru} # ${T3J[namaHari][2].fan}\n\nIsti'dad\n\tA. Ust ${IST[namaHari][2].guru} # ${IST[namaHari][2].fan}\n\n1 Aliyah\n\tA. Ust ${A1A[namaHari][2].guru} # ${A1A[namaHari][2].fan}\n\tB. Ust ${A1B[namaHari][2].guru} # ${A1B[namaHari][2].fan}\n\tC. Ust ${A1C[namaHari][2].guru} # ${A1C[namaHari][2].fan}\n\tD. Ust ${A1D[namaHari][2].guru} # ${A1D[namaHari][2].fan}\n\tE. Ust ${A1E[namaHari][2].guru} # ${A1E[namaHari][2].fan}\n\tF. Ust ${A1F[namaHari][2].guru} # ${A1F[namaHari][2].fan}\n\n2 Aliyah\n\tA. Ust ${A2A[namaHari][2].guru} # ${A2A[namaHari][2].fan}\n\tB. Ust ${A2B[namaHari][2].guru} # ${A2B[namaHari][2].fan}\n\tC. Ust ${A2C[namaHari][2].guru} # ${A2C[namaHari][2].fan}\n\n3 Aliyah\n\tA. Ust ${A3A[namaHari][2].guru} # ${A3A[namaHari][2].fan}\n\tB. Ust ${A3B[namaHari][2].guru} # ${A3B[namaHari][2].fan}\n\tC. Ust ${A3C[namaHari][2].guru} # ${A3C[namaHari][2].fan}\n\nMutakhorijin Sore\n\tUst ${MTS[namaHari][2].guru} # ${MTS[namaHari][2].fan}\n\n
-                `;
-    console.log(pesan);
+if (command.pesanWA2) {
+    command.pesanWA2.forEach((value) => {
+        if (typeof value === "string") {
+            new kirimPesan(value).sore();
+        }
+    });
 }
-
-// } else {
-//     console.log(`Flag ${flag} tidak memiliki nilai.\nHarap cek perintah anda.`);
 // }
 
 // fs.writeFile("./listKelas.txt", FT.fan, (err) => {
 //     if (err) console.error(err);
 // });
-
-// console.log(FT.jadwal(["selasa", "rabu"])); // sukses!
 
 /**
  * @description Kapital huruf pertama setiap kata
