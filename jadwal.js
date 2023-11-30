@@ -106,7 +106,7 @@ class Kelas {
     /**
      * Membuat instans Kelas baru.
      * @param {String} nama - Nama kelas.
-     * @param {String} waktu - Waktu KBM, 'sore' atau 'pagi'
+     * @param {'pagi'|'sore'} waktu - Waktu KBM, 'sore' atau 'pagi'
      */
     constructor(nama, waktu) {
         this.nama = nama;
@@ -167,7 +167,8 @@ class Kelas {
         kelas.kosong = true;
         kelas.jadwal = () => {
             // return `kelas ${kelas.nama} kosong.`;
-            console.log(`kelas ${kelas.nama} kosong.`);
+            // console.log(`kelas ${kelas.nama} kosong.`);
+            throw new Error(`kelas ${kelas.nama} kosong.`);
         };
     }
 }
@@ -243,6 +244,7 @@ class Fan {
     static Nahwu = new Fan("Nahwu");
     static Fiqih = new Fan("Fiqih");
     static Imla = new Fan("Imla'");
+    static FanKosong = new Fan("-");
 
     /**
      * @param {string} nama
@@ -610,6 +612,7 @@ const tasme = Fan.Tasme;
 const arab = Fan.Arab;
 const imla = Fan.Imla;
 const ilal = Fan.Ilal;
+const _fan = Fan.FanKosong;
 
 /*  Deklarasi Guru */
 const ABAH = new Abah();
@@ -687,6 +690,8 @@ const AZZ = new Guru("Aziz", nahwu);
 const LTF = new Guru("Lutfi", arab);
 const UL = new Guru("Ulil", tauhid);
 const HS = new Guru("Hasan", fiqih);
+
+const _ust = new Guru("-", _fan);
 
 /* Deklarasi Kelas */
 /**
@@ -1570,24 +1575,24 @@ MTP.tempatkan("sabtu", 2, HLY, balaghoh);
 MTP.tempatkan("sabtu", 3, USY, arab);
 
 /* Mutakhorijin Sore */
-// MTS.tempatkan("senin", 1,);
+MTS.tempatkan("senin", 1, _ust, _fan);
 MTS.tempatkan("senin", 2, SHF, fiqih);
 MTS.tempatkan("senin", 3, SHF, fiqih);
 MTS.tempatkan("selasa", 1, HLY, balaghoh);
-// MTS.tempatkan("selasa", 2,);
-// MTS.tempatkan("selasa", 3,);
+MTS.tempatkan("selasa", 2, _ust, _fan);
+MTS.tempatkan("selasa", 3, _ust, _fan);
 MTS.tempatkan("rabu", 1, UTJ, tasme);
 MTS.tempatkan("rabu", 2, UL, tauhid);
 MTS.tempatkan("rabu", 3, UL, tauhid);
 MTS.tempatkan("kamis", 1, HR, nahwu);
 MTS.tempatkan("kamis", 2, HR, nahwu);
-// MTS.tempatkan("kamis", 3,);
+MTS.tempatkan("kamis", 3, _ust, _fan);
 MTS.tempatkan("jumat", 1, SHF, fiqih);
 MTS.tempatkan("jumat", 2, SHF, fiqih);
-// MTS.tempatkan("jumat", 3,);
+MTS.tempatkan("jumat", 3, _ust, _fan);
 MTS.tempatkan("sabtu", 1, HR, nahwu);
 MTS.tempatkan("sabtu", 2, HR, nahwu);
-// MTS.tempatkan("sabtu", 3,);
+MTS.tempatkan("sabtu", 3, _ust, _fan);
 
 /* Testing */
 // console.log(T1A); // sukses!
@@ -1675,6 +1680,7 @@ if (command.jadwal) {
             });
         }
     } else if (command.hari) {
+        // TODO
         command.hari.forEach((hari) => {
             if (typeof hari === "string" || Array.isArray(hari)) {
                 Hari.jadwal(hari);
