@@ -126,7 +126,7 @@ class Kelas {
             this[hari][jam - 1].guru = guru.nama;
             this[hari][jam - 1].fan = fan.nama;
         } else {
-            console.error(
+            throw new Error(
                 `ERROR: Ust. ${guru.nama} tidak mengajar fan ${fan.nama}.\nLOK  : kelas ${this.nama} / ${hari}:${jam}.`
             );
         }
@@ -287,7 +287,7 @@ function cekDupeArray(array) {
     return yangReturn;
 }
 
-class kirimPesan {
+class PengirimPesan {
     /**
      * @description the improved version of v1
      * @author LitFill
@@ -346,6 +346,7 @@ class kirimPesan {
             pesan += "\n";
             pesanKelasPagi(3);
             console.log(pesan);
+            pesan = "";
             return;
 
             /**
@@ -379,6 +380,7 @@ class kirimPesan {
             pesan += "\n";
             pesanKelasSore(3);
             console.log(pesan);
+            pesan = "";
             return;
 
             /**
@@ -397,6 +399,11 @@ class kirimPesan {
                 pesanMTS(jam);
             }
         }
+        function pesanFull() {
+            pesanPagi();
+            console.log("---Pesan Kedua---\n");
+            pesanSore();
+        }
 
         /**
          * @description
@@ -405,8 +412,8 @@ class kirimPesan {
          * @param {1|2|3} jam
          */
         function peasnMTP(jam) {
-            const guru = MTP[namaHari][0].guru;
-            const fan = MTP[namaHari][0].fan;
+            const guru = MTP[namaHari][jam - 1].guru;
+            const fan = MTP[namaHari][jam - 1].fan;
             pesan += `Mutakhorijin Pagi\n`;
             pesan += `\tUst ${guru} # ${fan}\n`;
             pesan += "\n";
@@ -584,6 +591,7 @@ class kirimPesan {
         }
         this.pagi = pesanPagi;
         this.sore = pesanSore;
+        this.full = pesanFull;
     }
 }
 
@@ -605,7 +613,6 @@ const ilal = Fan.Ilal;
 
 /*  Deklarasi Guru */
 const ABAH = new Abah();
-const FDL = new Guru("Fadil", [imla, fiqih]);
 const ASP = new Guru("Saifurrohman Aly", [nahwu, tauhid]);
 const MNR = new Guru("Munir Subkhi", [shorof, nahwu]);
 const USY = new Guru("Syafi'il Anam", [tauhid, arab]);
@@ -623,6 +630,7 @@ const MRJ = new Guru("Mu'rijul Ma'arif", arab);
 const MSH = new Guru("Mashudi", [imla, fiqih]);
 const MST = new Guru("Musthofa Besuk", fiqih);
 const SHF = new Guru("Shofi", [nahwu, fiqih]);
+const FDL = new Guru("Fadil", [imla, fiqih]);
 const IDT = new Guru("Idris Thobari", nahwu);
 const IDM = new Guru("Agus Idhohul", akhlaq);
 const HLY = new Guru("Agus Hilmy", balaghoh);
@@ -1598,31 +1606,52 @@ const args = process.argv.slice(2);
 /** @type {{ [key: string]: Array.<(string|boolean)> }} */
 const command = {};
 
-args.forEach((value, index) => {
+/**
+ * Menetapkan `argumen` untuk `flag` yang ditentukan dalam objek `command`.
+ *
+ * @param {string} flag - Flag untuk nilai yang sedang ditetapkan.
+ * @param {string|true} argumen - Argumen yang akan ditetapkan untuk `flag`.
+ * @returns {void}
+ * @description Fungsi ini memeriksa apakah `flag` sudah ada dalam objek `command`.
+ * Jika ya, `argumen` akan ditambahkan ke dalam array yang sudah ada; jika tidak, akan dibuat array baru dengan `argumen` yang diberikan.
+ * @author LitFill
+ * @date 29/11/2023
+ */
+function setCommandValue(flag, argumen) {
+    if (!command[flag]) {
+        command[flag] = [argumen];
+    } else {
+        command[flag].push(argumen);
+    }
+}
+
+for (let i = 0; i < args.length; i++) {
+    const value = args[i];
     if (value.startsWith("--")) {
         const flag = value.substring(2);
         /** @type {string|true} */
         let nextArg = "";
 
-        if (flag === "jadwal") {
+        if (flag === "jadwal" || flag === "version") {
             nextArg = true;
+        } else if (args[i + 1] && !args[i + 1].startsWith("--")) {
+            nextArg = args[i + 1];
+            i++; // Skip the next argument as it has been used
         } else {
-            if (args[index + 1] && !args[index + 1].startsWith("--")) {
-                nextArg = args[index + 1];
-            } else {
-                console.error(`Flag --${flag} membutuhkan vlaue.`);
-                // @ts-ignore
-                process.exit(1);
-            }
+            console.error(`Flag --${flag} membutuhkan value.`);
+            // @ts-ignore
+            process.exit(1);
         }
 
-        if (!command[flag]) {
-            command[flag] = [nextArg];
-        } else {
-            command[flag].push(nextArg);
-        }
+        setCommandValue(flag, nextArg);
     }
-});
+}
+
+if (command.version) {
+    console.log(
+        "aplikasi Jadwal versi 1.0.\ndibuat oleh pemegang hak cipta: LitFill.\n"
+    );
+}
 
 if (command.jadwal) {
     if (command.guru) {
@@ -1645,24 +1674,38 @@ if (command.jadwal) {
                 eval(`${kodeKelas}.jadwal()`);
             });
         }
+    } else if (command.hari) {
+        command.hari.forEach((hari) => {
+            if (typeof hari === "string" || Array.isArray(hari)) {
+                Hari.jadwal(hari);
+            } else {
+                console.error("Invalid argument for Hari.jadwal: ", hari);
+            }
+        });
     }
 }
 
 // if (command.pesanWA !== undefined) {
-if (command.pesanWA1) {
-    command.pesanWA1.forEach((value) => {
-        if (typeof value === "string") {
-            new kirimPesan(value).pagi();
-        }
-    });
-}
-if (command.pesanWA2) {
-    command.pesanWA2.forEach((value) => {
-        if (typeof value === "string") {
-            new kirimPesan(value).sore();
-        }
-    });
-}
+["pesanWA1", "pesanWA2", "pesanWA"].forEach((key) => {
+    if (command[key]) {
+        command[key].forEach((value) => {
+            if (typeof value === "string") {
+                let waktu;
+
+                if (key === "pesanWA1") {
+                    waktu = "pagi";
+                } else if (key === "pesanWA2") {
+                    waktu = "sore";
+                } else {
+                    waktu = "full";
+                }
+
+                new PengirimPesan(value)[waktu]();
+            }
+        });
+    }
+});
+
 // }
 
 // fs.writeFile("./listKelas.txt", FT.fan, (err) => {
@@ -1670,11 +1713,14 @@ if (command.pesanWA2) {
 // });
 
 /**
- * @description Kapital huruf pertama setiap kata
+ * Mengembalikan string dengan huruf pertama setiap kata diubah menjadi huruf kapital.
+ *
+ * @param {String} str - String yang akan diubah.
+ * @returns {String} - String baru dengan huruf pertama setiap kata menjadi huruf kapital.
+ * @description Fungsi ini mengubah huruf pertama setiap kata dalam string menjadi huruf kapital.
+ * Misalnya, "kata pertama" akan diubah menjadi "Kata Pertama".
  * @author LitFill
  * @date 25/11/2023
- * @param {String} str
- * @return {String}
  */
 function kap(str) {
     return str.replace(/\b\w/g, (c) => c.toUpperCase());
