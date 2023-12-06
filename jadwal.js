@@ -55,6 +55,197 @@ class Guru {
             }
         });
     }
+    /**
+     * Menampilkan jadwal mengajar guru.
+     * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
+     * @returns {{[jamKe: string]: string}|{}}
+     */
+    jadwalObj(
+        namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]
+    ) {
+        /** @type {{[jamKe: string]: string}|{}} */
+        const jadwalMengajar = {};
+        listKelas.forEach((kelas) => {
+            for (let hari in kelas) {
+                if (namaHari.includes(hari)) {
+                    for (let i = 0; i < 3; i++) {
+                        if (kelas[hari][i].guru === this.nama) {
+                            jadwalMengajar[`jam${i + 1}`] = kelas.nama;
+                        }
+                    }
+                }
+            }
+        });
+        return jadwalMengajar;
+    }
+
+    /**
+     * @description mengambil string kode guru dan mengembalikan instansi kelas `Guru`
+     * @author LitFill
+     * @date 06/12/2023
+     * @static
+     * @param {string} kodeGuru
+     * @returns {Guru|null}
+     * @memberof Hari
+     */
+    static fromString(kodeGuru) {
+        switch (kodeGuru) {
+            case "ABAH":
+                return ABAH.madin;
+            case "ASP":
+                return ASP;
+            case "MNR":
+                return MNR;
+            case "USY":
+                return USY;
+            case "MNS":
+                return MNS;
+            case "HMD":
+                return HMD;
+            case "RF":
+                return RF;
+            case "BCH":
+                return BCH;
+            case "HFD":
+                return HFD;
+            case "GFR":
+                return GFR;
+            case "IBR":
+                return IBR;
+            case "RHL":
+                return RHL;
+            case "UTJ":
+                return UTJ;
+            case "MIS":
+                return MIS;
+            case "MRJ":
+                return MRJ;
+            case "MSH":
+                return MSH;
+            case "MST":
+                return MST;
+            case "SHF":
+                return SHF;
+            case "FDL":
+                return FDL;
+            case "IDT":
+                return IDT;
+            case "IDM":
+                return IDM;
+            case "HLY":
+                return HLY;
+            case "UHS":
+                return UHS;
+            case "UHN":
+                return UHN;
+            case "HR":
+                return HR;
+            case "IDS":
+                return IDS;
+            case "ADN":
+                return ADN;
+            case "YHY":
+                return YHY;
+            case "BDL":
+                return BDL;
+            case "SLD":
+                return SLD;
+            case "LSN":
+                return LSN;
+            case "SDL":
+                return SDL;
+            case "UMM":
+                return UMM;
+            case "FRZ":
+                return FRZ;
+            case "AFF":
+                return AFF;
+            case "MSR":
+                return MSR;
+            case "DMN":
+                return DMN;
+            case "ST":
+                return ST;
+            case "FHM":
+                return FHM;
+            case "URB":
+                return URB;
+            case "SDQ":
+                return SDQ;
+            case "HLD":
+                return HLD;
+            case "IRF":
+                return IRF;
+            case "ASR":
+                return ASR;
+            case "UMR":
+                return UMR;
+            case "KHL":
+                return KHL;
+            case "SBH":
+                return SBH;
+            case "FTN":
+                return FTN;
+            case "YDN":
+                return YDN;
+            case "SLH":
+                return SLH;
+            case "FQH":
+                return FQH;
+            case "LBB":
+                return LBB;
+            case "MNJ":
+                return MNJ;
+            case "MRW":
+                return MRW;
+            case "MZN":
+                return MZN;
+            case "DRW":
+                return DRW;
+            case "WHB":
+                return WHB;
+            case "ABD":
+                return ABD;
+            case "ANM":
+                return ANM;
+            case "BGS":
+                return BGS;
+            case "NZR":
+                return NZR;
+            case "FRH":
+                return FRH;
+            case "FT":
+                return FT;
+            case "SRR":
+                return SRR;
+            case "USM":
+                return USM;
+            case "ASY":
+                return ASY;
+            case "ALW":
+                return ALW;
+            // case "JBR":
+            //     return JBR;
+            case "RIF":
+                return RIF;
+            case "FRQ":
+                return FRQ;
+            case "WF":
+                return WF;
+            case "AZZ":
+                return AZZ;
+            case "LTF":
+                return LTF;
+            case "UL":
+                return UL;
+            case "HS":
+                return HS;
+            case "_ust":
+                return _ust;
+            default:
+                return null;
+        }
+    }
 }
 
 class Abah {
@@ -151,6 +342,7 @@ class Kelas {
                         }.`
                     );
                 }
+                // console.log("\n");
             }
         }
     }
@@ -170,6 +362,107 @@ class Kelas {
             // console.log(`kelas ${kelas.nama} kosong.`);
             throw new Error(`kelas ${kelas.nama} kosong.`);
         };
+    }
+
+    /**
+     * @description
+     * @author LitFill
+     * @date 06/12/2023
+     * @static
+     * @param {string} kodeKelas
+     * @return {Kelas|null}
+     * @memberof Kelas
+     */
+    static fromString(kodeKelas) {
+        // return listKelas.find((kelas) => kelas.nama === kodeKelas);
+        switch (kodeKelas) {
+            case "T1A":
+                return T1A;
+            case "T1B":
+                return T1B;
+            case "T1C":
+                return T1C;
+            case "T1D":
+                return T1D;
+            case "T1E":
+                return T1E;
+            case "T1F":
+                return T1F;
+            case "T1G":
+                return T1G;
+            case "T2A":
+                return T2A;
+            case "T2B":
+                return T2B;
+            case "T2C":
+                return T2C;
+            case "T2D":
+                return T2D;
+            case "T2E":
+                return T2E;
+            case "T2F":
+                return T2F;
+            case "T2G":
+                return T2G;
+            case "T2H":
+                return T2H;
+            case "T2I":
+                return T2I;
+            case "T2J":
+                return T2J;
+            case "T3A":
+                return T3A;
+            case "T3B":
+                return T3B;
+            case "T3C":
+                return T3C;
+            case "T3D":
+                return T3D;
+            case "T3E":
+                return T3E;
+            case "T3F":
+                return T3F;
+            case "T3G":
+                return T3G;
+            case "T3H":
+                return T3H;
+            case "T3I":
+                return T3I;
+            case "T3J":
+                return T3J;
+            case "A1A":
+                return A1A;
+            case "A1B":
+                return A1B;
+            case "A1C":
+                return A1C;
+            case "A1D":
+                return A1D;
+            case "A1E":
+                return A1E;
+            case "A1F":
+                return A1F;
+            case "A2A":
+                return A2A;
+            case "A2B":
+                return A2B;
+            case "A2C":
+                return A2C;
+            case "A3A":
+                return A3A;
+            case "A3B":
+                return A3B;
+            case "A3C":
+                return A3C;
+            case "IST":
+                return IST;
+            case "MTP":
+                return MTP;
+            case "MTS":
+                return MTS;
+            default:
+                return null;
+        }
     }
 }
 
@@ -596,6 +889,95 @@ class PengirimPesan {
         this.full = pesanFull;
     }
 }
+class Perizinan {
+    /**
+     * Creates an instance of Perizinan.
+     * @author LitFill
+     * @date 06/12/2023
+     * @param {string} tanggalIzin
+     * @param {string} argumen
+     * @memberof Perizinan
+     */
+    constructor(tanggalIzin, argumen) {
+        const data = argumen.split("/");
+        const objIzin = splitDash(data);
+        // console.log(value);
+        this._dataPerizinan = objIzin;
+
+        const tanggal = Number(tanggalIzin.slice(0, 2));
+        const bulan = Number(tanggalIzin.slice(2, 4));
+        const tahun = Number(tanggalIzin.slice(4, 6)) + 2000;
+        this.tanggal = new Date(tahun, bulan - 1, tanggal);
+        const opsiFormat = {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            yaer: "numeric",
+        };
+        this.tanggalf = this.tanggal.toLocaleDateString("id-ID", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+        });
+    }
+
+    get dataPerizinan() {
+        return this._dataPerizinan;
+    }
+
+    kirimPesan() {
+        let pesan = "";
+        pesan += "*Konfirmasi Perizinan*\n";
+        pesan += "_Tanggal: ";
+        pesan += this.tanggalf;
+        pesan += "_\n\n";
+        pesan += this.formatPesan(this._dataPerizinan);
+
+        console.log(pesan);
+    }
+
+    /**
+     * @description
+     * @author LitFill
+     * @date 06/12/2023
+     * @param {Array<{guru: string, sebab: string, jam: Array<boolean>}>} objIzin
+     * @returns {string}
+     * @memberof Perizinan
+     */
+    formatPesan(objIzin) {
+        let pesan = "";
+        objIzin.forEach((item, index) => {
+            const guru = Guru.fromString(item.guru);
+            pesan += index + 1;
+            pesan += ". Ust ";
+            pesan += guru?.nama;
+            pesan += "\n\tAlasan: ";
+            pesan += kap(item.sebab);
+            pesan += "\n\tDetail Perizinan:\n";
+            item.jam.forEach((j, i) => {
+                pesan += "\t - jam ";
+                pesan += i + 1;
+                if (j) {
+                    const hari = this.tanggal
+                        .toLocaleDateString("id-ID", {
+                            weekday: "long",
+                        })
+                        .toLocaleLowerCase();
+                    // console.log(hari);
+                    pesan += ": ";
+                    pesan += guru?.jadwalObj(hari)[`jam${i + 1}`] || "~";
+                    pesan += "\n";
+                } else {
+                    pesan += ": ~\n";
+                }
+            });
+            pesan += "\n";
+        });
+
+        return pesan;
+    }
+}
 
 /* Deklarasi Fan */
 const mustholah = Fan.Mustholah;
@@ -682,7 +1064,7 @@ const SRR = new Guru("Surur", nahwu);
 const USM = new Guru("Usman", nahwu);
 const ASY = new Guru("Asyrof", arab);
 const ALW = new Guru("Alawy", fiqih);
-const JBR = new Guru("Jabir", nahwu);
+// const JBR = new Guru("Jabir", nahwu);
 const RIF = new Guru("Rifqi", arab);
 const FRQ = new Guru("Faruq", arab);
 const WF = new Guru("Wafa", shorof);
@@ -1555,22 +1937,22 @@ A3C.tempatkan("sabtu", 2, ABD, ushul);
 A3C.tempatkan("sabtu", 3, HS, fiqih);
 
 /* Mutakhorijin Pagi */
-MTP.tempatkan("senin", 1, JBR, nahwu);
+MTP.tempatkan("senin", 1, AZZ, nahwu);
 MTP.tempatkan("senin", 2, SHF, fiqih);
 MTP.tempatkan("senin", 3, ABD, ushul);
-MTP.tempatkan("selasa", 1, JBR, nahwu);
+MTP.tempatkan("selasa", 1, AZZ, nahwu);
 MTP.tempatkan("selasa", 2, USY, arab);
 MTP.tempatkan("selasa", 3, USY, arab);
 MTP.tempatkan("rabu", 1, HLY, balaghoh);
 MTP.tempatkan("rabu", 2, HLY, balaghoh);
 MTP.tempatkan("rabu", 3, ABAH.madin, mustholah);
-MTP.tempatkan("kamis", 1, JBR, nahwu);
+MTP.tempatkan("kamis", 1, AZZ, nahwu);
 MTP.tempatkan("kamis", 2, SHF, fiqih);
 MTP.tempatkan("kamis", 3, RF, tasme);
 MTP.tempatkan("jumat", 1, SHF, fiqih);
 MTP.tempatkan("jumat", 2, SHF, fiqih);
 MTP.tempatkan("jumat", 3, RF, tasme);
-MTP.tempatkan("sabtu", 1, JBR, nahwu);
+MTP.tempatkan("sabtu", 1, AZZ, nahwu);
 MTP.tempatkan("sabtu", 2, HLY, balaghoh);
 MTP.tempatkan("sabtu", 3, USY, arab);
 
@@ -1600,7 +1982,7 @@ MTS.tempatkan("sabtu", 3, _ust, _fan);
 // T1A.jadwal(); // sukses!
 // Hari.jadwal("Senin"); // sukses!
 // console.log(listKelas);
-// KHL.jadwal("rabu"); //sukses!
+// console.log(KHL.jadwal("rabu")); //sukses!
 // console.log(FT.jadwal(["selasa", "rabu"])); // sukses!
 
 /**
@@ -1637,7 +2019,8 @@ for (let i = 0; i < args.length; i++) {
         /** @type {string|true} */
         let nextArg = "";
 
-        if (flag === "jadwal" || flag === "version") {
+        // if (flag === "jadwal" || flag === "version" || flag === "pesanIzin") {
+        if (["jadwal", /*"pesanIzin",*/ "version"].includes(flag)) {
             nextArg = true;
         } else if (args[i + 1] && !args[i + 1].startsWith("--")) {
             nextArg = args[i + 1];
@@ -1654,7 +2037,7 @@ for (let i = 0; i < args.length; i++) {
 
 if (command.version) {
     console.log(
-        "aplikasi Jadwal versi 1.0.\ndibuat oleh pemegang hak cipta: LitFill.\n"
+        "aplikasi Jadwal versi 1.1.\ndibuat oleh pemegang hak cipta: LitFill.\n"
     );
 }
 
@@ -1662,21 +2045,26 @@ if (command.jadwal) {
     if (command.guru) {
         if (command.hari) {
             command.guru.forEach((kodeGuru) => {
-                eval(`${kodeGuru}.jadwal('${command.hari}')`);
+                Guru.fromString(kodeGuru.toString())?.jadwal(
+                    command.hari.toLocaleString()
+                );
             });
         } else {
             command.guru.forEach((kodeGuru) => {
-                eval(`${kodeGuru}.jadwal()`);
+                Guru.fromString(kodeGuru.toString())?.jadwal();
             });
         }
     } else if (command.kelas) {
         if (command.hari) {
             command.kelas.forEach((kodeKelas) => {
-                eval(`${kodeKelas}.jadwal('${command.hari}')`);
+                Kelas.fromString(kodeKelas.toString())?.jadwal(
+                    command.hari.toLocaleString()
+                );
+                // console.log("kelas:", kodeKelas, "hari", command.hari);
             });
         } else {
             command.kelas.forEach((kodeKelas) => {
-                eval(`${kodeKelas}.jadwal()`);
+                Kelas.fromString(kodeKelas.toString())?.jadwal();
             });
         }
     } else if (command.hari) {
@@ -1696,6 +2084,7 @@ if (command.jadwal) {
     if (command[key]) {
         command[key].forEach((value) => {
             if (typeof value === "string") {
+                /** @type {"pagi"|"sore"|"full"} */
                 let waktu;
 
                 if (key === "pesanWA1") {
@@ -1711,6 +2100,37 @@ if (command.jadwal) {
         });
     }
 });
+
+if (command.pesanIzin) {
+    // if (command.tanggal) {
+    //     if (command.guru) {
+    //         if (command.ket) {
+    //             if (command.jam) {
+    //             } else noFlag("--jam");
+    //         } else noFlag("--ket");
+    //     } else noFlag("--guru");
+    // } else noFlag("--tanggal");
+    if (command.data) {
+        const izin = new Perizinan(
+            command.pesanIzin.toString(),
+            command.data.toString()
+        );
+        izin.kirimPesan();
+        // console.log(izin.dataPerizinan);
+    }
+}
+
+/**
+ * @description
+ * @author LitFill
+ * @date 02/12/2023
+ * @param {string} namaFlag
+ */
+function noFlag(namaFlag) {
+    console.error(
+        `ERROR: Tolong masukkan flag ${namaFlag} beserta valuenya.\n`
+    );
+}
 
 // }
 
@@ -1730,4 +2150,31 @@ if (command.jadwal) {
  */
 function kap(str) {
     return str.replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/**
+ * @description
+ * @author LitFill
+ * @date 06/12/2023
+ * @param {string[]} data
+ * @return {Array<{guru: string, sebab: string, jam: Array<boolean>}>}
+ */
+function splitDash(data) {
+    /** @type {Array<Array<String>>} */
+    const arr = [];
+    /** @type {Array<{guru: string, sebab: string, jam: Array<boolean>}>} */
+    const objs = [];
+    data.forEach((item) => {
+        arr.push(item.split("-"));
+    });
+    arr.forEach((item) => {
+        const guru = item[0];
+        const sebab = item[1];
+        const jams = item[2].split("");
+        const jam = jams.map((char) => {
+            return Boolean(Number(char));
+        });
+        objs.push({ guru, sebab, jam });
+    });
+    return objs;
 }
