@@ -224,8 +224,8 @@ class Guru {
                 return ASY;
             case "ALW":
                 return ALW;
-            // case "JBR":
-            //     return JBR;
+            case "JBR":
+                return JBR;
             case "RIF":
                 return RIF;
             case "FRQ":
@@ -584,7 +584,7 @@ function cekDupeArray(array) {
 
 class PengirimPesan {
     /**
-     * @description the improved version of v1
+     * @description menampilkan log jadwal Madin di console
      * @author LitFill
      * @date 29/11/2023
      * @param {string} strTanggal
@@ -593,39 +593,17 @@ class PengirimPesan {
         const tanggal = Number(strTanggal.slice(0, 2));
         const bulan = Number(strTanggal.slice(2, 4));
         const tahun = Number(strTanggal.slice(4, 6)) + 2000;
-        // console.log(`tanggal ${tanggal}, bulan ${bulan}.`);
         const tanggalPesan = new Date(tahun, bulan - 1, tanggal);
-        const hariSeminggu = [
-            "ahad",
-            "senin",
-            "selasa",
-            "rabu",
-            "kamis",
-            "jumat",
-            "sabtu",
-        ];
-        const hari = tanggalPesan.getDay();
-        const namaHari = hariSeminggu[hari];
-        const bulanSetahun = [
-            "januari",
-            "februari",
-            "maret",
-            "april",
-            "mei",
-            "juni",
-            "juli",
-            "agustus",
-            "september",
-            "oktober",
-            "november",
-            "desember",
-        ];
-        const namaBulan = bulanSetahun[bulan - 1];
-        // console.log(kap(namaHari));
+        const hari = tanggalPesan
+            .toLocaleDateString("id-ID", { weekday: "long" })
+            .toLocaleLowerCase();
+        const namaBulan = tanggalPesan.toLocaleDateString("id-ID", {
+            month: "long",
+        });
         let pesan = "";
         function pesanPagi() {
-            pesan += `Jadwal Madin Putra ${kap(namaHari)} Pagi\n`;
-            pesan += `_Tanggal ${tanggal} ${kap(namaBulan)} ${tahun}_\n\n`;
+            pesan += `Jadwal Madin Putra ${kap(hari)} Pagi\n`;
+            pesan += `_Tanggal ${tanggal} ${namaBulan} ${tahun}_\n\n`;
             pesan += `*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n`;
             pesan += `*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n`;
             pesan += `<Jam Pertama>\n`;
@@ -652,12 +630,12 @@ class PengirimPesan {
              */
             function pesanKelasPagi(jam) {
                 pesan1TSN(jam);
-                peasnMTP(jam);
+                pesanMTP(jam);
             }
         }
         function pesanSore() {
-            pesan += `Jadwal Madin Putra ${kap(namaHari)} Sore\n`;
-            pesan += `_Tanggal ${tanggal} ${kap(namaBulan)} ${tahun}_\n`;
+            pesan += `Jadwal Madin Putra ${kap(hari)} Sore\n`;
+            pesan += `_Tanggal ${tanggal} ${namaBulan} ${tahun}_\n`;
             pesan += "\n";
             pesan += `*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n`;
             pesan += `*Perizinan harus sesuai dengan prosedur yang telah ada.*\n`;
@@ -706,9 +684,9 @@ class PengirimPesan {
          * @date 29/11/2023
          * @param {1|2|3} jam
          */
-        function peasnMTP(jam) {
-            const guru = MTP[namaHari][jam - 1].guru;
-            const fan = MTP[namaHari][jam - 1].fan;
+        function pesanMTP(jam) {
+            const guru = MTP[hari][jam - 1].guru;
+            const fan = MTP[hari][jam - 1].fan;
             pesan += `Mutakhorijin Pagi\n`;
             pesan += `\tUst ${guru} # ${fan}\n`;
             pesan += "\n";
@@ -721,11 +699,26 @@ class PengirimPesan {
          * @param {1|2|3} jam
          */
         function pesanMTS(jam) {
-            const guru = MTS[namaHari][jam - 1].guru;
-            const fan = MTS[namaHari][jam - 1].fan;
+            const guru = MTS[hari][jam - 1].guru;
+            const fan = MTS[hari][jam - 1].fan;
             pesan += `Mutakhorijin Sore\n`;
             pesan += `\tUst ${guru} # ${fan}\n`;
             pesan += "\n";
+        }
+
+        /**
+         * @description
+         * @author LitFill
+         * @date 29/11/2023
+         * @param {{ [hurufKelas: string]: Kelas }} kelasData
+         * @param {1|2|3} jam
+         */
+        function addPesan(kelasData, jam) {
+            for (const kelas in kelasData) {
+                const guru = kelasData[kelas][hari][jam - 1].guru;
+                const fan = kelasData[kelas][hari][jam - 1].fan;
+                pesan += `\t${kelas}. Ust ${guru} # ${fan}\n`;
+            }
         }
 
         /**
@@ -792,8 +785,8 @@ class PengirimPesan {
          * @param {1|2|3} jam
          */
         function pesanIST(jam) {
-            const guru = IST[namaHari][jam - 1].guru;
-            const fan = IST[namaHari][jam - 1].fan;
+            const guru = IST[hari][jam - 1].guru;
+            const fan = IST[hari][jam - 1].fan;
             pesan += `Isti'dad\n`;
             pesan += `\tA. Ust ${guru} # ${fan}\n`;
             pesan += "\n";
@@ -870,20 +863,6 @@ class PengirimPesan {
             pesan += "\n";
         }
 
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {{ [hurufKelas: string]: Kelas }} kelasData
-         * @param {1|2|3} jam
-         */
-        function addPesan(kelasData, jam) {
-            for (const kelas in kelasData) {
-                const guru = kelasData[kelas][namaHari][jam - 1].guru;
-                const fan = kelasData[kelas][namaHari][jam - 1].fan;
-                pesan += `\t${kelas}. Ust ${guru} # ${fan}\n`;
-            }
-        }
         this.pagi = pesanPagi;
         this.sore = pesanSore;
         this.full = pesanFull;
@@ -901,7 +880,6 @@ class Perizinan {
     constructor(tanggalIzin, argumen) {
         const data = argumen.split("/");
         const objIzin = splitDash(data);
-        // console.log(value);
         this._dataPerizinan = objIzin;
 
         const tanggal = Number(tanggalIzin.slice(0, 2));
@@ -912,7 +890,7 @@ class Perizinan {
             weekday: "long",
             day: "numeric",
             month: "long",
-            yaer: "numeric",
+            year: "numeric",
         };
         this.tanggalf = this.tanggal.toLocaleDateString("id-ID", {
             weekday: "long",
@@ -1064,7 +1042,7 @@ const SRR = new Guru("Surur", nahwu);
 const USM = new Guru("Usman", nahwu);
 const ASY = new Guru("Asyrof", arab);
 const ALW = new Guru("Alawy", fiqih);
-// const JBR = new Guru("Jabir", nahwu);
+const JBR = new Guru("Jabir", nahwu);
 const RIF = new Guru("Rifqi", arab);
 const FRQ = new Guru("Faruq", arab);
 const WF = new Guru("Wafa", shorof);
@@ -1937,22 +1915,22 @@ A3C.tempatkan("sabtu", 2, ABD, ushul);
 A3C.tempatkan("sabtu", 3, HS, fiqih);
 
 /* Mutakhorijin Pagi */
-MTP.tempatkan("senin", 1, AZZ, nahwu);
+MTP.tempatkan("senin", 1, JBR, nahwu);
 MTP.tempatkan("senin", 2, SHF, fiqih);
 MTP.tempatkan("senin", 3, ABD, ushul);
-MTP.tempatkan("selasa", 1, AZZ, nahwu);
+MTP.tempatkan("selasa", 1, JBR, nahwu);
 MTP.tempatkan("selasa", 2, USY, arab);
 MTP.tempatkan("selasa", 3, USY, arab);
 MTP.tempatkan("rabu", 1, HLY, balaghoh);
 MTP.tempatkan("rabu", 2, HLY, balaghoh);
 MTP.tempatkan("rabu", 3, ABAH.madin, mustholah);
-MTP.tempatkan("kamis", 1, AZZ, nahwu);
+MTP.tempatkan("kamis", 1, JBR, nahwu);
 MTP.tempatkan("kamis", 2, SHF, fiqih);
 MTP.tempatkan("kamis", 3, RF, tasme);
 MTP.tempatkan("jumat", 1, SHF, fiqih);
 MTP.tempatkan("jumat", 2, SHF, fiqih);
 MTP.tempatkan("jumat", 3, RF, tasme);
-MTP.tempatkan("sabtu", 1, AZZ, nahwu);
+MTP.tempatkan("sabtu", 1, JBR, nahwu);
 MTP.tempatkan("sabtu", 2, HLY, balaghoh);
 MTP.tempatkan("sabtu", 3, USY, arab);
 
