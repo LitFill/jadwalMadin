@@ -43,11 +43,9 @@ class Guru {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.nama) {
                             console.log(
-                                `Ust. ${this.nama} mengajar kelas ${
-                                    kelas.nama
-                                } fan ${kelas[hari][i].fan} di hari ${
-                                    kelas[hari].nama
-                                } jam ke-${i + 1}.`
+                                `Ust. ${this.nama} mengajar kelas ${kelas.nama} fan ${
+                                    kelas[hari][i].fan
+                                } di hari ${kelas[hari].nama} jam ke-${i + 1}.`
                             );
                         }
                     }
@@ -60,9 +58,7 @@ class Guru {
      * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
      * @returns {{[jamKe: string]: string}|{}}
      */
-    jadwalObj(
-        namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]
-    ) {
+    jadwalObj(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
         /** @type {{[jamKe: string]: string}|{}} */
         const jadwalMengajar = {};
         listKelas.forEach((kelas) => {
@@ -265,9 +261,9 @@ class Abah {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.madin.nama) {
                             console.log(
-                                `Abah mucal kelas ${kelas.nama} fan ${
-                                    kelas[hari][i].fan
-                                } di hari ${kelas[hari].nama} jam ke-${i + 1}.`
+                                `Abah mucal kelas ${kelas.nama} fan ${kelas[hari][i].fan} di hari ${
+                                    kelas[hari].nama
+                                } jam ke-${i + 1}.`
                             );
                         }
                     }
@@ -337,9 +333,7 @@ class Kelas {
                         // @ts-ignore
                         `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${
                             i + 1
-                        } diajar oleh Ust. ${this[hari][i].guru} fan ${
-                            this[hari][i].fan
-                        }.`
+                        } diajar oleh Ust. ${this[hari][i].guru} fan ${this[hari][i].fan}.`
                     );
                 }
                 // console.log("\n");
@@ -508,11 +502,11 @@ class Hari {
                     if (kelas[hari].nama === namaHari) {
                         for (let i = 0; i < 3; i++) {
                             console.log(
-                                `Di hari ${kelas[hari].nama} jam ke-${
-                                    i + 1
-                                } kelas ${kelas.nama} diajar oleh Ust. ${
-                                    kelas[hari][i].guru
-                                } fan ${kelas[hari][i].fan}.`
+                                `Di hari ${kelas[hari].nama} jam ke-${i + 1} kelas ${
+                                    kelas.nama
+                                } diajar oleh Ust. ${kelas[hari][i].guru} fan ${
+                                    kelas[hari][i].fan
+                                }.`
                             );
                         }
                     }
@@ -595,15 +589,7 @@ class PengirimPesan {
         const tahun = Number(strTanggal.slice(4, 6)) + 2000;
         // console.log(`tanggal ${tanggal}, bulan ${bulan}.`);
         const tanggalPesan = new Date(tahun, bulan - 1, tanggal);
-        const hariSeminggu = [
-            "ahad",
-            "senin",
-            "selasa",
-            "rabu",
-            "kamis",
-            "jumat",
-            "sabtu",
-        ];
+        const hariSeminggu = ["ahad", "senin", "selasa", "rabu", "kamis", "jumat", "sabtu"];
         const hari = tanggalPesan.getDay();
         const namaHari = hariSeminggu[hari];
         const bulanSetahun = [
@@ -651,7 +637,6 @@ class PengirimPesan {
              * @param {1|2|3} jam
              */
             function pesanKelasPagi(jam) {
-                pesan1TSN(jam);
                 peasnMTP(jam);
             }
         }
@@ -685,6 +670,7 @@ class PengirimPesan {
              * @param {1|2|3} jam
              */
             function pesanKelasSore(jam) {
+                pesan1TSN(jam);
                 pesan2TSN(jam);
                 pesan3TSN(jam);
                 pesanIST(jam);
@@ -698,6 +684,13 @@ class PengirimPesan {
             pesanPagi();
             console.log("---Pesan Kedua---\n");
             pesanSore();
+        }
+
+        function pesanBaru() {
+            pesan += `Jadwal Madin Putra ${kap(namaHari)}\n`;
+            pesan += `_Tanggal ${tanggal} ${kap(namaBulan)} ${tahun}_\n\n`;
+            pesan += "*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*";
+            pesan += "*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n";
         }
 
         /**
@@ -1083,17 +1076,14 @@ const listKelas = [];
 
 // Tsanawiyah 1-A sampai 1-G
 for (let i = "A".charCodeAt(0); i <= "G".charCodeAt(0); i++) {
-    const kelas = new Kelas(`Tsanawiyah 1-${String.fromCharCode(i)}`, "pagi");
+    const kelas = new Kelas(`Tsanawiyah 1-${String.fromCharCode(i)}`, "sore");
     listKelas.push(kelas);
 }
 
 // Tsanawiyah 2-A sampai 2-J dan Tsanawiyah 3-A sampai 3-J
 for (let j = 2; j <= 3; j++) {
     for (let i = "A".charCodeAt(0); i <= "J".charCodeAt(0); i++) {
-        const kelas = new Kelas(
-            `Tsanawiyah ${j}-${String.fromCharCode(i)}`,
-            "sore"
-        );
+        const kelas = new Kelas(`Tsanawiyah ${j}-${String.fromCharCode(i)}`, "sore");
         listKelas.push(kelas);
     }
 }
@@ -1107,10 +1097,7 @@ for (let i = "A".charCodeAt(0); i <= "F".charCodeAt(0); i++) {
 // Aliyah 2-A sampai 2-C dan Aliyah 3-A sampai 3-C
 for (let j = 2; j <= 3; j++) {
     for (let i = "A".charCodeAt(0); i <= "C".charCodeAt(0); i++) {
-        const kelas = new Kelas(
-            `Aliyah ${j}-${String.fromCharCode(i)}`,
-            "sore"
-        );
+        const kelas = new Kelas(`Aliyah ${j}-${String.fromCharCode(i)}`, "sore");
         listKelas.push(kelas);
     }
 }
@@ -2036,18 +2023,14 @@ for (let i = 0; i < args.length; i++) {
 }
 
 if (command.version) {
-    console.log(
-        "aplikasi Jadwal versi 1.1.\ndibuat oleh pemegang hak cipta: LitFill.\n"
-    );
+    console.log("aplikasi Jadwal versi 1.1.\ndibuat oleh pemegang hak cipta: LitFill.\n");
 }
 
 if (command.jadwal) {
     if (command.guru) {
         if (command.hari) {
             command.guru.forEach((kodeGuru) => {
-                Guru.fromString(kodeGuru.toString())?.jadwal(
-                    command.hari.toLocaleString()
-                );
+                Guru.fromString(kodeGuru.toString())?.jadwal(command.hari.toLocaleString());
             });
         } else {
             command.guru.forEach((kodeGuru) => {
@@ -2057,9 +2040,7 @@ if (command.jadwal) {
     } else if (command.kelas) {
         if (command.hari) {
             command.kelas.forEach((kodeKelas) => {
-                Kelas.fromString(kodeKelas.toString())?.jadwal(
-                    command.hari.toLocaleString()
-                );
+                Kelas.fromString(kodeKelas.toString())?.jadwal(command.hari.toLocaleString());
                 // console.log("kelas:", kodeKelas, "hari", command.hari);
             });
         } else {
@@ -2111,10 +2092,7 @@ if (command.pesanIzin) {
     //     } else noFlag("--guru");
     // } else noFlag("--tanggal");
     if (command.data) {
-        const izin = new Perizinan(
-            command.pesanIzin.toString(),
-            command.data.toString()
-        );
+        const izin = new Perizinan(command.pesanIzin.toString(), command.data.toString());
         izin.kirimPesan();
         // console.log(izin.dataPerizinan);
     }
@@ -2127,9 +2105,7 @@ if (command.pesanIzin) {
  * @param {string} namaFlag
  */
 function noFlag(namaFlag) {
-    console.error(
-        `ERROR: Tolong masukkan flag ${namaFlag} beserta valuenya.\n`
-    );
+    console.error(`ERROR: Tolong masukkan flag ${namaFlag} beserta valuenya.\n`);
 }
 
 // }
