@@ -1,7 +1,6 @@
 // @ts-check
 "use strict";
-// import fs from "fs";
-// const fs = require("fs");
+const NAMA_HARI = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"];
 
 /**
  * Mewakili seorang guru.
@@ -34,9 +33,9 @@ class Guru {
 
     /**
      * Menampilkan jadwal mengajar guru.
-     * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
+     * @param {string[]|string} [namaHari=NAMA_HARI] - Nama hari dalam seminggu.
      */
-    jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
+    jadwal(namaHari = NAMA_HARI) {
         listKelas.forEach((kelas) => {
             for (let hari in kelas) {
                 if (namaHari.includes(hari)) {
@@ -57,12 +56,10 @@ class Guru {
     }
     /**
      * Menampilkan jadwal mengajar guru.
-     * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
+     * @param {string[]|string} [namaHari = NAMA_HARI] - Nama hari dalam seminggu.
      * @returns {{[jamKe: string]: string}|{}}
      */
-    jadwalObj(
-        namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]
-    ) {
+    jadwalObj(namaHari = NAMA_HARI) {
         /** @type {{[jamKe: string]: string}|{}} */
         const jadwalMengajar = {};
         listKelas.forEach((kelas) => {
@@ -80,171 +77,95 @@ class Guru {
     }
 
     /**
-     * @description mengambil string kode guru dan mengembalikan instansi kelas `Guru`
+     * Metode statis ini mengambil string kode guru dan mengembalikan instansi kelas `Guru`.
+     *
+     * @param {string} kodeGuru - Kode guru yang akan dicari.
+     * @returns {Guru|null} - Instansi kelas `Guru` jika ditemukan, atau `null` jika tidak.
+     * @memberof Guru
      * @author LitFill
      * @date 06/12/2023
-     * @static
-     * @param {string} kodeGuru
-     * @returns {Guru|null}
-     * @memberof Hari
      */
     static fromString(kodeGuru) {
-        switch (kodeGuru) {
-            case "ABAH":
-                return ABAH.madin;
-            case "ASP":
-                return ASP;
-            case "MNR":
-                return MNR;
-            case "USY":
-                return USY;
-            case "MNS":
-                return MNS;
-            case "HMD":
-                return HMD;
-            case "RF":
-                return RF;
-            case "BCH":
-                return BCH;
-            case "HFD":
-                return HFD;
-            case "GFR":
-                return GFR;
-            case "IBR":
-                return IBR;
-            case "RHL":
-                return RHL;
-            case "UTJ":
-                return UTJ;
-            case "MIS":
-                return MIS;
-            case "MRJ":
-                return MRJ;
-            case "MSH":
-                return MSH;
-            case "MST":
-                return MST;
-            case "SHF":
-                return SHF;
-            case "FDL":
-                return FDL;
-            case "IDT":
-                return IDT;
-            case "IDM":
-                return IDM;
-            case "HLY":
-                return HLY;
-            case "UHS":
-                return UHS;
-            case "UHN":
-                return UHN;
-            case "HR":
-                return HR;
-            case "IDS":
-                return IDS;
-            case "ADN":
-                return ADN;
-            case "YHY":
-                return YHY;
-            case "BDL":
-                return BDL;
-            case "SLD":
-                return SLD;
-            case "LSN":
-                return LSN;
-            case "SDL":
-                return SDL;
-            case "UMM":
-                return UMM;
-            case "FRZ":
-                return FRZ;
-            case "AFF":
-                return AFF;
-            case "MSR":
-                return MSR;
-            case "DMN":
-                return DMN;
-            case "ST":
-                return ST;
-            case "FHM":
-                return FHM;
-            case "URB":
-                return URB;
-            case "SDQ":
-                return SDQ;
-            case "HLD":
-                return HLD;
-            case "IRF":
-                return IRF;
-            case "ASR":
-                return ASR;
-            case "UMR":
-                return UMR;
-            case "KHL":
-                return KHL;
-            case "SBH":
-                return SBH;
-            case "FTN":
-                return FTN;
-            case "YDN":
-                return YDN;
-            case "SLH":
-                return SLH;
-            case "FQH":
-                return FQH;
-            case "LBB":
-                return LBB;
-            case "MNJ":
-                return MNJ;
-            case "MRW":
-                return MRW;
-            case "MZN":
-                return MZN;
-            case "DRW":
-                return DRW;
-            case "WHB":
-                return WHB;
-            case "ABD":
-                return ABD;
-            case "ANM":
-                return ANM;
-            case "BGS":
-                return BGS;
-            case "NZR":
-                return NZR;
-            case "FRH":
-                return FRH;
-            case "FT":
-                return FT;
-            case "SRR":
-                return SRR;
-            case "USM":
-                return USM;
-            case "ASY":
-                return ASY;
-            case "ALW":
-                return ALW;
-            case "JBR":
-                return JBR;
-            case "RIF":
-                return RIF;
-            case "FRQ":
-                return FRQ;
-            case "WF":
-                return WF;
-            case "AZZ":
-                return AZZ;
-            case "LTF":
-                return LTF;
-            case "UL":
-                return UL;
-            case "HS":
-                return HS;
-            case "_ust":
-                return _ust;
-            default:
-                return null;
-        }
+        const guruMap = {
+            ABAH: ABAH.madin,
+            ASP: ASP,
+            MNR: MNR,
+            USY: USY,
+            MNS: MNS,
+            HMD: HMD,
+            RF: RF,
+            BCH: BCH,
+            HFD: HFD,
+            GFR: GFR,
+            IBR: IBR,
+            RHL: RHL,
+            UTJ: UTJ,
+            MIS: MIS,
+            MRJ: MRJ,
+            MSH: MSH,
+            MST: MST,
+            SHF: SHF,
+            FDL: FDL,
+            IDT: IDT,
+            IDM: IDM,
+            HLY: HLY,
+            UHS: UHS,
+            UHN: UHN,
+            HR: HR,
+            IDS: IDS,
+            ADN: ADN,
+            YHY: YHY,
+            BDL: BDL,
+            SLD: SLD,
+            LSN: LSN,
+            SDL: SDL,
+            UMM: UMM,
+            FRZ: FRZ,
+            AFF: AFF,
+            MSR: MSR,
+            DMN: DMN,
+            ST: ST,
+            FHM: FHM,
+            URB: URB,
+            SDQ: SDQ,
+            HLD: HLD,
+            IRF: IRF,
+            ASR: ASR,
+            UMR: UMR,
+            KHL: KHL,
+            SBH: SBH,
+            FTN: FTN,
+            YDN: YDN,
+            SLH: SLH,
+            FQH: FQH,
+            LBB: LBB,
+            MNJ: MNJ,
+            MRW: MRW,
+            MZN: MZN,
+            DRW: DRW,
+            WHB: WHB,
+            ABD: ABD,
+            ANM: ANM,
+            BGS: BGS,
+            NZR: NZR,
+            FRH: FRH,
+            FT: FT,
+            SRR: SRR,
+            USM: USM,
+            ASY: ASY,
+            ALW: ALW,
+            JBR: JBR,
+            RIF: RIF,
+            FRQ: FRQ,
+            WF: WF,
+            AZZ: AZZ,
+            LTF: LTF,
+            UL: UL,
+            HS: HS,
+            _ust: _ust,
+        };
+
+        return guruMap[kodeGuru] || null;
     }
 }
 
@@ -256,9 +177,9 @@ class Abah {
 
     /**
      * Menampilkan jadwal mengajar guru.
-     * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]] - Nama hari dalam seminggu.
+     * @param {string[]|string} [namaHari = NAMA_HARI] - Nama hari dalam seminggu.
      */
-    jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
+    jadwal(namaHari = NAMA_HARI) {
         listKelas.forEach((kelas) => {
             for (let hari in kelas) {
                 if (namaHari.includes(hari)) {
@@ -276,12 +197,6 @@ class Abah {
         });
     }
 }
-
-// class Syaikh {
-//     constructor(kode, nama, fan) {
-//         this[kode] = new Guru(nama, fan);
-//     }
-// }
 
 /**
  * Mewakili sebuah kelas.
@@ -326,10 +241,10 @@ class Kelas {
      * @description log jadwal sebuah kelas dalam suatu hari
      * @author LitFill
      * @date 21/11/2023
-     * @param {string[]|string} [namaHari=["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]]
+     * @param {string[]|string} [namaHari = NAMA_HARI] - Nama hari dalam seminggu.
      * @memberof Kelas
      */
-    jadwal(namaHari = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu"]) {
+    jadwal(namaHari = NAMA_HARI) {
         for (let hari in this) {
             if (namaHari.includes(hari)) {
                 for (let i = 0; i < 3; i++) {
@@ -374,95 +289,52 @@ class Kelas {
      * @memberof Kelas
      */
     static fromString(kodeKelas) {
-        // return listKelas.find((kelas) => kelas.nama === kodeKelas);
-        switch (kodeKelas) {
-            case "T1A":
-                return T1A;
-            case "T1B":
-                return T1B;
-            case "T1C":
-                return T1C;
-            case "T1D":
-                return T1D;
-            case "T1E":
-                return T1E;
-            case "T1F":
-                return T1F;
-            case "T1G":
-                return T1G;
-            case "T2A":
-                return T2A;
-            case "T2B":
-                return T2B;
-            case "T2C":
-                return T2C;
-            case "T2D":
-                return T2D;
-            case "T2E":
-                return T2E;
-            case "T2F":
-                return T2F;
-            case "T2G":
-                return T2G;
-            case "T2H":
-                return T2H;
-            case "T2I":
-                return T2I;
-            case "T2J":
-                return T2J;
-            case "T3A":
-                return T3A;
-            case "T3B":
-                return T3B;
-            case "T3C":
-                return T3C;
-            case "T3D":
-                return T3D;
-            case "T3E":
-                return T3E;
-            case "T3F":
-                return T3F;
-            case "T3G":
-                return T3G;
-            case "T3H":
-                return T3H;
-            case "T3I":
-                return T3I;
-            case "T3J":
-                return T3J;
-            case "A1A":
-                return A1A;
-            case "A1B":
-                return A1B;
-            case "A1C":
-                return A1C;
-            case "A1D":
-                return A1D;
-            case "A1E":
-                return A1E;
-            case "A1F":
-                return A1F;
-            case "A2A":
-                return A2A;
-            case "A2B":
-                return A2B;
-            case "A2C":
-                return A2C;
-            case "A3A":
-                return A3A;
-            case "A3B":
-                return A3B;
-            case "A3C":
-                return A3C;
-            case "IST":
-                return IST;
-            case "MTP":
-                return MTP;
-            case "MTS":
-                return MTS;
-            default:
-                return null;
-        }
+        const classMap = {
+            T1A: T1A,
+            T1B: T1B,
+            T1C: T1C,
+            T1D: T1D,
+            T1E: T1E,
+            T1F: T1F,
+            T1G: T1G,
+            T2A: T2A,
+            T2B: T2B,
+            T2C: T2C,
+            T2D: T2D,
+            T2E: T2E,
+            T2F: T2F,
+            T2G: T2G,
+            T2H: T2H,
+            T2I: T2I,
+            T2J: T2J,
+            T3A: T3A,
+            T3B: T3B,
+            T3C: T3C,
+            T3D: T3D,
+            T3E: T3E,
+            T3F: T3F,
+            T3G: T3G,
+            T3H: T3H,
+            T3I: T3I,
+            T3J: T3J,
+            A1A: A1A,
+            A1B: A1B,
+            A1C: A1C,
+            A1D: A1D,
+            A1E: A1E,
+            A1F: A1F,
+            A2A: A2A,
+            A2B: A2B,
+            A2C: A2C,
+            A3A: A3A,
+            A3B: A3B,
+            A3C: A3C,
+            IST: IST,
+            MTP: MTP,
+            MTS: MTS,
+        };
+
+        return classMap[kodeKelas] || null;
     }
 }
 
@@ -485,9 +357,6 @@ class Hari {
         this[0] = { guru: "", fan: "" };
         this[1] = { guru: "", fan: "" };
         this[2] = { guru: "", fan: "" };
-        // for (let i = 0; i < 3; i++) {
-        //     this[i] = { guru: "", fan: "" };
-        // }
     }
 
     static hello() {
@@ -545,6 +414,48 @@ class Fan {
     constructor(nama) {
         this.nama = nama;
     }
+
+    getNama() {
+        return this.nama;
+    }
+
+    toString() {
+        return `Fan: ${this.nama}`;
+    }
+
+    static getAllFans() {
+        return [
+            Fan.Ilal,
+            Fan.Mustholah,
+            Fan.Balaghoh,
+            Fan.Ushul,
+            Fan.Arab,
+            Fan.Miftah,
+            Fan.Shorof,
+            Fan.Tajwid,
+            Fan.Tauhid,
+            Fan.Akhlaq,
+            Fan.Tasme,
+            Fan.Nahwu,
+            Fan.Fiqih,
+            Fan.Imla,
+            Fan.FanKosong,
+        ];
+    }
+
+    /**
+     * Finds a fan by their name.
+     *
+     * @param {string} nama - The name of the fan.
+     * @return {Fan | undefined} The fan object if found, otherwise undefined.
+     */
+    static getFanByNama(nama) {
+        return Fan.getAllFans().find((fan) => fan.getNama() === nama);
+    }
+
+    static getFanCount() {
+        return Fan.getAllFans().length;
+    }
 }
 
 // TODO
@@ -584,290 +495,407 @@ function cekDupeArray(array) {
 
 class PengirimPesan {
     /**
+     * @type {{day: 'numeric', month: 'long', year: 'numeric'}}
+     */
+    static TANGGAL_FULL_FORMAT = {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+    };
+    static JAM_PAGI = "08:15";
+    static JAM_SORE = "14:10";
+    static DURASI_JAM_PAGI = 55;
+    static DURASI_JAM_SORE_1 = 35;
+    static DURASI_JAM_SORE = 45;
+    static DURASI_ISTIRAHAT = 15;
+
+    /**
      * @description menampilkan log jadwal Madin di console
-     * @author LitFill
-     * @date 29/11/2023
      * @param {string} strTanggal
      */
     constructor(strTanggal) {
+        this.inisialisasiTanggal(strTanggal);
+        this.pesan = "";
+        this.hari = this.getHari();
+        this.namaBulan = this.getNamaBulan();
+        this.tanggalTerformat = this.tanggalPesan?.toLocaleDateString(
+            "id-ID",
+            PengirimPesan.TANGGAL_FULL_FORMAT
+        );
+    }
+
+    /**
+     * @description
+     * @param {string} strTanggal
+     * @memberof PengirimPesan
+     */
+    inisialisasiTanggal(strTanggal) {
         const tanggal = Number(strTanggal.slice(0, 2));
         const bulan = Number(strTanggal.slice(2, 4));
         const tahun = Number(strTanggal.slice(4, 6)) + 2000;
-        const tanggalPesan = new Date(tahun, bulan - 1, tanggal);
-        const hari = tanggalPesan
-            .toLocaleDateString("id-ID", { weekday: "long" })
-            .toLocaleLowerCase();
-        const namaBulan = tanggalPesan.toLocaleDateString("id-ID", {
-            month: "long",
-        });
-        let pesan = "";
-        function pesanPagi() {
-            pesan += `Jadwal Madin Putra ${kap(hari)} Pagi\n`;
-            pesan += `_Tanggal ${tanggal} ${namaBulan} ${tahun}_\n\n`;
-            pesan += `*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n`;
-            pesan += `*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n`;
-            pesan += `<Jam Pertama>\n`;
-            pesan += `*Waktu: 08.15 - 09.10*\n`;
-            pesan += "\n";
-            pesanKelasPagi(1);
-            pesan += `<Jam Kedua>\n`;
-            pesan += `*Waktu: 09.10 - 10.05*\n`;
-            pesan += "\n";
-            pesanKelasPagi(2);
-            pesan += `<Jam Ketiga>\n`;
-            pesan += `*Waktu: 10.20 - 11.15\n`;
-            pesan += "\n";
-            pesanKelasPagi(3);
-            console.log(pesan);
-            pesan = "";
-            return;
+        this.tanggalPesan = new Date(tahun, bulan - 1, tanggal);
+    }
 
-            /**
-             * @description
-             * @author LitFill
-             * @date 29/11/2023
-             * @param {1|2|3} jam
-             */
-            function pesanKelasPagi(jam) {
-                pesan1TSN(jam);
-                pesanMTP(jam);
-            }
+    getHari() {
+        if (this.tanggalPesan) {
+            return this.tanggalPesan
+                .toLocaleDateString("id-ID", { weekday: "long" })
+                .toLocaleLowerCase();
+        } else {
+            throw new Error(
+                "Error: Tanggal harus diinisialisasi terlebih dahulu."
+            );
         }
-        function pesanSore() {
-            pesan += `Jadwal Madin Putra ${kap(hari)} Sore\n`;
-            pesan += `_Tanggal ${tanggal} ${namaBulan} ${tahun}_\n`;
-            pesan += "\n";
-            pesan += `*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n`;
-            pesan += `*Perizinan harus sesuai dengan prosedur yang telah ada.*\n`;
-            pesan += "\n";
-            pesan += `<Jam Pertama>\n`;
-            pesan += `*Waktu: 14.10 - 14.45*\n`;
-            pesan += "\n";
-            pesanKelasSore(1);
-            pesan += `<Jam Kedua>\n`;
-            pesan += `*Waktu: 14.45 - 15.30*\n`;
-            pesan += "\n";
-            pesanKelasSore(2);
-            pesan += `<Jam Ketiga>\n`;
-            pesan += `*Waktu: 15.30 - 16.15*\n`;
-            pesan += "\n";
-            pesanKelasSore(3);
-            console.log(pesan);
-            pesan = "";
-            return;
+    }
 
-            /**
-             * @description
-             * @author LitFill
-             * @date 29/11/2023
-             * @param {1|2|3} jam
-             */
-            function pesanKelasSore(jam) {
-                pesan2TSN(jam);
-                pesan3TSN(jam);
-                pesanIST(jam);
-                pesan1ALY(jam);
-                pesan2ALY(jam);
-                pesan3ALY(jam);
-                pesanMTS(jam);
-            }
+    getNamaBulan() {
+        if (this.tanggalPesan) {
+            return this.tanggalPesan.toLocaleDateString("id-ID", {
+                month: "long",
+            });
+        } else {
+            throw new Error(
+                "Error: Tanggal harus diinisialisasi terlebih dahulu."
+            );
         }
-        function pesanFull() {
-            pesanPagi();
-            console.log("---Pesan Kedua---\n");
-            pesanSore();
+    }
+
+    pagi() {
+        this.logPesan("pagi");
+    }
+
+    sore() {
+        this.logPesan("sore");
+    }
+
+    full() {
+        this.pagi();
+        console.log("---Pesan Kedua---");
+        this.sore();
+    }
+
+    /**
+     * @description
+     * @param {'pagi'|'sore'} waktuKBM
+     * @memberof PengirimPesan
+     */
+    logPesan(waktuKBM) {
+        this.pesan += "Jadwal Madin Putra ";
+        this.pesan += kap(this.hari ? this.hari : "");
+        this.pesan += " ";
+        this.pesan += kap(waktuKBM);
+        this.pesan += "\n_Tanggal ";
+        this.pesan += this.tanggalTerformat;
+        this.pesan += "_\n\n";
+        this.pesan +=
+            "*(Guru Fan wajib mengisi jurnal Madin dan mengabsen kelas)*\n";
+        this.pesan +=
+            "*Perizinan harus sesuai dengan prosedur yang telah ada.*\n\n";
+        for (let i = 1; i <= 3; i++) {
+            this.pesan += `<Jam ${this.labelJam(i)}>\n`;
+            this.pesan += `*Waktu: ${this.labelWaktu(waktuKBM, i)}*`;
+            this.pesan += "\n\n";
+            this.pesanKelas(waktuKBM, i === 1 ? 1 : i === 2 ? 2 : 3);
         }
 
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesanMTP(jam) {
-            const guru = MTP[hari][jam - 1].guru;
-            const fan = MTP[hari][jam - 1].fan;
-            pesan += `Mutakhorijin Pagi\n`;
-            pesan += `\tUst ${guru} # ${fan}\n`;
-            pesan += "\n";
+        console.log(this.pesan);
+        this.pesan = "";
+    }
+
+    /**
+     * @description
+     * @param {'pagi'|'sore'} waktuKBM
+     * @param {1|2|3} jam
+     * @memberof PengirimPesan
+     */
+    pesanKelas(waktuKBM, jam) {
+        if (waktuKBM == "pagi") {
+            this.pesanMTP(jam);
+        } else if (waktuKBM == "sore") {
+            this.pesan1TSN(jam);
+            this.pesan2TSN(jam);
+            this.pesan3TSN(jam);
+            this.pesanIST(jam);
+            this.pesan1ALY(jam);
+            this.pesan2ALY(jam);
+            this.pesan3ALY(jam);
+            this.pesanMTS(jam);
+        } else {
+            throw new Error("Error: Waktu harus 'pagi' atau 'sore'.");
         }
+    }
 
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesanMTS(jam) {
-            const guru = MTS[hari][jam - 1].guru;
-            const fan = MTS[hari][jam - 1].fan;
-            pesan += `Mutakhorijin Sore\n`;
-            pesan += `\tUst ${guru} # ${fan}\n`;
-            pesan += "\n";
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesanMTP(jam) {
+        const guru = MTP[this.hari][jam - 1].guru;
+        const fan = MTP[this.hari][jam - 1].fan;
+        this.pesan += `Mutakhorijin Pagi\n`;
+        this.pesan += `\tUst ${guru} # ${fan}\n`;
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesanMTS(jam) {
+        const guru = MTS[this.hari][jam - 1].guru;
+        const fan = MTS[this.hari][jam - 1].fan;
+        this.pesan += `Mutakhorijin Sore\n`;
+        this.pesan += `\tUst ${guru} # ${fan}\n`;
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesanIST(jam) {
+        const guru = IST[this.hari][jam - 1].guru;
+        const fan = IST[this.hari][jam - 1].fan;
+        this.pesan += `Isti'dad\n`;
+        this.pesan += `\tA. Ust ${guru} # ${fan}\n`;
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesan3ALY(jam) {
+        const kelasData = {
+            A: A3A,
+            B: A3B,
+            C: A3C,
+        };
+
+        this.pesan += `3 Aliyah\n`;
+        this.addPesan(kelasData, jam);
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesan2ALY(jam) {
+        const kelasData = {
+            A: A2A,
+            B: A2B,
+            C: A2C,
+        };
+
+        this.pesan += `2 Aliyah\n`;
+        this.addPesan(kelasData, jam);
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesan1ALY(jam) {
+        const kelasData = {
+            A: A1A,
+            B: A1B,
+            C: A1C,
+            D: A1D,
+            E: A1E,
+            F: A1F,
+        };
+
+        this.pesan += `1 Aliyah\n`;
+        this.addPesan(kelasData, jam);
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesan3TSN(jam) {
+        const kelasData = {
+            A: T3A,
+            B: T3B,
+            C: T3C,
+            E: T3E,
+            F: T3F,
+            G: T3G,
+            H: T3H,
+            I: T3I,
+            J: T3J,
+        };
+
+        this.pesan += `3 Tsanawiyyah\n`;
+        this.addPesan(kelasData, jam);
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesan2TSN(jam) {
+        const kelasData = {
+            A: T2A,
+            B: T2B,
+            C: T2C,
+            D: T2D,
+            E: T2E,
+            F: T2F,
+            G: T2G,
+            H: T2H,
+            I: T2I,
+            J: T2J,
+        };
+
+        this.pesan += `2 Tsanawiyyah\n`;
+        this.addPesan(kelasData, jam);
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {1|2|3} jam
+     */
+    pesan1TSN(jam) {
+        const kelasData = {
+            A: T1A,
+            B: T1B,
+            C: T1C,
+            D: T1D,
+            E: T1E,
+            F: T1F,
+            G: T1G,
+        };
+
+        this.pesan += `1 Tsanawiyyah\n`;
+        this.addPesan(kelasData, jam);
+        this.pesan += "\n";
+    }
+
+    /**
+     * @description
+     * @param {{ [hurufKelas: string]: Kelas }} kelasData
+     * @param {1|2|3} jam
+     */
+    addPesan(kelasData, jam) {
+        for (const kelas in kelasData) {
+            const guru = kelasData[kelas][this.hari][jam - 1].guru;
+            const fan = kelasData[kelas][this.hari][jam - 1].fan;
+            this.pesan += `\t${kelas}. Ust ${guru} # ${fan}\n`;
         }
+    }
 
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {{ [hurufKelas: string]: Kelas }} kelasData
-         * @param {1|2|3} jam
-         */
-        function addPesan(kelasData, jam) {
-            for (const kelas in kelasData) {
-                const guru = kelasData[kelas][hari][jam - 1].guru;
-                const fan = kelasData[kelas][hari][jam - 1].fan;
-                pesan += `\t${kelas}. Ust ${guru} # ${fan}\n`;
-            }
+    /**
+     * @description
+     * @param {Number|1|2|3} jam
+     * @return {"Pertama"|"Kedua"|"Ketiga"}
+     * @memberof PengirimPesan
+     */
+    labelJam(jam) {
+        return jam == 1 ? "Pertama" : jam == 2 ? "Kedua" : "Ketiga";
+    }
+
+    /**
+     * @description
+     * @param {'pagi'|'sore'} waktuKBM
+     * @param {Number|1|2|3} jam
+     * @return {string}
+     * @memberof PengirimPesan
+     */
+    labelWaktu(waktuKBM, jam) {
+        if (waktuKBM == "pagi") {
+            return this.labelWaktuPagi(jam);
+        } else if (waktuKBM == "sore") {
+            return this.labelWaktuSore(jam);
+        } else {
+            throw "Error: Waktu harus 'pagi' atau 'sore'";
         }
+    }
 
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesan3ALY(jam) {
-            const kelasData = {
-                A: A3A,
-                B: A3B,
-                C: A3C,
-            };
+    /**
+     * @description
+     * @param {Number|1|2|3} jam
+     * @return {string}
+     * @memberof PengirimPesan
+     */
+    labelWaktuPagi(jam) {
+        const waktuAwal =
+            jam === 1
+                ? PengirimPesan.JAM_PAGI
+                : jam === 2
+                ? this.tambahMenit(
+                      PengirimPesan.JAM_PAGI,
+                      PengirimPesan.DURASI_JAM_PAGI
+                  )
+                : this.tambahMenit(
+                      PengirimPesan.JAM_PAGI,
+                      2 * PengirimPesan.DURASI_JAM_PAGI +
+                          PengirimPesan.DURASI_ISTIRAHAT
+                  );
+        const waktuAkhir = this.tambahMenit(
+            waktuAwal,
+            PengirimPesan.DURASI_JAM_PAGI
+        );
+        return `${waktuAwal} - ${waktuAkhir}`;
+    }
 
-            pesan += `3 Aliyah\n`;
-            addPesan(kelasData, jam);
-            pesan += "\n";
-        }
+    /**
+     * @param {Number|1|2|3} jam
+     * @returns
+     */
+    labelWaktuSore(jam) {
+        const waktuAwal =
+            jam === 1
+                ? PengirimPesan.JAM_SORE
+                : jam === 2
+                ? this.tambahMenit(
+                      PengirimPesan.JAM_SORE,
+                      PengirimPesan.DURASI_JAM_SORE_1
+                  )
+                : this.tambahMenit(
+                      PengirimPesan.JAM_SORE,
+                      PengirimPesan.DURASI_JAM_SORE_1 +
+                          PengirimPesan.DURASI_JAM_SORE
+                  );
+        const waktuAkhir = this.tambahMenit(
+            waktuAwal,
+            jam === 1
+                ? PengirimPesan.DURASI_JAM_SORE_1
+                : PengirimPesan.DURASI_JAM_SORE
+        );
+        return `${waktuAwal} - ${waktuAkhir}`;
+    }
 
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesan2ALY(jam) {
-            const kelasData = {
-                A: A2A,
-                B: A2B,
-                C: A2C,
-            };
+    /**
+     * @description
+     * @param {string} waktu
+     * @param {number} menit
+     * @returns {string}
+     * @memberof PengirimPesan
+     */
+    tambahMenit(waktu, menit) {
+        const [jamLama, menitLama] = waktu.split(":").map(Number);
+        const menitBaru = (menitLama + menit) % 60;
+        const jamBaru = jamLama + Math.floor((menitLama + menit) / 60);
+        return `${this.pad(jamBaru)}:${this.pad(menitBaru)}`;
+    }
 
-            pesan += `2 Aliyah\n`;
-            addPesan(kelasData, jam);
-            pesan += "\n";
-        }
-
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesan1ALY(jam) {
-            const kelasData = {
-                A: A1A,
-                B: A1B,
-                C: A1C,
-                D: A1D,
-                E: A1E,
-                F: A1F,
-            };
-
-            pesan += `1 Aliyah\n`;
-            addPesan(kelasData, jam);
-            pesan += "\n";
-        }
-
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesanIST(jam) {
-            const guru = IST[hari][jam - 1].guru;
-            const fan = IST[hari][jam - 1].fan;
-            pesan += `Isti'dad\n`;
-            pesan += `\tA. Ust ${guru} # ${fan}\n`;
-            pesan += "\n";
-        }
-
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesan3TSN(jam) {
-            const kelasData = {
-                A: T3A,
-                B: T3B,
-                C: T3C,
-                E: T3E,
-                F: T3F,
-                G: T3G,
-                H: T3H,
-                I: T3I,
-                J: T3J,
-            };
-
-            pesan += `3 Tsanawiyyah\n`;
-            addPesan(kelasData, jam);
-            pesan += "\n";
-        }
-
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesan2TSN(jam) {
-            const kelasData = {
-                A: T2A,
-                B: T2B,
-                C: T2C,
-                D: T2D,
-                E: T2E,
-                F: T2F,
-                G: T2G,
-                H: T2H,
-                I: T2I,
-                J: T2J,
-            };
-
-            pesan += `2 Tsanawiyyah\n`;
-            addPesan(kelasData, jam);
-            pesan += "\n";
-        }
-
-        /**
-         * @description
-         * @author LitFill
-         * @date 29/11/2023
-         * @param {1|2|3} jam
-         */
-        function pesan1TSN(jam) {
-            const kelasData = {
-                A: T1A,
-                B: T1B,
-                C: T1C,
-                D: T1D,
-                E: T1E,
-                F: T1F,
-                G: T1G,
-            };
-
-            pesan += `1 Tsanawiyyah\n`;
-            addPesan(kelasData, jam);
-            pesan += "\n";
-        }
-
-        this.pagi = pesanPagi;
-        this.sore = pesanSore;
-        this.full = pesanFull;
+    /**
+     * @description
+     * @param {number} number
+     * @return {string}
+     * @memberof PengirimPesan
+     */
+    pad(number) {
+        return number.toString().padStart(2, "0");
     }
 }
+
 class Perizinan {
     /**
      * Creates an instance of Perizinan.
@@ -880,74 +908,64 @@ class Perizinan {
     constructor(tanggalIzin, argumen) {
         const data = argumen.split("/");
         const objIzin = splitDash(data);
-        this._dataPerizinan = objIzin;
+        this.dataPerizinan = objIzin;
 
         const tanggal = Number(tanggalIzin.slice(0, 2));
         const bulan = Number(tanggalIzin.slice(2, 4));
         const tahun = Number(tanggalIzin.slice(4, 6)) + 2000;
         this.tanggal = new Date(tahun, bulan - 1, tanggal);
+
+        /** @type {{ weekday: "long", day: "numeric", month: "long", year: "numeric" }} */
         const opsiFormat = {
             weekday: "long",
             day: "numeric",
             month: "long",
             year: "numeric",
         };
-        this.tanggalf = this.tanggal.toLocaleDateString("id-ID", {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-        });
-    }
-
-    get dataPerizinan() {
-        return this._dataPerizinan;
+        this.tanggalf = this.tanggal.toLocaleDateString("id-ID", opsiFormat);
     }
 
     kirimPesan() {
         let pesan = "";
         pesan += "*Konfirmasi Perizinan*\n";
-        pesan += "_Tanggal: ";
-        pesan += this.tanggalf;
-        pesan += "_\n\n";
-        pesan += this.formatPesan(this._dataPerizinan);
+        pesan += `_Tanggal: ${this.tanggalf}_\n\n`;
+        pesan += this.formatPesan(this.dataPerizinan);
 
         console.log(pesan);
     }
 
     /**
-     * @description
+     * @description - format pesan
      * @author LitFill
      * @date 06/12/2023
-     * @param {Array<{guru: string, sebab: string, jam: Array<boolean>}>} objIzin
-     * @returns {string}
+     * @param {Array<{guru: string, sebab: string, jam: Array<boolean>}>} objIzin - data perizinan
+     * @returns {string} - pesan
      * @memberof Perizinan
      */
     formatPesan(objIzin) {
         let pesan = "";
         objIzin.forEach((item, index) => {
             const guru = Guru.fromString(item.guru);
-            pesan += index + 1;
-            pesan += ". Ust ";
-            pesan += guru?.nama;
-            pesan += "\n\tAlasan: ";
-            pesan += kap(item.sebab);
-            pesan += "\n\tDetail Perizinan:\n";
+
+            pesan += `${index + 1}. Ust ${guru?.nama}\n`;
+            pesan += `\tAlasan: ${kap(item.sebab)}\n`;
+            pesan += "\tDetail Perizinan:\n";
+
             item.jam.forEach((j, i) => {
-                pesan += "\t - jam ";
-                pesan += i + 1;
+                pesan += `\t - jam ${i + 1}: `;
                 if (j) {
+                    /** @type {{ weekday: "long" }} */
+                    const formatTanggal = {
+                        weekday: "long",
+                    };
                     const hari = this.tanggal
-                        .toLocaleDateString("id-ID", {
-                            weekday: "long",
-                        })
+                        .toLocaleDateString("id-ID", formatTanggal)
                         .toLocaleLowerCase();
-                    // console.log(hari);
-                    pesan += ": ";
+
                     pesan += guru?.jadwalObj(hari)[`jam${i + 1}`] || "~";
                     pesan += "\n";
                 } else {
-                    pesan += ": ~\n";
+                    pesan += "~\n";
                 }
             });
             pesan += "\n";
@@ -1059,40 +1077,34 @@ const _ust = new Guru("-", _fan);
  */
 const listKelas = [];
 
-// Tsanawiyah 1-A sampai 1-G
-for (let i = "A".charCodeAt(0); i <= "G".charCodeAt(0); i++) {
-    const kelas = new Kelas(`Tsanawiyah 1-${String.fromCharCode(i)}`, "pagi");
-    listKelas.push(kelas);
-}
+/**
+ * Membuat serangkaian kelas berdasarkan awalan, awal, akhir, dan waktu yang diberikan.
+ *
+ * @param {string} awalan - Awalan untuk nama kelas. Contoh: "Tsanawiyah 1"
+ * @param {string} awal - Huruf awal untuk rentang kelas.
+ * @param {string} akhir - Huruf akhir untuk rentang kelas.
+ * @param {"pagi"|"sore"} [waktu = "sore"] - Waktu KBM kelas. Default: "sore"
+ * @return {void} Fungsi ini tidak mengembalikan nilai apapun.
+ */
+const buatKelas = (awalan, awal, akhir, waktu = "sore") => {
+    for (let i = awal.charCodeAt(0); i <= akhir.charCodeAt(0); i++) {
+        const kelas = new Kelas(`${awalan}-${String.fromCharCode(i)}`, waktu);
+        listKelas.push(kelas);
+    }
+};
 
+// Tsanawiyah 1-A sampai 1-G
+buatKelas("Tsanawiyah 1", "A", "G");
 // Tsanawiyah 2-A sampai 2-J dan Tsanawiyah 3-A sampai 3-J
 for (let j = 2; j <= 3; j++) {
-    for (let i = "A".charCodeAt(0); i <= "J".charCodeAt(0); i++) {
-        const kelas = new Kelas(
-            `Tsanawiyah ${j}-${String.fromCharCode(i)}`,
-            "sore"
-        );
-        listKelas.push(kelas);
-    }
+    buatKelas(`Tsanawiyah ${j}`, "A", "J");
 }
-
 // Aliyah 1-A sampai 1-F
-for (let i = "A".charCodeAt(0); i <= "F".charCodeAt(0); i++) {
-    const kelas = new Kelas(`Aliyah 1-${String.fromCharCode(i)}`, "sore");
-    listKelas.push(kelas);
-}
-
+buatKelas("Aliyah 1", "A", "F");
 // Aliyah 2-A sampai 2-C dan Aliyah 3-A sampai 3-C
 for (let j = 2; j <= 3; j++) {
-    for (let i = "A".charCodeAt(0); i <= "C".charCodeAt(0); i++) {
-        const kelas = new Kelas(
-            `Aliyah ${j}-${String.fromCharCode(i)}`,
-            "sore"
-        );
-        listKelas.push(kelas);
-    }
+    buatKelas(`Aliyah ${j}`, "A", "C");
 }
-
 // Isti'dad dan Mutakhorijin
 listKelas.push(new Kelas("Isti'dad", "sore"));
 listKelas.push(new Kelas("Mutakhorijin Pagi", "pagi"));
@@ -1113,855 +1125,840 @@ const [
 // kelas kosong
 Kelas.kelasKosong(T3D);
 
-/* Penempatan Guru ke dalam Kelas sesuai Jadwal */
-/* Tsanawy 1-A */
-T1A.tempatkan("senin", 1, NZR, nahwu);
-T1A.tempatkan("senin", 2, MNS, shorof);
-T1A.tempatkan("senin", 3, FDL, imla);
-T1A.tempatkan("selasa", 1, FRZ, arab);
-T1A.tempatkan("selasa", 2, GFR, fiqih);
-T1A.tempatkan("selasa", 3, MNS, shorof);
-T1A.tempatkan("rabu", 1, FRZ, arab);
-T1A.tempatkan("rabu", 2, ASR, tajwid);
-T1A.tempatkan("rabu", 3, NZR, nahwu);
-T1A.tempatkan("kamis", 1, NZR, nahwu);
-T1A.tempatkan("kamis", 2, FRZ, arab);
-T1A.tempatkan("kamis", 3, GFR, fiqih);
-T1A.tempatkan("jumat", 1, LSN, tauhid);
-T1A.tempatkan("jumat", 2, NZR, nahwu);
-T1A.tempatkan("jumat", 3, YDN, akhlaq);
-T1A.tempatkan("sabtu", 1, FRZ, arab);
-T1A.tempatkan("sabtu", 2, LSN, tauhid);
-T1A.tempatkan("sabtu", 3, GFR, fiqih);
+/** @type {{ [kelas: string]: [Guru, Fan][] }} */
+const JADWAL_MADIN = {
+    T1A: [
+        [MNS, shorof],
+        [FRZ, arab],
+        [FDL, imla],
+        [NZR, nahwu],
+        [GFR, fiqih],
+        [MNS, shorof],
+        [FRZ, arab],
+        [ASR, tajwid],
+        [GFR, fiqih],
+        [NZR, nahwu],
+        [FRZ, arab],
+        [GFR, fiqih],
+        [LSN, tauhid],
+        [NZR, nahwu],
+        [YDN, akhlaq],
+        [LSN, tauhid],
+        [NZR, nahwu],
+        [FRZ, arab],
+    ],
+    T1B: [
+        [NZR, nahwu],
+        [FDL, imla],
+        [YDN, akhlaq],
+        [ASR, tajwid],
+        [LSN, tauhid],
+        [FRZ, arab],
+        [NZR, nahwu],
+        [FRZ, arab],
+        [MST, fiqih],
+        [LSN, tauhid],
+        [NZR, nahwu],
+        [FRZ, arab],
+        [FRZ, arab],
+        [MST, fiqih],
+        [NZR, nahwu],
+        [MST, fiqih],
+        [MNS, shorof],
+        [MNS, shorof],
+    ],
+    T1C: [
+        [FDL, imla],
+        [FRQ, arab],
+        [MST, fiqih],
+        [LSN, tauhid],
+        [NZR, nahwu],
+        [FRQ, arab],
+        [MNR, shorof],
+        [NZR, nahwu],
+        [FRQ, arab],
+        [MST, fiqih],
+        [LSN, tauhid],
+        [MNR, shorof],
+        [NZR, nahwu],
+        [FRQ, arab],
+        [MST, fiqih],
+        [NZR, nahwu],
+        [YDN, akhlaq],
+        [ASR, tajwid],
+    ],
+    T1D: [
+        [LSN, tauhid],
+        [MSH, imla],
+        [FRQ, arab],
+        [HFD, shorof],
+        [MIS, fiqih],
+        [FT, nahwu],
+        [FT, nahwu],
+        [FRQ, arab],
+        [ASR, tajwid],
+        [YDN, akhlaq],
+        [FT, nahwu],
+        [FRQ, arab],
+        [MIS, fiqih],
+        [LSN, tauhid],
+        [FT, nahwu],
+        [HFD, shorof],
+        [MIS, fiqih],
+        [FRQ, arab],
+    ],
+    T1E: [
+        [MST, fiqih],
+        [LSN, tauhid],
+        [FRZ, arab],
+        [FRZ, arab],
+        [ASR, tajwid],
+        [HFD, shorof],
+        [MST, fiqih],
+        [FT, nahwu],
+        [HFD, shorof],
+        [FT, nahwu],
+        [YDN, akhlaq],
+        [FT, nahwu],
+        [MST, fiqih],
+        [FT, nahwu],
+        [FRZ, arab],
+        [FRZ, arab],
+        [LSN, tauhid],
+        [MSH, imla],
+    ],
+    T1F: [
+        [FRQ, arab],
+        [HFD, shorof],
+        [BCH, tauhid],
+        [FT, nahwu],
+        [FT, nahwu],
+        [MIS, fiqih],
+        [MIS, fiqih],
+        [HFD, shorof],
+        [FT, nahwu],
+        [FRQ, arab],
+        [FRQ, arab],
+        [BCH, tauhid],
+        [FT, nahwu],
+        [MSH, imla],
+        [ASR, tajwid],
+        [MIS, fiqih],
+        [FRQ, arab],
+        [YDN, akhlaq],
+    ],
+    T1G: [
+        [HFD, shorof],
+        [YDN, akhlaq],
+        [HR, nahwu],
+        [FRH, arab],
+        [BCH, tauhid],
+        [HR, nahwu],
+        [HR, nahwu],
+        [MIS, fiqih],
+        [HR, nahwu],
+        [MIS, fiqih],
+        [FRH, arab],
+        [FRH, arab],
+        [FRH, arab],
+        [MIS, fiqih],
+        [MSH, imla],
+        [ASR, tajwid],
+        [HFD, shorof],
+        [BCH, tauhid],
+    ],
+    T2A: [
+        [SLH, nahwu],
+        [YHY, arab],
+        [WF, shorof],
+        [LBB, tajwid],
+        [HMD, tauhid],
+        [MRW, fiqih],
+        [MRW, fiqih],
+        [SLH, nahwu],
+        [MNJ, akhlaq],
+        [MNJ, akhlaq],
+        [YHY, arab],
+        [YHY, arab],
+        [YHY, arab],
+        [SLH, nahwu],
+        [HMD, tauhid],
+        [SLH, nahwu],
+        [MRW, fiqih],
+        [WF, shorof],
+    ],
+    T2B: [
+        [LBB, tajwid],
+        [SLH, nahwu],
+        [YHY, arab],
+        [USY, tauhid],
+        [MRW, fiqih],
+        [WF, shorof],
+        [SLH, nahwu],
+        [MRW, fiqih],
+        [WF, shorof],
+        [YHY, arab],
+        [MNJ, akhlaq],
+        [SLH, nahwu],
+        [MRW, fiqih],
+        [YHY, arab],
+        [SLH, nahwu],
+        [MNJ, akhlaq],
+        [YHY, arab],
+        [USY, tauhid],
+    ],
+    T2C: [
+        [YHY, arab],
+        [LBB, tajwid],
+        [MNJ, akhlaq],
+        [YHY, arab],
+        [WF, shorof],
+        [MST, fiqih],
+        [HMD, tauhid],
+        [MNJ, akhlaq],
+        [SLH, nahwu],
+        [SLH, nahwu],
+        [MST, fiqih],
+        [MST, fiqih],
+        [SLH, nahwu],
+        [HMD, tauhid],
+        [YHY, arab],
+        [YHY, arab],
+        [WF, shorof],
+        [SLH, nahwu],
+    ],
+    T2D: [
+        [RIF, arab],
+        [MNJ, akhlaq],
+        [BGS, fiqih],
+        [RIF, arab],
+        [ASP, nahwu],
+        [LBB, tajwid],
+        [MNJ, akhlaq],
+        [SDQ, tauhid],
+        [ASP, nahwu],
+        [BGS, fiqih],
+        [ASP, nahwu],
+        [WF, shorof],
+        [SDQ, tauhid],
+        [BGS, fiqih],
+        [RIF, arab],
+        [WF, shorof],
+        [RIF, arab],
+        [ASP, nahwu],
+    ],
+    T2E: [
+        [MNR, nahwu],
+        [WF, shorof],
+        [RIF, arab],
+        [MNR, nahwu],
+        [RIF, arab],
+        [BGS, fiqih],
+        [SDQ, tauhid],
+        [LBB, tajwid],
+        [MNR, nahwu],
+        [MNR, nahwu],
+        [WF, shorof],
+        [MNJ, akhlaq],
+        [RIF, arab],
+        [SDQ, tauhid],
+        [BGS, fiqih],
+        [RIF, arab],
+        [BGS, fiqih],
+        [MNJ, akhlaq],
+    ],
+    T2F: [
+        [WF, shorof],
+        [RIF, arab],
+        [LBB, tajwid],
+        [ANM, tauhid],
+        [BGS, fiqih],
+        [RIF, arab],
+        [BGS, fiqih],
+        [IDS, nahwu],
+        [ANM, tauhid],
+        [WF, shorof],
+        [BCH, akhlaq],
+        [IDS, nahwu],
+        [IDS, nahwu],
+        [RIF, arab],
+        [BCH, akhlaq],
+        [BGS, fiqih],
+        [IDS, nahwu],
+        [RIF, arab],
+    ],
+    T2G: [
+        [IDS, nahwu],
+        [MRJ, arab],
+        [ANM, tauhid],
+        [IDS, nahwu],
+        [ANM, tauhid],
+        [BCH, akhlaq],
+        [IDS, nahwu],
+        [BGS, fiqih],
+        [BCH, akhlaq],
+        [MRJ, arab],
+        [LBB, tajwid],
+        [BGS, fiqih],
+        [MRJ, arab],
+        [FQH, shorof],
+        [IDS, nahwu],
+        [MRJ, arab],
+        [FQH, shorof],
+        [BGS, fiqih],
+    ],
+    T2H: [
+        [ADN, fiqih],
+        [ANM, tauhid],
+        [MRJ, arab],
+        [FQH, shorof],
+        [LBB, tajwid],
+        [MRJ, arab],
+        [ADN, fiqih],
+        [FQH, shorof],
+        [IDS, nahwu],
+        [UMR, akhlaq],
+        [IDS, nahwu],
+        [ANM, tauhid],
+        [UMR, akhlaq],
+        [IDS, nahwu],
+        [MRJ, arab],
+        [IDS, nahwu],
+        [ADN, fiqih],
+        [MRJ, arab],
+    ],
+    T2I: [
+        [MRJ, arab],
+        [MNR, nahwu],
+        [ADN, fiqih],
+        [MRJ, arab],
+        [FQH, shorof],
+        [ANM, tauhid],
+        [BCH, akhlaq],
+        [MNR, nahwu],
+        [ADN, fiqih],
+        [LBB, tajwid],
+        [ANM, tauhid],
+        [MRJ, arab],
+        [MNR, nahwu],
+        [MRJ, arab],
+        [FQH, shorof],
+        [BCH, akhlaq],
+        [MNR, nahwu],
+        [ADN, fiqih],
+    ],
+    T2J: [
+        [ANM, tauhid],
+        [ADN, fiqih],
+        [UMR, akhlaq],
+        [UMR, akhlaq],
+        [FRH, arab],
+        [MNR, nahwu],
+        [FQH, shorof],
+        [ADN, fiqih],
+        [FRH, arab],
+        [ANM, tauhid],
+        [MNR, nahwu],
+        [LBB, tajwid],
+        [FQH, shorof],
+        [FRH, arab],
+        [MNR, nahwu],
+        [ADN, fiqih],
+        [FRH, arab],
+        [MNR, nahwu],
+    ],
+    T3A: [
+        [SRR, nahwu],
+        [BDL, arab],
+        [URB, shorof],
+        [KHL, akhlaq],
+        [DMN, fiqih],
+        [URB, shorof],
+        [MZN, ilal],
+        [DMN, fiqih],
+        [KHL, akhlaq],
+        [BDL, arab],
+        [SRR, nahwu],
+        [DMN, fiqih],
+        [BDL, arab],
+        [SRR, nahwu],
+        [WHB, tajwid],
+        [BDL, arab],
+        [SDQ, tauhid],
+        [SRR, nahwu],
+    ],
+    T3B: [
+        [BDL, arab],
+        [URB, shorof],
+        [KHL, akhlaq],
+        [DMN, fiqih],
+        [KHL, akhlaq],
+        [SRR, nahwu],
+        [DMN, fiqih],
+        [MZN, ilal],
+        [SDQ, tauhid],
+        [SRR, nahwu],
+        [BDL, arab],
+        [WHB, tajwid],
+        [URB, shorof],
+        [BDL, arab],
+        [SRR, nahwu],
+        [DMN, fiqih],
+        [SRR, nahwu],
+        [BDL, arab],
+    ],
+    T3C: [
+        [USM, nahwu],
+        [DMN, fiqih],
+        [BDL, arab],
+        [HMD, shorof],
+        [USM, nahwu],
+        [KHL, akhlaq],
+        [USM, nahwu],
+        [HMD, shorof],
+        [WHB, tajwid],
+        [KHL, akhlaq],
+        [USM, nahwu],
+        [BDL, arab],
+        [DMN, fiqih],
+        [MZN, ilal],
+        [BDL, arab],
+        [SDQ, tauhid],
+        [BDL, arab],
+        [DMN, fiqih],
+    ],
+    T3E: [
+        [UHS, fiqih],
+        [KHL, akhlaq],
+        [ASY, arab],
+        [MZN, ilal],
+        [ASY, arab],
+        [HMD, shorof],
+        [WHB, tajwid],
+        [KHL, akhlaq],
+        [UHS, fiqih],
+        [ASY, arab],
+        [IDT, nahwu],
+        [HMD, shorof],
+        [IDT, nahwu],
+        [ASY, arab],
+        [SDQ, tauhid],
+        [UHS, fiqih],
+        [IDT, nahwu],
+        [IDT, nahwu],
+    ],
+    T3F: [
+        [ASY, arab],
+        [UMR, akhlaq],
+        [IDT, nahwu],
+        [UHS, fiqih],
+        [WHB, tajwid],
+        [UMR, akhlaq],
+        [AFF, tauhid],
+        [IDT, nahwu],
+        [HMD, shorof],
+        [UHS, fiqih],
+        [ASY, arab],
+        [MZN, ilal],
+        [ASY, arab],
+        [IDT, nahwu],
+        [UHS, fiqih],
+        [IDT, nahwu],
+        [ASY, arab],
+        [HMD, shorof],
+    ],
+    T3G: [
+        [IDT, nahwu],
+        [UHS, fiqih],
+        [MSR, arab],
+        [AFF, tauhid],
+        [UMR, akhlaq],
+        [IDT, nahwu],
+        [IDT, nahwu],
+        [UHS, fiqih],
+        [MSR, arab],
+        [MZN, ilal],
+        [MSR, arab],
+        [IDT, nahwu],
+        [HMD, shorof],
+        [WHB, tajwid],
+        [UMR, akhlaq],
+        [HMD, shorof],
+        [UHS, fiqih],
+        [MSR, arab],
+    ],
+    T3H: [
+        [AFF, tauhid],
+        [MSR, arab],
+        [MNS, fiqih],
+        [WHB, tajwid],
+        [MZN, ilal],
+        [MSR, arab],
+        [DRW, nahwu],
+        [MNS, fiqih],
+        [UMR, akhlaq],
+        [MSR, arab],
+        [DRW, nahwu],
+        [URB, shorof],
+        [MNS, fiqih],
+        [UMR, akhlaq],
+        [DRW, nahwu],
+        [URB, shorof],
+        [MSR, arab],
+        [DRW, nahwu],
+    ],
+    T3I: [
+        [MSR, arab],
+        [DRW, nahwu],
+        [WHB, tajwid],
+        [MNS, fiqih],
+        [MSR, arab],
+        [MZN, ilal],
+        [MSR, arab],
+        [AFF, tauhid],
+        [MNS, fiqih],
+        [MNS, fiqih],
+        [IDM, akhlaq],
+        [DRW, nahwu],
+        [DRW, nahwu],
+        [URB, shorof],
+        [MSR, arab],
+        [IDM, akhlaq],
+        [DRW, nahwu],
+        [URB, shorof],
+    ],
+    T3J: [
+        [URB, shorof],
+        [ASY, arab],
+        [DRW, nahwu],
+        [ASY, arab],
+        [DRW, nahwu],
+        [WHB, tajwid],
+        [MNS, fiqih],
+        [DRW, nahwu],
+        [IDM, akhlaq],
+        [AFF, tauhid],
+        [MZN, ilal],
+        [ASY, arab],
+        [IDM, akhlaq],
+        [DRW, nahwu],
+        [MNS, fiqih],
+        [MNS, fiqih],
+        [URB, shorof],
+        [ASY, arab],
+    ],
+    IST: [
+        [MNJ, akhlaq],
+        [AFF, tauhid],
+        [HFD, miftah],
+        [MRW, fiqih],
+        [HFD, miftah],
+        [IBR, shorof],
+        [HFD, miftah],
+        [IBR, shorof],
+        [MRW, fiqih],
+        [ASR, tajwid],
+        [MIS, nahwu],
+        [MIS, nahwu],
+        [AFF, tauhid],
+        [IBR, arab],
+        [MIS, nahwu],
+        [MRW, fiqih],
+        [IBR, arab],
+        [MIS, nahwu],
+    ],
+    A1A: [
+        [FTN, nahwu],
+        [SDL, tauhid],
+        [MSH, fiqih],
+        [SDL, tauhid],
+        [IBR, arab],
+        [MSH, fiqih],
+        [FTN, nahwu],
+        [MSH, fiqih],
+        [IBR, arab],
+        [IRF, akhlaq],
+        [SBH, shorof],
+        [MSH, fiqih],
+        [FTN, nahwu],
+        [IRF, akhlaq],
+        [IBR, arab],
+        [IBR, arab],
+        [FTN, nahwu],
+        [SBH, shorof],
+    ],
+    A1B: [
+        [SBH, shorof],
+        [FTN, nahwu],
+        [SDL, tauhid],
+        [IBR, arab],
+        [MSH, fiqih],
+        [SDL, tauhid],
+        [IBR, arab],
+        [FTN, nahwu],
+        [MSH, fiqih],
+        [MSH, fiqih],
+        [MSH, fiqih],
+        [IRF, akhlaq],
+        [IBR, arab],
+        [FTN, nahwu],
+        [IRF, akhlaq],
+        [FTN, nahwu],
+        [SBH, shorof],
+        [IBR, arab],
+    ],
+    A1C: [
+        [SDL, tauhid],
+        [UHN, arab],
+        [USM, nahwu],
+        [GFR, fiqih],
+        [SDL, tauhid],
+        [USM, nahwu],
+        [GFR, fiqih],
+        [UHN, arab],
+        [USM, nahwu],
+        [SBH, shorof],
+        [IRF, akhlaq],
+        [USM, nahwu],
+        [IRF, akhlaq],
+        [UHN, arab],
+        [GFR, fiqih],
+        [SBH, shorof],
+        [UHN, arab],
+        [GFR, fiqih],
+    ],
+    A1D: [
+        [AZZ, nahwu],
+        [FRH, arab],
+        [GFR, fiqih],
+        [AZZ, nahwu],
+        [UMM, tauhid],
+        [FRH, arab],
+        [UMM, tauhid],
+        [IRF, akhlaq],
+        [SBH, shorof],
+        [FRH, arab],
+        [GFR, fiqih],
+        [AZZ, nahwu],
+        [SBH, shorof],
+        [GFR, fiqih],
+        [FRH, arab],
+        [IRF, akhlaq],
+        [GFR, fiqih],
+        [AZZ, nahwu],
+    ],
+    A1E: [
+        [UMM, tauhid],
+        [AZZ, nahwu],
+        [SBH, shorof],
+        [UMM, tauhid],
+        [USY, arab],
+        [USY, arab],
+        [IRF, akhlaq],
+        [AZZ, nahwu],
+        [FDL, fiqih],
+        [FDL, fiqih],
+        [FDL, fiqih],
+        [SBH, shorof],
+        [AZZ, nahwu],
+        [AZZ, nahwu],
+        [FDL, fiqih],
+        [USY, arab],
+        [USY, arab],
+        [IRF, akhlaq],
+    ],
+    A1F: [
+        [LTF, arab],
+        [UMM, tauhid],
+        [AZZ, nahwu],
+        [LTF, arab],
+        [AZZ, nahwu],
+        [SBH, shorof],
+        [LTF, arab],
+        [UMM, tauhid],
+        [IRF, akhlaq],
+        [LTF, arab],
+        [AZZ, nahwu],
+        [FDL, fiqih],
+        [FDL, fiqih],
+        [FDL, fiqih],
+        [SBH, shorof],
+        [AZZ, nahwu],
+        [IRF, akhlaq],
+        [FDL, fiqih],
+    ],
+    A2A: [
+        [UTJ, nahwu],
+        [ALW, fiqih],
+        [RHL, balaghoh],
+        [UTJ, nahwu],
+        [ALW, fiqih],
+        [RF, ushul],
+        [FHM, arab],
+        [FHM, arab],
+        [UTJ, nahwu],
+        [ALW, fiqih],
+        [UL, tauhid],
+        [ABAH.madin, mustholah],
+        [RHL, balaghoh],
+        [RF, ushul],
+        [ALW, fiqih],
+        [FHM, arab],
+        [FHM, arab],
+        [UTJ, nahwu],
+    ],
+    A2B: [
+        [RHL, arab],
+        [UTJ, nahwu],
+        [UTJ, nahwu],
+        [ALW, fiqih],
+        [HLY, balaghoh],
+        [RHL, arab],
+        [ALW, fiqih],
+        [RHL, arab],
+        [HLY, balaghoh],
+        [RF, ushul],
+        [ALW, fiqih],
+        [ABAH.madin, mustholah],
+        [UTJ, nahwu],
+        [UTJ, nahwu],
+        [UL, tauhid],
+        [ALW, fiqih],
+        [RHL, arab],
+        [RF, ushul],
+    ],
+    A2C: [
+        [ALW, fiqih],
+        [FHM, arab],
+        [FHM, arab],
+        [RHL, balaghoh],
+        [RF, nahwu],
+        [ALW, fiqih],
+        [RF, nahwu],
+        [ALW, fiqih],
+        [FHM, arab],
+        [RHL, balaghoh],
+        [RF, ushul],
+        [ABAH.madin, mustholah],
+        [UL, tauhid],
+        [ALW, fiqih],
+        [RF, ushul],
+        [RF, nahwu],
+        [RF, nahwu],
+        [FHM, arab],
+    ],
+    A3A: [
+        [HR, fiqih],
+        [HR, fiqih],
+        [ABD, ushul],
+        [HR, fiqih],
+        [HR, fiqih],
+        [ASP, tauhid],
+        [HLD, nahwu],
+        [HLD, nahwu],
+        [ABAH.madin, mustholah],
+        [ABAH.madin, balaghoh],
+        [ABAH.madin, balaghoh],
+        [ST, arab],
+        [HR, fiqih],
+        [ST, arab],
+        [ST, arab],
+        [ABD, ushul],
+        [HLD, nahwu],
+        [HLD, nahwu],
+    ],
+    A3B: [
+        [HS, fiqih],
+        [ABD, ushul],
+        [SLD, nahwu],
+        [ASP, tauhid],
+        [SLD, nahwu],
+        [HS, fiqih],
+        [SLD, nahwu],
+        [HS, fiqih],
+        [ABAH.madin, mustholah],
+        [ABAH.madin, balaghoh],
+        [ABAH.madin, balaghoh],
+        [ST, arab],
+        [HS, fiqih],
+        [ST, arab],
+        [ST, arab],
+        [HS, fiqih],
+        [SLD, nahwu],
+        [ABD, ushul],
+    ],
+    A3C: [
+        [ABD, ushul],
+        [SLD, nahwu],
+        [HS, fiqih],
+        [HS, fiqih],
+        [HS, fiqih],
+        [SLD, nahwu],
+        [HS, fiqih],
+        [SLD, nahwu],
+        [ABAH.madin, mustholah],
+        [ABAH.madin, balaghoh],
+        [ABAH.madin, balaghoh],
+        [ST, arab],
+        [ASP, tauhid],
+        [ST, arab],
+        [ST, arab],
+        [SLD, nahwu],
+        [ABD, ushul],
+        [HS, fiqih],
+    ],
+    MTP: [
+        [AZZ, nahwu],
+        [SHF, fiqih],
+        [ABD, ushul],
+        [AZZ, nahwu],
+        [USY, arab],
+        [USY, arab],
+        [HLY, balaghoh],
+        [HLY, balaghoh],
+        [ABAH.madin, mustholah],
+        [AZZ, nahwu],
+        [SHF, fiqih],
+        [RF, tasme],
+        [SHF, fiqih],
+        [SHF, fiqih],
+        [RF, tasme],
+        [AZZ, nahwu],
+        [HLY, balaghoh],
+        [USY, arab],
+    ],
+    MTS: [
+        [_ust, _fan],
+        [SHF, fiqih],
+        [SHF, fiqih],
+        [HLY, balaghoh],
+        [_ust, _fan],
+        [_ust, _fan],
+        [UTJ, tasme],
+        [UL, tauhid],
+        [UL, tauhid],
+        [HR, nahwu],
+        [HR, nahwu],
+        [_ust, _fan],
+        [SHF, fiqih],
+        [SHF, fiqih],
+        [_ust, _fan],
+        [HR, nahwu],
+        [HR, nahwu],
+        [_ust, _fan],
+    ],
+};
 
-/* Tsanawy 1-B */
-T1B.tempatkan("senin", 1, FRZ, arab);
-T1B.tempatkan("senin", 2, NZR, nahwu);
-T1B.tempatkan("senin", 3, MNS, shorof);
-T1B.tempatkan("selasa", 1, ASR, tajwid);
-T1B.tempatkan("selasa", 2, LSN, tauhid);
-T1B.tempatkan("selasa", 3, YDN, akhlaq);
-T1B.tempatkan("rabu", 1, NZR, nahwu);
-T1B.tempatkan("rabu", 2, FRZ, arab);
-T1B.tempatkan("rabu", 3, MST, fiqih);
-T1B.tempatkan("kamis", 1, FRZ, arab);
-T1B.tempatkan("kamis", 2, NZR, nahwu);
-T1B.tempatkan("kamis", 3, LSN, tauhid);
-T1B.tempatkan("jumat", 1, FRZ, arab);
-T1B.tempatkan("jumat", 2, MST, fiqih);
-T1B.tempatkan("jumat", 3, NZR, nahwu);
-T1B.tempatkan("sabtu", 1, MST, fiqih);
-T1B.tempatkan("sabtu", 2, MNS, shorof);
-T1B.tempatkan("sabtu", 3, FDL, imla);
-
-/* Tsanawy 1-C */
-T1C.tempatkan("senin", 1, FDL, imla);
-T1C.tempatkan("senin", 2, FRQ, arab);
-T1C.tempatkan("senin", 3, MST, fiqih);
-T1C.tempatkan("selasa", 1, NZR, nahwu);
-T1C.tempatkan("selasa", 2, FRQ, arab);
-T1C.tempatkan("selasa", 3, LSN, tauhid);
-T1C.tempatkan("rabu", 1, MNR, shorof);
-T1C.tempatkan("rabu", 2, NZR, nahwu);
-T1C.tempatkan("rabu", 3, FRQ, arab);
-T1C.tempatkan("kamis", 1, MNR, shorof);
-T1C.tempatkan("kamis", 2, LSN, tauhid);
-T1C.tempatkan("kamis", 3, MST, fiqih);
-T1C.tempatkan("jumat", 1, NZR, nahwu);
-T1C.tempatkan("jumat", 2, FRQ, arab);
-T1C.tempatkan("jumat", 3, MST, fiqih);
-T1C.tempatkan("sabtu", 1, NZR, nahwu);
-T1C.tempatkan("sabtu", 2, YDN, akhlaq);
-T1C.tempatkan("sabtu", 3, ASR, tajwid);
-
-/* Tsanawy 1-D */
-T1D.tempatkan("senin", 1, MSH, imla);
-T1D.tempatkan("senin", 2, LSN, tauhid);
-T1D.tempatkan("senin", 3, FRQ, arab);
-T1D.tempatkan("selasa", 1, MIS, fiqih);
-T1D.tempatkan("selasa", 2, YDN, akhlaq);
-T1D.tempatkan("selasa", 3, FT, nahwu);
-T1D.tempatkan("rabu", 1, FT, nahwu);
-T1D.tempatkan("rabu", 2, FRQ, arab);
-T1D.tempatkan("rabu", 3, ASR, tajwid);
-T1D.tempatkan("kamis", 1, HFD, shorof);
-T1D.tempatkan("kamis", 2, FT, nahwu);
-T1D.tempatkan("kamis", 3, FRQ, arab);
-T1D.tempatkan("jumat", 1, MIS, fiqih);
-T1D.tempatkan("jumat", 2, LSN, tauhid);
-T1D.tempatkan("jumat", 3, HFD, shorof);
-T1D.tempatkan("sabtu", 1, FT, nahwu);
-T1D.tempatkan("sabtu", 2, MIS, fiqih);
-T1D.tempatkan("sabtu", 3, FRQ, arab);
-
-/* Tsanawy 1-E */
-T1E.tempatkan("senin", 1, MST, fiqih);
-T1E.tempatkan("senin", 2, FRZ, arab);
-T1E.tempatkan("senin", 3, LSN, tauhid);
-T1E.tempatkan("selasa", 1, FT, nahwu);
-T1E.tempatkan("selasa", 2, FRZ, arab);
-T1E.tempatkan("selasa", 3, MST, fiqih);
-T1E.tempatkan("rabu", 1, ASR, tajwid);
-T1E.tempatkan("rabu", 2, FT, nahwu);
-T1E.tempatkan("rabu", 3, HFD, shorof);
-T1E.tempatkan("kamis", 1, MSH, imla);
-T1E.tempatkan("kamis", 2, HFD, shorof);
-T1E.tempatkan("kamis", 3, FT, nahwu);
-T1E.tempatkan("jumat", 1, MST, fiqih);
-T1E.tempatkan("jumat", 2, FRZ, arab);
-T1E.tempatkan("jumat", 3, FT, nahwu);
-T1E.tempatkan("sabtu", 1, YDN, akhlaq);
-T1E.tempatkan("sabtu", 2, FRZ, arab);
-T1E.tempatkan("sabtu", 3, LSN, tauhid);
-
-/* Tsanawy 1-F */
-T1F.tempatkan("senin", 1, MIS, fiqih);
-T1F.tempatkan("senin", 2, HFD, shorof);
-T1F.tempatkan("senin", 3, MSH, imla);
-T1F.tempatkan("selasa", 1, FRQ, arab);
-T1F.tempatkan("selasa", 2, FT, nahwu);
-T1F.tempatkan("selasa", 3, BCH, tauhid);
-T1F.tempatkan("rabu", 1, FRQ, arab);
-T1F.tempatkan("rabu", 2, HFD, shorof);
-T1F.tempatkan("rabu", 3, FT, nahwu);
-T1F.tempatkan("kamis", 1, FT, nahwu);
-T1F.tempatkan("kamis", 2, FRQ, arab);
-T1F.tempatkan("kamis", 3, BCH, tauhid);
-T1F.tempatkan("jumat", 1, ASR, tajwid);
-T1F.tempatkan("jumat", 2, FT, nahwu);
-T1F.tempatkan("jumat", 3, MIS, fiqih);
-T1F.tempatkan("sabtu", 1, MIS, fiqih);
-T1F.tempatkan("sabtu", 2, FRQ, arab);
-T1F.tempatkan("sabtu", 3, YDN, akhlaq);
-
-/* Tsanawy 1-G */
-T1G.tempatkan("senin", 1, HR, nahwu);
-T1G.tempatkan("senin", 2, BCH, tauhid);
-T1G.tempatkan("senin", 3, FRH, arab);
-T1G.tempatkan("selasa", 1, HR, nahwu);
-T1G.tempatkan("selasa", 2, MIS, fiqih);
-T1G.tempatkan("selasa", 3, FRH, arab);
-T1G.tempatkan("rabu", 1, HR, nahwu);
-T1G.tempatkan("rabu", 2, MIS, fiqih);
-T1G.tempatkan("rabu", 3, FRH, arab);
-T1G.tempatkan("kamis", 1, HR, nahwu);
-T1G.tempatkan("kamis", 2, YDN, akhlaq);
-T1G.tempatkan("kamis", 3, MSH, imla);
-T1G.tempatkan("jumat", 1, HFD, shorof);
-T1G.tempatkan("jumat", 2, MIS, fiqih);
-T1G.tempatkan("jumat", 3, FRH, arab);
-T1G.tempatkan("sabtu", 1, ASR, tajwid);
-T1G.tempatkan("sabtu", 2, BCH, tauhid);
-T1G.tempatkan("sabtu", 3, HFD, shorof);
-
-/* Tsanawy 2-A */
-T2A.tempatkan("senin", 1, SLH, nahwu);
-T2A.tempatkan("senin", 2, YHY, arab);
-T2A.tempatkan("senin", 3, WF, shorof);
-T2A.tempatkan("selasa", 1, LBB, tajwid);
-T2A.tempatkan("selasa", 2, HMD, tauhid);
-T2A.tempatkan("selasa", 3, MRW, fiqih);
-T2A.tempatkan("rabu", 1, MRW, fiqih);
-T2A.tempatkan("rabu", 2, SLH, nahwu);
-T2A.tempatkan("rabu", 3, MNJ, akhlaq);
-T2A.tempatkan("kamis", 1, MNJ, akhlaq);
-T2A.tempatkan("kamis", 2, YHY, arab);
-T2A.tempatkan("kamis", 3, YHY, arab);
-T2A.tempatkan("jumat", 1, YHY, arab);
-T2A.tempatkan("jumat", 2, SLH, nahwu);
-T2A.tempatkan("jumat", 3, HMD, tauhid);
-T2A.tempatkan("sabtu", 1, SLH, nahwu);
-T2A.tempatkan("sabtu", 2, MRW, fiqih);
-T2A.tempatkan("sabtu", 3, WF, shorof);
-
-/* Tsanawy 2-B */
-T2B.tempatkan("senin", 1, LBB, tajwid);
-T2B.tempatkan("senin", 2, SLH, nahwu);
-T2B.tempatkan("senin", 3, YHY, arab);
-T2B.tempatkan("selasa", 1, USY, tauhid);
-T2B.tempatkan("selasa", 2, MRW, fiqih);
-T2B.tempatkan("selasa", 3, WF, shorof);
-T2B.tempatkan("rabu", 1, SLH, nahwu);
-T2B.tempatkan("rabu", 2, MRW, fiqih);
-T2B.tempatkan("rabu", 3, WF, shorof);
-T2B.tempatkan("kamis", 1, YHY, arab);
-T2B.tempatkan("kamis", 2, MNJ, akhlaq);
-T2B.tempatkan("kamis", 3, SLH, nahwu);
-T2B.tempatkan("jumat", 1, MRW, fiqih);
-T2B.tempatkan("jumat", 2, YHY, arab);
-T2B.tempatkan("jumat", 3, SLH, nahwu);
-T2B.tempatkan("sabtu", 1, MNJ, akhlaq);
-T2B.tempatkan("sabtu", 2, YHY, arab);
-T2B.tempatkan("sabtu", 3, USY, tauhid);
-
-/* Tsanawy 2-C */
-T2C.tempatkan("senin", 1, YHY, arab);
-T2C.tempatkan("senin", 2, LBB, tajwid);
-T2C.tempatkan("senin", 3, MNJ, akhlaq);
-T2C.tempatkan("selasa", 1, YHY, arab);
-T2C.tempatkan("selasa", 2, WF, shorof);
-T2C.tempatkan("selasa", 3, MST, fiqih);
-T2C.tempatkan("rabu", 1, HMD, tauhid);
-T2C.tempatkan("rabu", 2, MNJ, akhlaq);
-T2C.tempatkan("rabu", 3, SLH, nahwu);
-T2C.tempatkan("kamis", 1, SLH, nahwu);
-T2C.tempatkan("kamis", 2, MST, fiqih);
-T2C.tempatkan("kamis", 3, MST, fiqih);
-T2C.tempatkan("jumat", 1, SLH, nahwu);
-T2C.tempatkan("jumat", 2, HMD, tauhid);
-T2C.tempatkan("jumat", 3, YHY, arab);
-T2C.tempatkan("sabtu", 1, YHY, arab);
-T2C.tempatkan("sabtu", 2, WF, shorof);
-T2C.tempatkan("sabtu", 3, SLH, nahwu);
-
-/* Tsanawy 2-D */
-T2D.tempatkan("senin", 1, RIF, arab);
-T2D.tempatkan("senin", 2, MNJ, akhlaq);
-T2D.tempatkan("senin", 3, BGS, fiqih);
-T2D.tempatkan("selasa", 1, RIF, arab);
-T2D.tempatkan("selasa", 2, ASP, nahwu);
-T2D.tempatkan("selasa", 3, LBB, tajwid);
-T2D.tempatkan("rabu", 1, MNJ, akhlaq);
-T2D.tempatkan("rabu", 2, SDQ, tauhid);
-T2D.tempatkan("rabu", 3, ASP, nahwu);
-T2D.tempatkan("kamis", 1, BGS, fiqih);
-T2D.tempatkan("kamis", 2, ASP, nahwu);
-T2D.tempatkan("kamis", 3, WF, shorof);
-T2D.tempatkan("jumat", 1, SDQ, tauhid);
-T2D.tempatkan("jumat", 2, BGS, fiqih);
-T2D.tempatkan("jumat", 3, RIF, arab);
-T2D.tempatkan("sabtu", 1, WF, shorof);
-T2D.tempatkan("sabtu", 2, RIF, arab);
-T2D.tempatkan("sabtu", 3, ASP, nahwu);
-
-/* Tsanawy 2-E */
-T2E.tempatkan("senin", 1, MNR, nahwu);
-T2E.tempatkan("senin", 2, WF, shorof);
-T2E.tempatkan("senin", 3, RIF, arab);
-T2E.tempatkan("selasa", 1, MNR, nahwu);
-T2E.tempatkan("selasa", 2, RIF, arab);
-T2E.tempatkan("selasa", 3, BGS, fiqih);
-T2E.tempatkan("rabu", 1, SDQ, tauhid);
-T2E.tempatkan("rabu", 2, LBB, tajwid);
-T2E.tempatkan("rabu", 3, MNR, nahwu);
-T2E.tempatkan("kamis", 1, MNR, nahwu);
-T2E.tempatkan("kamis", 2, WF, shorof);
-T2E.tempatkan("kamis", 3, MNJ, akhlaq);
-T2E.tempatkan("jumat", 1, RIF, arab);
-T2E.tempatkan("jumat", 2, SDQ, tauhid);
-T2E.tempatkan("jumat", 3, BGS, fiqih);
-T2E.tempatkan("sabtu", 1, RIF, arab);
-T2E.tempatkan("sabtu", 2, BGS, fiqih);
-T2E.tempatkan("sabtu", 3, MNJ, akhlaq);
-
-/* Tsanawy 2-F */
-T2F.tempatkan("senin", 1, WF, shorof);
-T2F.tempatkan("senin", 2, RIF, arab);
-T2F.tempatkan("senin", 3, LBB, tajwid);
-T2F.tempatkan("selasa", 1, ANM, tauhid);
-T2F.tempatkan("selasa", 2, BGS, fiqih);
-T2F.tempatkan("selasa", 3, RIF, arab);
-T2F.tempatkan("rabu", 1, BGS, fiqih);
-T2F.tempatkan("rabu", 2, IDS, nahwu);
-T2F.tempatkan("rabu", 3, ANM, tauhid);
-T2F.tempatkan("kamis", 1, WF, shorof);
-T2F.tempatkan("kamis", 2, BCH, akhlaq);
-T2F.tempatkan("kamis", 3, IDS, nahwu);
-T2F.tempatkan("jumat", 1, IDS, nahwu);
-T2F.tempatkan("jumat", 2, RIF, arab);
-T2F.tempatkan("jumat", 3, BCH, akhlaq);
-T2F.tempatkan("sabtu", 1, BGS, fiqih);
-T2F.tempatkan("sabtu", 2, IDS, nahwu);
-T2F.tempatkan("sabtu", 3, RIF, arab);
-
-/* Tsanawy 2-G */
-T2G.tempatkan("senin", 1, IDS, nahwu);
-T2G.tempatkan("senin", 2, MRJ, arab);
-T2G.tempatkan("senin", 3, ANM, tauhid);
-T2G.tempatkan("selasa", 1, IDS, nahwu);
-T2G.tempatkan("selasa", 2, ANM, tauhid);
-T2G.tempatkan("selasa", 3, BCH, akhlaq);
-T2G.tempatkan("rabu", 1, IDS, nahwu);
-T2G.tempatkan("rabu", 2, BGS, fiqih);
-T2G.tempatkan("rabu", 3, BCH, akhlaq);
-T2G.tempatkan("kamis", 1, MRJ, arab);
-T2G.tempatkan("kamis", 2, LBB, tajwid);
-T2G.tempatkan("kamis", 3, BGS, fiqih);
-T2G.tempatkan("jumat", 1, MRJ, arab);
-T2G.tempatkan("jumat", 2, FQH, shorof);
-T2G.tempatkan("jumat", 3, IDS, nahwu);
-T2G.tempatkan("sabtu", 1, MRJ, arab);
-T2G.tempatkan("sabtu", 2, FQH, shorof);
-T2G.tempatkan("sabtu", 3, BGS, fiqih);
-
-/* Tsanawy 2-H */
-T2H.tempatkan("senin", 1, ADN, fiqih);
-T2H.tempatkan("senin", 2, ANM, tauhid);
-T2H.tempatkan("senin", 3, MRJ, arab);
-T2H.tempatkan("selasa", 1, FQH, shorof);
-T2H.tempatkan("selasa", 2, LBB, tajwid);
-T2H.tempatkan("selasa", 3, MRJ, arab);
-T2H.tempatkan("rabu", 1, ADN, fiqih);
-T2H.tempatkan("rabu", 2, FQH, shorof);
-T2H.tempatkan("rabu", 3, IDS, nahwu);
-T2H.tempatkan("kamis", 1, UMR, akhlaq);
-T2H.tempatkan("kamis", 2, IDS, nahwu);
-T2H.tempatkan("kamis", 3, ANM, tauhid);
-T2H.tempatkan("jumat", 1, UMR, akhlaq);
-T2H.tempatkan("jumat", 2, IDS, nahwu);
-T2H.tempatkan("jumat", 3, MRJ, arab);
-T2H.tempatkan("sabtu", 1, IDS, nahwu);
-T2H.tempatkan("sabtu", 2, ADN, fiqih);
-T2H.tempatkan("sabtu", 3, MRJ, arab);
-
-/* Tsanawy 2-I */
-T2I.tempatkan("senin", 1, MRJ, arab);
-T2I.tempatkan("senin", 2, MNR, nahwu);
-T2I.tempatkan("senin", 3, ADN, fiqih);
-T2I.tempatkan("selasa", 1, MRJ, arab);
-T2I.tempatkan("selasa", 2, FQH, shorof);
-T2I.tempatkan("selasa", 3, ANM, tauhid);
-T2I.tempatkan("rabu", 1, BCH, akhlaq);
-T2I.tempatkan("rabu", 2, MNR, nahwu);
-T2I.tempatkan("rabu", 3, ADN, fiqih);
-T2I.tempatkan("kamis", 1, LBB, tajwid);
-T2I.tempatkan("kamis", 2, ANM, tauhid);
-T2I.tempatkan("kamis", 3, MRJ, arab);
-T2I.tempatkan("jumat", 1, MNR, nahwu);
-T2I.tempatkan("jumat", 2, MRJ, arab);
-T2I.tempatkan("jumat", 3, FQH, shorof);
-T2I.tempatkan("sabtu", 1, BCH, akhlaq);
-T2I.tempatkan("sabtu", 2, MNR, nahwu);
-T2I.tempatkan("sabtu", 3, ADN, fiqih);
-
-/* Tsanawy 2-J */
-T2J.tempatkan("senin", 1, ANM, tauhid);
-T2J.tempatkan("senin", 2, ADN, fiqih);
-T2J.tempatkan("senin", 3, UMR, akhlaq);
-T2J.tempatkan("selasa", 1, UMR, akhlaq);
-T2J.tempatkan("selasa", 2, FRH, arab);
-T2J.tempatkan("selasa", 3, MNR, nahwu);
-T2J.tempatkan("rabu", 1, FQH, shorof);
-T2J.tempatkan("rabu", 2, ADN, fiqih);
-T2J.tempatkan("rabu", 3, FRH, arab);
-T2J.tempatkan("kamis", 1, ANM, tauhid);
-T2J.tempatkan("kamis", 2, MNR, nahwu);
-T2J.tempatkan("kamis", 3, LBB, tajwid);
-T2J.tempatkan("jumat", 1, FQH, shorof);
-T2J.tempatkan("jumat", 2, FRH, arab);
-T2J.tempatkan("jumat", 3, MNR, nahwu);
-T2J.tempatkan("sabtu", 1, ADN, fiqih);
-T2J.tempatkan("sabtu", 2, FRH, arab);
-T2J.tempatkan("sabtu", 3, MNR, nahwu);
-
-/* Tsanawy 3-A */
-T3A.tempatkan("senin", 1, SRR, nahwu);
-T3A.tempatkan("senin", 2, BDL, arab);
-T3A.tempatkan("senin", 3, URB, shorof);
-T3A.tempatkan("selasa", 1, KHL, akhlaq);
-T3A.tempatkan("selasa", 2, DMN, fiqih);
-T3A.tempatkan("selasa", 3, URB, shorof);
-T3A.tempatkan("rabu", 1, MZN, ilal);
-T3A.tempatkan("rabu", 2, DMN, fiqih);
-T3A.tempatkan("rabu", 3, KHL, akhlaq);
-T3A.tempatkan("kamis", 1, BDL, arab);
-T3A.tempatkan("kamis", 2, SRR, nahwu);
-T3A.tempatkan("kamis", 3, DMN, fiqih);
-T3A.tempatkan("jumat", 1, BDL, arab);
-T3A.tempatkan("jumat", 2, SRR, nahwu);
-T3A.tempatkan("jumat", 3, WHB, tajwid);
-T3A.tempatkan("sabtu", 1, BDL, arab);
-T3A.tempatkan("sabtu", 2, SDQ, tauhid);
-T3A.tempatkan("sabtu", 3, SRR, nahwu);
-
-/* Tsanawy 3-B */
-T3B.tempatkan("senin", 1, BDL, arab);
-T3B.tempatkan("senin", 2, URB, shorof);
-T3B.tempatkan("senin", 3, KHL, akhlaq);
-T3B.tempatkan("selasa", 1, DMN, fiqih);
-T3B.tempatkan("selasa", 2, KHL, akhlaq);
-T3B.tempatkan("selasa", 3, SRR, nahwu);
-T3B.tempatkan("rabu", 1, DMN, fiqih);
-T3B.tempatkan("rabu", 2, MZN, ilal);
-T3B.tempatkan("rabu", 3, SDQ, tauhid);
-T3B.tempatkan("kamis", 1, SRR, nahwu);
-T3B.tempatkan("kamis", 2, BDL, arab);
-T3B.tempatkan("kamis", 3, WHB, tajwid);
-T3B.tempatkan("jumat", 1, URB, shorof);
-T3B.tempatkan("jumat", 2, BDL, arab);
-T3B.tempatkan("jumat", 3, SRR, nahwu);
-T3B.tempatkan("sabtu", 1, DMN, fiqih);
-T3B.tempatkan("sabtu", 2, SRR, nahwu);
-T3B.tempatkan("sabtu", 3, BDL, arab);
-
-/* Tsanawy 3-C */
-T3C.tempatkan("senin", 1, USM, nahwu);
-T3C.tempatkan("senin", 2, DMN, fiqih);
-T3C.tempatkan("senin", 3, BDL, arab);
-T3C.tempatkan("selasa", 1, HMD, shorof);
-T3C.tempatkan("selasa", 2, USM, nahwu);
-T3C.tempatkan("selasa", 3, KHL, akhlaq);
-T3C.tempatkan("rabu", 1, USM, nahwu);
-T3C.tempatkan("rabu", 2, HMD, shorof);
-T3C.tempatkan("rabu", 3, WHB, tajwid);
-T3C.tempatkan("kamis", 1, KHL, akhlaq);
-T3C.tempatkan("kamis", 2, USM, nahwu);
-T3C.tempatkan("kamis", 3, BDL, arab);
-T3C.tempatkan("jumat", 1, DMN, fiqih);
-T3C.tempatkan("jumat", 2, MZN, ilal);
-T3C.tempatkan("jumat", 3, BDL, arab);
-T3C.tempatkan("sabtu", 1, SDQ, tauhid);
-T3C.tempatkan("sabtu", 2, BDL, arab);
-T3C.tempatkan("sabtu", 3, DMN, fiqih);
-
-/* Tsanawy 3-D */ // kelas kosong
-// T3D.tempatkan("senin", 1, USM, nahwu);
-// T3D.tempatkan("senin", 2, DMN, fiqih);
-// T3D.tempatkan("senin", 3, BDL, arab);
-// T3D.tempatkan("selasa", 1, HMD, shorof);
-// T3D.tempatkan("selasa", 2, USM, nahwu);
-// T3D.tempatkan("selasa", 3, KHL, akhlaq);
-// T3D.tempatkan("rabu", 1, USM, nahwu);
-// T3D.tempatkan("rabu", 2, HMD, shorof);
-// T3D.tempatkan("rabu", 3, WHB, tajwid);
-// T3D.tempatkan("kamis", 1, KHL, akhlaq);
-// T3D.tempatkan("kamis", 2, USM, nahwu);
-// T3D.tempatkan("kamis", 3, BDL, arab);
-// T3D.tempatkan("jumat", 1, DMN, fiqih);
-// T3D.tempatkan("jumat", 2, MZN, ilal);
-// T3D.tempatkan("jumat", 3, BDL, arab);
-// T3D.tempatkan("sabtu", 1, SDQ, tauhid);
-// T3D.tempatkan("sabtu", 2, BDL, arab);
-// T3D.tempatkan("sabtu", 3, DMN, fiqih);
-
-/* Tsanawy 3-E */
-T3E.tempatkan("senin", 1, UHS, fiqih);
-T3E.tempatkan("senin", 2, KHL, akhlaq);
-T3E.tempatkan("senin", 3, ASY, arab);
-T3E.tempatkan("selasa", 1, MZN, ilal);
-T3E.tempatkan("selasa", 2, ASY, arab);
-T3E.tempatkan("selasa", 3, HMD, shorof);
-T3E.tempatkan("rabu", 1, WHB, tajwid);
-T3E.tempatkan("rabu", 2, KHL, akhlaq);
-T3E.tempatkan("rabu", 3, UHS, fiqih);
-T3E.tempatkan("kamis", 1, ASY, arab);
-T3E.tempatkan("kamis", 2, IDT, nahwu);
-T3E.tempatkan("kamis", 3, HMD, shorof);
-T3E.tempatkan("jumat", 1, IDT, nahwu);
-T3E.tempatkan("jumat", 2, ASY, arab);
-T3E.tempatkan("jumat", 3, SDQ, tauhid);
-T3E.tempatkan("sabtu", 1, UHS, fiqih);
-T3E.tempatkan("sabtu", 2, IDT, nahwu);
-T3E.tempatkan("sabtu", 3, IDT, nahwu);
-
-/* Tsanawy 3-F */
-T3F.tempatkan("senin", 1, ASY, arab);
-T3F.tempatkan("senin", 2, UMR, akhlaq);
-T3F.tempatkan("senin", 3, IDT, nahwu);
-T3F.tempatkan("selasa", 1, UHS, fiqih);
-T3F.tempatkan("selasa", 2, WHB, tajwid);
-T3F.tempatkan("selasa", 3, UMR, akhlaq);
-T3F.tempatkan("rabu", 1, AFF, tauhid);
-T3F.tempatkan("rabu", 2, IDT, nahwu);
-T3F.tempatkan("rabu", 3, HMD, shorof);
-T3F.tempatkan("kamis", 1, UHS, fiqih);
-T3F.tempatkan("kamis", 2, ASY, arab);
-T3F.tempatkan("kamis", 3, MZN, ilal);
-T3F.tempatkan("jumat", 1, ASY, arab);
-T3F.tempatkan("jumat", 2, IDT, nahwu);
-T3F.tempatkan("jumat", 3, UHS, fiqih);
-T3F.tempatkan("sabtu", 1, IDT, nahwu);
-T3F.tempatkan("sabtu", 2, ASY, arab);
-T3F.tempatkan("sabtu", 3, HMD, shorof);
-
-/* Tsanawy 3-G */
-T3G.tempatkan("senin", 1, IDT, nahwu);
-T3G.tempatkan("senin", 2, UHS, fiqih);
-T3G.tempatkan("senin", 3, MSR, arab);
-T3G.tempatkan("selasa", 1, AFF, tauhid);
-T3G.tempatkan("selasa", 2, UMR, akhlaq);
-T3G.tempatkan("selasa", 3, IDT, nahwu);
-T3G.tempatkan("rabu", 1, IDT, nahwu);
-T3G.tempatkan("rabu", 2, UHS, fiqih);
-T3G.tempatkan("rabu", 3, MSR, arab);
-T3G.tempatkan("kamis", 1, MZN, ilal);
-T3G.tempatkan("kamis", 2, MSR, arab);
-T3G.tempatkan("kamis", 3, IDT, nahwu);
-T3G.tempatkan("jumat", 1, HMD, shorof);
-T3G.tempatkan("jumat", 2, WHB, tajwid);
-T3G.tempatkan("jumat", 3, UMR, akhlaq);
-T3G.tempatkan("sabtu", 1, HMD, shorof);
-T3G.tempatkan("sabtu", 2, UHS, fiqih);
-T3G.tempatkan("sabtu", 3, MSR, arab);
-
-/* Tsanawy 3-H */
-T3H.tempatkan("senin", 1, AFF, tauhid);
-T3H.tempatkan("senin", 2, MSR, arab);
-T3H.tempatkan("senin", 3, MNS, fiqih);
-T3H.tempatkan("selasa", 1, WHB, tajwid);
-T3H.tempatkan("selasa", 2, MZN, ilal);
-T3H.tempatkan("selasa", 3, MSR, arab);
-T3H.tempatkan("rabu", 1, DRW, nahwu);
-T3H.tempatkan("rabu", 2, MNS, fiqih);
-T3H.tempatkan("rabu", 3, UMR, akhlaq);
-T3H.tempatkan("kamis", 1, MSR, arab);
-T3H.tempatkan("kamis", 2, DRW, nahwu);
-T3H.tempatkan("kamis", 3, URB, shorof);
-T3H.tempatkan("jumat", 1, MNS, fiqih);
-T3H.tempatkan("jumat", 2, UMR, akhlaq);
-T3H.tempatkan("jumat", 3, DRW, nahwu);
-T3H.tempatkan("sabtu", 1, URB, shorof);
-T3H.tempatkan("sabtu", 2, MSR, arab);
-T3H.tempatkan("sabtu", 3, DRW, nahwu);
-
-/* Tsanawy 3-I */
-T3I.tempatkan("senin", 1, MSR, arab);
-T3I.tempatkan("senin", 2, DRW, nahwu);
-T3I.tempatkan("senin", 3, WHB, tajwid);
-T3I.tempatkan("selasa", 1, MNS, fiqih);
-T3I.tempatkan("selasa", 2, MSR, arab);
-T3I.tempatkan("selasa", 3, MZN, ilal);
-T3I.tempatkan("rabu", 1, MSR, arab);
-T3I.tempatkan("rabu", 2, AFF, tauhid);
-T3I.tempatkan("rabu", 3, MNS, fiqih);
-T3I.tempatkan("kamis", 1, MNS, fiqih);
-T3I.tempatkan("kamis", 2, IDM, akhlaq);
-T3I.tempatkan("kamis", 3, DRW, nahwu);
-T3I.tempatkan("jumat", 1, DRW, nahwu);
-T3I.tempatkan("jumat", 2, URB, shorof);
-T3I.tempatkan("jumat", 3, MSR, arab);
-T3I.tempatkan("sabtu", 1, IDM, akhlaq);
-T3I.tempatkan("sabtu", 2, DRW, nahwu);
-T3I.tempatkan("sabtu", 3, URB, shorof);
-
-/* Tsanawy 3-J */
-T3J.tempatkan("senin", 1, URB, shorof);
-T3J.tempatkan("senin", 2, ASY, arab);
-T3J.tempatkan("senin", 3, DRW, nahwu);
-T3J.tempatkan("selasa", 1, ASY, arab);
-T3J.tempatkan("selasa", 2, DRW, nahwu);
-T3J.tempatkan("selasa", 3, WHB, tajwid);
-T3J.tempatkan("rabu", 1, MNS, fiqih);
-T3J.tempatkan("rabu", 2, DRW, nahwu);
-T3J.tempatkan("rabu", 3, IDM, akhlaq);
-T3J.tempatkan("kamis", 1, AFF, tauhid);
-T3J.tempatkan("kamis", 2, MZN, ilal);
-T3J.tempatkan("kamis", 3, ASY, arab);
-T3J.tempatkan("jumat", 1, IDM, akhlaq);
-T3J.tempatkan("jumat", 2, DRW, nahwu);
-T3J.tempatkan("jumat", 3, MNS, fiqih);
-T3J.tempatkan("sabtu", 1, MNS, fiqih);
-T3J.tempatkan("sabtu", 2, URB, shorof);
-T3J.tempatkan("sabtu", 3, ASY, arab);
-
-/* Isti'dad */
-IST.tempatkan("senin", 1, MNJ, akhlaq);
-IST.tempatkan("senin", 2, AFF, tauhid);
-IST.tempatkan("senin", 3, HFD, miftah);
-IST.tempatkan("selasa", 1, MRW, fiqih);
-IST.tempatkan("selasa", 2, HFD, miftah);
-IST.tempatkan("selasa", 3, IBR, shorof);
-IST.tempatkan("rabu", 1, HFD, miftah);
-IST.tempatkan("rabu", 2, IBR, shorof);
-IST.tempatkan("rabu", 3, MRW, fiqih);
-IST.tempatkan("kamis", 1, ASR, tajwid);
-IST.tempatkan("kamis", 2, MIS, nahwu);
-IST.tempatkan("kamis", 3, MIS, nahwu);
-IST.tempatkan("jumat", 1, AFF, tauhid);
-IST.tempatkan("jumat", 2, IBR, arab);
-IST.tempatkan("jumat", 3, MIS, nahwu);
-IST.tempatkan("sabtu", 1, MRW, fiqih);
-IST.tempatkan("sabtu", 2, IBR, arab);
-IST.tempatkan("sabtu", 3, MIS, nahwu);
-
-/* Aliyah 1-A */
-A1A.tempatkan("senin", 1, FTN, nahwu);
-A1A.tempatkan("senin", 2, SDL, tauhid);
-A1A.tempatkan("senin", 3, MSH, fiqih);
-A1A.tempatkan("selasa", 1, SDL, tauhid);
-A1A.tempatkan("selasa", 2, IBR, arab);
-A1A.tempatkan("selasa", 3, MSH, fiqih);
-A1A.tempatkan("rabu", 1, FTN, nahwu);
-A1A.tempatkan("rabu", 2, MSH, fiqih);
-A1A.tempatkan("rabu", 3, IBR, arab);
-A1A.tempatkan("kamis", 1, IRF, akhlaq);
-A1A.tempatkan("kamis", 2, SBH, shorof);
-A1A.tempatkan("kamis", 3, MSH, fiqih);
-A1A.tempatkan("jumat", 1, FTN, nahwu);
-A1A.tempatkan("jumat", 2, IRF, akhlaq);
-A1A.tempatkan("jumat", 3, IBR, arab);
-A1A.tempatkan("sabtu", 1, IBR, arab);
-A1A.tempatkan("sabtu", 2, FTN, nahwu);
-A1A.tempatkan("sabtu", 3, SBH, shorof);
-
-/* Aliyah 1-B */
-A1B.tempatkan("senin", 1, MSH, fiqih);
-A1B.tempatkan("senin", 2, FTN, nahwu);
-A1B.tempatkan("senin", 3, SDL, tauhid);
-A1B.tempatkan("selasa", 1, IBR, arab);
-A1B.tempatkan("selasa", 2, SBH, shorof);
-A1B.tempatkan("selasa", 3, SDL, tauhid);
-A1B.tempatkan("rabu", 1, IBR, arab);
-A1B.tempatkan("rabu", 2, FTN, nahwu);
-A1B.tempatkan("rabu", 3, MSH, fiqih);
-A1B.tempatkan("kamis", 1, MSH, fiqih);
-A1B.tempatkan("kamis", 2, MSH, fiqih);
-A1B.tempatkan("kamis", 3, IRF, akhlaq);
-A1B.tempatkan("jumat", 1, IBR, arab);
-A1B.tempatkan("jumat", 2, FTN, nahwu);
-A1B.tempatkan("jumat", 3, IRF, akhlaq);
-A1B.tempatkan("sabtu", 1, FTN, nahwu);
-A1B.tempatkan("sabtu", 2, SBH, shorof);
-A1B.tempatkan("sabtu", 3, IBR, arab);
-
-/* Aliyah 1-C */
-A1C.tempatkan("senin", 1, SDL, tauhid);
-A1C.tempatkan("senin", 2, UHN, arab);
-A1C.tempatkan("senin", 3, USM, nahwu);
-A1C.tempatkan("selasa", 1, GFR, fiqih);
-A1C.tempatkan("selasa", 2, SDL, tauhid);
-A1C.tempatkan("selasa", 3, USM, nahwu);
-A1C.tempatkan("rabu", 1, GFR, fiqih);
-A1C.tempatkan("rabu", 2, UHN, arab);
-A1C.tempatkan("rabu", 3, USM, nahwu);
-A1C.tempatkan("kamis", 1, SBH, shorof);
-A1C.tempatkan("kamis", 2, IRF, akhlaq);
-A1C.tempatkan("kamis", 3, USM, nahwu);
-A1C.tempatkan("jumat", 1, IRF, akhlaq);
-A1C.tempatkan("jumat", 2, UHN, arab);
-A1C.tempatkan("jumat", 3, GFR, fiqih);
-A1C.tempatkan("sabtu", 1, SBH, shorof);
-A1C.tempatkan("sabtu", 2, UHN, arab);
-A1C.tempatkan("sabtu", 3, GFR, fiqih);
-
-/* Aliyah 1-D */
-A1D.tempatkan("senin", 1, AZZ, nahwu);
-A1D.tempatkan("senin", 2, FRH, arab);
-A1D.tempatkan("senin", 3, GFR, fiqih);
-A1D.tempatkan("selasa", 1, AZZ, nahwu);
-A1D.tempatkan("selasa", 2, UMM, tauhid);
-A1D.tempatkan("selasa", 3, FRH, arab);
-A1D.tempatkan("rabu", 1, UMM, tauhid);
-A1D.tempatkan("rabu", 2, IRF, akhlaq);
-A1D.tempatkan("rabu", 3, SBH, shorof);
-A1D.tempatkan("kamis", 1, GFR, fiqih);
-A1D.tempatkan("kamis", 2, FRH, arab);
-A1D.tempatkan("kamis", 3, AZZ, nahwu);
-A1D.tempatkan("jumat", 1, SBH, shorof);
-A1D.tempatkan("jumat", 2, GFR, fiqih);
-A1D.tempatkan("jumat", 3, FRH, arab);
-A1D.tempatkan("sabtu", 1, IRF, akhlaq);
-A1D.tempatkan("sabtu", 2, GFR, fiqih);
-A1D.tempatkan("sabtu", 3, AZZ, nahwu);
-
-/* Aliyah 1-E */
-A1E.tempatkan("senin", 1, UMM, tauhid);
-A1E.tempatkan("senin", 2, AZZ, nahwu);
-A1E.tempatkan("senin", 3, SBH, shorof);
-A1E.tempatkan("selasa", 1, UMM, tauhid);
-A1E.tempatkan("selasa", 2, USY, arab);
-A1E.tempatkan("selasa", 3, USY, arab);
-A1E.tempatkan("rabu", 1, IRF, akhlaq);
-A1E.tempatkan("rabu", 2, AZZ, nahwu);
-A1E.tempatkan("rabu", 3, FDL, fiqih);
-A1E.tempatkan("kamis", 1, FDL, fiqih);
-A1E.tempatkan("kamis", 2, FDL, fiqih);
-A1E.tempatkan("kamis", 3, SBH, shorof);
-A1E.tempatkan("jumat", 1, AZZ, nahwu);
-A1E.tempatkan("jumat", 2, AZZ, nahwu);
-A1E.tempatkan("jumat", 3, FDL, fiqih);
-A1E.tempatkan("sabtu", 1, USY, arab);
-A1E.tempatkan("sabtu", 2, USY, arab);
-A1E.tempatkan("sabtu", 3, IRF, akhlaq);
-
-/* Aliyah 1-F */
-A1F.tempatkan("senin", 1, LTF, arab);
-A1F.tempatkan("senin", 2, UMM, tauhid);
-A1F.tempatkan("senin", 3, AZZ, nahwu);
-A1F.tempatkan("selasa", 1, LTF, arab);
-A1F.tempatkan("selasa", 2, AZZ, nahwu);
-A1F.tempatkan("selasa", 3, SBH, shorof);
-A1F.tempatkan("rabu", 1, LTF, arab);
-A1F.tempatkan("rabu", 2, UMM, tauhid);
-A1F.tempatkan("rabu", 3, IRF, akhlaq);
-A1F.tempatkan("kamis", 1, LTF, arab);
-A1F.tempatkan("kamis", 2, AZZ, nahwu);
-A1F.tempatkan("kamis", 3, FDL, fiqih);
-A1F.tempatkan("jumat", 1, FDL, fiqih);
-A1F.tempatkan("jumat", 2, FDL, fiqih);
-A1F.tempatkan("jumat", 3, SBH, shorof);
-A1F.tempatkan("sabtu", 1, AZZ, nahwu);
-A1F.tempatkan("sabtu", 2, IRF, akhlaq);
-A1F.tempatkan("sabtu", 3, FDL, fiqih);
-
-/* Aliyah 2-A */
-A2A.tempatkan("senin", 1, UTJ, nahwu);
-A2A.tempatkan("senin", 2, ALW, fiqih);
-A2A.tempatkan("senin", 3, RHL, balaghoh);
-A2A.tempatkan("selasa", 1, UTJ, nahwu);
-A2A.tempatkan("selasa", 2, ALW, fiqih);
-A2A.tempatkan("selasa", 3, RF, ushul);
-A2A.tempatkan("rabu", 1, FHM, arab);
-A2A.tempatkan("rabu", 2, FHM, arab);
-A2A.tempatkan("rabu", 3, UTJ, nahwu);
-A2A.tempatkan("kamis", 1, ALW, fiqih);
-A2A.tempatkan("kamis", 2, UL, tauhid);
-A2A.tempatkan("kamis", 3, ABAH.madin, mustholah);
-A2A.tempatkan("jumat", 1, RHL, balaghoh);
-A2A.tempatkan("jumat", 2, RF, ushul);
-A2A.tempatkan("jumat", 3, ALW, fiqih);
-A2A.tempatkan("sabtu", 1, FHM, arab);
-A2A.tempatkan("sabtu", 2, FHM, arab);
-A2A.tempatkan("sabtu", 3, UTJ, nahwu);
-
-/* Aliyah 2-B */
-A2B.tempatkan("senin", 1, RHL, arab);
-A2B.tempatkan("senin", 2, UTJ, nahwu);
-A2B.tempatkan("senin", 3, UTJ, nahwu);
-A2B.tempatkan("selasa", 1, ALW, fiqih);
-A2B.tempatkan("selasa", 2, HLY, balaghoh);
-A2B.tempatkan("selasa", 3, RHL, arab);
-A2B.tempatkan("rabu", 1, ALW, fiqih);
-A2B.tempatkan("rabu", 2, RHL, arab);
-A2B.tempatkan("rabu", 3, HLY, balaghoh);
-A2B.tempatkan("kamis", 1, RF, ushul);
-A2B.tempatkan("kamis", 2, ALW, fiqih);
-A2B.tempatkan("kamis", 3, ABAH.madin, mustholah);
-A2B.tempatkan("jumat", 1, UTJ, nahwu);
-A2B.tempatkan("jumat", 2, UTJ, nahwu);
-A2B.tempatkan("jumat", 3, UL, tauhid);
-A2B.tempatkan("sabtu", 1, ALW, fiqih);
-A2B.tempatkan("sabtu", 2, RHL, arab);
-A2B.tempatkan("sabtu", 3, RF, ushul);
-
-/* Aliyah 2-C */
-A2C.tempatkan("senin", 1, ALW, fiqih);
-A2C.tempatkan("senin", 2, FHM, arab);
-A2C.tempatkan("senin", 3, FHM, arab);
-A2C.tempatkan("selasa", 1, RHL, balaghoh);
-A2C.tempatkan("selasa", 2, RF, nahwu);
-A2C.tempatkan("selasa", 3, ALW, fiqih);
-A2C.tempatkan("rabu", 1, RF, nahwu);
-A2C.tempatkan("rabu", 2, ALW, fiqih);
-A2C.tempatkan("rabu", 3, FHM, arab);
-A2C.tempatkan("kamis", 1, RHL, balaghoh);
-A2C.tempatkan("kamis", 2, RF, ushul);
-A2C.tempatkan("kamis", 3, ABAH.madin, mustholah);
-A2C.tempatkan("jumat", 1, UL, tauhid);
-A2C.tempatkan("jumat", 2, ALW, fiqih);
-A2C.tempatkan("jumat", 3, RF, ushul);
-A2C.tempatkan("sabtu", 1, RF, nahwu);
-A2C.tempatkan("sabtu", 2, RF, nahwu);
-A2C.tempatkan("sabtu", 3, FHM, arab);
-
-/* Aliyah 3-A */
-A3A.tempatkan("senin", 1, HR, fiqih);
-A3A.tempatkan("senin", 2, HR, fiqih);
-A3A.tempatkan("senin", 3, ABD, ushul);
-A3A.tempatkan("selasa", 1, HR, fiqih);
-A3A.tempatkan("selasa", 2, HR, fiqih);
-A3A.tempatkan("selasa", 3, ASP, tauhid);
-A3A.tempatkan("rabu", 1, HLD, nahwu);
-A3A.tempatkan("rabu", 2, HLD, nahwu);
-A3A.tempatkan("rabu", 3, ABAH.madin, mustholah);
-A3A.tempatkan("kamis", 1, ABAH.madin, balaghoh);
-A3A.tempatkan("kamis", 2, ABAH.madin, balaghoh);
-A3A.tempatkan("kamis", 3, ST, arab);
-A3A.tempatkan("jumat", 1, HR, fiqih);
-A3A.tempatkan("jumat", 2, ST, arab);
-A3A.tempatkan("jumat", 3, ST, arab);
-A3A.tempatkan("sabtu", 1, ABD, ushul);
-A3A.tempatkan("sabtu", 2, HLD, nahwu);
-A3A.tempatkan("sabtu", 3, HLD, nahwu);
-
-/* Aliyah 3-B */
-A3B.tempatkan("senin", 1, HS, fiqih);
-A3B.tempatkan("senin", 2, ABD, ushul);
-A3B.tempatkan("senin", 3, SLD, nahwu);
-A3B.tempatkan("selasa", 1, ASP, tauhid);
-A3B.tempatkan("selasa", 2, SLD, nahwu);
-A3B.tempatkan("selasa", 3, HS, fiqih);
-A3B.tempatkan("rabu", 1, SLD, nahwu);
-A3B.tempatkan("rabu", 2, HS, fiqih);
-A3B.tempatkan("rabu", 3, ABAH.madin, mustholah);
-A3B.tempatkan("kamis", 1, ABAH.madin, balaghoh);
-A3B.tempatkan("kamis", 2, ABAH.madin, balaghoh);
-A3B.tempatkan("kamis", 3, ST, arab);
-A3B.tempatkan("jumat", 1, HS, fiqih);
-A3B.tempatkan("jumat", 2, ST, arab);
-A3B.tempatkan("jumat", 3, ST, arab);
-A3B.tempatkan("sabtu", 1, HS, fiqih);
-A3B.tempatkan("sabtu", 2, SLD, nahwu);
-A3B.tempatkan("sabtu", 3, ABD, ushul);
-
-/* Aliyah 3-C */
-A3C.tempatkan("senin", 1, ABD, ushul);
-A3C.tempatkan("senin", 2, SLD, nahwu);
-A3C.tempatkan("senin", 3, HS, fiqih);
-A3C.tempatkan("selasa", 1, HS, fiqih);
-A3C.tempatkan("selasa", 2, HS, fiqih);
-A3C.tempatkan("selasa", 3, SLD, nahwu);
-A3C.tempatkan("rabu", 1, HS, fiqih);
-A3C.tempatkan("rabu", 2, SLD, nahwu);
-A3C.tempatkan("rabu", 3, ABAH.madin, mustholah);
-A3C.tempatkan("kamis", 1, ABAH.madin, balaghoh);
-A3C.tempatkan("kamis", 2, ABAH.madin, balaghoh);
-A3C.tempatkan("kamis", 3, ST, arab);
-A3C.tempatkan("jumat", 1, ASP, tauhid);
-A3C.tempatkan("jumat", 2, ST, arab);
-A3C.tempatkan("jumat", 3, ST, arab);
-A3C.tempatkan("sabtu", 1, SLD, nahwu);
-A3C.tempatkan("sabtu", 2, ABD, ushul);
-A3C.tempatkan("sabtu", 3, HS, fiqih);
-
-/* Mutakhorijin Pagi */
-MTP.tempatkan("senin", 1, JBR, nahwu);
-MTP.tempatkan("senin", 2, SHF, fiqih);
-MTP.tempatkan("senin", 3, ABD, ushul);
-MTP.tempatkan("selasa", 1, JBR, nahwu);
-MTP.tempatkan("selasa", 2, USY, arab);
-MTP.tempatkan("selasa", 3, USY, arab);
-MTP.tempatkan("rabu", 1, HLY, balaghoh);
-MTP.tempatkan("rabu", 2, HLY, balaghoh);
-MTP.tempatkan("rabu", 3, ABAH.madin, mustholah);
-MTP.tempatkan("kamis", 1, JBR, nahwu);
-MTP.tempatkan("kamis", 2, SHF, fiqih);
-MTP.tempatkan("kamis", 3, RF, tasme);
-MTP.tempatkan("jumat", 1, SHF, fiqih);
-MTP.tempatkan("jumat", 2, SHF, fiqih);
-MTP.tempatkan("jumat", 3, RF, tasme);
-MTP.tempatkan("sabtu", 1, JBR, nahwu);
-MTP.tempatkan("sabtu", 2, HLY, balaghoh);
-MTP.tempatkan("sabtu", 3, USY, arab);
-
-/* Mutakhorijin Sore */
-MTS.tempatkan("senin", 1, _ust, _fan);
-MTS.tempatkan("senin", 2, SHF, fiqih);
-MTS.tempatkan("senin", 3, SHF, fiqih);
-MTS.tempatkan("selasa", 1, HLY, balaghoh);
-MTS.tempatkan("selasa", 2, _ust, _fan);
-MTS.tempatkan("selasa", 3, _ust, _fan);
-MTS.tempatkan("rabu", 1, UTJ, tasme);
-MTS.tempatkan("rabu", 2, UL, tauhid);
-MTS.tempatkan("rabu", 3, UL, tauhid);
-MTS.tempatkan("kamis", 1, HR, nahwu);
-MTS.tempatkan("kamis", 2, HR, nahwu);
-MTS.tempatkan("kamis", 3, _ust, _fan);
-MTS.tempatkan("jumat", 1, SHF, fiqih);
-MTS.tempatkan("jumat", 2, SHF, fiqih);
-MTS.tempatkan("jumat", 3, _ust, _fan);
-MTS.tempatkan("sabtu", 1, HR, nahwu);
-MTS.tempatkan("sabtu", 2, HR, nahwu);
-MTS.tempatkan("sabtu", 3, _ust, _fan);
-
-/* Testing */
-// console.log(T1A); // sukses!
-// NZR.jadwal(); // sukses!
-// T1A.jadwal(); // sukses!
-// Hari.jadwal("Senin"); // sukses!
-// console.log(listKelas);
-// console.log(KHL.jadwal("rabu")); //sukses!
-// console.log(FT.jadwal(["selasa", "rabu"])); // sukses!
+//fungsi tempatkan
+for (const kelas in JADWAL_MADIN) {
+    JADWAL_MADIN[kelas].forEach((jadwal, index) => {
+        const hari = NAMA_HARI[Math.floor(index / 3)];
+        const jam = (index % 3) + 1;
+        const guru = jadwal[0];
+        const fan = jadwal[1];
+        Kelas.fromString(kelas)?.tempatkan(hari, jam, guru, fan);
+    });
+}
 
 /**
  * @type {string[]}
@@ -1978,7 +1975,8 @@ const command = {};
  * @param {string|true} argumen - Argumen yang akan ditetapkan untuk `flag`.
  * @returns {void}
  * @description Fungsi ini memeriksa apakah `flag` sudah ada dalam objek `command`.
- * Jika ya, `argumen` akan ditambahkan ke dalam array yang sudah ada; jika tidak, akan dibuat array baru dengan `argumen` yang diberikan.
+ * Jika ya, `argumen` akan ditambahkan ke dalam array yang sudah ada;
+ * jika tidak, akan dibuat array baru dengan `argumen` yang diberikan.
  * @author LitFill
  * @date 29/11/2023
  */
@@ -1997,12 +1995,11 @@ for (let i = 0; i < args.length; i++) {
         /** @type {string|true} */
         let nextArg = "";
 
-        // if (flag === "jadwal" || flag === "version" || flag === "pesanIzin") {
-        if (["jadwal", /*"pesanIzin",*/ "version"].includes(flag)) {
+        if (["jadwal", "version"].includes(flag)) {
             nextArg = true;
         } else if (args[i + 1] && !args[i + 1].startsWith("--")) {
             nextArg = args[i + 1];
-            i++; // Skip the next argument as it has been used
+            i++; // Lewati argumen berikutnya karena argumen tersebut telah digunakan.
         } else {
             console.error(`Flag --${flag} membutuhkan value.`);
             // @ts-ignore
@@ -2015,7 +2012,7 @@ for (let i = 0; i < args.length; i++) {
 
 if (command.version) {
     console.log(
-        "aplikasi Jadwal versi 1.1.\ndibuat oleh pemegang hak cipta: LitFill.\n"
+        "aplikasi Jadwal versi 1.2.\ndibuat oleh pemegang hak cipta: LitFill.\n"
     );
 }
 
@@ -2057,7 +2054,6 @@ if (command.jadwal) {
     }
 }
 
-// if (command.pesanWA !== undefined) {
 ["pesanWA1", "pesanWA2", "pesanWA"].forEach((key) => {
     if (command[key]) {
         command[key].forEach((value) => {
@@ -2065,13 +2061,12 @@ if (command.jadwal) {
                 /** @type {"pagi"|"sore"|"full"} */
                 let waktu;
 
-                if (key === "pesanWA1") {
-                    waktu = "pagi";
-                } else if (key === "pesanWA2") {
-                    waktu = "sore";
-                } else {
-                    waktu = "full";
-                }
+                waktu =
+                    key === "pesanWA1"
+                        ? "pagi"
+                        : key === "pesanWA2"
+                        ? "sore"
+                        : "full";
 
                 new PengirimPesan(value)[waktu]();
             }
@@ -2080,29 +2075,22 @@ if (command.jadwal) {
 });
 
 if (command.pesanIzin) {
-    // if (command.tanggal) {
-    //     if (command.guru) {
-    //         if (command.ket) {
-    //             if (command.jam) {
-    //             } else noFlag("--jam");
-    //         } else noFlag("--ket");
-    //     } else noFlag("--guru");
-    // } else noFlag("--tanggal");
     if (command.data) {
         const izin = new Perizinan(
             command.pesanIzin.toString(),
             command.data.toString()
         );
         izin.kirimPesan();
-        // console.log(izin.dataPerizinan);
     }
 }
 
 /**
- * @description
+ * Fungsi ini mencetak pesan error ke konsol jika flag tertentu tidak disertakan dalam argumen command line.
+ *
+ * @param {string} namaFlag - Nama flag yang diharapkan.
+ * @returns {void}
  * @author LitFill
  * @date 02/12/2023
- * @param {string} namaFlag
  */
 function noFlag(namaFlag) {
     console.error(
@@ -2131,11 +2119,13 @@ function kap(str) {
 }
 
 /**
- * @description
+ * Fungsi ini mengambil array string sebagai input, memisahkan setiap string dengan "-",
+ * dan mengembalikan array objek dengan properti guru, sebab, dan jam.
+ *
+ * @param {string[]} data - Array string yang akan diproses.
+ * @returns {Array<{guru: string, sebab: string, jam: Array<boolean>}>} - Array objek yang berisi informasi guru, sebab, dan jam.
  * @author LitFill
  * @date 06/12/2023
- * @param {string[]} data
- * @return {Array<{guru: string, sebab: string, jam: Array<boolean>}>}
  */
 function splitDash(data) {
     /** @type {Array<Array<String>>} */
@@ -2156,3 +2146,12 @@ function splitDash(data) {
     });
     return objs;
 }
+
+/* Testing */
+// console.log(T1A); // sukses!
+// NZR.jadwal(); // sukses!
+// T1A.jadwal(); // sukses!
+// Hari.jadwal("Senin"); // sukses!
+// console.log(listKelas);
+// console.log(KHL.jadwal("rabu")); //sukses!
+// console.log(FT.jadwal(["selasa", "rabu"])); // sukses!
