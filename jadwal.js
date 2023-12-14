@@ -1920,15 +1920,15 @@ const JADWAL_MADIN = {
         [AZZ, nahwu],
         [SHF, fiqih],
         [RF, tasme],
-        [SHF, fiqih],
-        [SHF, fiqih],
         [RF, tasme],
+        [_ust, _fan],
+        [_ust, _fan],
         [AZZ, nahwu],
         [HLY, balaghoh],
         [USY, arab],
     ],
     MTS: [
-        [_ust, _fan],
+        [SHF, fiqih],
         [SHF, fiqih],
         [SHF, fiqih],
         [HLY, balaghoh],
@@ -1945,7 +1945,7 @@ const JADWAL_MADIN = {
         [_ust, _fan],
         [HR, nahwu],
         [HR, nahwu],
-        [_ust, _fan],
+        [SHF, fiqih],
     ],
 };
 
@@ -1973,9 +1973,7 @@ const command = {};
  *
  * @param {string} flag - Flag untuk nilai yang sedang ditetapkan.
  * @param {string|true} argumen - Argumen yang akan ditetapkan untuk `flag`.
- * @returns {void}
- * @description Fungsi ini memeriksa apakah `flag` sudah ada dalam objek `command`.
- * Jika ya, `argumen` akan ditambahkan ke dalam array yang sudah ada;
+ * @description Jika array `argumen` sudah ada, `argumen` akan ditambahkan ke dalamnya;
  * jika tidak, akan dibuat array baru dengan `argumen` yang diberikan.
  * @author LitFill
  * @date 29/11/2023
@@ -1999,7 +1997,7 @@ for (let i = 0; i < args.length; i++) {
             nextArg = true;
         } else if (args[i + 1] && !args[i + 1].startsWith("--")) {
             nextArg = args[i + 1];
-            i++; // Lewati argumen berikutnya karena argumen tersebut telah digunakan.
+            i++; // Lewati argumen berikutnya sebab telah digunakan.
         } else {
             console.error(`Flag --${flag} membutuhkan value.`);
             // @ts-ignore
@@ -2012,7 +2010,7 @@ for (let i = 0; i < args.length; i++) {
 
 if (command.version) {
     console.log(
-        "aplikasi Jadwal versi 1.2.\ndibuat oleh pemegang hak cipta: LitFill.\n"
+        "aplikasi Jadwal versi 1.3.\ndibuat oleh pemegang hak cipta: LitFill.\n"
     );
 }
 
@@ -2035,7 +2033,6 @@ if (command.jadwal) {
                 Kelas.fromString(kodeKelas.toString())?.jadwal(
                     command.hari.toLocaleString()
                 );
-                // console.log("kelas:", kodeKelas, "hari", command.hari);
             });
         } else {
             command.kelas.forEach((kodeKelas) => {
@@ -2088,7 +2085,6 @@ if (command.pesanIzin) {
  * Fungsi ini mencetak pesan error ke konsol jika flag tertentu tidak disertakan dalam argumen command line.
  *
  * @param {string} namaFlag - Nama flag yang diharapkan.
- * @returns {void}
  * @author LitFill
  * @date 02/12/2023
  */
@@ -2098,19 +2094,11 @@ function noFlag(namaFlag) {
     );
 }
 
-// }
-
-// fs.writeFile("./listKelas.txt", FT.fan, (err) => {
-//     if (err) console.error(err);
-// });
-
 /**
  * Mengembalikan string dengan huruf pertama setiap kata diubah menjadi huruf kapital.
  *
  * @param {String} str - String yang akan diubah.
  * @returns {String} - String baru dengan huruf pertama setiap kata menjadi huruf kapital.
- * @description Fungsi ini mengubah huruf pertama setiap kata dalam string menjadi huruf kapital.
- * Misalnya, "kata pertama" akan diubah menjadi "Kata Pertama".
  * @author LitFill
  * @date 25/11/2023
  */
@@ -2121,30 +2109,18 @@ function kap(str) {
 /**
  * Fungsi ini mengambil array string sebagai input, memisahkan setiap string dengan "-",
  * dan mengembalikan array objek dengan properti guru, sebab, dan jam.
- *
  * @param {string[]} data - Array string yang akan diproses.
  * @returns {Array<{guru: string, sebab: string, jam: Array<boolean>}>} - Array objek yang berisi informasi guru, sebab, dan jam.
  * @author LitFill
- * @date 06/12/2023
+ * @date 014/12/2023
  */
 function splitDash(data) {
-    /** @type {Array<Array<String>>} */
-    const arr = [];
-    /** @type {Array<{guru: string, sebab: string, jam: Array<boolean>}>} */
-    const objs = [];
-    data.forEach((item) => {
-        arr.push(item.split("-"));
+    const obj = data.map((item) => {
+        const [guru, sebab, jams] = item.split("-");
+        const jam = Array.from(jams, (char) => Boolean(Number(char)));
+        return { guru, sebab, jam };
     });
-    arr.forEach((item) => {
-        const guru = item[0];
-        const sebab = item[1];
-        const jams = item[2].split("");
-        const jam = jams.map((char) => {
-            return Boolean(Number(char));
-        });
-        objs.push({ guru, sebab, jam });
-    });
-    return objs;
+    return obj;
 }
 
 /* Testing */
