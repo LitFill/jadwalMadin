@@ -30,13 +30,13 @@ function getJadwalHariIni() {
     const pesan = pesanPagi + pesanSore;
 
     const escapedPesan = pesan
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/_(.*)_/g, "<i>$1</i>")
-        .replace(/\*(.*)\*/g, "<b>$1</b>")
-        .replace(/(Jadwal Madin.*)\n/g, "<h4>$1</h4>")
-        .replace(/\t/g, "&nbsp;".repeat(8))
-        .replace(/\n/g, "<br />");
+        .replace(/</g, /*html*/ `&lt;`)
+        .replace(/>/g, /*html*/ `&gt;`)
+        .replace(/_(.*)_/g, /*html*/ `<i>$1</i>`)
+        .replace(/\*(.*)\*/g, /*html*/ `<b>$1</b>`)
+        .replace(/(Jadwal Madin.*)\n/g, /*html*/ `<h4>$1</h4>`)
+        .replace(/\t/g, /*html*/ `&nbsp;`.repeat(8))
+        .replace(/\n/g, /*html*/ `<br />`);
 
     return escapedPesan;
 }
