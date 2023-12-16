@@ -14,6 +14,12 @@ tanggalJadwal.innerHTML = getTanggal(tanggal);
 jadwalHariIni.innerHTML = getJadwalHariIni();
 // console.log(getJadwalHariIni());
 
+/**
+ * Mengkonversi objek tanggal yang diberikan menjadi representasi string dengan format tertentu.
+ *
+ * @param {Date} tanggal - Objek tanggal yang akan dikonversi.
+ * @return {string} Representasi string yang diformat dari tanggal.
+ */
 function getTanggal(tanggal) {
     return `${tanggal.toLocaleDateString("id-ID", {
         weekday: "long",
@@ -23,6 +29,11 @@ function getTanggal(tanggal) {
     })}`;
 }
 
+/**
+ * Mengambil jadwal untuk hari ini.
+ *
+ * @return {string} Pesan jadwal yang diformat dan di-escape.
+ */
 function getJadwalHariIni() {
     const pesanPagi = pengirimPesanWeb.getPesan("pagi");
     const pesanSore = pengirimPesanWeb.getPesan("sore");
