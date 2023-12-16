@@ -576,10 +576,39 @@ class PengirimPesan {
 
     /**
      * @description
+     * @author LitFill
+     * @date 16/12/2023
+     * @param {'pagi'|'sore'} waktuKBM
+     * @return {string}
+     * @memberof PengirimPesan
+     */
+    getPesan(waktuKBM) {
+        this.buatPesan(waktuKBM);
+        const pesan = this.pesan;
+        this.pesan = "";
+        return pesan;
+    }
+
+    /**
+     * @description
      * @param {'pagi'|'sore'} waktuKBM
      * @memberof PengirimPesan
      */
     logPesan(waktuKBM) {
+        this.buatPesan(waktuKBM);
+
+        console.log(this.pesan);
+        this.pesan = "";
+    }
+
+    /**
+     * @description
+     * @author LitFill
+     * @date 16/12/2023
+     * @param {'pagi'|'sore'} waktuKBM
+     * @memberof PengirimPesan
+     */
+    buatPesan(waktuKBM) {
         this.pesan += "Jadwal Madin Putra ";
         this.pesan += kap(this.hari ? this.hari : "");
         this.pesan += " ";
@@ -597,9 +626,6 @@ class PengirimPesan {
             this.pesan += "\n\n";
             this.pesanKelas(waktuKBM, i === 1 ? 1 : i === 2 ? 2 : 3);
         }
-
-        console.log(this.pesan);
-        this.pesan = "";
     }
 
     /**
@@ -630,11 +656,17 @@ class PengirimPesan {
      * @param {1|2|3} jam
      */
     pesanMTP(jam) {
-        const guru = MTP[this.hari][jam - 1].guru;
-        const fan = MTP[this.hari][jam - 1].fan;
-        this.pesan += `Mutakhorijin Pagi\n`;
-        this.pesan += `\tUst ${guru} # ${fan}\n`;
-        this.pesan += "\n";
+        if (MTP && MTP[this.hari] && MTP[this.hari][jam - 1]) {
+            const { guru, fan } = MTP[this.hari][jam - 1];
+            this.pesan += `Mutakhorijin Pagi\n`;
+            this.pesan += `\tUst ${guru} # ${fan}\n`;
+            this.pesan += "\n";
+        } else {
+            this.pesan += `Mutakhorijin Pagi\n`;
+            this.pesan += `\tTidak ada\n`;
+            this.pesan += "\n";
+            console.error("Error: Tidak ada Mutakhorijin Pagi.");
+        }
     }
 
     /**
@@ -642,11 +674,17 @@ class PengirimPesan {
      * @param {1|2|3} jam
      */
     pesanMTS(jam) {
-        const guru = MTS[this.hari][jam - 1].guru;
-        const fan = MTS[this.hari][jam - 1].fan;
-        this.pesan += `Mutakhorijin Sore\n`;
-        this.pesan += `\tUst ${guru} # ${fan}\n`;
-        this.pesan += "\n";
+        if (MTS && MTS[this.hari] && MTS[this.hari][jam - 1]) {
+            const { guru, fan } = MTS[this.hari][jam - 1];
+            this.pesan += `Mutakhorijin Sore\n`;
+            this.pesan += `\tUst ${guru} # ${fan}\n`;
+            this.pesan += "\n";
+        } else {
+            this.pesan += `Mutakhorijin Sore\n`;
+            this.pesan += `\tTidak ada\n`;
+            this.pesan += "\n";
+            console.error("Error: Tidak ada Mutakhorijin Sore.");
+        }
     }
 
     /**
@@ -654,10 +692,12 @@ class PengirimPesan {
      * @param {1|2|3} jam
      */
     pesanIST(jam) {
-        const guru = IST[this.hari][jam - 1].guru;
-        const fan = IST[this.hari][jam - 1].fan;
+        const kelasData = {
+            A: IST,
+        };
+
         this.pesan += `Isti'dad\n`;
-        this.pesan += `\tA. Ust ${guru} # ${fan}\n`;
+        this.addPesan(kelasData, jam);
         this.pesan += "\n";
     }
 
@@ -784,9 +824,18 @@ class PengirimPesan {
      */
     addPesan(kelasData, jam) {
         for (const kelas in kelasData) {
-            const guru = kelasData[kelas][this.hari][jam - 1].guru;
-            const fan = kelasData[kelas][this.hari][jam - 1].fan;
-            this.pesan += `\t${kelas}. Ust ${guru} # ${fan}\n`;
+            /** @type {{ guru: string, fan: string }} */
+            if (
+                kelasData[kelas] &&
+                kelasData[kelas][this.hari] &&
+                kelasData[kelas][this.hari][jam - 1]
+            ) {
+                const { guru, fan } = kelasData[kelas][this.hari][jam - 1];
+                this.pesan += `\t${kelas}. Ust ${guru} # ${fan}\n`;
+            } else {
+                this.pesan += `\t${kelas}. Tidak ada\n`;
+                console.error(`Tidak ada jadwal`);
+            }
         }
     }
 
