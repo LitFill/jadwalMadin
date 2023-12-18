@@ -42,10 +42,8 @@ class Guru {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.nama) {
                             console.log(
-                                `Ust. ${this.nama} mengajar kelas ${
-                                    kelas.nama
-                                } fan ${kelas[hari][i].fan} di hari ${
-                                    kelas[hari].nama
+                                `Ust. ${this.nama} mengajar kelas ${kelas.nama
+                                } fan ${kelas[hari][i].fan} di hari ${kelas[hari].nama
                                 } jam ke-${i + 1}.`
                             );
                         }
@@ -186,8 +184,7 @@ class Abah {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.madin.nama) {
                             console.log(
-                                `Abah mucal kelas ${kelas.nama} fan ${
-                                    kelas[hari][i].fan
+                                `Abah mucal kelas ${kelas.nama} fan ${kelas[hari][i].fan
                                 } di hari ${kelas[hari].nama} jam ke-${i + 1}.`
                             );
                         }
@@ -250,10 +247,8 @@ class Kelas {
                 for (let i = 0; i < 3; i++) {
                     console.log(
                         // @ts-ignore
-                        `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${
-                            i + 1
-                        } diajar oleh Ust. ${this[hari][i].guru} fan ${
-                            this[hari][i].fan
+                        `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${i + 1
+                        } diajar oleh Ust. ${this[hari][i].guru} fan ${this[hari][i].fan
                         }.`
                     );
                 }
@@ -377,10 +372,8 @@ class Hari {
                     if (kelas[hari].nama === namaHari) {
                         for (let i = 0; i < 3; i++) {
                             console.log(
-                                `Di hari ${kelas[hari].nama} jam ke-${
-                                    i + 1
-                                } kelas ${kelas.nama} diajar oleh Ust. ${
-                                    kelas[hari][i].guru
+                                `Di hari ${kelas[hari].nama} jam ke-${i + 1
+                                } kelas ${kelas.nama} diajar oleh Ust. ${kelas[hari][i].guru
                                 } fan ${kelas[hari][i].fan}.`
                             );
                         }
@@ -877,15 +870,15 @@ class PengirimPesan {
             jam === 1
                 ? PengirimPesan.JAM_PAGI
                 : jam === 2
-                ? this.tambahMenit(
-                      PengirimPesan.JAM_PAGI,
-                      PengirimPesan.DURASI_JAM_PAGI
-                  )
-                : this.tambahMenit(
-                      PengirimPesan.JAM_PAGI,
-                      2 * PengirimPesan.DURASI_JAM_PAGI +
-                          PengirimPesan.DURASI_ISTIRAHAT
-                  );
+                    ? this.tambahMenit(
+                        PengirimPesan.JAM_PAGI,
+                        PengirimPesan.DURASI_JAM_PAGI
+                    )
+                    : this.tambahMenit(
+                        PengirimPesan.JAM_PAGI,
+                        2 * PengirimPesan.DURASI_JAM_PAGI +
+                        PengirimPesan.DURASI_ISTIRAHAT
+                    );
         const waktuAkhir = this.tambahMenit(
             waktuAwal,
             PengirimPesan.DURASI_JAM_PAGI
@@ -902,15 +895,15 @@ class PengirimPesan {
             jam === 1
                 ? PengirimPesan.JAM_SORE
                 : jam === 2
-                ? this.tambahMenit(
-                      PengirimPesan.JAM_SORE,
-                      PengirimPesan.DURASI_JAM_SORE_1
-                  )
-                : this.tambahMenit(
-                      PengirimPesan.JAM_SORE,
-                      PengirimPesan.DURASI_JAM_SORE_1 +
-                          PengirimPesan.DURASI_JAM_SORE
-                  );
+                    ? this.tambahMenit(
+                        PengirimPesan.JAM_SORE,
+                        PengirimPesan.DURASI_JAM_SORE_1
+                    )
+                    : this.tambahMenit(
+                        PengirimPesan.JAM_SORE,
+                        PengirimPesan.DURASI_JAM_SORE_1 +
+                        PengirimPesan.DURASI_JAM_SORE
+                    );
         const waktuAkhir = this.tambahMenit(
             waktuAwal,
             jam === 1
@@ -2111,8 +2104,8 @@ if (command.jadwal) {
                     key === "pesanWA1"
                         ? "pagi"
                         : key === "pesanWA2"
-                        ? "sore"
-                        : "full";
+                            ? "sore"
+                            : "full";
 
                 new PengirimPesan(value)[waktu]();
             }
