@@ -1,78 +1,18 @@
 const hari = document.querySelector(".hari");
 const prevBttn = document.getElementById("prev");
 const nextBttn = document.getElementById("next");
-const test = document.querySelector(".test");
 const kontainerTabel = document.querySelector(".tabel-kontainer");
 
 const tanggalSekarang = new Date();
 const hariArr = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
 
 let indexHari = 0;
-hari.innerHTML = `${hariArr[indexHari]}`;
+let currentHari = hariArr[indexHari];
+hari.innerHTML = `${currentHari}`;
 
 prevBttn.addEventListener("click", pervAndTampilkan);
 nextBttn.addEventListener("click", nextAndTampilkan);
-document.onload = tampilkanTanggalPerHari(hariArr[indexHari]);
 
-function createTable(className, header, rows) {
-    const arrTanggal = tanggalPer7(hariArr[indexHari]);
-    let tableHTML = /*html*/ `<div class="${className}">
-        <header>${header}</header>
-        <table border="0" cellspacing="0" cellpadding="0">
-            <thead>
-                <tr>
-                    <th>Jam</th>
-                    <th>Nama</th>
-                    ${(() => {
-                        let html = "";
-                        for (let i = 0; i < 5; i++) {
-                            if (arrTanggal[i]) {
-                                html += /*html*/ `<th>${arrTanggal[i]}</th>`;
-                            } else {
-                                html += /*html*/ `<th></th>`;
-                            }
-                        }
-                        return html;
-                    })()}
-                </tr>
-            </thead>
-            <tbody>`;
-
-    for (let i = 0; i < rows.length; i++) {
-        tableHTML += /*html*/ `<tr>
-            <td>${rows[i].jam}</td>
-            <td>${rows[i].nama}</td>`;
-        for (let j = 1; j <= 5; j++) {
-            tableHTML += /*html*/ `<td>
-                <input type="radio" name="keterangan${
-                    i + 1
-                }${j}" id="ghoib" value="ghoib" />
-                <label for="ghoib">Ghoib</label>
-                <br />
-                <input type="radio" name="keterangan${
-                    i + 1
-                }${j}" id="izin" value="izin" />
-                <label for="izin">Izin</label>
-            </td>`;
-        }
-        tableHTML += "</tr>";
-    }
-
-    tableHTML += `</tbody>
-        </table>
-    </div>`;
-
-    return tableHTML;
-}
-
-let rows = [
-    { jam: "1", nama: "Ust Mukhlasin" },
-    { jam: "2", nama: "Ust Nizar" },
-    { jam: "3", nama: "Ust Fakhrurrozi" },
-];
-
-kontainerTabel.innerHTML += createTable("tabel-T1A", "1 Tsanawiyyah A", rows);
-kontainerTabel.innerHTML += createTable("tabel-T1B", "1 Tsanawiyyah B", rows);
 // objek berisi informasi tentang jumlah tanggal perbulan dalam setahun
 const jumlahHariPerBulan = {
     0: 31,
@@ -89,7 +29,90 @@ const jumlahHariPerBulan = {
     11: 31,
 };
 
+let counter = 0;
+
+/**
+ *
+ * @param {string} className
+ * @param {string} header
+ * @param {Object} rows
+ * @returns
+ */
+function createTable(className, header, rows) {
+    const arrTanggal = tanggalPer7(hariArr[indexHari]);
+    let tableHTML = /*html*/ `<div class="${className.split(" ").join("")}">
+        <header>${header}</header>
+        <table border="0" cellspacing="0" cellpadding="0" class="${className
+            .split(" ")
+            .join("")
+            .slice(0, -2)}">
+            <thead>
+                <tr>
+                    <th>Jam</th>
+                    <th>Nama</th>
+                    ${(() => {
+            let html = "";
+            for (let i = 0; i < arrTanggal.length; i++) {
+                if (arrTanggal[i]) {
+                    html += /*html*/ `<th class="tanggal-tabel-${i + 1
+                        }">${arrTanggal[i]}</th>`;
+                } else {
+                    html += /*html*/ `<th class="tanggal-tabel-${i + 1
+                        }"></th>`;
+                }
+            }
+            return html;
+        })()}
+                </tr>
+            </thead>
+            <tbody>`;
+
+    for (let i = 0; i < 3; i++) {
+        tableHTML += /*html*/ `<tr>
+            <td>${i + 1}</td>
+            <td>Ust ${rows[i].guru}</td>`;
+        for (let j = 0; j < arrTanggal.length; j++) {
+            tableHTML += /*html*/ `<td>
+                <input type="radio" name="keterangan${i + 1}${j + 1
+                }${counter}" id="ghoib${i + 1}${j + 1}${counter}" value="ghoib" />
+                <label for="ghoib${i + 1}${j + 1}${counter}">Ghoib</label>
+                <br />
+                <input type="radio" name="keterangan${i + 1}${j + 1
+                }${counter}" id="izin${i + 1}${j + 1}${counter}" value="izin" />
+                <label for="izin${i + 1}${j + 1}${counter}">Izin</label>
+            </td>`;
+        }
+        tableHTML += "</tr>";
+    }
+
+    tableHTML += /*html*/ `</tbody>
+        </table>
+    </div>`;
+
+    return tableHTML;
+}
+
+displayTabel();
+
 const jumlahHariBulanIni = jumlahHariPerBulan[tanggalSekarang.getMonth()];
+
+function displayTabel() {
+    const hariIni = hariArr[indexHari];
+    listKelas.forEach((kelas) => {
+        kontainerTabel.innerHTML += createTable(
+            `tabel-${kelas.nama}`,
+            `${kelas.nama}`,
+            kelas[hariIni.toLocaleLowerCase()]
+        );
+        counter++;
+    });
+    counter = 0;
+}
+
+function updateTabel() {
+    kontainerTabel.innerHTML = "";
+    displayTabel();
+}
 
 function showInputTanggalValue() {
     showTgl.innerHTML = `${new Date(inputTgl.value).toLocaleDateString(
@@ -121,21 +144,6 @@ function nextHari() {
     console.log(indexHari);
 }
 
-function tampilkanTanggalPerHari(hari) {
-    const arrTanggal = tanggalPer7(hari);
-
-    for (let i = 0; i < arrTanggal.length; i++) {
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.name = "tanggal7";
-        const label = document.createElement("label");
-        label.htmlFor = checkbox.name;
-        label.innerHTML = arrTanggal[i];
-        test.appendChild(checkbox);
-        test.appendChild(label);
-    }
-}
-
 function tanggalPer7(hari) {
     const sekarang = new Date();
 
@@ -162,13 +170,32 @@ function tanggalPer7(hari) {
 }
 
 function pervAndTampilkan() {
-    test.innerHTML = "";
     prevHari();
-    tampilkanTanggalPerHari(hariArr[indexHari]);
+    updateTanggalTabel();
+    updateTabel();
 }
 
 function nextAndTampilkan() {
-    test.innerHTML = "";
     nextHari();
-    tampilkanTanggalPerHari(hariArr[indexHari]);
+    updateTanggalTabel();
+    updateTabel();
+}
+
+function updateTanggalTabel() {
+    const arrTgl = tanggalPer7(hariArr[indexHari]);
+    for (let i = 0; i <= arrTgl.length; i++) {
+        const tgl = arrTgl[i];
+        const tanggalDiTabel = document.querySelectorAll(
+            `.tanggal-tabel-${i + 1}`
+        );
+        if (tanggalDiTabel && tgl) {
+            tanggalDiTabel.forEach((td) => {
+                td.innerHTML = tgl;
+            });
+        } else if (!tgl) {
+            tanggalDiTabel.forEach((td) => {
+                td.innerHTML = "";
+            });
+        }
+    }
 }
