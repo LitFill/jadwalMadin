@@ -2,16 +2,16 @@ const hari = document.querySelector(".hari");
 const prevBttn = document.getElementById("prev");
 const nextBttn = document.getElementById("next");
 const kontainerTabel = document.querySelector(".tabel-kontainer");
+const kontainerTombolHari = document.querySelector(".kontainer-tombol-hari");
 
-const tanggalSekarang = new Date();
 const hariArr = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
 
 let indexHari = 0;
 let currentHari = hariArr[indexHari];
 hari.innerHTML = `${currentHari}`;
 
-prevBttn.addEventListener("click", pervAndTampilkan);
-nextBttn.addEventListener("click", nextAndTampilkan);
+let sudahTersimpan = false;
 
 // objek berisi informasi tentang jumlah tanggal perbulan dalam setahun
 const jumlahHariPerBulan = {
@@ -29,7 +29,40 @@ const jumlahHariPerBulan = {
     11: 31,
 };
 
+const jumlahHariBulanIni = jumlahHariPerBulan[new Date().getMonth()];
+
 let counter = 0;
+
+hariArr.forEach((h) => {
+    const bttn = document.createElement("button");
+    bttn.innerHTML = h;
+    bttn.addEventListener("click", () => {
+        if (sudahTersimpan) {
+            indexHari = hariArr.indexOf(h);
+            currentHari = h;
+            updateAndDisplay(0);
+            sudahTersimpan = false;
+        } else {
+            alert('Tidak ada data yang tersimpan. Silahkan simpan terlebih dahulu!');
+        }
+    });
+    kontainerTombolHari.appendChild(bttn);
+})
+
+prevBttn.addEventListener("click", () => updateAndDisplay(-1));
+nextBttn.addEventListener("click", () => updateAndDisplay(1));
+
+function updateAndDisplay(inc) {
+    if (sudahTersimpan) {
+        indexHari = (indexHari + inc + 6) % 6;
+        hari.innerHTML = hariArr[indexHari];
+        updateTanggalTabel();
+        updateTabel();
+        sudahTersimpan = false;
+    } else {
+        alert('Tidak ada data yang tersimpan. Silahkan simpan terlebih dahulu!');
+    }
+}
 
 /**
  *
@@ -69,17 +102,17 @@ function createTable(className, header, rows) {
 
     for (let i = 0; i < 3; i++) {
         tableHTML += /*html*/ `<tr>
-            <td>${i + 1}</td>
-            <td>Ust ${rows[i].guru}</td>`;
+            <td class="jam">${i + 1}</td>
+            <td class="guru">Ust ${rows[i].guru}</td>`;
         for (let j = 0; j < arrTanggal.length; j++) {
             tableHTML += /*html*/ `<td>
                 <input type="radio" name="keterangan${i + 1}${j + 1
-                }${counter}" id="ghoib${i + 1}${j + 1}${counter}" value="ghoib" />
-                <label for="ghoib${i + 1}${j + 1}${counter}">Ghoib</label>
+                }${counter}" id="keterangan${i + 1}${j + 1}${counter}ghoib" value="ghoib" />
+                <label for="keterangan${i + 1}${j + 1}${counter}ghoib">Ghoib</label>
                 <br />
                 <input type="radio" name="keterangan${i + 1}${j + 1
-                }${counter}" id="izin${i + 1}${j + 1}${counter}" value="izin" />
-                <label for="izin${i + 1}${j + 1}${counter}">Izin</label>
+                }${counter}" id="keterangan${i + 1}${j + 1}${counter}izin" value="izin" />
+                <label for="keterangan${i + 1}${j + 1}${counter}izin">Izin</label>
             </td>`;
         }
         tableHTML += "</tr>";
@@ -93,8 +126,6 @@ function createTable(className, header, rows) {
 }
 
 displayTabel();
-
-const jumlahHariBulanIni = jumlahHariPerBulan[tanggalSekarang.getMonth()];
 
 function displayTabel() {
     const hariIni = hariArr[indexHari];
@@ -112,18 +143,6 @@ function displayTabel() {
 function updateTabel() {
     kontainerTabel.innerHTML = "";
     displayTabel();
-}
-
-function showInputTanggalValue() {
-    showTgl.innerHTML = `${new Date(inputTgl.value).toLocaleDateString(
-        "id-ID",
-        {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-        }
-    )}`;
 }
 
 function prevHari() {
@@ -169,18 +188,6 @@ function tanggalPer7(hari) {
     return arrTanggal;
 }
 
-function pervAndTampilkan() {
-    prevHari();
-    updateTanggalTabel();
-    updateTabel();
-}
-
-function nextAndTampilkan() {
-    nextHari();
-    updateTanggalTabel();
-    updateTabel();
-}
-
 function updateTanggalTabel() {
     const arrTgl = tanggalPer7(hariArr[indexHari]);
     for (let i = 0; i <= arrTgl.length; i++) {
@@ -188,14 +195,111 @@ function updateTanggalTabel() {
         const tanggalDiTabel = document.querySelectorAll(
             `.tanggal-tabel-${i + 1}`
         );
-        if (tanggalDiTabel && tgl) {
-            tanggalDiTabel.forEach((td) => {
-                td.innerHTML = tgl;
-            });
-        } else if (!tgl) {
-            tanggalDiTabel.forEach((td) => {
-                td.innerHTML = "";
-            });
-        }
+        tanggalDiTabel.forEach((td) => {
+            td.innerHTML = tgl || "";
+        })
     }
 }
+
+function kumpulkanData() {
+    const dataCSV = [];
+    const radios = document.querySelectorAll('input[type="radio"]');
+
+    radios.forEach((radio) => {
+        if (radio.checked) {
+            const jam = radio
+                .parentElement
+                .parentElement
+                .querySelector(".jam")
+                .innerHTML;
+
+            const radioId = radio.id;
+            const radioColumn = radioId.split("")[11]
+
+            const tanggalTabel = radio
+                .parentElement
+                .parentElement
+                .parentElement
+                .previousElementSibling
+                .querySelector(`.tanggal-tabel-${radioColumn}`)
+                .innerHTML;
+
+            const tanggal = new Date()
+            tanggal.setDate(Number(tanggalTabel));
+            const tanggalf = tanggal.toLocaleString("id-ID", {
+                day: "numeric",
+                month: "numeric",
+                year: "numeric",
+            });
+
+            const namaGuru = radio
+                .parentElement
+                .parentElement
+                .querySelector(".guru")
+                .innerHTML
+                .toUpperCase();
+
+            const kelas = radio
+                .parentElement
+                .parentElement
+                .parentElement
+                .parentElement
+                .parentElement
+                .querySelector("header")
+                .innerHTML;
+
+            const keterangan = radio.value.toUpperCase();
+
+            dataCSV.push([tanggalf, namaGuru, kelas, jam, keterangan]);
+        }
+    });
+    return dataCSV;
+}
+
+function toCSV(data) {
+    let csvContent = "data:text/csv;charset=utf-8,";
+    data.forEach((row) => {
+        let rowData = row.join(",");
+        csvContent += rowData + "\r\n";
+    })
+    return csvContent;
+}
+
+function downloadCSV(data, filename) {
+    let csvContent = toCSV(data);
+    let encodedUri = encodeURI(csvContent);
+    let link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+let saveButton = document.querySelectorAll(".save-button");
+saveButton.forEach((button) => {
+    button.addEventListener("click", () => {
+        const dataCSV = kumpulkanData();
+        try {
+            const tanggalDownload = new Date()
+                .toLocaleDateString("id-ID", {
+                    day: "numeric",
+                    month: "numeric",
+                    year: "2-digit",
+                })
+                .split("/")
+                .reverse()
+                .join("");
+            if (dataCSV) {
+                downloadCSV(dataCSV, `rekap_kehadiran_${hariArr[indexHari].toLocaleLowerCase()}_${tanggalDownload}.csv`);
+                sudahTersimpan = true;
+            } else {
+                console.log("dataCSV is null or undefined");
+                sudahTersimpan = false;
+            }
+        } catch (error) {
+            console.error("An error occurred:", error);
+            sudahTersimpan = false;
+        }
+    });
+});
