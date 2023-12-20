@@ -24,6 +24,7 @@
                 color: darkblue;
                 text-align: center;
                 margin-top: 0;
+                font-size: 2rem;
             }
 
             a {
@@ -84,8 +85,9 @@
 
             table {
                 border-collapse: collapse;
-                /* width: 100%; */
+                width: 100%;
                 margin-top: 20px;
+                margin-bottom: 20px;
             }
 
             th,
@@ -135,10 +137,19 @@
 
             .tabel-kontainer {
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-evenly;
                 flex-wrap: wrap;
-                align-content: space-between;
-                gap: 5px;
+                align-content: space-evenly;
+                gap: 20px;
+            }
+
+            .tabel-kontainer > * {
+                flex-grow: 1;
+                /* flex: 1; */
+            }
+
+            header {
+                font-weight: bold;
             }
 
             footer {
@@ -146,6 +157,40 @@
                 margin-top: 20px;
                 font-size: 0.8rem;
                 color: gray;
+            }
+
+            .h3-dan-save {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .save-up {
+                width: 200px;
+                font-size: 1.2rem;
+            }
+
+            .save-down-container {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .save-down {
+                font-size: 1.2rem;
+            }
+
+            .kontainer-tombol-hari {
+                display: flex;
+                justify-content: space-evenly;
+                gap: 15px;
+                flex-wrap: wrap;
+                margin-bottom: 30px;
+            }
+
+            .kontainer-tombol-hari > button {
+                font-size: 1rem;
+                flex-grow: 1;
+                max-width: 150px;
             }
         </style>
     </head>
@@ -155,18 +200,24 @@
         <a href="index.html">&lt; Kembali</a>
         <br />
         <div class="papan-rekap">
-            <h3>Rekap</h3>
+            <div class="h3-dan-save">
+                <h3>Rekap</h3>
+                <button class="save-button save-up">Simpan</button>
+            </div>
             <div class="container-hari">
                 <button id="prev">&lt;&lt;</button>
                 <span class="hari"></span>
                 <button id="next">&gt;&gt;</button>
             </div>
-            <br />
+            <div class="kontainer-tombol-hari"></div>
             <div class="tabel-kontainer"></div>
+            <div class="save-down-container">
+                <button class="save-button save-down">Simpan</button>
+            </div>
         </div>
 
         <script src="jadwal.js"></script>
-        <script src="rekap.js"></script>
+        <script src="rekap.js" defer></script>
         <footer>
             <p>&copy; 2023 Madin Andalusia. Semua hak dilindungi hak cipta.</p>
         </footer>
