@@ -64,14 +64,13 @@
                 background-color: #555;
             }
 
-            .prev {
-                float: left;
-                margin: 10px 5px;
-            }
-
-            .next {
-                float: right;
-                margin: 0 5px;
+            .container-hari {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                gap: 5px;
             }
 
             .hari {
@@ -101,6 +100,47 @@
                 text-align: center;
             }
 
+            table.tabel-Tsanawiyah1 > thead > tr > th {
+                background-color: rgb(255, 242, 204);
+            }
+
+            table.tabel-Tsanawiyah2 > thead > tr > th {
+                background-color: rgb(189, 215, 238);
+            }
+
+            table.tabel-Tsanawiyah3 > thead > tr > th {
+                background-color: rgb(248, 203, 173);
+            }
+
+            table.tabel-Aliyah1 > thead > tr > th {
+                background-color: rgb(198, 224, 180);
+            }
+
+            table.tabel-Aliyah2 > thead > tr > th {
+                background-color: rgb(255, 153, 204);
+            }
+
+            table.tabel-Aliyah3 > thead > tr > th {
+                background-color: rgb(255, 255, 153);
+            }
+
+            table.tabel-Isti\'d > thead > tr > th {
+                background-color: rgb(153, 153, 255);
+            }
+
+            table.tabel-MutakhorijinPa > thead > tr > th,
+            table.tabel-MutakhorijinSo > thead > tr > th {
+                background-color: rgb(102, 255, 255);
+            }
+
+            .tabel-kontainer {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                align-content: space-between;
+                gap: 5px;
+            }
+
             footer {
                 text-align: center;
                 margin-top: 20px;
@@ -120,16 +160,15 @@
                 <button id="prev">&lt;&lt;</button>
                 <span class="hari"></span>
                 <button id="next">&gt;&gt;</button>
-                <div class="test"></div>
             </div>
             <br />
             <div class="tabel-kontainer"></div>
         </div>
 
+        <script src="jadwal.js"></script>
+        <script src="rekap.js"></script>
         <footer>
             <p>&copy; 2023 Madin Andalusia. Semua hak dilindungi hak cipta.</p>
         </footer>
-
-        <script src="rekap.js"></script>
     </body>
 </html>
