@@ -1,91 +1,78 @@
 <!DOCTYPE html>
 <html lang="id-ID">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Madin Andalusia App</title>
+        <link rel="stylesheet" href="common-style.css" />
+        <style>
+            h4 {
+                color: var(--warna-gelap);
+            }
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Madin Andalusia App</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: 1.1rem;
-            background-color: #ecfff0;
-        }
+            .jadwal-hari-ini {
+                margin: 20px;
+                padding: 20px;
+                background-color: var(--warna-terang);
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
 
-        h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 0;
-            color: rgb(67, 252, 0);
-        }
+            .tanggal {
+                text-align: center;
+                text-decoration: underline;
+                color: var(--warna-gelap);
+            }
 
-        h3 {
-            color: darkblue;
-            text-align: center;
-            margin-top: 0;
-        }
+            .isi {
+                margin-left: 3%;
+                line-height: 25px;
+                color: var(--warna-gelap);
+            }
 
-        a {
-            display: block;
-            width: 200px;
-            height: 30px;
-            margin: 20px auto;
-            text-align: center;
-            background-color: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            padding: 15px 0;
-        }
+            .tombol-kembali-ke-atas {
+                display: flex;
+                justify-content: flex-end;
+            }
 
-        a:hover {
-            color: lawngreen;
-        }
+            button {
+                background-color: var(--warna-gelap);
+                color: var(--warna-terang);
+                border: none;
+                padding: 10px 20px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.5rem;
+            }
 
-        .jadwal-hari-ini {
-            margin: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+            button:hover {
+                background-color: var(--warna-utama);
+                color: var(--warna-gelap);
+            }
+        </style>
+    </head>
 
-        .tanggal {
-            text-align: center;
-            text-decoration: underline;
-        }
+    <body>
+        <h2>Madin Andalusia App</h2>
+        <br / footer { text-align: center; margin-top: 20px; font-size: 0.8rem;
+        color: var(--warna-gelap-3); } >
+        <h3>Assalamu'alaikum Wr. Wb.</h3>
+        <a href="jadwal.html">Jadwal Madin</a>
+        <a href="login.html">Rekap Guru</a>
+        <br />
+        <div class="jadwal-hari-ini">
+            <h3>Jadwal Hari ini</h3>
+            <div class="tanggal" id="tanggalJadwal"></div>
+            <p class="isi" id="jadwalHariIni"></p>
+            <div class="tombol-kembali-ke-atas">
+                <button id="backToTop">&UpArrow;</button>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2023 Madin Andalusia. Semua hak dilindungi hak cipta.</p>
+        </footer>
 
-        .isi {
-            line-height: 25px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: gray;
-        }
-    </style>
-</head>
-
-<body>
-    <h2>Madin Andalusia App</h2>
-    <br>
-    <h3>Assalamu'alaikum Wr. Wb.</h3>
-    <a href="jadwal.html">Jadwal Madin</a>
-    <a href="login.html">Rekap Guru</a>
-    <br />
-    <div class="jadwal-hari-ini">
-        <h3>Jadwal Hari ini</h3>
-        <div class="tanggal" id="tanggalJadwal"></div>
-        <p class="isi" id="jadwalHariIni"></p>
-    </div>
-    <footer>
-        <p>&copy; 2023 Madin Andalusia. Semua hak dilindungi hak cipta.</p>
-    </footer>
-
-    <script src="jadwal.js"></script>
-    <script src="index.js"></script>
-</body>
-
+        <script src="jadwal.js"></script>
+        <script src="index.js"></script>
+    </body>
 </html>
