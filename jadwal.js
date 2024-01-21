@@ -161,6 +161,8 @@ class Guru {
             UL: UL,
             HS: HS,
             _ust: _ust,
+            
+            RID: RID,
         };
 
         return guruMap[kodeGuru] || null;
@@ -1103,6 +1105,7 @@ const USM = new Guru("Usman", nahwu);
 const ASY = new Guru("Asyrof", arab);
 const ALW = new Guru("Alawy", fiqih);
 const JBR = new Guru("Jabir", nahwu);
+const RID = new Guru("Riedho", arab);
 const RIF = new Guru("Rifqi", arab);
 const FRQ = new Guru("Faruq", arab);
 const WF = new Guru("Wafa", shorof);
@@ -1733,21 +1736,21 @@ const JADWAL_MADIN = {
         [SBH, shorof],
         [FTN, nahwu],
         [SDL, tauhid],
-        [IBR, arab],
+        [RID, arab],
         [MSH, fiqih],
         [SDL, tauhid],
-        [IBR, arab],
+        [RID, arab],
         [FTN, nahwu],
         [MSH, fiqih],
         [MSH, fiqih],
         [MSH, fiqih],
         [IRF, akhlaq],
-        [IBR, arab],
+        [RID, arab],
         [FTN, nahwu],
         [IRF, akhlaq],
         [FTN, nahwu],
         [SBH, shorof],
-        [IBR, arab],
+        [RID, arab],
     ],
     A1C: [
         [SDL, tauhid],
@@ -1771,20 +1774,20 @@ const JADWAL_MADIN = {
     ],
     A1D: [
         [AZZ, nahwu],
-        [FRH, arab],
+        [RID, arab],
         [GFR, fiqih],
         [AZZ, nahwu],
         [UMM, tauhid],
-        [FRH, arab],
+        [RID, arab],
         [UMM, tauhid],
         [IRF, akhlaq],
         [SBH, shorof],
-        [FRH, arab],
+        [RID, arab],
         [GFR, fiqih],
         [AZZ, nahwu],
         [SBH, shorof],
         [GFR, fiqih],
-        [FRH, arab],
+        [RID, arab],
         [IRF, akhlaq],
         [GFR, fiqih],
         [AZZ, nahwu],
@@ -1985,9 +1988,9 @@ const JADWAL_MADIN = {
         [SHF, fiqih],
         [SHF, fiqih],
         [_ust, _fan],
-        [HR, nahwu],
-        [HR, nahwu],
         [SHF, fiqih],
+        [HR, nahwu],
+        [HR, nahwu],
     ],
 };
 
