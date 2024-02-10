@@ -163,6 +163,22 @@
                 flex-grow: 1;
                 max-width: 150px;
             }
+
+            .container-bulan {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                gap: 5px;
+            }
+
+            select {
+                font-size: 1rem;
+                padding: 5px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
         </style>
     </head>
 
@@ -174,6 +190,22 @@
             <div class="h3-dan-save">
                 <h3>Rekap</h3>
                 <button class="save-button save-up">Simpan</button>
+            </div>
+            <div class="container-bulan">
+                <select name="bulan" id="bulan" class="bulan-selector">
+                    <option value="0">Januari</option>
+                    <option value="1">Februari</option>
+                    <option value="2">Maret</option>
+                    <option value="3">April</option>
+                    <option value="4">Mei</option>
+                    <option value="5">Juni</option>
+                    <option value="6">Juli</option>
+                    <option value="7">Agustus</option>
+                    <option value="8">September</option>
+                    <option value="9">Oktober</option>
+                    <option value="10">November</option>
+                    <option value="11">Desember</option>
+                </select>
             </div>
             <div class="container-hari">
                 <button id="prev">&lt;&lt;</button>
