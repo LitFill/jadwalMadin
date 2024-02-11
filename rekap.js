@@ -290,7 +290,7 @@ function kumpulkanData() {
         tanggal.setDate(Number(tanggalTabel));
         const tanggalf = tanggal.toLocaleString("id-ID", {
             day: "numeric",
-            month: "numeric",
+            month: "2-digit",
             year: "numeric",
         });
 
@@ -351,7 +351,7 @@ saveButtons.forEach((button) => {
             const tanggalDownload = new Date()
                 .toLocaleDateString("id-ID", {
                     day: "numeric",
-                    month: "numeric",
+                    month: "2-digit",
                     year: "2-digit",
                 })
                 .split("/")
