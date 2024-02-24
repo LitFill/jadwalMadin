@@ -161,8 +161,9 @@ class Guru {
             UL: UL,
             HS: HS,
             _ust: _ust,
-            
+
             RID: RID,
+            SBR: SBR,
         };
 
         return guruMap[kodeGuru] || null;
@@ -1056,7 +1057,7 @@ const DRW = new Guru("Darwis", nahwu);
 const FDL = new Guru("Fadil", [imla, fiqih]);
 const FHM = new Guru("Agus Fahmi", arab);
 const FQH = new Guru("Faqih", shorof);
-const FRH = new Guru("Farhan", arab);
+const FRH = new Guru("Farhan", fiqih);
 const FRQ = new Guru("Faruq", arab);
 const FRZ = new Guru("Fakhrurozi", arab);
 const FT = new Guru("Fathur", nahwu);
@@ -1114,6 +1115,7 @@ const WF = new Guru("Wafa", shorof);
 const WHB = new Guru("Wahib", tajwid);
 const YDN = new Guru("Yadin", akhlaq);
 const YHY = new Guru("Yahya Mansur", arab);
+const SBR = new Guru("Subur", arab);
 const _ust = new Guru("-", _fan);
 
 /* Deklarasi Kelas */
@@ -1296,16 +1298,16 @@ const JADWAL_MADIN = {
         [HFD, shorof],
         [YDN, akhlaq],
         [HR, nahwu],
-        [FRH, arab],
+        [SBR, arab],
         [BCH, tauhid],
         [HR, nahwu],
         [HR, nahwu],
         [MIS, fiqih],
         [HR, nahwu],
         [MIS, fiqih],
-        [FRH, arab],
-        [FRH, arab],
-        [FRH, arab],
+        [SBR, arab],
+        [SBR, arab],
+        [SBR, arab],
         [MIS, fiqih],
         [MSH, imla],
         [ASR, tajwid],
@@ -1453,13 +1455,13 @@ const JADWAL_MADIN = {
         [BGS, fiqih],
     ],
     T2H: [
-        [ADN, fiqih],
+        [FRH, fiqih],
         [ANM, tauhid],
         [MRJ, arab],
         [FQH, shorof],
         [LBB, tajwid],
         [MRJ, arab],
-        [ADN, fiqih],
+        [FRH, fiqih],
         [FQH, shorof],
         [IDS, nahwu],
         [UMR, akhlaq],
@@ -1469,19 +1471,19 @@ const JADWAL_MADIN = {
         [IDS, nahwu],
         [MRJ, arab],
         [IDS, nahwu],
-        [ADN, fiqih],
+        [FRH, fiqih],
         [MRJ, arab],
     ],
     T2I: [
         [MRJ, arab],
         [MNR, nahwu],
-        [ADN, fiqih],
+        [FRH, fiqih],
         [MRJ, arab],
         [FQH, shorof],
         [ANM, tauhid],
         [BCH, akhlaq],
         [MNR, nahwu],
-        [ADN, fiqih],
+        [FRH, fiqih],
         [LBB, tajwid],
         [ANM, tauhid],
         [MRJ, arab],
@@ -1490,26 +1492,26 @@ const JADWAL_MADIN = {
         [FQH, shorof],
         [BCH, akhlaq],
         [MNR, nahwu],
-        [ADN, fiqih],
+        [FRH, fiqih],
     ],
     T2J: [
         [ANM, tauhid],
-        [ADN, fiqih],
+        [FRH, fiqih],
         [UMR, akhlaq],
         [UMR, akhlaq],
-        [FRH, arab],
+        [SBR, arab],
         [MNR, nahwu],
         [FQH, shorof],
-        [ADN, fiqih],
-        [FRH, arab],
+        [FRH, fiqih],
+        [SBR, arab],
         [ANM, tauhid],
         [MNR, nahwu],
         [LBB, tajwid],
         [FQH, shorof],
-        [FRH, arab],
+        [SBR, arab],
         [MNR, nahwu],
-        [ADN, fiqih],
-        [FRH, arab],
+        [FRH, fiqih],
+        [SBR, arab],
         [MNR, nahwu],
     ],
     T3A: [
