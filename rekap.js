@@ -44,7 +44,7 @@ hariArr.forEach((h) => {
             sudahTersimpan = false;
         } else {
             alert(
-                "Tidak ada data yang tersimpan. Silahkan simpan terlebih dahulu!"
+                "Tidak ada data yang tersimpan. Silahkan simpan terlebih dahulu!",
             );
         }
     });
@@ -79,10 +79,10 @@ function updateAndDisplay(inc, bulanRekap = undefined) {
         return null;
     } else {
         alert(
-            "Tidak ada data yang tersimpan. Silahkan simpan terlebih dahulu!"
+            "Tidak ada data yang tersimpan. Silahkan simpan terlebih dahulu!",
         );
         return new Error(
-            "Tidak ada data yang tersimpan. Silahkan simpan terlebih dahulu!"
+            "Tidak ada data yang tersimpan. Silahkan simpan terlebih dahulu!",
         );
     }
 }
@@ -95,8 +95,9 @@ function createTableHeader(arrTanggal) {
     let html = "";
     for (let i = 0; i < arrTanggal.length; i++) {
         if (arrTanggal[i]) {
-            html += /*html*/ `<th class="tanggal-tabel-${i + 1}">${arrTanggal[i]
-                }</th>`;
+            html += /*html*/ `<th class="tanggal-tabel-${i + 1}">${
+                arrTanggal[i]
+            }</th>`;
         } else {
             html += /*html*/ `<th class="tanggal-tabel-${i + 1}"></th>`;
         }
@@ -200,7 +201,7 @@ function displayTabel(bulanRekap = undefined) {
             `tabel-${kelas.nama}`,
             `${kelas.nama}`,
             kelas[hariIni.toLocaleLowerCase()],
-            bulanRekap
+            bulanRekap,
         );
         counter++;
     });
@@ -239,7 +240,7 @@ function tanggalPer7(hari, bulanRekap = undefined) {
         arrTanggal.push(
             tanggalBaru.toLocaleDateString("id-ID", {
                 day: "numeric",
-            })
+            }),
         );
         tanggalBaru.setDate(tanggalBaru.getDate() + 7);
     }
@@ -254,7 +255,7 @@ function updateTanggalTabel(bulanRekap = undefined) {
     for (let i = 0; i <= arrTgl.length; i++) {
         const tgl = arrTgl[i];
         const tanggalDiTabel = document.querySelectorAll(
-            `.tanggal-tabel-${i + 1}`
+            `.tanggal-tabel-${i + 1}`,
         );
         tanggalDiTabel.forEach((td) => {
             td.innerHTML = tgl || "";
@@ -283,7 +284,7 @@ function kumpulkanData() {
 
         const tanggalTabel =
             radio.parentElement.parentElement.parentElement.previousElementSibling.querySelector(
-                `.tanggal-tabel-${radioColumn}`
+                `.tanggal-tabel-${radioColumn}`,
             ).innerHTML;
 
         const tanggal = new Date();
@@ -300,7 +301,7 @@ function kumpulkanData() {
 
         const kelas =
             radio.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(
-                "header"
+                "header",
             ).innerHTML;
 
         const keterangan = radio.value.toUpperCase();
@@ -362,7 +363,7 @@ saveButtons.forEach((button) => {
                     dataCSV,
                     `rekap_kehadiran_${hariArr[
                         indexHari
-                    ].toLocaleLowerCase()}_${tanggalDownload}.csv`
+                    ].toLocaleLowerCase()}_${tanggalDownload}.csv`,
                 );
                 sudahTersimpan = true;
             } else {

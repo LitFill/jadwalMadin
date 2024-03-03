@@ -52,10 +52,13 @@ function getJadwalHariIni() {
     return escapedPesan;
 }
 
-const backToTopButton = document.getElementById('backToTop');
+const backToTopButton = document.getElementById("backToTop");
 
 window.onscroll = () => {
-    if (document.body.scrollTop > 4000 || document.documentElement.scrollTop > 4000) {
+    if (
+        document.body.scrollTop > 4000 ||
+        document.documentElement.scrollTop > 4000
+    ) {
         backToTopButton.style.display = "block";
     } else {
         backToTopButton.style.display = "none";
