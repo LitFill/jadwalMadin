@@ -42,9 +42,11 @@ class Guru {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.nama) {
                             console.log(
-                                `Ust. ${this.nama} mengajar kelas ${kelas.nama
-                                } fan ${kelas[hari][i].fan} di hari ${kelas[hari].nama
-                                } jam ke-${i + 1}.`
+                                `Ust. ${this.nama} mengajar kelas ${
+                                    kelas.nama
+                                } fan ${kelas[hari][i].fan} di hari ${
+                                    kelas[hari].nama
+                                } jam ke-${i + 1}.`,
                             );
                         }
                     }
@@ -93,7 +95,7 @@ class Guru {
             HMD: HMD,
             RF: RF,
             BCH: BCH,
-            HFD: HFD,
+            // HFD: HFD,
             GFR: GFR,
             IBR: IBR,
             RHL: RHL,
@@ -101,7 +103,7 @@ class Guru {
             MIS: MIS,
             MRJ: MRJ,
             MSH: MSH,
-            MST: MST,
+            // MST: MST,
             SHF: SHF,
             FDL: FDL,
             IDT: IDT,
@@ -110,7 +112,7 @@ class Guru {
             UHS: UHS,
             UHN: UHN,
             HR: HR,
-            IDS: IDS,
+            // IDS: IDS,
             ADN: ADN,
             YHY: YHY,
             BDL: BDL,
@@ -118,7 +120,7 @@ class Guru {
             LSN: LSN,
             SDL: SDL,
             UMM: UMM,
-            FRZ: FRZ,
+            // FRZ: FRZ,
             AFF: AFF,
             MSR: MSR,
             DMN: DMN,
@@ -154,7 +156,7 @@ class Guru {
             ALW: ALW,
             JBR: JBR,
             RIF: RIF,
-            FRQ: FRQ,
+            // FRQ: FRQ,
             WF: WF,
             AZZ: AZZ,
             LTF: LTF,
@@ -187,8 +189,9 @@ class Abah {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.madin.nama) {
                             console.log(
-                                `Abah mucal kelas ${kelas.nama} fan ${kelas[hari][i].fan
-                                } di hari ${kelas[hari].nama} jam ke-${i + 1}.`
+                                `Abah mucal kelas ${kelas.nama} fan ${
+                                    kelas[hari][i].fan
+                                } di hari ${kelas[hari].nama} jam ke-${i + 1}.`,
                             );
                         }
                     }
@@ -233,7 +236,7 @@ class Kelas {
             this[hari][jam - 1].fan = fan.nama;
         } else {
             throw new Error(
-                `ERROR: Ust. ${guru.nama} tidak mengajar fan ${fan.nama}.\nLOK  : kelas ${this.nama} / ${hari}:${jam}.`
+                `ERROR: Ust. ${guru.nama} tidak mengajar fan ${fan.nama}.\nLOK  : kelas ${this.nama} / ${hari}:${jam}.`,
             );
         }
     }
@@ -250,9 +253,11 @@ class Kelas {
                 for (let i = 0; i < 3; i++) {
                     console.log(
                         // @ts-ignore
-                        `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${i + 1
-                        } diajar oleh Ust. ${this[hari][i].guru} fan ${this[hari][i].fan
-                        }.`
+                        `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${
+                            i + 1
+                        } diajar oleh Ust. ${this[hari][i].guru} fan ${
+                            this[hari][i].fan
+                        }.`,
                     );
                 }
                 // console.log("\n");
@@ -375,9 +380,11 @@ class Hari {
                     if (kelas[hari].nama === namaHari) {
                         for (let i = 0; i < 3; i++) {
                             console.log(
-                                `Di hari ${kelas[hari].nama} jam ke-${i + 1
-                                } kelas ${kelas.nama} diajar oleh Ust. ${kelas[hari][i].guru
-                                } fan ${kelas[hari][i].fan}.`
+                                `Di hari ${kelas[hari].nama} jam ke-${
+                                    i + 1
+                                } kelas ${kelas.nama} diajar oleh Ust. ${
+                                    kelas[hari][i].guru
+                                } fan ${kelas[hari][i].fan}.`,
                             );
                         }
                     }
@@ -516,7 +523,7 @@ class PengirimPesan {
         this.namaBulan = this.getNamaBulan();
         this.tanggalTerformat = this.tanggalPesan?.toLocaleDateString(
             "id-ID",
-            PengirimPesan.TANGGAL_FULL_FORMAT
+            PengirimPesan.TANGGAL_FULL_FORMAT,
         );
     }
 
@@ -539,7 +546,7 @@ class PengirimPesan {
                 .toLocaleLowerCase();
         } else {
             throw new Error(
-                "Error: Tanggal harus diinisialisasi terlebih dahulu."
+                "Error: Tanggal harus diinisialisasi terlebih dahulu.",
             );
         }
     }
@@ -551,7 +558,7 @@ class PengirimPesan {
             });
         } else {
             throw new Error(
-                "Error: Tanggal harus diinisialisasi terlebih dahulu."
+                "Error: Tanggal harus diinisialisasi terlebih dahulu.",
             );
         }
     }
@@ -873,18 +880,18 @@ class PengirimPesan {
             jam === 1
                 ? PengirimPesan.JAM_PAGI
                 : jam === 2
-                    ? this.tambahMenit(
+                  ? this.tambahMenit(
                         PengirimPesan.JAM_PAGI,
-                        PengirimPesan.DURASI_JAM_PAGI
+                        PengirimPesan.DURASI_JAM_PAGI,
                     )
-                    : this.tambahMenit(
+                  : this.tambahMenit(
                         PengirimPesan.JAM_PAGI,
                         2 * PengirimPesan.DURASI_JAM_PAGI +
-                        PengirimPesan.DURASI_ISTIRAHAT
+                            PengirimPesan.DURASI_ISTIRAHAT,
                     );
         const waktuAkhir = this.tambahMenit(
             waktuAwal,
-            PengirimPesan.DURASI_JAM_PAGI
+            PengirimPesan.DURASI_JAM_PAGI,
         );
         return `${waktuAwal} - ${waktuAkhir}`;
     }
@@ -898,20 +905,20 @@ class PengirimPesan {
             jam === 1
                 ? PengirimPesan.JAM_SORE
                 : jam === 2
-                    ? this.tambahMenit(
+                  ? this.tambahMenit(
                         PengirimPesan.JAM_SORE,
-                        PengirimPesan.DURASI_JAM_SORE_1
+                        PengirimPesan.DURASI_JAM_SORE_1,
                     )
-                    : this.tambahMenit(
+                  : this.tambahMenit(
                         PengirimPesan.JAM_SORE,
                         PengirimPesan.DURASI_JAM_SORE_1 +
-                        PengirimPesan.DURASI_JAM_SORE
+                            PengirimPesan.DURASI_JAM_SORE,
                     );
         const waktuAkhir = this.tambahMenit(
             waktuAwal,
             jam === 1
                 ? PengirimPesan.DURASI_JAM_SORE_1
-                : PengirimPesan.DURASI_JAM_SORE
+                : PengirimPesan.DURASI_JAM_SORE,
         );
         return `${waktuAwal} - ${waktuAkhir}`;
     }
@@ -1052,26 +1059,26 @@ const AZZ = new Guru("Aziz", nahwu);
 const BCH = new Guru("Bukhori", [tauhid, akhlaq]);
 const BDL = new Guru("Hb. Abdillah", arab);
 const BGS = new Guru("Bagus", fiqih);
-const DMN = new Guru("Damanhuri", fiqih);
+const DMN = new Guru("Damanhuri", [fiqih, nahwu]);
 const DRW = new Guru("Darwis", nahwu);
 const FDL = new Guru("Fadil", [imla, fiqih]);
 const FHM = new Guru("Agus Fahmi", arab);
 const FQH = new Guru("Faqih", shorof);
-const FRH = new Guru("Farhan", fiqih);
-const FRQ = new Guru("Faruq", arab);
-const FRZ = new Guru("Fakhrurozi", arab);
+const FRH = new Guru("Farhan", [fiqih, arab]);
+// const FRQ = new Guru("Faruq", arab);
+// const FRZ = new Guru("Fakhrurozi", arab);
 const FT = new Guru("Fathur", nahwu);
 const FTN = new Guru("Fathoni", nahwu);
 const GFR = new Guru("Musthofa Ghufron", fiqih);
-const HFD = new Guru("Hafidz", [shorof, miftah]);
+// const HFD = new Guru("Hafidz", [shorof, miftah]);
 const HLD = new Guru("Kholidin", nahwu);
 const HLY = new Guru("Agus Hilmy", balaghoh);
-const HMD = new Guru("Hamid M.", [tauhid, shorof]);
+const HMD = new Guru("Hamid M.", [tauhid, shorof, fiqih]);
 const HR = new Guru("Heri", [nahwu, fiqih]);
 const HS = new Guru("Hasan", fiqih);
 const IBR = new Guru("Ibrohim", [shorof, arab]);
 const IDM = new Guru("Agus Idhohul", akhlaq);
-const IDS = new Guru("Idris Besuk", nahwu);
+// const IDS = new Guru("Idris Besuk", nahwu);
 const IDT = new Guru("Idris Thobari", nahwu);
 const IRF = new Guru("Irfangi", akhlaq);
 const JBR = new Guru("Jabir", nahwu);
@@ -1079,7 +1086,7 @@ const KHL = new Guru("Kholil", akhlaq);
 const LBB = new Guru("Lubab", tajwid);
 const LSN = new Guru("Mukhlasin", tauhid);
 const LTF = new Guru("Lutfi", arab);
-const MIS = new Guru("Maisur", [fiqih, nahwu]);
+const MIS = new Guru("Maisur", [fiqih, nahwu, miftah]);
 const MNJ = new Guru("Munji", akhlaq);
 const MNR = new Guru("Munir Subkhi", [shorof, nahwu]);
 const MNS = new Guru("Munshorif", [shorof, fiqih]);
@@ -1087,10 +1094,10 @@ const MRJ = new Guru("Mu'rijul Ma'arif", arab);
 const MRW = new Guru("Mirwan", fiqih);
 const MSH = new Guru("Mashudi", [imla, fiqih]);
 const MSR = new Guru("Masriyanto", arab);
-const MST = new Guru("Musthofa Besuk", fiqih);
+// const MST = new Guru("Musthofa Besuk", fiqih);
 const MZN = new Guru("Muzaini", ilal);
-const NZR = new Guru("Nizar", nahwu);
-const RF = new Guru("Rouf", [nahwu, ushul, tasme]);
+const NZR = new Guru("Nizar", [nahwu, imla, shorof]);
+const RF = new Guru("Rouf", [nahwu, ushul, tasme, shorof]);
 const RHL = new Guru("Rohli", [balaghoh, arab]);
 const RID = new Guru("Riedho", arab);
 const RIF = new Guru("Rifqi", arab);
@@ -1099,24 +1106,24 @@ const SDL = new Guru("Sa'dulloh", tauhid);
 const SDQ = new Guru("Sodiqin", tauhid);
 const SHF = new Guru("Shofi", [nahwu, fiqih]);
 const SLD = new Guru("Sholahuddin", nahwu);
-const SLH = new Guru("Sholah", nahwu);
+const SLH = new Guru("Sholah", [nahwu, fiqih]);
 const SRR = new Guru("Surur", nahwu);
 const ST = new Guru("Syaikh Toha", arab);
 const UHN = new Guru("Husni Cianjur", arab);
-const UHS = new Guru("Husni Sarang", fiqih);
-const UL = new Guru("Ulil", tauhid);
+const UHS = new Guru("Husni Sarang", [fiqih, nahwu]);
+const UL = new Guru("Ulil", [tauhid, fiqih]);
 const UMM = new Guru("Agus Umam", tauhid);
-const UMR = new Guru("Ma'ruf", akhlaq);
-const URB = new Guru("Robingu", shorof);
+const UMR = new Guru("Ma'ruf", [akhlaq, fiqih, nahwu]);
+const URB = new Guru("Robingu", [shorof, nahwu]);
 const USM = new Guru("Usman", nahwu);
 const USY = new Guru("Syafi'il Anam", [tauhid, arab]);
-const UTJ = new Guru("Tajudin", [nahwu, tasme]);
-const WF = new Guru("Wafa", shorof);
+const UTJ = new Guru("Tajudin", [nahwu, tasme, fiqih]);
+const WF = new Guru("Wafa", [shorof, nahwu]);
 const WHB = new Guru("Wahib", tajwid);
-const YDN = new Guru("Yadin", akhlaq);
+const YDN = new Guru("Yadin", [akhlaq, imla]);
 const YHY = new Guru("Yahya Mansur", arab);
 const SBR = new Guru("Subur", arab);
-const _ust = new Guru("-", _fan);
+const _ust = new Guru("-", _fan); // Guru kosong
 
 /* Deklarasi Kelas */
 /**
@@ -1171,839 +1178,1076 @@ const [
 
 // kelas kosong
 Kelas.kelasKosong(T3D);
+Kelas.kelasKosong(T1B);
 
-/** @type {{ [kelas: string]: [Guru, Fan][] }} */
-const JADWAL_MADIN = {
-    T1A: [
-        [MNS, shorof],
-        [FRZ, arab],
-        [FDL, imla],
-        [NZR, nahwu],
-        [GFR, fiqih],
-        [MNS, shorof],
-        [FRZ, arab],
-        [ASR, tajwid],
-        [GFR, fiqih],
-        [NZR, nahwu],
-        [FRZ, arab],
-        [GFR, fiqih],
-        [LSN, tauhid],
-        [NZR, nahwu],
-        [YDN, akhlaq],
-        [LSN, tauhid],
-        [NZR, nahwu],
-        [FRZ, arab],
-    ],
-    T1B: [
-        [NZR, nahwu],
-        [FDL, imla],
-        [YDN, akhlaq],
-        [ASR, tajwid],
-        [LSN, tauhid],
-        [FRZ, arab],
-        [NZR, nahwu],
-        [FRZ, arab],
-        [MST, fiqih],
-        [LSN, tauhid],
-        [NZR, nahwu],
-        [FRZ, arab],
-        [FRZ, arab],
-        [MST, fiqih],
-        [NZR, nahwu],
-        [MST, fiqih],
-        [MNS, shorof],
-        [MNS, shorof],
-    ],
-    T1C: [
-        [FDL, imla],
-        [FRQ, arab],
-        [MST, fiqih],
-        [LSN, tauhid],
-        [NZR, nahwu],
-        [FRQ, arab],
-        [MNR, shorof],
-        [NZR, nahwu],
-        [FRQ, arab],
-        [MST, fiqih],
-        [LSN, tauhid],
-        [MNR, shorof],
-        [NZR, nahwu],
-        [FRQ, arab],
-        [MST, fiqih],
-        [NZR, nahwu],
-        [YDN, akhlaq],
-        [ASR, tajwid],
-    ],
-    T1D: [
-        [LSN, tauhid],
-        [MSH, imla],
-        [FRQ, arab],
-        [HFD, shorof],
-        [MIS, fiqih],
-        [FT, nahwu],
-        [FT, nahwu],
-        [FRQ, arab],
-        [ASR, tajwid],
-        [YDN, akhlaq],
-        [FT, nahwu],
-        [FRQ, arab],
-        [MIS, fiqih],
-        [LSN, tauhid],
-        [FT, nahwu],
-        [HFD, shorof],
-        [MIS, fiqih],
-        [FRQ, arab],
-    ],
-    T1E: [
-        [MST, fiqih],
-        [LSN, tauhid],
-        [FRZ, arab],
-        [FRZ, arab],
-        [ASR, tajwid],
-        [HFD, shorof],
-        [MST, fiqih],
-        [FT, nahwu],
-        [HFD, shorof],
-        [FT, nahwu],
-        [YDN, akhlaq],
-        [FT, nahwu],
-        [MST, fiqih],
-        [FT, nahwu],
-        [FRZ, arab],
-        [FRZ, arab],
-        [LSN, tauhid],
-        [MSH, imla],
-    ],
-    T1F: [
-        [FRQ, arab],
-        [HFD, shorof],
-        [BCH, tauhid],
-        [FT, nahwu],
-        [FT, nahwu],
-        [MIS, fiqih],
-        [MIS, fiqih],
-        [HFD, shorof],
-        [FT, nahwu],
-        [FRQ, arab],
-        [FRQ, arab],
-        [BCH, tauhid],
-        [FT, nahwu],
-        [MSH, imla],
-        [ASR, tajwid],
-        [MIS, fiqih],
-        [FRQ, arab],
-        [YDN, akhlaq],
-    ],
-    T1G: [
-        [HFD, shorof],
-        [YDN, akhlaq],
-        [HR, nahwu],
-        [SBR, arab],
-        [BCH, tauhid],
-        [HR, nahwu],
-        [HR, nahwu],
-        [MIS, fiqih],
-        [HR, nahwu],
-        [MIS, fiqih],
-        [SBR, arab],
-        [SBR, arab],
-        [SBR, arab],
-        [MIS, fiqih],
-        [MSH, imla],
-        [ASR, tajwid],
-        [HFD, shorof],
-        [BCH, tauhid],
-    ],
-    T2A: [
-        [SLH, nahwu],
-        [YHY, arab],
-        [WF, shorof],
-        [LBB, tajwid],
-        [HMD, tauhid],
-        [MRW, fiqih],
-        [MRW, fiqih],
-        [SLH, nahwu],
-        [MNJ, akhlaq],
-        [MNJ, akhlaq],
-        [YHY, arab],
-        [YHY, arab],
-        [YHY, arab],
-        [SLH, nahwu],
-        [HMD, tauhid],
-        [SLH, nahwu],
-        [MRW, fiqih],
-        [WF, shorof],
-    ],
-    T2B: [
-        [LBB, tajwid],
-        [SLH, nahwu],
-        [YHY, arab],
-        [USY, tauhid],
-        [MRW, fiqih],
-        [WF, shorof],
-        [SLH, nahwu],
-        [MRW, fiqih],
-        [WF, shorof],
-        [YHY, arab],
-        [MNJ, akhlaq],
-        [SLH, nahwu],
-        [MRW, fiqih],
-        [YHY, arab],
-        [SLH, nahwu],
-        [MNJ, akhlaq],
-        [YHY, arab],
-        [USY, tauhid],
-    ],
-    T2C: [
-        [YHY, arab],
-        [LBB, tajwid],
-        [MNJ, akhlaq],
-        [YHY, arab],
-        [WF, shorof],
-        [MST, fiqih],
-        [HMD, tauhid],
-        [MNJ, akhlaq],
-        [SLH, nahwu],
-        [SLH, nahwu],
-        [MST, fiqih],
-        [MST, fiqih],
-        [SLH, nahwu],
-        [HMD, tauhid],
-        [YHY, arab],
-        [YHY, arab],
-        [WF, shorof],
-        [SLH, nahwu],
-    ],
-    T2D: [
-        [RIF, arab],
-        [MNJ, akhlaq],
-        [BGS, fiqih],
-        [RIF, arab],
-        [ASP, nahwu],
-        [LBB, tajwid],
-        [MNJ, akhlaq],
-        [SDQ, tauhid],
-        [ASP, nahwu],
-        [BGS, fiqih],
-        [ASP, nahwu],
-        [WF, shorof],
-        [SDQ, tauhid],
-        [BGS, fiqih],
-        [RIF, arab],
-        [WF, shorof],
-        [RIF, arab],
-        [ASP, nahwu],
-    ],
-    T2E: [
-        [MNR, nahwu],
-        [WF, shorof],
-        [RIF, arab],
-        [MNR, nahwu],
-        [RIF, arab],
-        [BGS, fiqih],
-        [SDQ, tauhid],
-        [LBB, tajwid],
-        [MNR, nahwu],
-        [MNR, nahwu],
-        [WF, shorof],
-        [MNJ, akhlaq],
-        [RIF, arab],
-        [SDQ, tauhid],
-        [BGS, fiqih],
-        [RIF, arab],
-        [BGS, fiqih],
-        [MNJ, akhlaq],
-    ],
-    T2F: [
-        [WF, shorof],
-        [RIF, arab],
-        [LBB, tajwid],
-        [ANM, tauhid],
-        [BGS, fiqih],
-        [RIF, arab],
-        [BGS, fiqih],
-        [IDS, nahwu],
-        [ANM, tauhid],
-        [WF, shorof],
-        [BCH, akhlaq],
-        [IDS, nahwu],
-        [IDS, nahwu],
-        [RIF, arab],
-        [BCH, akhlaq],
-        [BGS, fiqih],
-        [IDS, nahwu],
-        [RIF, arab],
-    ],
-    T2G: [
-        [IDS, nahwu],
-        [MRJ, arab],
-        [ANM, tauhid],
-        [IDS, nahwu],
-        [ANM, tauhid],
-        [BCH, akhlaq],
-        [IDS, nahwu],
-        [BGS, fiqih],
-        [BCH, akhlaq],
-        [MRJ, arab],
-        [LBB, tajwid],
-        [BGS, fiqih],
-        [MRJ, arab],
-        [FQH, shorof],
-        [IDS, nahwu],
-        [MRJ, arab],
-        [FQH, shorof],
-        [BGS, fiqih],
-    ],
-    T2H: [
-        [FRH, fiqih],
-        [ANM, tauhid],
-        [MRJ, arab],
-        [FQH, shorof],
-        [LBB, tajwid],
-        [MRJ, arab],
-        [FRH, fiqih],
-        [FQH, shorof],
-        [IDS, nahwu],
-        [UMR, akhlaq],
-        [IDS, nahwu],
-        [ANM, tauhid],
-        [UMR, akhlaq],
-        [IDS, nahwu],
-        [MRJ, arab],
-        [IDS, nahwu],
-        [FRH, fiqih],
-        [MRJ, arab],
-    ],
-    T2I: [
-        [MRJ, arab],
-        [MNR, nahwu],
-        [FRH, fiqih],
-        [MRJ, arab],
-        [FQH, shorof],
-        [ANM, tauhid],
-        [BCH, akhlaq],
-        [MNR, nahwu],
-        [FRH, fiqih],
-        [LBB, tajwid],
-        [ANM, tauhid],
-        [MRJ, arab],
-        [MNR, nahwu],
-        [MRJ, arab],
-        [FQH, shorof],
-        [BCH, akhlaq],
-        [MNR, nahwu],
-        [FRH, fiqih],
-    ],
-    T2J: [
-        [ANM, tauhid],
-        [FRH, fiqih],
-        [UMR, akhlaq],
-        [UMR, akhlaq],
-        [SBR, arab],
-        [MNR, nahwu],
-        [FQH, shorof],
-        [FRH, fiqih],
-        [SBR, arab],
-        [ANM, tauhid],
-        [MNR, nahwu],
-        [LBB, tajwid],
-        [FQH, shorof],
-        [SBR, arab],
-        [MNR, nahwu],
-        [FRH, fiqih],
-        [SBR, arab],
-        [MNR, nahwu],
-    ],
-    T3A: [
-        [SRR, nahwu],
-        [BDL, arab],
-        [URB, shorof],
-        [KHL, akhlaq],
-        [DMN, fiqih],
-        [URB, shorof],
-        [MZN, ilal],
-        [DMN, fiqih],
-        [KHL, akhlaq],
-        [BDL, arab],
-        [SRR, nahwu],
-        [DMN, fiqih],
-        [BDL, arab],
-        [SRR, nahwu],
-        [WHB, tajwid],
-        [BDL, arab],
-        [SDQ, tauhid],
-        [SRR, nahwu],
-    ],
-    T3B: [
-        [BDL, arab],
-        [URB, shorof],
-        [KHL, akhlaq],
-        [DMN, fiqih],
-        [KHL, akhlaq],
-        [SRR, nahwu],
-        [DMN, fiqih],
-        [MZN, ilal],
-        [SDQ, tauhid],
-        [SRR, nahwu],
-        [BDL, arab],
-        [WHB, tajwid],
-        [URB, shorof],
-        [BDL, arab],
-        [SRR, nahwu],
-        [DMN, fiqih],
-        [SRR, nahwu],
-        [BDL, arab],
-    ],
-    T3C: [
-        [USM, nahwu],
-        [DMN, fiqih],
-        [BDL, arab],
-        [HMD, shorof],
-        [USM, nahwu],
-        [KHL, akhlaq],
-        [USM, nahwu],
-        [HMD, shorof],
-        [WHB, tajwid],
-        [KHL, akhlaq],
-        [USM, nahwu],
-        [BDL, arab],
-        [DMN, fiqih],
-        [MZN, ilal],
-        [BDL, arab],
-        [SDQ, tauhid],
-        [BDL, arab],
-        [DMN, fiqih],
-    ],
-    T3E: [
-        [UHS, fiqih],
-        [KHL, akhlaq],
-        [ASY, arab],
-        [MZN, ilal],
-        [ASY, arab],
-        [HMD, shorof],
-        [WHB, tajwid],
-        [KHL, akhlaq],
-        [UHS, fiqih],
-        [ASY, arab],
-        [IDT, nahwu],
-        [HMD, shorof],
-        [IDT, nahwu],
-        [ASY, arab],
-        [SDQ, tauhid],
-        [UHS, fiqih],
-        [IDT, nahwu],
-        [IDT, nahwu],
-    ],
-    T3F: [
-        [ASY, arab],
-        [UMR, akhlaq],
-        [IDT, nahwu],
-        [UHS, fiqih],
-        [WHB, tajwid],
-        [UMR, akhlaq],
-        [AFF, tauhid],
-        [IDT, nahwu],
-        [HMD, shorof],
-        [UHS, fiqih],
-        [ASY, arab],
-        [MZN, ilal],
-        [ASY, arab],
-        [IDT, nahwu],
-        [UHS, fiqih],
-        [IDT, nahwu],
-        [ASY, arab],
-        [HMD, shorof],
-    ],
-    T3G: [
-        [IDT, nahwu],
-        [UHS, fiqih],
-        [MSR, arab],
-        [AFF, tauhid],
-        [UMR, akhlaq],
-        [IDT, nahwu],
-        [IDT, nahwu],
-        [UHS, fiqih],
-        [MSR, arab],
-        [MZN, ilal],
-        [MSR, arab],
-        [IDT, nahwu],
-        [HMD, shorof],
-        [WHB, tajwid],
-        [UMR, akhlaq],
-        [HMD, shorof],
-        [UHS, fiqih],
-        [MSR, arab],
-    ],
-    T3H: [
-        [AFF, tauhid],
-        [MSR, arab],
-        [MNS, fiqih],
-        [WHB, tajwid],
-        [MZN, ilal],
-        [MSR, arab],
-        [DRW, nahwu],
-        [MNS, fiqih],
-        [UMR, akhlaq],
-        [MSR, arab],
-        [DRW, nahwu],
-        [URB, shorof],
-        [MNS, fiqih],
-        [UMR, akhlaq],
-        [DRW, nahwu],
-        [URB, shorof],
-        [MSR, arab],
-        [DRW, nahwu],
-    ],
-    T3I: [
-        [MSR, arab],
-        [DRW, nahwu],
-        [WHB, tajwid],
-        [MNS, fiqih],
-        [MSR, arab],
-        [MZN, ilal],
-        [MSR, arab],
-        [AFF, tauhid],
-        [MNS, fiqih],
-        [MNS, fiqih],
-        [IDM, akhlaq],
-        [DRW, nahwu],
-        [DRW, nahwu],
-        [URB, shorof],
-        [MSR, arab],
-        [IDM, akhlaq],
-        [DRW, nahwu],
-        [URB, shorof],
-    ],
-    T3J: [
-        [URB, shorof],
-        [ASY, arab],
-        [DRW, nahwu],
-        [ASY, arab],
-        [DRW, nahwu],
-        [WHB, tajwid],
-        [MNS, fiqih],
-        [DRW, nahwu],
-        [IDM, akhlaq],
-        [AFF, tauhid],
-        [MZN, ilal],
-        [ASY, arab],
-        [IDM, akhlaq],
-        [DRW, nahwu],
-        [MNS, fiqih],
-        [MNS, fiqih],
-        [URB, shorof],
-        [ASY, arab],
-    ],
-    IST: [
-        [MNJ, akhlaq],
-        [AFF, tauhid],
-        [HFD, miftah],
-        [MRW, fiqih],
-        [HFD, miftah],
-        [IBR, shorof],
-        [HFD, miftah],
-        [IBR, shorof],
-        [MRW, fiqih],
-        [ASR, tajwid],
-        [MIS, nahwu],
-        [MIS, nahwu],
-        [AFF, tauhid],
-        [IBR, arab],
-        [MIS, nahwu],
-        [MRW, fiqih],
-        [IBR, arab],
-        [MIS, nahwu],
-    ],
-    A1A: [
-        [FTN, nahwu],
-        [SDL, tauhid],
-        [MSH, fiqih],
-        [SDL, tauhid],
-        [IBR, arab],
-        [MSH, fiqih],
-        [FTN, nahwu],
-        [MSH, fiqih],
-        [IBR, arab],
-        [IRF, akhlaq],
-        [SBH, shorof],
-        [MSH, fiqih],
-        [FTN, nahwu],
-        [IRF, akhlaq],
-        [IBR, arab],
-        [IBR, arab],
-        [FTN, nahwu],
-        [SBH, shorof],
-    ],
-    A1B: [
-        [SBH, shorof],
-        [FTN, nahwu],
-        [SDL, tauhid],
-        [RID, arab],
-        [MSH, fiqih],
-        [SDL, tauhid],
-        [RID, arab],
-        [FTN, nahwu],
-        [MSH, fiqih],
-        [MSH, fiqih],
-        [MSH, fiqih],
-        [IRF, akhlaq],
-        [RID, arab],
-        [FTN, nahwu],
-        [IRF, akhlaq],
-        [FTN, nahwu],
-        [SBH, shorof],
-        [RID, arab],
-    ],
-    A1C: [
-        [SDL, tauhid],
-        [UHN, arab],
-        [USM, nahwu],
-        [GFR, fiqih],
-        [SDL, tauhid],
-        [USM, nahwu],
-        [GFR, fiqih],
-        [UHN, arab],
-        [USM, nahwu],
-        [SBH, shorof],
-        [IRF, akhlaq],
-        [USM, nahwu],
-        [IRF, akhlaq],
-        [UHN, arab],
-        [GFR, fiqih],
-        [SBH, shorof],
-        [UHN, arab],
-        [GFR, fiqih],
-    ],
-    A1D: [
-        [AZZ, nahwu],
-        [RID, arab],
-        [GFR, fiqih],
-        [AZZ, nahwu],
-        [UMM, tauhid],
-        [RID, arab],
-        [UMM, tauhid],
-        [IRF, akhlaq],
-        [SBH, shorof],
-        [RID, arab],
-        [GFR, fiqih],
-        [AZZ, nahwu],
-        [SBH, shorof],
-        [GFR, fiqih],
-        [RID, arab],
-        [IRF, akhlaq],
-        [GFR, fiqih],
-        [AZZ, nahwu],
-    ],
-    A1E: [
-        [UMM, tauhid],
-        [AZZ, nahwu],
-        [SBH, shorof],
-        [UMM, tauhid],
-        [USY, arab],
-        [USY, arab],
-        [IRF, akhlaq],
-        [AZZ, nahwu],
-        [FDL, fiqih],
-        [FDL, fiqih],
-        [FDL, fiqih],
-        [SBH, shorof],
-        [AZZ, nahwu],
-        [AZZ, nahwu],
-        [FDL, fiqih],
-        [USY, arab],
-        [USY, arab],
-        [IRF, akhlaq],
-    ],
-    A1F: [
-        [LTF, arab],
-        [UMM, tauhid],
-        [AZZ, nahwu],
-        [LTF, arab],
-        [AZZ, nahwu],
-        [SBH, shorof],
-        [LTF, arab],
-        [UMM, tauhid],
-        [IRF, akhlaq],
-        [LTF, arab],
-        [AZZ, nahwu],
-        [FDL, fiqih],
-        [FDL, fiqih],
-        [FDL, fiqih],
-        [SBH, shorof],
-        [AZZ, nahwu],
-        [IRF, akhlaq],
-        [FDL, fiqih],
-    ],
-    A2A: [
-        [UTJ, nahwu],
-        [ALW, fiqih],
-        [RHL, balaghoh],
-        [UTJ, nahwu],
-        [ALW, fiqih],
-        [RF, ushul],
-        [FHM, arab],
-        [FHM, arab],
-        [UTJ, nahwu],
-        [ALW, fiqih],
-        [UL, tauhid],
-        [ABAH.madin, mustholah],
-        [RHL, balaghoh],
-        [RF, ushul],
-        [ALW, fiqih],
-        [FHM, arab],
-        [FHM, arab],
-        [UTJ, nahwu],
-    ],
-    A2B: [
-        [RHL, arab],
-        [UTJ, nahwu],
-        [UTJ, nahwu],
-        [ALW, fiqih],
-        [HLY, balaghoh],
-        [RHL, arab],
-        [ALW, fiqih],
-        [RHL, arab],
-        [HLY, balaghoh],
-        [RF, ushul],
-        [ALW, fiqih],
-        [ABAH.madin, mustholah],
-        [UTJ, nahwu],
-        [UTJ, nahwu],
-        [UL, tauhid],
-        [ALW, fiqih],
-        [RHL, arab],
-        [RF, ushul],
-    ],
-    A2C: [
-        [ALW, fiqih],
-        [FHM, arab],
-        [FHM, arab],
-        [RHL, balaghoh],
-        [RF, nahwu],
-        [ALW, fiqih],
-        [RF, nahwu],
-        [ALW, fiqih],
-        [FHM, arab],
-        [RHL, balaghoh],
-        [RF, ushul],
-        [ABAH.madin, mustholah],
-        [UL, tauhid],
-        [ALW, fiqih],
-        [RF, ushul],
-        [RF, nahwu],
-        [RF, nahwu],
-        [FHM, arab],
-    ],
-    A3A: [
-        [HR, fiqih],
-        [HR, fiqih],
-        [ABD, ushul],
-        [HR, fiqih],
-        [HR, fiqih],
-        [ASP, tauhid],
-        [HLD, nahwu],
-        [HLD, nahwu],
-        [ABAH.madin, mustholah],
-        [ABAH.madin, balaghoh],
-        [ABAH.madin, balaghoh],
-        [ST, arab],
-        [HR, fiqih],
-        [ST, arab],
-        [ST, arab],
-        [ABD, ushul],
-        [HLD, nahwu],
-        [HLD, nahwu],
-    ],
-    A3B: [
-        [HS, fiqih],
-        [ABD, ushul],
-        [SLD, nahwu],
-        [ASP, tauhid],
-        [SLD, nahwu],
-        [HS, fiqih],
-        [SLD, nahwu],
-        [HS, fiqih],
-        [ABAH.madin, mustholah],
-        [ABAH.madin, balaghoh],
-        [ABAH.madin, balaghoh],
-        [ST, arab],
-        [HS, fiqih],
-        [ST, arab],
-        [ST, arab],
-        [HS, fiqih],
-        [SLD, nahwu],
-        [ABD, ushul],
-    ],
-    A3C: [
-        [ABD, ushul],
-        [SLD, nahwu],
-        [HS, fiqih],
-        [HS, fiqih],
-        [HS, fiqih],
-        [SLD, nahwu],
-        [HS, fiqih],
-        [SLD, nahwu],
-        [ABAH.madin, mustholah],
-        [ABAH.madin, balaghoh],
-        [ABAH.madin, balaghoh],
-        [ST, arab],
-        [ASP, tauhid],
-        [ST, arab],
-        [ST, arab],
-        [SLD, nahwu],
-        [ABD, ushul],
-        [HS, fiqih],
-    ],
-    MTP: [
-        [AZZ, nahwu],
-        [SHF, fiqih],
-        [ABD, ushul],
-        [AZZ, nahwu],
-        [USY, arab],
-        [USY, arab],
-        [HLY, balaghoh],
-        [HLY, balaghoh],
-        [ABAH.madin, mustholah],
-        [AZZ, nahwu],
-        [SHF, fiqih],
-        [RF, tasme],
-        [RF, tasme],
-        [_ust, _fan],
-        [_ust, _fan],
-        [AZZ, nahwu],
-        [HLY, balaghoh],
-        [USY, arab],
-    ],
-    MTS: [
-        [SHF, fiqih],
-        [SHF, fiqih],
-        [SHF, fiqih],
-        [HLY, balaghoh],
-        [_ust, _fan],
-        [_ust, _fan],
-        [UTJ, tasme],
-        [UL, tauhid],
-        [UL, tauhid],
-        [HR, nahwu],
-        [HR, nahwu],
-        [_ust, _fan],
-        [SHF, fiqih],
-        [SHF, fiqih],
-        [_ust, _fan],
-        [SHF, fiqih],
-        [HR, nahwu],
-        [HR, nahwu],
-    ],
-};
+/** @type {Map<Kelas, [Guru, Fan][]>} */
+const Map_Jadwal = new Map();
+Map_Jadwal.set(T1A, [
+    // Senin
+    [MNS, shorof],
+    [FDL, imla],
+    [FDL, imla],
+    // Selasa
+    [NZR, nahwu],
+    [GFR, fiqih],
+    [MNS, shorof],
+    // Rabu
+    [FDL, imla],
+    [ASR, tajwid],
+    [GFR, fiqih],
+    // Kamis
+    [NZR, nahwu],
+    [RID, arab],
+    [GFR, fiqih],
+    // Jumat
+    [LSN, tauhid],
+    [NZR, nahwu],
+    [YDN, akhlaq],
+    // Sabtu
+    [LSN, tauhid],
+    [RID, arab],
+    [NZR, nahwu],
+]);
+Map_Jadwal.set(T1B, [
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+    [_ust, _fan],
+]);
+Map_Jadwal.set(T1C, [
+    [FDL, imla],
+    [NZR, nahwu],
+    [RID, arab],
 
-//fungsi tempatkan
-for (const kelas in JADWAL_MADIN) {
-    JADWAL_MADIN[kelas].forEach((jadwal, index) => {
+    [LSN, tauhid],
+    [NZR, imla],
+    [UTJ, fiqih],
+
+    [MNR, shorof],
+    [NZR, nahwu],
+    [NZR, imla],
+
+    [LSN, tauhid],
+    [UTJ, fiqih],
+    [MNR, shorof],
+
+    [YDN, akhlaq],
+    [RID, arab],
+    [NZR, nahwu],
+
+    [UTJ, fiqih],
+    [NZR, nahwu],
+    [ASR, tajwid],
+]);
+Map_Jadwal.set(T1D, [
+    [LSN, tauhid],
+    [YDN, imla],
+    [YDN, imla],
+
+    [MIS, fiqih],
+    [MIS, fiqih],
+    [FT, nahwu],
+
+    [FT, nahwu],
+    [SBR, arab],
+    [ASR, tajwid],
+
+    [SBR, arab],
+    [FT, nahwu],
+    [MNS, shorof],
+
+    [MIS, fiqih],
+    [LSN, tauhid],
+    [FT, nahwu],
+
+    [YDN, akhlaq],
+    [MSH, imla],
+    [MNS, shorof],
+]);
+Map_Jadwal.set(T1E, [
+    // Senin
+    [ASR, tajwid],
+    [LSN, tauhid],
+    [SBR, arab],
+    // Selasa
+    [IBR, shorof],
+    [UL, fiqih],
+    [UL, fiqih],
+    // Rabu
+    [SBR, arab],
+    [FT, nahwu],
+    [MSH, imla],
+    // Kamis
+    [FT, nahwu],
+    [YDN, akhlaq],
+    [FT, nahwu],
+    // Jumat
+    [FT, nahwu],
+    [UL, fiqih],
+    [MSH, imla],
+    // Sabtu
+    [MSH, imla],
+    [LSN, tauhid],
+    [IBR, shorof],
+]);
+Map_Jadwal.set(T1F, [
+    // Senin
+    [RF, shorof],
+    [ASR, tajwid],
+    [BCH, tauhid],
+    // Selasa
+    [FT, nahwu],
+    [FT, nahwu],
+    [FRH, arab],
+    // Rabu
+    [YDN, akhlaq],
+    [RF, shorof],
+    [DMN, fiqih],
+    // Kamis
+    [FRH, arab],
+    [FRH, arab],
+    [BCH, tauhid],
+    // Jumat
+    [FRH, arab],
+    [FT, nahwu],
+    [DMN, fiqih],
+    // Sabtu
+    [FT, nahwu],
+    [DMN, fiqih],
+    [MSH, imla],
+]);
+Map_Jadwal.set(T1G, [
+    // Senin
+    [SBR, arab],
+    [BCH, tauhid],
+    [HR, nahwu],
+    // Selasa
+    [MSH, imla],
+    [YDN, akhlaq],
+    [HR, nahwu],
+    // Rabu
+    [HR, nahwu],
+    [MIS, fiqih],
+    [HR, nahwu],
+    // Kamis
+    [MIS, fiqih],
+    [SBR, arab],
+    [SBR, arab],
+    // Jumat
+    [NZR, shorof],
+    [MIS, fiqih],
+    [SBR, arab],
+    // Sabtu
+    [NZR, shorof],
+    [ASR, tajwid],
+    [BCH, tauhid],
+]);
+Map_Jadwal.set(T2A, [
+    // Senin
+    [SLH, nahwu],
+    [YHY, arab],
+    [WF, shorof],
+    // Selasa
+    [LBB, tajwid],
+    [HMD, tauhid],
+    [MRW, fiqih],
+    // Rabu
+    [MRW, fiqih],
+    [SLH, nahwu],
+    [MNJ, akhlaq],
+    // Kamis
+    [MNJ, akhlaq],
+    [YHY, arab],
+    [YHY, arab],
+    // Jumat
+    [YHY, arab],
+    [SLH, nahwu],
+    [HMD, tauhid],
+    // Sabtu
+    [SLH, nahwu],
+    [MRW, fiqih],
+    [WF, shorof],
+]);
+Map_Jadwal.set(T2B, [
+    // Senin
+    [LBB, tajwid],
+    [SLH, nahwu],
+    [YHY, arab],
+    // Selasa
+    [USY, tauhid],
+    [MRW, fiqih],
+    [WF, shorof],
+    // Rabu
+    [SLH, nahwu],
+    [MRW, fiqih],
+    [WF, shorof],
+    // Kamis
+    [YHY, arab],
+    [MNJ, akhlaq],
+    [SLH, nahwu],
+    // Jumat
+    [MRW, fiqih],
+    [YHY, arab],
+    [SLH, nahwu],
+    // Sabtu
+    [MNJ, akhlaq],
+    [YHY, arab],
+    [USY, tauhid],
+]);
+Map_Jadwal.set(T2C, [
+    // Senin
+    [YHY, arab],
+    [LBB, tajwid],
+    [MNJ, akhlaq],
+    // Selasa
+    [YHY, arab],
+    [WF, shorof],
+    [SLH, fiqih],
+    // Rabu
+    [HMD, tauhid],
+    [MNJ, akhlaq],
+    [SLH, nahwu],
+    // Kamis
+    [SLH, nahwu],
+    [HMD, fiqih],
+    [UMR, fiqih],
+    // Jumat
+    [SLH, nahwu],
+    [HMD, tauhid],
+    [YHY, arab],
+    // Sabtu
+    [YHY, arab],
+    [WF, shorof],
+    [SLH, nahwu],
+]);
+Map_Jadwal.set(T2D, [
+    // Senin
+    [RIF, arab],
+    [MNJ, akhlaq],
+    [BGS, fiqih],
+    // Selasa
+    [RIF, arab],
+    [ASP, nahwu],
+    [LBB, tajwid],
+    // Rabu
+    [MNJ, akhlaq],
+    [SDQ, tauhid],
+    [ASP, nahwu],
+    // Kamis
+    [BGS, fiqih],
+    [ASP, nahwu],
+    [WF, shorof],
+    // Jumat
+    [SDQ, tauhid],
+    [BGS, fiqih],
+    [RIF, arab],
+    // Sabtu
+    [WF, shorof],
+    [RIF, arab],
+    [ASP, nahwu],
+]);
+Map_Jadwal.set(T2E, [
+    // Senin
+    [MNR, nahwu],
+    [WF, shorof],
+    [RIF, arab],
+    // Selasa
+    [MNR, nahwu],
+    [RIF, arab],
+    [BGS, fiqih],
+    // Rabu
+    [SDQ, tauhid],
+    [LBB, tajwid],
+    [MNR, nahwu],
+    // Kamis
+    [MNR, nahwu],
+    [WF, shorof],
+    [MNJ, akhlaq],
+    // Jumat
+    [RIF, arab],
+    [SDQ, tauhid],
+    [BGS, fiqih],
+    // Sabtu
+    [RIF, arab],
+    [BGS, fiqih],
+    [MNJ, akhlaq],
+]);
+Map_Jadwal.set(T2F, [
+    // Senin
+    [WF, shorof],
+    [RIF, arab],
+    [LBB, tajwid],
+    // Selasa
+    [ANM, tauhid],
+    [BGS, fiqih],
+    [RIF, arab],
+    // Rabu
+    [BGS, fiqih],
+    [URB, nahwu],
+    [ANM, tauhid],
+    // Kamis
+    [WF, shorof],
+    [BCH, akhlaq],
+    [UHS, nahwu],
+    // Jumat
+    [UHS, nahwu],
+    [RIF, arab],
+    [BCH, akhlaq],
+    // Sabtu
+    [BGS, fiqih],
+    [UTJ, nahwu],
+    [RIF, arab],
+]);
+Map_Jadwal.set(T2G, [
+    // Senin
+    [UMR, nahwu],
+    [MRJ, arab],
+    [ANM, tauhid],
+    // Selasa
+    [RF, nahwu],
+    [ANM, tauhid],
+    [BCH, akhlaq],
+    // Rabu
+    [WF, nahwu],
+    [BGS, fiqih],
+    [BCH, akhlaq],
+    // Kamis
+    [MRJ, arab],
+    [LBB, tajwid],
+    [BGS, fiqih],
+    // Jumat
+    [MRJ, arab],
+    [FQH, shorof],
+    [UTJ, nahwu],
+    // Sabtu
+    [MRJ, arab],
+    [FQH, shorof],
+    [BGS, fiqih],
+]);
+Map_Jadwal.set(T2H, [
+    // Senin
+    [FRH, fiqih],
+    [ANM, tauhid],
+    [MRJ, arab],
+    // Selasa
+    [FQH, shorof],
+    [LBB, tajwid],
+    [MRJ, arab],
+    // Rabu
+    [FRH, fiqih],
+    [FQH, shorof],
+    [RF, nahwu],
+    // Kamis
+    [UMR, akhlaq],
+    [DMN, nahwu],
+    [ANM, tauhid],
+    // Jumat
+    [UMR, akhlaq],
+    [UHS, nahwu],
+    [MRJ, arab],
+    // Sabtu
+    [DRW, nahwu],
+    [FRH, fiqih],
+    [MRJ, arab],
+]);
+Map_Jadwal.set(T2I, [
+    // Senin
+    [MRJ, arab],
+    [MNR, nahwu],
+    [FRH, fiqih],
+    // Selasa
+    [MRJ, arab],
+    [FQH, shorof],
+    [ANM, tauhid],
+    // Rabu
+    [BCH, akhlaq],
+    [MNR, nahwu],
+    [FRH, fiqih],
+    // Kamis
+    [LBB, tajwid],
+    [ANM, tauhid],
+    [MRJ, arab],
+    // Jumat
+    [MNR, nahwu],
+    [MRJ, arab],
+    [FQH, shorof],
+    // Sabtu
+    [BCH, akhlaq],
+    [MNR, nahwu],
+    [FRH, fiqih],
+]);
+Map_Jadwal.set(T2J, [
+    // Senin
+    [ANM, tauhid],
+    [FRH, fiqih],
+    [UMR, akhlaq],
+    // Selasa
+    [UMR, akhlaq],
+    [SBR, arab],
+    [MNR, nahwu],
+    // Rabu
+    [FQH, shorof],
+    [FRH, fiqih],
+    [SBR, arab],
+    // Kamis
+    [ANM, tauhid],
+    [MNR, nahwu],
+    [LBB, tajwid],
+    // Jumat
+    [FQH, shorof],
+    [SBR, arab],
+    [MNR, nahwu],
+    // Sabtu
+    [FRH, fiqih],
+    [SBR, arab],
+    [MNR, nahwu],
+]);
+Map_Jadwal.set(T3A, [
+    // Senin
+    [SRR, nahwu],
+    [BDL, arab],
+    [URB, shorof],
+    // Selasa
+    [KHL, akhlaq],
+    [DMN, fiqih],
+    [URB, shorof],
+    // Rabu
+    [MZN, ilal],
+    [DMN, fiqih],
+    [KHL, akhlaq],
+    // Kamis
+    [BDL, arab],
+    [SRR, nahwu],
+    [DMN, fiqih],
+    // Jumat
+    [BDL, arab],
+    [SRR, nahwu],
+    [WHB, tajwid],
+    // Sabtu
+    [BDL, arab],
+    [SDQ, tauhid],
+    [SRR, nahwu],
+]);
+Map_Jadwal.set(T3B, [
+    // Senin
+    [BDL, arab],
+    [URB, shorof],
+    [KHL, akhlaq],
+    // Selasa
+    [DMN, fiqih],
+    [KHL, akhlaq],
+    [SRR, nahwu],
+    // Rabu
+    [DMN, fiqih],
+    [MZN, ilal],
+    [SDQ, tauhid],
+    // Kamis
+    [SRR, nahwu],
+    [BDL, arab],
+    [WHB, tajwid],
+    // Jumat
+    [URB, shorof],
+    [BDL, arab],
+    [SRR, nahwu],
+    // Sabtu
+    [DMN, fiqih],
+    [SRR, nahwu],
+    [BDL, arab],
+]);
+Map_Jadwal.set(T3C, [
+    // Senin
+    [USM, nahwu],
+    [DMN, fiqih],
+    [BDL, arab],
+    // Selasa
+    [HMD, shorof],
+    [USM, nahwu],
+    [KHL, akhlaq],
+    // Rabu
+    [USM, nahwu],
+    [HMD, shorof],
+    [WHB, tajwid],
+    // Kamis
+    [KHL, akhlaq],
+    [USM, nahwu],
+    [BDL, arab],
+    // Jumat
+    [DMN, fiqih],
+    [MZN, ilal],
+    [BDL, arab],
+    // Sabtu
+    [SDQ, tauhid],
+    [BDL, arab],
+    [DMN, fiqih],
+]);
+Map_Jadwal.set(T3E, [
+    // Senin
+    [UHS, fiqih],
+    [KHL, akhlaq],
+    [ASY, arab],
+    // Selasa
+    [MZN, ilal],
+    [ASY, arab],
+    [HMD, shorof],
+    // Rabu
+    [WHB, tajwid],
+    [KHL, akhlaq],
+    [UHS, fiqih],
+    // Kamis
+    [ASY, arab],
+    [IDT, nahwu],
+    [HMD, shorof],
+    // Jumat
+    [IDT, nahwu],
+    [ASY, arab],
+    [SDQ, tauhid],
+    // Sabtu
+    [UHS, fiqih],
+    [IDT, nahwu],
+    [IDT, nahwu],
+]);
+Map_Jadwal.set(T3F, [
+    // Senin
+    [ASY, arab],
+    [UMR, akhlaq],
+    [IDT, nahwu],
+    // Selasa
+    [UHS, fiqih],
+    [WHB, tajwid],
+    [UMR, akhlaq],
+    // Rabu
+    [AFF, tauhid],
+    [IDT, nahwu],
+    [HMD, shorof],
+    // Kamis
+    [UHS, fiqih],
+    [ASY, arab],
+    [MZN, ilal],
+    // Jumat
+    [ASY, arab],
+    [IDT, nahwu],
+    [UHS, fiqih],
+    // Sabtu
+    [IDT, nahwu],
+    [ASY, arab],
+    [HMD, shorof],
+]);
+Map_Jadwal.set(T3G, [
+    // Senin
+    [IDT, nahwu],
+    [UHS, fiqih],
+    [MSR, arab],
+    // Selasa
+    [AFF, tauhid],
+    [UMR, akhlaq],
+    [IDT, nahwu],
+    // Rabu
+    [IDT, nahwu],
+    [UHS, fiqih],
+    [MSR, arab],
+    // Kamis
+    [MZN, ilal],
+    [MSR, arab],
+    [IDT, nahwu],
+    // Jumat
+    [HMD, shorof],
+    [WHB, tajwid],
+    [UMR, akhlaq],
+    // Sabtu
+    [HMD, shorof],
+    [UHS, fiqih],
+    [MSR, arab],
+]);
+Map_Jadwal.set(T3H, [
+    // Senin
+    [AFF, tauhid],
+    [MSR, arab],
+    [MNS, fiqih],
+    // Selasa
+    [WHB, tajwid],
+    [MZN, ilal],
+    [MSR, arab],
+    // Rabu
+    [DRW, nahwu],
+    [MNS, fiqih],
+    [UMR, akhlaq],
+    // Kamis
+    [MSR, arab],
+    [DRW, nahwu],
+    [URB, shorof],
+    // Jumat
+    [MNS, fiqih],
+    [UMR, akhlaq],
+    [DRW, nahwu],
+    // Sabtu
+    [URB, shorof],
+    [MSR, arab],
+    [DRW, nahwu],
+]);
+Map_Jadwal.set(T3I, [
+    // Senin
+    [MSR, arab],
+    [DRW, nahwu],
+    [WHB, tajwid],
+    // Selasa
+    [MNS, fiqih],
+    [MSR, arab],
+    [MZN, ilal],
+    // Rabu
+    [MSR, arab],
+    [AFF, tauhid],
+    [MNS, fiqih],
+    // Kamis
+    [MNS, fiqih],
+    [IDM, akhlaq],
+    [DRW, nahwu],
+    // Jumat
+    [DRW, nahwu],
+    [URB, shorof],
+    [MSR, arab],
+    // Sabtu
+    [IDM, akhlaq],
+    [DRW, nahwu],
+    [URB, shorof],
+]);
+Map_Jadwal.set(T3J, [
+    // Senin
+    [URB, shorof],
+    [ASY, arab],
+    [DRW, nahwu],
+    // Selasa
+    [ASY, arab],
+    [DRW, nahwu],
+    [WHB, tajwid],
+    // Rabu
+    [MNS, fiqih],
+    [DRW, nahwu],
+    [IDM, akhlaq],
+    // Kamis
+    [AFF, tauhid],
+    [MZN, ilal],
+    [ASY, arab],
+    // Jumat
+    [IDM, akhlaq],
+    [DRW, nahwu],
+    [MNS, fiqih],
+    // Sabtu
+    [MNS, fiqih],
+    [URB, shorof],
+    [ASY, arab],
+]);
+Map_Jadwal.set(IST, [
+    // Senin
+    [MNJ, akhlaq],
+    [MIS, miftah],
+    [MIS, miftah],
+    // Selasa
+    [MRW, fiqih],
+    [AFF, tauhid],
+    [IBR, shorof],
+    // Rabu
+    [MIS, miftah],
+    [IBR, shorof],
+    [MRW, fiqih],
+    // Kamis
+    [ASR, tajwid],
+    [MIS, nahwu],
+    [MIS, nahwu],
+    // Jumat
+    [AFF, tauhid],
+    [IBR, arab],
+    [MIS, nahwu],
+    // Sabtu
+    [MRW, fiqih],
+    [IBR, arab],
+    [MIS, nahwu],
+]);
+Map_Jadwal.set(A1A, [
+    // Senin
+    [FTN, nahwu],
+    [SDL, tauhid],
+    [MSH, fiqih],
+    // Selasa
+    [SDL, tauhid],
+    [IBR, arab],
+    [MSH, fiqih],
+    // Rabu
+    [FTN, nahwu],
+    [MSH, fiqih],
+    [IBR, arab],
+    // Kamis
+    [IRF, akhlaq],
+    [SBH, shorof],
+    [MSH, fiqih],
+    // Jumat
+    [FTN, nahwu],
+    [IRF, akhlaq],
+    [IBR, arab],
+    // Sabtu
+    [IBR, arab],
+    [FTN, nahwu],
+    [SBH, shorof],
+]);
+Map_Jadwal.set(A1B, [
+    // Senin
+    [SBH, shorof],
+    [FTN, nahwu],
+    [SDL, tauhid],
+    // Selasa
+    [RID, arab],
+    [MSH, fiqih],
+    [SDL, tauhid],
+    // Rabu
+    [RID, arab],
+    [FTN, nahwu],
+    [MSH, fiqih],
+    // Kamis
+    [MSH, fiqih],
+    [MSH, fiqih],
+    [IRF, akhlaq],
+    // Jumat
+    [RID, arab],
+    [FTN, nahwu],
+    [IRF, akhlaq],
+    // Sabtu
+    [FTN, nahwu],
+    [SBH, shorof],
+    [RID, arab],
+]);
+Map_Jadwal.set(A1C, [
+    // Senin
+    [SDL, tauhid],
+    [UHN, arab],
+    [USM, nahwu],
+    // Selasa
+    [GFR, fiqih],
+    [SDL, tauhid],
+    [USM, nahwu],
+    // Rabu
+    [GFR, fiqih],
+    [UHN, arab],
+    [USM, nahwu],
+    // Kamis
+    [SBH, shorof],
+    [IRF, akhlaq],
+    [USM, nahwu],
+    // Jumat
+    [IRF, akhlaq],
+    [UHN, arab],
+    [GFR, fiqih],
+    // Sabtu
+    [SBH, shorof],
+    [UHN, arab],
+    [GFR, fiqih],
+]);
+Map_Jadwal.set(A1D, [
+    // Senin
+    [AZZ, nahwu],
+    [RID, arab],
+    [GFR, fiqih],
+    // Selasa
+    [AZZ, nahwu],
+    [UMM, tauhid],
+    [RID, arab],
+    // Rabu
+    [UMM, tauhid],
+    [IRF, akhlaq],
+    [SBH, shorof],
+    // Kamis
+    [RID, arab],
+    [GFR, fiqih],
+    [AZZ, nahwu],
+    // Jumat
+    [SBH, shorof],
+    [GFR, fiqih],
+    [RID, arab],
+    // Sabtu
+    [IRF, akhlaq],
+    [GFR, fiqih],
+    [AZZ, nahwu],
+]);
+Map_Jadwal.set(A1E, [
+    // Senin
+    [UMM, tauhid],
+    [AZZ, nahwu],
+    [SBH, shorof],
+    // Selasa
+    [UMM, tauhid],
+    [USY, arab],
+    [USY, arab],
+    // Rabu
+    [IRF, akhlaq],
+    [AZZ, nahwu],
+    [FDL, fiqih],
+    // Kamis
+    [FDL, fiqih],
+    [FDL, fiqih],
+    [SBH, shorof],
+    // Jumat
+    [AZZ, nahwu],
+    [AZZ, nahwu],
+    [FDL, fiqih],
+    // Sabtu
+    [USY, arab],
+    [USY, arab],
+    [IRF, akhlaq],
+]);
+Map_Jadwal.set(A1F, [
+    // Senin
+    [LTF, arab],
+    [UMM, tauhid],
+    [AZZ, nahwu],
+    // Selasa
+    [LTF, arab],
+    [AZZ, nahwu],
+    [SBH, shorof],
+    // Rabu
+    [LTF, arab],
+    [UMM, tauhid],
+    [IRF, akhlaq],
+    // Kamis
+    [LTF, arab],
+    [AZZ, nahwu],
+    [FDL, fiqih],
+    // Jumat
+    [FDL, fiqih],
+    [FDL, fiqih],
+    [SBH, shorof],
+    // Sabtu
+    [AZZ, nahwu],
+    [IRF, akhlaq],
+    [FDL, fiqih],
+]);
+Map_Jadwal.set(A2A, [
+    // Senin
+    [UTJ, nahwu],
+    [ALW, fiqih],
+    [RHL, balaghoh],
+    // Selasa
+    [UTJ, nahwu],
+    [ALW, fiqih],
+    [RF, ushul],
+    // Rabu
+    [FHM, arab],
+    [FHM, arab],
+    [UTJ, nahwu],
+    // Kamis
+    [ALW, fiqih],
+    [UL, tauhid],
+    [ABAH.madin, mustholah],
+    // Jumat
+    [RHL, balaghoh],
+    [RF, ushul],
+    [ALW, fiqih],
+    // Sabtu
+    [FHM, arab],
+    [FHM, arab],
+    [UTJ, nahwu],
+]);
+Map_Jadwal.set(A2B, [
+    // Senin
+    [RHL, arab],
+    [UTJ, nahwu],
+    [UTJ, nahwu],
+    // Selasa
+    [ALW, fiqih],
+    [HLY, balaghoh],
+    [RHL, arab],
+    // Rabu
+    [ALW, fiqih],
+    [RHL, arab],
+    [HLY, balaghoh],
+    // Kamis
+    [RF, ushul],
+    [ALW, fiqih],
+    [ABAH.madin, mustholah],
+    // Jumat
+    [UTJ, nahwu],
+    [UTJ, nahwu],
+    [UL, tauhid],
+    // Sabtu
+    [ALW, fiqih],
+    [RHL, arab],
+    [RF, ushul],
+]);
+Map_Jadwal.set(A2C, [
+    // Senin
+    [ALW, fiqih],
+    [FHM, arab],
+    [FHM, arab],
+    // Selasa
+    [RHL, balaghoh],
+    [RF, nahwu],
+    [ALW, fiqih],
+    // Rabu
+    [RF, nahwu],
+    [ALW, fiqih],
+    [FHM, arab],
+    // Kamis
+    [RHL, balaghoh],
+    [RF, ushul],
+    [ABAH.madin, mustholah],
+    // Jumat
+    [UL, tauhid],
+    [ALW, fiqih],
+    [RF, ushul],
+    // Sabtu
+    [RF, nahwu],
+    [RF, nahwu],
+    [FHM, arab],
+]);
+Map_Jadwal.set(A3A, [
+    // Senin
+    [HR, fiqih],
+    [HR, fiqih],
+    [ABD, ushul],
+    // Selasa
+    [HR, fiqih],
+    [HR, fiqih],
+    [ASP, tauhid],
+    // Rabu
+    [HLD, nahwu],
+    [HLD, nahwu],
+    [ABAH.madin, mustholah],
+    // Kamis
+    [ABAH.madin, balaghoh],
+    [ABAH.madin, balaghoh],
+    [ST, arab],
+    // Jumat
+    [HR, fiqih],
+    [ST, arab],
+    [ST, arab],
+    // Sabtu
+    [ABD, ushul],
+    [HLD, nahwu],
+    [HLD, nahwu],
+]);
+Map_Jadwal.set(A3B, [
+    // Senin
+    [HS, fiqih],
+    [ABD, ushul],
+    [SLD, nahwu],
+    // Selasa
+    [ASP, tauhid],
+    [SLD, nahwu],
+    [HS, fiqih],
+    // Rabu
+    [SLD, nahwu],
+    [HS, fiqih],
+    [ABAH.madin, mustholah],
+    // Kamis
+    [ABAH.madin, balaghoh],
+    [ABAH.madin, balaghoh],
+    [ST, arab],
+    // Jumat
+    [HS, fiqih],
+    [ST, arab],
+    [ST, arab],
+    // Sabtu
+    [HS, fiqih],
+    [SLD, nahwu],
+    [ABD, ushul],
+]);
+Map_Jadwal.set(A3C, [
+    // Senin
+    [ABD, ushul],
+    [SLD, nahwu],
+    [HS, fiqih],
+    // Selasa
+    [HS, fiqih],
+    [HS, fiqih],
+    [SLD, nahwu],
+    // Rabu
+    [HS, fiqih],
+    [SLD, nahwu],
+    [ABAH.madin, mustholah],
+    // Kamis
+    [ABAH.madin, balaghoh],
+    [ABAH.madin, balaghoh],
+    [ST, arab],
+    // Jumat
+    [ASP, tauhid],
+    [ST, arab],
+    [ST, arab],
+    // Sabtu
+    [SLD, nahwu],
+    [ABD, ushul],
+    [HS, fiqih],
+]);
+Map_Jadwal.set(MTP, [
+    // Senin
+    [AZZ, nahwu],
+    [SHF, fiqih],
+    [ABD, ushul],
+    // Selasa
+    [AZZ, nahwu],
+    [USY, arab],
+    [USY, arab],
+    // Rabu
+    [HLY, balaghoh],
+    [HLY, balaghoh],
+    [ABAH.madin, mustholah],
+    // Kamis
+    [AZZ, nahwu],
+    [SHF, fiqih],
+    [RF, tasme],
+    // Jumat
+    [RF, tasme],
+    [_ust, _fan],
+    [_ust, _fan],
+    // Sabtu
+    [AZZ, nahwu],
+    [HLY, balaghoh],
+    [USY, arab],
+]);
+Map_Jadwal.set(MTS, [
+    // Senin
+    [SHF, fiqih],
+    [SHF, fiqih],
+    [SHF, fiqih],
+    // Selasa
+    [HLY, balaghoh],
+    [_ust, _fan],
+    [_ust, _fan],
+    // Rabu
+    [UTJ, tasme],
+    [UL, tauhid],
+    [UL, tauhid],
+    // Kamis
+    [HR, nahwu],
+    [HR, nahwu],
+    [_ust, _fan],
+    // Jumat
+    [SHF, fiqih],
+    [SHF, fiqih],
+    [_ust, _fan],
+    // Sabtu
+    [SHF, fiqih],
+    [HR, nahwu],
+    [HR, nahwu],
+]);
+
+// fungsi tempatkan jika menggunakan map
+for (const [kelas, jadwal] of Map_Jadwal.entries()) {
+    jadwal.forEach((jadwal, index) => {
         const hari = NAMA_HARI[Math.floor(index / 3)];
         const jam = (index % 3) + 1;
-        const guru = jadwal[0];
-        const fan = jadwal[1];
-        Kelas.fromString(kelas)?.tempatkan(hari, jam, guru, fan);
+        const [guru, fan] = jadwal;
+        kelas.tempatkan(hari, jam, guru, fan);
     });
 }
 
@@ -2057,7 +2301,7 @@ for (let i = 0; i < args.length; i++) {
 
 if (command.version) {
     console.log(
-        "aplikasi Jadwal versi 1.3.\ndibuat oleh pemegang hak cipta: LitFill.\n"
+        "aplikasi Jadwal versi 1.3.\ndibuat oleh pemegang hak cipta: LitFill.\n",
     );
 }
 
@@ -2066,7 +2310,7 @@ if (command.jadwal) {
         if (command.hari) {
             command.guru.forEach((kodeGuru) => {
                 Guru.fromString(kodeGuru.toString())?.jadwal(
-                    command.hari.toLocaleString()
+                    command.hari.toLocaleString(),
                 );
             });
         } else {
@@ -2078,7 +2322,7 @@ if (command.jadwal) {
         if (command.hari) {
             command.kelas.forEach((kodeKelas) => {
                 Kelas.fromString(kodeKelas.toString())?.jadwal(
-                    command.hari.toLocaleString()
+                    command.hari.toLocaleString(),
                 );
             });
         } else {
@@ -2109,8 +2353,8 @@ if (command.jadwal) {
                     key === "pesanWA1"
                         ? "pagi"
                         : key === "pesanWA2"
-                            ? "sore"
-                            : "full";
+                          ? "sore"
+                          : "full";
 
                 new PengirimPesan(value)[waktu]();
             }
@@ -2122,7 +2366,7 @@ if (command.pesanIzin) {
     if (command.data) {
         const izin = new Perizinan(
             command.pesanIzin.toString(),
-            command.data.toString()
+            command.data.toString(),
         );
         izin.kirimPesan();
     }
@@ -2137,7 +2381,7 @@ if (command.pesanIzin) {
  */
 function noFlag(namaFlag) {
     console.error(
-        `ERROR: Tolong masukkan flag ${namaFlag} beserta valuenya.\n`
+        `ERROR: Tolong masukkan flag ${namaFlag} beserta valuenya.\n`,
     );
 }
 
