@@ -86,6 +86,7 @@ class Guru {
      * @date 06/12/2023
      */
     static fromString(kodeGuru) {
+        /** @type {{ [kode: String]: Guru }} */
         const guruMap = {
             ABAH: ABAH.madin,
             ASP: ASP,
@@ -166,6 +167,16 @@ class Guru {
 
             RID: RID,
             SBR: SBR,
+
+            HLM: HLM,
+            AND: AND,
+            TMM: TMM,
+            NBL: NBL,
+            JND: JND,
+            SFN: SFN,
+            ASD: ASD,
+            NJB: NJB,
+            BSH: BSH,
         };
 
         return guruMap[kodeGuru] || null;
@@ -2340,7 +2351,7 @@ if (command.jadwal) {
             });
         }
     } else if (command.hari) {
-        // TODO
+        // TODO: benarkan
         command.hari.forEach((hari) => {
             if (typeof hari === "string" || Array.isArray(hari)) {
                 Hari.jadwal(hari);
