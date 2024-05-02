@@ -880,14 +880,14 @@ class PengirimPesan {
             jam === 1
                 ? PengirimPesan.JAM_PAGI
                 : jam === 2
-                  ? this.tambahMenit(
+                    ? this.tambahMenit(
                         PengirimPesan.JAM_PAGI,
                         PengirimPesan.DURASI_JAM_PAGI,
                     )
-                  : this.tambahMenit(
+                    : this.tambahMenit(
                         PengirimPesan.JAM_PAGI,
                         2 * PengirimPesan.DURASI_JAM_PAGI +
-                            PengirimPesan.DURASI_ISTIRAHAT,
+                        PengirimPesan.DURASI_ISTIRAHAT,
                     );
         const waktuAkhir = this.tambahMenit(
             waktuAwal,
@@ -905,14 +905,14 @@ class PengirimPesan {
             jam === 1
                 ? PengirimPesan.JAM_SORE
                 : jam === 2
-                  ? this.tambahMenit(
+                    ? this.tambahMenit(
                         PengirimPesan.JAM_SORE,
                         PengirimPesan.DURASI_JAM_SORE_1,
                     )
-                  : this.tambahMenit(
+                    : this.tambahMenit(
                         PengirimPesan.JAM_SORE,
                         PengirimPesan.DURASI_JAM_SORE_1 +
-                            PengirimPesan.DURASI_JAM_SORE,
+                        PengirimPesan.DURASI_JAM_SORE,
                     );
         const waktuAkhir = this.tambahMenit(
             waktuAwal,
@@ -2293,7 +2293,7 @@ for (let i = 0; i < args.length; i++) {
         /** @type {string|true} */
         let nextArg = "";
 
-        if (["jadwal", "version"].includes(flag)) {
+        if (["jadwal", "version", "json"].includes(flag)) {
             nextArg = true;
         } else if (args[i + 1] && !args[i + 1].startsWith("--")) {
             nextArg = args[i + 1];
@@ -2362,8 +2362,8 @@ if (command.jadwal) {
                     key === "pesanWA1"
                         ? "pagi"
                         : key === "pesanWA2"
-                          ? "sore"
-                          : "full";
+                            ? "sore"
+                            : "full";
 
                 new PengirimPesan(value)[waktu]();
             }
@@ -2382,12 +2382,14 @@ if (command.pesanIzin) {
 }
 
 if (command.json) {
-	const objeker = {};
-	for (let [key, val] of Map_Jadwal) {
-		objeker[key.nama] = val;
-	}
-	console.log(JSON.stringify(objeker));
-	process.exit(0);
+    /** @type {{ [kelas: String]: [Guru, Fan][] }} */
+    const objeker = {};
+    for (let [key, val] of Map_Jadwal) {
+        objeker[key.nama] = val;
+    }
+    console.log(JSON.stringify(objeker));
+    // @ts-ignore
+    process.exit(0);
 }
 
 /**
