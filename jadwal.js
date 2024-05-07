@@ -42,10 +42,8 @@ class Guru {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.nama) {
                             console.log(
-                                `Ust. ${this.nama} mengajar kelas ${
-                                    kelas.nama
-                                } fan ${kelas[hari][i].fan} di hari ${
-                                    kelas[hari].nama
+                                `Ust. ${this.nama} mengajar kelas ${kelas.nama
+                                } fan ${kelas[hari][i].fan} di hari ${kelas[hari].nama
                                 } jam ke-${i + 1}.`,
                             );
                         }
@@ -200,8 +198,7 @@ class Abah {
                     for (let i = 0; i < 3; i++) {
                         if (kelas[hari][i].guru === this.madin.nama) {
                             console.log(
-                                `Abah mucal kelas ${kelas.nama} fan ${
-                                    kelas[hari][i].fan
+                                `Abah mucal kelas ${kelas.nama} fan ${kelas[hari][i].fan
                                 } di hari ${kelas[hari].nama} jam ke-${i + 1}.`,
                             );
                         }
@@ -264,10 +261,8 @@ class Kelas {
                 for (let i = 0; i < 3; i++) {
                     console.log(
                         // @ts-ignore
-                        `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${
-                            i + 1
-                        } diajar oleh Ust. ${this[hari][i].guru} fan ${
-                            this[hari][i].fan
+                        `Kelas ${this.nama} di hari ${this[hari].nama} jam ke-${i + 1
+                        } diajar oleh Ust. ${this[hari][i].guru} fan ${this[hari][i].fan
                         }.`,
                     );
                 }
@@ -391,10 +386,8 @@ class Hari {
                     if (kelas[hari].nama === namaHari) {
                         for (let i = 0; i < 3; i++) {
                             console.log(
-                                `Di hari ${kelas[hari].nama} jam ke-${
-                                    i + 1
-                                } kelas ${kelas.nama} diajar oleh Ust. ${
-                                    kelas[hari][i].guru
+                                `Di hari ${kelas[hari].nama} jam ke-${i + 1
+                                } kelas ${kelas.nama} diajar oleh Ust. ${kelas[hari][i].guru
                                 } fan ${kelas[hari][i].fan}.`,
                             );
                         }
@@ -1206,9 +1199,9 @@ Map_Jadwal.set(T1A, [
     // Senin
     [MNS, shorof],
     [FDL, imla],
-    [FDL, imla],
+    [HLM, arab],
     // Selasa
-    [NZR, nahwu],
+    [HLM, arab],
     [GFR, fiqih],
     [MNS, shorof],
     // Rabu
@@ -1249,25 +1242,26 @@ Map_Jadwal.set(T1B, [
     [_ust, _fan],
 ]);
 Map_Jadwal.set(T1C, [
-    [FDL, imla],
+    // Senin
     [NZR, nahwu],
-    [RID, arab],
-
+    [NZR, nahwu],
+    [ASD, fiqih],
+    // Selasa
     [LSN, tauhid],
+    [NZR, nahwu],
     [NZR, imla],
-    [UTJ, fiqih],
 
     [MNR, shorof],
     [ASR, tajwid],
-    [NZR, nahwu],
+    [AND, arab],
 
     [LSN, tauhid],
     [ASD, fiqih],
     [MNR, shorof],
 
     [YDN, akhlaq],
-    [RID, arab],
-    [NZR, nahwu],
+    [AND, arab],
+    [AND, arab],
 
     [UTJ, fiqih],
     [NZR, nahwu],
@@ -1275,7 +1269,7 @@ Map_Jadwal.set(T1C, [
 ]);
 Map_Jadwal.set(T1D, [
     [LSN, tauhid],
-    [YDN, imla],
+    [YDN, akhlaq],
     [YDN, imla],
 
     [MIS, fiqih],
@@ -1292,7 +1286,7 @@ Map_Jadwal.set(T1D, [
 
     [MIS, fiqih],
     [LSN, tauhid],
-    [FT, nahwu],
+    [SBR, arab],
 
     [YDN, akhlaq],
     [MSH, imla],
@@ -1304,9 +1298,9 @@ Map_Jadwal.set(T1E, [
     [LSN, tauhid],
     [SBR, arab],
     // Selasa
-    [IBR, shorof],
-    [UL, fiqih],
-    [UL, fiqih],
+    [JND, shorof],
+    [ASD, fiqih],
+    [ASD, fiqih],
     // Rabu
     [MSH, imla],
     [SBR, arab],
@@ -1316,9 +1310,9 @@ Map_Jadwal.set(T1E, [
     [FT, nahwu],
     [YDN, akhlaq],
     // Jumat
-    [FT, nahwu],
-    [UL, fiqih],
-    [MSH, imla],
+    [JND, shorof],
+    [SBR, arab],
+    [ASD, fiqih],
     // Sabtu
     [MSH, imla],
     [LSN, tauhid],
@@ -1326,13 +1320,13 @@ Map_Jadwal.set(T1E, [
 ]);
 Map_Jadwal.set(T1F, [
     // Senin
-    [RF, shorof],
+    [TMM, shorof],
     [ASR, tajwid],
     [BCH, tauhid],
     // Selasa
     [FT, nahwu],
     [FT, nahwu],
-    [FRH, arab],
+    [HLM, arab],
     // Rabu
     [TMM, shorof],
     [YDN, akhlaq],
@@ -1342,7 +1336,7 @@ Map_Jadwal.set(T1F, [
     [HLM, arab],
     [BCH, tauhid],
     // Jumat
-    [FRH, arab],
+    [MSH, imla],
     [FT, nahwu],
     [DMN, fiqih],
     // Sabtu
@@ -1357,8 +1351,8 @@ Map_Jadwal.set(T1G, [
     [HR, nahwu],
     // Selasa
     [MSH, imla],
-    [YDN, akhlaq],
-    [HR, nahwu],
+    [SFN, shorof],
+    [MIS, fiqih],
     // Rabu
     [YDN, akhlaq],
     [HR, nahwu],
@@ -1368,9 +1362,9 @@ Map_Jadwal.set(T1G, [
     [SBR, arab],
     [SBR, arab],
     // Jumat
-    [NZR, shorof],
+    [SFN, shorof],
     [MIS, fiqih],
-    [SBR, arab],
+    [ASR, tajwid],
     // Sabtu
     [NZR, shorof],
     [ASR, tajwid],
@@ -1436,7 +1430,7 @@ Map_Jadwal.set(T2C, [
     // Selasa
     [YHY, arab],
     [WF, shorof],
-    [SLH, fiqih],
+    [NJB, fiqih],
     // Rabu
     [HMD, tauhid],
     [MNJ, akhlaq],
@@ -1446,13 +1440,13 @@ Map_Jadwal.set(T2C, [
     [NJB, fiqih],
     [NJB, fiqih],
     // Jumat
-    [SLH, nahwu],
+    [NBL, nahwu],
     [HMD, tauhid],
     [YHY, arab],
     // Sabtu
     [YHY, arab],
     [WF, shorof],
-    [SLH, nahwu],
+    [NBL, nahwu],
 ]);
 Map_Jadwal.set(T2D, [
     // Senin
@@ -1534,11 +1528,11 @@ Map_Jadwal.set(T2F, [
 ]);
 Map_Jadwal.set(T2G, [
     // Senin
-    [UMR, nahwu],
+    [SFN, nahwu],
     [MRJ, arab],
     [ANM, tauhid],
     // Selasa
-    [RF, nahwu],
+    [SFN, nahwu],
     [ANM, tauhid],
     [BCH, akhlaq],
     // Rabu
@@ -1552,7 +1546,7 @@ Map_Jadwal.set(T2G, [
     // Jumat
     [MRJ, arab],
     [FQH, shorof],
-    [UTJ, nahwu],
+    [SFN, nahwu],
     // Sabtu
     [MRJ, arab],
     [FQH, shorof],
@@ -1560,7 +1554,7 @@ Map_Jadwal.set(T2G, [
 ]);
 Map_Jadwal.set(T2H, [
     // Senin
-    [FRH, fiqih],
+    [ASD, fiqih],
     [ANM, tauhid],
     [MRJ, arab],
     // Selasa
@@ -1577,18 +1571,18 @@ Map_Jadwal.set(T2H, [
     [ANM, tauhid],
     // Jumat
     [UMR, akhlaq],
-    [UHS, nahwu],
+    [JND, nahwu],
     [MRJ, arab],
     // Sabtu
     [DRW, nahwu],
-    [FRH, fiqih],
+    [ASD, fiqih],
     [MRJ, arab],
 ]);
 Map_Jadwal.set(T2I, [
     // Senin
     [MRJ, arab],
     [MNR, nahwu],
-    [FRH, fiqih],
+    [NJB, fiqih],
     // Selasa
     [MRJ, arab],
     [FQH, shorof],
@@ -1608,16 +1602,16 @@ Map_Jadwal.set(T2I, [
     // Sabtu
     [BCH, akhlaq],
     [MNR, nahwu],
-    [FRH, fiqih],
+    [NJB, fiqih],
 ]);
 Map_Jadwal.set(T2J, [
     // Senin
     [ANM, tauhid],
-    [FRH, fiqih],
+    [NJB, fiqih],
     [UMR, akhlaq],
     // Selasa
     [UMR, akhlaq],
-    [SBR, arab],
+    [RID, arab],
     [MNR, nahwu],
     // Rabu
     [FQH, shorof],
@@ -1629,7 +1623,7 @@ Map_Jadwal.set(T2J, [
     [LBB, tajwid],
     // Jumat
     [FQH, shorof],
-    [SBR, arab],
+    [RID, arab],
     [MNR, nahwu],
     // Sabtu
     [FRH, fiqih],
@@ -1873,8 +1867,8 @@ Map_Jadwal.set(T3J, [
 Map_Jadwal.set(IST, [
     // Senin
     [MNJ, akhlaq],
-    [MIS, miftah],
-    [MIS, miftah],
+    [NBL, miftah],
+    [NBL, miftah],
     // Selasa
     [MRW, fiqih],
     [AFF, tauhid],
@@ -1899,10 +1893,10 @@ Map_Jadwal.set(IST, [
 Map_Jadwal.set(A1A, [
     // Senin
     [FTN, nahwu],
-    [SDL, tauhid],
+    [BSH, tauhid],
     [MSH, fiqih],
     // Selasa
-    [SDL, tauhid],
+    [BSH, tauhid],
     [IBR, arab],
     [MSH, fiqih],
     // Rabu
@@ -1926,11 +1920,11 @@ Map_Jadwal.set(A1B, [
     // Senin
     [SBH, shorof],
     [FTN, nahwu],
-    [SDL, tauhid],
+    [BSH, tauhid],
     // Selasa
-    [RID, arab],
+    [AND, arab],
     [MSH, fiqih],
-    [SDL, tauhid],
+    [BSH, tauhid],
     // Rabu
     [AND, arab],
     [FTN, nahwu],
@@ -1940,22 +1934,22 @@ Map_Jadwal.set(A1B, [
     [MSH, fiqih],
     [IRF, akhlaq],
     // Jumat
-    [RID, arab],
+    [AND, arab],
     [FTN, nahwu],
     [IRF, akhlaq],
     // Sabtu
     [FTN, nahwu],
     [SBH, shorof],
-    [RID, arab],
+    [AND, arab],
 ]);
 Map_Jadwal.set(A1C, [
     // Senin
-    [SDL, tauhid],
+    [BSH, tauhid],
     [UHN, arab],
     [USM, nahwu],
     // Selasa
     [GFR, fiqih],
-    [SDL, tauhid],
+    [BSH, tauhid],
     [USM, nahwu],
     // Rabu
     [GFR, fiqih],
@@ -2070,8 +2064,8 @@ Map_Jadwal.set(A2A, [
     [RHL, balaghoh],
     [ABAH.madin, mustholah],
     // Jumat
+    [UL, fiqih],
     [RHL, balaghoh],
-    [RF, ushul],
     [ALW, fiqih],
     // Sabtu
     [FHM, arab],
@@ -2211,7 +2205,7 @@ Map_Jadwal.set(A3C, [
 Map_Jadwal.set(MTP, [
     // Senin
     [AZZ, nahwu],
-    [SHF, fiqih],
+    [AZZ, nahwu],
     [ABD, ushul],
     // Selasa
     [AZZ, nahwu],
@@ -2244,9 +2238,9 @@ Map_Jadwal.set(MTS, [
     [_ust, _fan],
     [_ust, _fan],
     // Rabu
-    [UTJ, tasme],
     [UL, tauhid],
     [UL, tauhid],
+    [_ust, _fan],
     // Kamis
     [HR, nahwu],
     [HR, nahwu],
